@@ -1,0 +1,331 @@
+{
+ "generated_at": "2026-10-24T17:44:49.256210+00:00",
+ "step_seconds": {},
+ "coverage": {
+  "items": 93,
+  "runnable_here": 93,
+  "by_split_label": {
+   "dev/scam": 12,
+   "dev/genuine": 6,
+   "test/scam": 26,
+   "test/genuine": 25,
+   "public/scam": 16,
+   "public/genuine": 8
+  },
+  "by_input": {
+   "text": 64,
+   "video": 22,
+   "pdf": 5,
+   "image": 2
+  },
+  "by_language": {
+   "en": 79,
+   "hinglish": 4,
+   "hi": 10
+  },
+  "by_category": {
+   "investment": 6,
+   "digital_arrest": 6,
+   "kyc": 3,
+   "regulator_notice": 2,
+   "otp": 3,
+   "bank_alert": 4,
+   "safety_advice": 1,
+   "revoiced_video": 4,
+   "genuine_video": 15,
+   "forged_notice": 3,
+   "bank_notice": 1,
+   "lipsync_video": 3,
+   "remote_access": 1,
+   "lottery": 2,
+   "loan": 1,
+   "forex": 1,
+   "courier": 1,
+   "electricity": 1,
+   "job": 1,
+   "injection": 1,
+   "bank_impersonation": 1,
+   "sip": 1,
+   "bank_advisory": 4,
+   "broker": 1,
+   "personal": 3,
+   "awareness": 1,
+   "payment_request": 1,
+   "poster_qr": 1,
+   "screenshot": 1,
+   "circular_copy": 1,
+   "reward_apk": 1,
+   "kyc_phishing": 2,
+   "reward_link": 1,
+   "tax_refund": 1,
+   "utility_bill": 1,
+   "investment_tips": 1,
+   "loan_fee": 2,
+   "telecom_threat": 1,
+   "parcel_address": 1,
+   "task_job": 1,
+   "govt_advisory": 4,
+   "utility_advisory": 1,
+   "regulator_advisory": 1
+  },
+  "note": "Video items need the team's consented clips (not in the repository); without them those items are skipped and say so."
+ },
+ "labelled": {
+  "test": {
+   "n": 51,
+   "confusion": {
+    "RED": {
+     "scam": 11,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 15,
+     "genuine": 12
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 13
+    }
+   },
+   "tiers": {
+    "WARN": {
+     "scam": 24,
+     "genuine": 0
+    },
+    "CHECK": {
+     "scam": 2,
+     "genuine": 10
+    },
+    "CLEAR": {
+     "scam": 0,
+     "genuine": 15
+    }
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 25,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1332
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 26,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1287
+    ]
+   }
+  },
+  "dev": {
+   "n": 18,
+   "confusion": {
+    "RED": {
+     "scam": 12,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 0,
+     "genuine": 2
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 4
+    }
+   },
+   "tiers": {
+    "WARN": {
+     "scam": 12,
+     "genuine": 0
+    },
+    "CHECK": {
+     "scam": 0,
+     "genuine": 1
+    },
+    "CLEAR": {
+     "scam": 0,
+     "genuine": 5
+    }
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 6,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3903
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 12,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.2425
+    ]
+   }
+  },
+  "public": {
+   "n": 24,
+   "confusion": {
+    "RED": {
+     "scam": 1,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 15,
+     "genuine": 7
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 1
+    }
+   },
+   "tiers": {
+    "WARN": {
+     "scam": 13,
+     "genuine": 0
+    },
+    "CHECK": {
+     "scam": 3,
+     "genuine": 0
+    },
+    "CLEAR": {
+     "scam": 0,
+     "genuine": 8
+    }
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   }
+  },
+  "frozen_unchanged": {
+   "test": true,
+   "public": true
+  }
+ },
+ "lanes_exercised": [
+  "A",
+  "B",
+  "C"
+ ],
+ "verdicts_seen": {
+  "RED": 24,
+  "GREEN": 18,
+  "AMBER": 51
+ },
+ "open_dataset": {
+  "citation": "Mishra, S. and Soni, D. (2022). SMS Phishing Dataset for Machine Learning and Pattern Recognition. Mendeley Data, V1. doi:10.17632/f45bkkt8pr.1. CC BY 4.0.",
+  "n": 5971,
+  "per_label": {
+   "ham": {
+    "n": 4844,
+    "tiers": {
+     "WARN": 2,
+     "CHECK": 200,
+     "CLEAR": 4642
+    },
+    "warned": {
+     "k": 2,
+     "n": 4844,
+     "p": 0.0004,
+     "ci95": [
+      0.0001,
+      0.0015
+     ]
+    },
+    "not_clear": {
+     "k": 202,
+     "n": 4844,
+     "p": 0.0417,
+     "ci95": [
+      0.0364,
+      0.0477
+     ]
+    }
+   },
+   "smishing": {
+    "n": 638,
+    "tiers": {
+     "WARN": 5,
+     "CHECK": 584,
+     "CLEAR": 49
+    },
+    "warned": {
+     "k": 5,
+     "n": 638,
+     "p": 0.0078,
+     "ci95": [
+      0.0034,
+      0.0182
+     ]
+    },
+    "not_clear": {
+     "k": 589,
+     "n": 638,
+     "p": 0.9232,
+     "ci95": [
+      0.8999,
+      0.9414
+     ]
+    }
+   },
+   "spam": {
+    "n": 489,
+    "tiers": {
+     "WARN": 4,
+     "CHECK": 296,
+     "CLEAR": 189
+    },
+    "warned": {
+     "k": 4,
+     "n": 489,
+     "p": 0.0082,
+     "ci95": [
+      0.0032,
+      0.0208
+     ]
+    },
+    "not_clear": {
+     "k": 300,
+     "n": 489,
+     "p": 0.6135,
+     "ci95": [
+      0.5696,
+      0.6556
+     ]
+    }
+   }
+  }
+ },
+ "redteam": {
+  "defended": 34,
+  "total": 34,
+  "known_misses": {
+   "total": 3,
+   "still_missed": 3
+  }
+ },
+ "robustness": {
+  "generated_at": "2026-10-24T11:49:34.074809+00:00"
+ }
+}

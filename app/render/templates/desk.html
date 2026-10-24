@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}Pramaan Desk · review once, protect many{% endblock %}
+{% block style %}
+  .hero2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 14px 0 6px; }
+  .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .kpi .big { font-family: var(--serif); font-size: 40px; line-height: 1; color: var(--sage); font-variant-numeric: tabular-nums; }
+  .kpi .lbl { font-size: 12px; font-weight: 700; letter-spacing: 1.3px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .kpi.alert .big { color: var(--warn); }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 22px 0 4px; border-bottom: 2px solid var(--sage); }
+  .tabs a { text-decoration: none; padding: 8px 14px; border-radius: 8px 8px 0 0; font-weight: 600; color: var(--muted); }
+  .tabs a.on, .tabs a:hover { background: var(--sage); color: #fff; }
+  .tabs .n { font-family: var(--mono); font-size: 12px; margin-left: 6px; opacity: .8; }
+  .camp, .item { background: var(--panel); border: 1.5px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 12px 0; }
+  .camp.open { border-left: 6px solid var(--warn); } .camp.confirmed { border-left: 6px solid var(--bad); } .camp.rejected { border-left: 6px solid var(--dim); opacity: .78; }
+  .camp h3, .item h3 { font-family: var(--serif); margin: 0 0 4px; font-size: 21px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .stat { font-size: 14px; color: var(--muted); } .stat b { color: var(--ink); font-family: var(--mono); font-size: 15px; }
+  .ind { font-family: var(--mono); font-size: 13px; background: var(--panel2); border-radius: 4px; padding: 2px 7px; margin: 2px 4px 2px 0; display: inline-block; overflow-wrap: anywhere; }
+  .reps { font-size: 13px; margin-top: 8px; } .reps a { font-family: var(--mono); }
+  .status { font-weight: 700; letter-spacing: 1.5px; font-size: 12px; padding: 3px 9px; border-radius: 4px; }
+  .status.open { background: var(--warnT); color: var(--warn); } .status.confirmed, .status.upheld, .status.revoked { background: var(--badT); color: var(--bad); }
+  .status.rejected, .status.dismissed { background: var(--panel2); color: var(--muted); } .status.active { background: var(--okT); color: var(--ok); }
+  .rank { font-family: var(--serif); font-size: 26px; color: var(--copper); min-width: 34px; }
+  .toast { position: fixed; right: 18px; bottom: 18px; background: var(--sage); color: #fff; padding: 14px 18px; border-radius: 10px; font-weight: 600; box-shadow: 0 6px 24px rgba(0,0,0,.2); display: none; max-width: 420px; }
+  .note { font-style: italic; color: var(--ink); }
+  .empty { color: var(--muted); }
+  section.pane { display: none; } section.pane.on { display: block; }
+{% endblock %}
+{% block body %}
+<header class="bar"><a class="brand" href="/">Pramaan<span>प्रमाण</span></a><div class="meta">Pramaan Desk · bank Fraud Risk Management · signed in as <b>{{ analyst }}</b> · <a href="/desk/logout">sign out</a></div></header>
+<div class="rule2"></div>
+<p class="sub">Customer reports are grouped into campaigns by shared hard evidence: the same UPI ID, number or website, the same genuine footage re-voiced, or the same borrowed circular. An analyst reviews each campaign <b>once</b>; confirming it warns everyone who asked to be told and turns its fingerprints into a strong signal for everyone who checks later. Pramaan never blocks payments and never contacts outside bodies itself.</p>
+
+<div class="hero2">
+  <div class="kpi"><div class="lbl">Open campaigns</div><div class="big">{{ stats.open }}</div></div>
+  <div class="kpi"><div class="lbl">Reports received</div><div class="big">{{ stats.reports }}</div></div>
+  <div class="kpi"><div class="lbl">People who saw a confirmed campaign</div><div class="big">{{ stats.people_protected }}</div></div>
+  <div class="kpi"><div class="lbl">Retro-Alerts sent</div><div class="big">{{ stats.alerts }}</div></div>
+  <div class="kpi {{ 'alert' if stats.appeals_open }}"><div class="lbl">Open appeals</div><div class="big">{{ stats.appeals_open }}</div></div>
+</div>
+<div class="panel" style="font-size:14px">Evidence vault hash chain: {% if chain.ok %}<span class="chip positive">INTACT ✓</span>{% else %}<span class="chip bad">BROKEN at #{{ chain.broken_at }}</span>{% endif %}
+  {{ chain.records }} sealed records · head <span class="mono">{{ chain.head[:16] }}…</span> · <a href="/desk/chain">re-verify</a></div>
+
+<nav class="tabs" aria-label="Desk sections">
+  <a href="#campaigns" data-pane="campaigns" class="on">Campaigns<span class="n">{{ campaigns|length }}</span></a>
+  <a href="#compromise" data-pane="compromise">Possible account compromise<span class="n">{{ compromise|length }}</span></a>
+  <a href="#appeals" data-pane="appeals">Appeals<span class="n">{{ appeals|length }}</span></a>
+  {% if seals is defined %}<a href="#seals" data-pane="seals">Issued seals<span class="n">{{ seals|length }}</span></a>{% endif %}
+</nav>
+
+<section class="pane on" id="pane-campaigns">
+{% for c in campaigns %}
+<div class="camp {{ c.status }}" id="{{ c.id }}">
+  <div class="row"><span class="rank">{{ loop.index }}</span><span class="status {{ c.status }}">{{ c.status|upper }}</span><span class="mono" style="color:var(--dim)">{{ c.id }}</span>
+    {% if c.decided_by %}<span class="stat">by {{ c.decided_by }} · {{ c.decided_at|ist }}</span>{% endif %}</div>
+  <h3>{{ c.title }}</h3>
+  <div class="row">
+    <span class="stat">People reached <b>{{ c.people_seen }}</b></span>
+    <span class="stat">Reports <b>{{ c.reports|length }}</b></span>
+    <span class="stat">Checks matching <b>{{ c.checks_seen }}</b></span>
+    <span class="stat">Waiting for an update <b>{{ c.watchers }}</b></span>
+    <span class="stat">First seen <b>{{ c.first_seen|ist }}</b></span>
+  </div>
+  <div style="margin-top:8px">{% for i in c.indicators %}<span class="ind">{{ i }}</span>{% endfor %}</div>
+  <div class="reps">Reported: {% for r in c.reports %}<a href="/p/{{ r.check_id }}" target="_blank" rel="noopener">{{ r.serial }}</a> <span style="color:var(--dim)">(vault #{{ r.chain_seq }})</span>{% if not loop.last %} · {% endif %}{% endfor %}</div>
+  <div class="row" style="margin-top:12px">
+    {% if c.status == 'open' %}
+    <button class="btn danger" onclick="decide('{{ c.id }}','confirmed')">✔ Confirm scam campaign · send Retro-Alerts</button>
+    <button class="btn" onclick="decide('{{ c.id }}','rejected')">✖ Reject (false positive)</button>
+    {% endif %}
+    {% if role == "lead" %}<a class="btn" href="/desk/{{ c.id }}/packet.json">⬇ Signed packet: takedown · mule UPI IDs · Chakshu</a>{% endif %}
+  </div>
+</div>
+{% else %}
+<div class="panel empty">No reports yet. In the bot, tap <b>Report</b> under a verdict, or use Report on a proof page.</div>
+{% endfor %}
+</section>
+
+<section class="pane" id="pane-compromise">
+<p class="sub">The sender checked out against official records, <b>but</b> the message makes a high-risk request. That pattern often means a genuine account was taken over. Contact the account owner through official channels before anything else.</p>
+{% for x in compromise %}
+<div class="item"><div class="row"><span class="status open">REVIEW</span><a class="mono" href="/p/{{ x.id }}" target="_blank" rel="noopener">{{ x.serial }}</a><span class="stat">{{ x.created_at|ist }}</span></div>
+  <ul style="margin:8px 0 0;padding-left:18px">{% for r in x.reasons %}<li>{{ r }}</li>{% endfor %}</ul></div>
+{% else %}<div class="panel empty">Nothing in the last 7 days.</div>{% endfor %}
+</section>
+
+<section class="pane" id="pane-appeals">
+<p class="sub">People who think a verdict is wrong. Upheld appeals feed the rule review and are counted on the Lab. Who appealed is never stored.</p>
+{% for a in appeals %}
+<div class="item" id="appeal-{{ a.id }}"><div class="row"><span class="status {{ a.status }}">{{ a.status|upper }}</span><span class="mono">#{{ a.id }}</span>
+  {% if a.check_id.startswith('lookup:') %}<a class="mono" href="/lookup?q={{ a.check_id.split(':', 2)[2]|urlencode }}" target="_blank" rel="noopener">Lookup · {{ a.check_id.split(':', 2)[2] }}</a>
+  {% else %}<a class="mono" href="/p/{{ a.check_id }}" target="_blank" rel="noopener">{{ a.serial or a.check_id }}</a>{% endif %}<span class="stat">verdict <b>{{ a.level or '—' }}</b> · {{ a.created_at|ist }}</span></div>
+  {% if a.note %}<p class="note" style="margin:8px 0 0">"{{ a.note }}"</p>{% endif %}
+  {% if a.status == 'open' %}<div class="row" style="margin-top:10px">
+    <button class="btn" onclick="appeal({{ a.id }},'upheld')">The verdict was wrong · uphold</button>
+    <button class="btn" onclick="appeal({{ a.id }},'dismissed')">The verdict stands · dismiss</button></div>{% endif %}
+</div>
+{% else %}<div class="panel empty">No appeals.</div>{% endfor %}
+</section>
+
+{% if seals is defined %}
+<section class="pane" id="pane-seals">
+<p class="sub">Pramaan Seals issued by institutions. Revoking one makes every copy show "revoked" when scanned. Lead role only.</p>
+{% for s in seals %}
+<div class="item"><div class="row"><span class="status {{ 'revoked' if s.revoked else 'active' }}">{{ 'REVOKED' if s.revoked else 'ACTIVE' }}</span><span class="mono">{{ s.code }}</span>
+  <span class="stat">{{ s.issuer_name }} · {{ s.doc_type }} · issued {{ s.issued }}</span></div>
+  <h3>{{ s.title }}</h3>
+  <div class="row"><a class="btn" href="/s/{{ s.code }}" target="_blank" rel="noopener">Open seal page</a>
+  {% if role == 'lead' and not s.revoked %}<button class="btn danger" onclick="revoke('{{ s.code }}')">Revoke</button>{% endif %}</div></div>
+{% else %}<div class="panel empty">No seals issued yet.</div>{% endfor %}
+</section>
+{% endif %}
+<div class="toast" id="toast" role="status"></div>
+{% endblock %}
+{% block script %}
+<script>
+function show(name) {
+  document.querySelectorAll(".tabs a").forEach(a => a.classList.toggle("on", a.dataset.pane === name));
+  document.querySelectorAll("section.pane").forEach(s => s.classList.toggle("on", s.id === "pane-" + name));
+}
+document.querySelectorAll(".tabs a").forEach(a => a.addEventListener("click", e => { e.preventDefault(); show(a.dataset.pane); history.replaceState(null, "", "#" + a.dataset.pane); }));
+if (location.hash && document.getElementById("pane-" + location.hash.slice(1))) show(location.hash.slice(1));
+function toast(msg) { const t = document.getElementById("toast"); t.textContent = msg; t.style.display = "block"; setTimeout(() => location.reload(), 2000); }
+async function decide(id, d) {
+  const note = d === "rejected" ? (prompt("Why is this a false positive? (feeds the rule review)") || "") : "";
+  const r = await fetch(`/desk/${id}/${d}`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({note})});
+  const j = await r.json();
+  toast(d === "confirmed" ? `Confirmed. Retro-Alerts sent to ${j.alerts_sent} people. Campaign memory updated.` : "Rejected. Logged for rule review.");
+}
+async function appeal(id, d) {
+  const r = await fetch(`/desk/appeal/${id}/${d}`, {method: "POST"});
+  toast(r.ok ? (d === "upheld" ? "Appeal upheld. Logged for rule review." : "Appeal dismissed.") : "Could not update the appeal.");
+}
+async function revoke(code) {
+  if (!confirm("Revoke this seal? Every copy will show as revoked.")) return;
+  const r = await fetch(`/desk/seal/${code}/revoke`, {method: "POST"});
+  toast(r.ok ? "Seal revoked." : "Could not revoke the seal.");
+}
+</script>
+{% endblock %}

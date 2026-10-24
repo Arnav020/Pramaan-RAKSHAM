@@ -54,7 +54,7 @@ sudo tee /etc/caddy/Caddyfile > /dev/null <<EOF
 $HOST {
     encode gzip
     request_body {
-        max_size 30MB
+        max_size 90MB   # per-route limits are enforced by the app: 25 MB public checks, 80 MB issuer video registration
     }
     reverse_proxy 127.0.0.1:8000
 }

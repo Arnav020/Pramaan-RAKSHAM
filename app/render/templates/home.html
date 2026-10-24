@@ -86,10 +86,11 @@
 
 {% if stats %}
 <section class="strip" aria-label="Measured, not claimed">
-  <div class="stat"><div class="v">{{ stats.false_red }}</div><div class="l">genuine items marked as a scam, of {{ stats.genuine }} (frozen test set)</div></div>
+  <div class="stat"><div class="v">{{ stats.false_red }}</div><div class="l">genuine items marked as a scam, of {{ stats.genuine }} (frozen test set){% if stats.gen_not_clear is defined %}; {{ stats.gen_not_clear }} were told "check first"{% endif %}</div></div>
   <div class="stat"><div class="v">{{ stats.caught }}/{{ stats.scams }}</div><div class="l">scams flagged: "can't verify" or "matches a scam pattern"</div></div>
+  {% if stats.open_n %}<div class="stat"><div class="v">{{ stats.open_ham_warned }}/{{ stats.open_ham }}</div><div class="l">legitimate SMS warned in a public dataset we never trained on; {{ stats.open_smish_flagged }}/{{ stats.open_smish }} phishing not cleared (<a href="/lab">Lab</a>)</div></div>{% endif %}
   <div class="stat"><div class="v">{{ stats.ke_det }}/{{ stats.ke_n }} → {{ stats.ke_pr }}</div><div class="l">genuine videos called fake by detectors alone → by Pramaan</div></div>
-  {% if stats.attacks %}<div class="stat"><div class="v">{{ stats.defended }}/{{ stats.attacks }}</div><div class="l">attacks on Pramaan defended (<a href="/redteam">red team</a>)</div></div>{% endif %}
+  {% if stats.attacks %}<div class="stat"><div class="v">{{ stats.defended }}/{{ stats.attacks }}</div><div class="l">attacks on Pramaan defended{% if stats.misses %}, and {{ stats.misses }} we still miss, shown openly{% endif %} (<a href="/redteam">red team</a>)</div></div>{% endif %}
 </section>
 <p class="sub" style="font-size:13px;margin-top:8px">From the latest run of <span class="mono">eval.run</span> and <span class="mono">eval.redteam</span>, nothing typed by hand. Small, self-built sets: see the <a href="/lab">Lab</a> for sample sizes and intervals.</p>
 {% endif %}

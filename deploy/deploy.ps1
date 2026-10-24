@@ -11,6 +11,7 @@ Push-Location $app
 try {
     $items = @("app", "eval", "tools", "tests", "docs", "deploy", "requirements.txt", "README.md", "ACKNOWLEDGEMENTS.md", "BUILD_LOG.md", ".env.example")
     if (-not $CodeOnly) { $items += @("data/index", "data/cache", "data/keys", "data/seals", "data/media/genuine", "data/media/test") }
+    $items = @($items | Where-Object { if (Test-Path $_) { $true } else { Write-Host "skipping missing $_"; $false } })
     tar --exclude="__pycache__" --exclude="*.pyc" --exclude="app/static/_card_*" -czf $tgz @items
 } finally { Pop-Location }
 "{0:N1} MB bundle" -f ((Get-Item $tgz).Length / 1MB)

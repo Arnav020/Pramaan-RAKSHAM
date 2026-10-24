@@ -1,0 +1,4810 @@
+{
+ "generated_at": "2026-10-24T11:38:03.764709+00:00",
+ "git_commit": "899e617",
+ "split": "all",
+ "use_llm": true,
+ "rules_version": "2.2",
+ "test_split_sha256": "f858b772dc2d7c6319939488d47f450e43eb46baaab0d054d18a1516775d58a1",
+ "test_split_frozen_sha256": "f858b772dc2d7c6319939488d47f450e43eb46baaab0d054d18a1516775d58a1",
+ "test_split_unchanged": true,
+ "public_split_sha256": "a13caed227f0d2944490d6948ddc2e8231f861112a91dc4aebb30bdb79a05cea",
+ "public_split_unchanged": true,
+ "public_sources": [
+  {
+   "id": "p01",
+   "label": "scam",
+   "cat": "reward_apk",
+   "fidelity": "verbatim",
+   "date": "2025-12-27",
+   "source": "https://www.latestly.com/social-viral/fact-check/did-you-receive-an-sms-or-whatsapp-message-asking-you-to-download-an-app-to-redeem-sbi-reward-points-pib-fact-check-debunks-fake-message-going-viral-7253978.html"
+  },
+  {
+   "id": "p02",
+   "label": "scam",
+   "cat": "kyc_phishing",
+   "fidelity": "verbatim",
+   "date": "2022-08-30",
+   "source": "https://www.businesstoday.in/technology/story/message-from-sbi-to-update-your-pan-card-details-is-a-scam-do-not-fall-for-it-345946-2022-08-30"
+  },
+  {
+   "id": "p03",
+   "label": "scam",
+   "cat": "reward_link",
+   "fidelity": "verbatim",
+   "date": "2024-11-10",
+   "source": "https://www.thetechoutlook.com/news/security/fraudsters-target-sbi-customers-with-fake-yono-rewards-message/"
+  },
+  {
+   "id": "p04",
+   "label": "scam",
+   "cat": "tax_refund",
+   "fidelity": "verbatim",
+   "date": "2023-08-03",
+   "source": "https://www.businesstoday.in/personal-finance/tax/story/itr-refund-status-centre-issues-scam-alert-on-fraudulent-messages-392717-2023-08-03"
+  },
+  {
+   "id": "p05",
+   "label": "scam",
+   "cat": "kyc_phishing",
+   "fidelity": "verbatim",
+   "date": "2023-03-09",
+   "source": "https://english.factcrescendo.com/?p=15481"
+  },
+  {
+   "id": "p06",
+   "label": "scam",
+   "cat": "utility_bill",
+   "fidelity": "excerpt+described",
+   "date": "2022-06-23",
+   "source": "https://sentinelassam.com/topheadlines/beware-of-fake-sms-on-power-bills-598773"
+  },
+  {
+   "id": "p07",
+   "label": "scam",
+   "cat": "digital_arrest",
+   "fidelity": "victim_account",
+   "date": "2024-11-07",
+   "source": "https://www.tribuneindia.com/news/chandigarh/73-year-old-put-under-digital-arrest-duped-of-16-lakh"
+  },
+  {
+   "id": "p08",
+   "label": "scam",
+   "cat": "digital_arrest",
+   "fidelity": "victim_account",
+   "date": "2024-12-01",
+   "source": "https://www.deccanherald.com/india/uttarakhand/woman-put-under-digital-arrest-in-dehradun-duped-of-rs-17-crore-3315601"
+  },
+  {
+   "id": "p09",
+   "label": "scam",
+   "cat": "digital_arrest",
+   "fidelity": "described",
+   "date": "2024-05-20",
+   "source": "https://www.thenewsminute.com/karnataka/fedex-scam-bengaluru-software-engineer-loses-rs-1-crore-to-fraudsters"
+  },
+  {
+   "id": "p10",
+   "label": "scam",
+   "cat": "investment_tips",
+   "fidelity": "described",
+   "date": "2014-12-08",
+   "source": "https://www.business-standard.com/article/pti-stories/sebi-exchanges-tighten-noose-on-sms-tipsters-114120800514_1.html"
+  },
+  {
+   "id": "p11",
+   "label": "scam",
+   "cat": "loan_fee",
+   "fidelity": "described",
+   "date": "2025-06-01",
+   "source": "https://www.indusind.bank.in/iblogs/?p=14978"
+  },
+  {
+   "id": "p12",
+   "label": "scam",
+   "cat": "lottery",
+   "fidelity": "described",
+   "date": "2022-11-01",
+   "source": "https://eastmojo.com/fact-check/2022/11/01/fact-check-kbc-lottery-with-rs-25-lakh-reward-on-whatsapp-is-fake/"
+  },
+  {
+   "id": "p13",
+   "label": "scam",
+   "cat": "telecom_threat",
+   "fidelity": "described",
+   "date": "2024-06-14",
+   "source": "https://www.voicendata.com/news/trai-warns-against-fake-calls-threatening-mobile-disconnection-8937750"
+  },
+  {
+   "id": "p14",
+   "label": "scam",
+   "cat": "parcel_address",
+   "fidelity": "described",
+   "date": "2024-04-10",
+   "source": "https://cyberpeace.org/resources/blogs/factcheck-beware-fake-india-post-delivery-scam-alert"
+  },
+  {
+   "id": "p15",
+   "label": "scam",
+   "cat": "task_job",
+   "fidelity": "described",
+   "date": "2023-05-06",
+   "source": "https://newschecker.in/scam-watch/fraud-terror-and-trail-of-death-the-telegram-task-scam-spreading-fast-in-india"
+  },
+  {
+   "id": "p16",
+   "label": "scam",
+   "cat": "loan_fee",
+   "fidelity": "described",
+   "date": "2026-09-03",
+   "source": "https://www.outlookmoney.com/news/fake-whatsapp-messages-claiming-mudra-loan-approval-are-scams-pib-fact-check-issues-advisory"
+  },
+  {
+   "id": "q01",
+   "label": "genuine",
+   "cat": "bank_advisory",
+   "fidelity": "verbatim",
+   "date": "2021-04-05",
+   "source": "https://money9.com/news/banking/sbi-cautions-customers-against-online-fd-fraud-advises-not-to-share-bank-details-22446.html"
+  },
+  {
+   "id": "q02",
+   "label": "genuine",
+   "cat": "bank_advisory",
+   "fidelity": "described",
+   "date": "2023-03-09",
+   "source": "https://english.factcrescendo.com/?p=15481"
+  },
+  {
+   "id": "q03",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2025-12-27",
+   "source": "https://www.latestly.com/social-viral/fact-check/did-you-receive-an-sms-or-whatsapp-message-asking-you-to-download-an-app-to-redeem-sbi-reward-points-pib-fact-check-debunks-fake-message-going-viral-7253978.html"
+  },
+  {
+   "id": "q04",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2024-06-14",
+   "source": "https://www.voicendata.com/news/trai-warns-against-fake-calls-threatening-mobile-disconnection-8937750"
+  },
+  {
+   "id": "q05",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2023-08-03",
+   "source": "https://www.businesstoday.in/personal-finance/tax/story/itr-refund-status-centre-issues-scam-alert-on-fraudulent-messages-392717-2023-08-03"
+  },
+  {
+   "id": "q06",
+   "label": "genuine",
+   "cat": "utility_advisory",
+   "fidelity": "described",
+   "date": "2022-06-23",
+   "source": "https://sentinelassam.com/topheadlines/beware-of-fake-sms-on-power-bills-598773"
+  },
+  {
+   "id": "q07",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2026-01-20",
+   "source": "https://www.newsonair.gov.in/govt-debunks-sms-from-india-post-asking-people-to-update-their-address"
+  },
+  {
+   "id": "q08",
+   "label": "genuine",
+   "cat": "regulator_advisory",
+   "fidelity": "described",
+   "date": "2025-01-01",
+   "source": "https://investor.sebi.gov.in/pdf/Pump%20and%20Dump%20Scam%20final.pdf"
+  }
+ ],
+ "machine": "Windows AMD64 · Intel64 Family 6 Model 154 Stepping 3, G",
+ "skipped": [],
+ "metrics": {
+  "dev": {
+   "n": 18,
+   "scam": 12,
+   "genuine": 6,
+   "confusion": {
+    "RED": {
+     "scam": 12,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 0,
+     "genuine": 2
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 4
+    }
+   },
+   "red_precision": {
+    "k": 12,
+    "n": 12,
+    "p": 1.0,
+    "ci95": [
+     0.7575,
+     1
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 12,
+    "n": 12,
+    "p": 1.0,
+    "ci95": [
+     0.7575,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 12,
+    "n": 12,
+    "p": 1.0,
+    "ci95": [
+     0.7575,
+     1
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 6,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3903
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 2,
+    "n": 2,
+    "p": 1.0,
+    "ci95": [
+     0.3424,
+     1
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 12,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.2425
+    ]
+   },
+   "genuine_marked_amber": {
+    "k": 2,
+    "n": 6,
+    "p": 0.3333,
+    "ci95": [
+     0.0968,
+     0.7
+    ]
+   },
+   "tiers": {
+    "confusion": {
+     "WARN": {
+      "scam": 12,
+      "genuine": 0
+     },
+     "CHECK": {
+      "scam": 0,
+      "genuine": 1
+     },
+     "CLEAR": {
+      "scam": 0,
+      "genuine": 5
+     }
+    },
+    "genuine_warned": {
+     "k": 0,
+     "n": 6,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.3903
+     ]
+    },
+    "genuine_not_clear": {
+     "k": 1,
+     "n": 6,
+     "p": 0.1667,
+     "ci95": [
+      0.0301,
+      0.5635
+     ]
+    },
+    "scam_warned": {
+     "k": 12,
+     "n": 12,
+     "p": 1.0,
+     "ci95": [
+      0.7575,
+      1
+     ]
+    },
+    "scam_not_clear": {
+     "k": 12,
+     "n": 12,
+     "p": 1.0,
+     "ci95": [
+      0.7575,
+      1
+     ]
+    },
+    "scam_clear": {
+     "k": 0,
+     "n": 12,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.2425
+     ]
+    }
+   }
+  },
+  "public": {
+   "n": 24,
+   "scam": 16,
+   "genuine": 8,
+   "confusion": {
+    "RED": {
+     "scam": 0,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 16,
+     "genuine": 7
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 1
+    }
+   },
+   "red_precision": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 16,
+    "n": 16,
+    "p": 1.0,
+    "ci95": [
+     0.8064,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 1,
+    "n": 8,
+    "p": 0.125,
+    "ci95": [
+     0.0224,
+     0.4709
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   },
+   "genuine_marked_amber": {
+    "k": 7,
+    "n": 8,
+    "p": 0.875,
+    "ci95": [
+     0.5291,
+     0.9776
+    ]
+   },
+   "tiers": {
+    "confusion": {
+     "WARN": {
+      "scam": 13,
+      "genuine": 0
+     },
+     "CHECK": {
+      "scam": 3,
+      "genuine": 0
+     },
+     "CLEAR": {
+      "scam": 0,
+      "genuine": 8
+     }
+    },
+    "genuine_warned": {
+     "k": 0,
+     "n": 8,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.3244
+     ]
+    },
+    "genuine_not_clear": {
+     "k": 0,
+     "n": 8,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.3244
+     ]
+    },
+    "scam_warned": {
+     "k": 13,
+     "n": 16,
+     "p": 0.8125,
+     "ci95": [
+      0.5699,
+      0.9341
+     ]
+    },
+    "scam_not_clear": {
+     "k": 16,
+     "n": 16,
+     "p": 1.0,
+     "ci95": [
+      0.8064,
+      1
+     ]
+    },
+    "scam_clear": {
+     "k": 0,
+     "n": 16,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.1936
+     ]
+    }
+   }
+  },
+  "test": {
+   "n": 51,
+   "scam": 26,
+   "genuine": 25,
+   "confusion": {
+    "RED": {
+     "scam": 11,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 15,
+     "genuine": 12
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 13
+    }
+   },
+   "red_precision": {
+    "k": 11,
+    "n": 11,
+    "p": 1.0,
+    "ci95": [
+     0.7412,
+     1
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 26,
+    "n": 26,
+    "p": 1.0,
+    "ci95": [
+     0.8713,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 11,
+    "n": 26,
+    "p": 0.4231,
+    "ci95": [
+     0.2554,
+     0.6105
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 25,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1332
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 4,
+    "n": 7,
+    "p": 0.5714,
+    "ci95": [
+     0.2505,
+     0.8418
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 26,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1287
+    ]
+   },
+   "genuine_marked_amber": {
+    "k": 12,
+    "n": 25,
+    "p": 0.48,
+    "ci95": [
+     0.3003,
+     0.665
+    ]
+   },
+   "tiers": {
+    "confusion": {
+     "WARN": {
+      "scam": 23,
+      "genuine": 0
+     },
+     "CHECK": {
+      "scam": 3,
+      "genuine": 10
+     },
+     "CLEAR": {
+      "scam": 0,
+      "genuine": 15
+     }
+    },
+    "genuine_warned": {
+     "k": 0,
+     "n": 25,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.1332
+     ]
+    },
+    "genuine_not_clear": {
+     "k": 10,
+     "n": 25,
+     "p": 0.4,
+     "ci95": [
+      0.234,
+      0.5926
+     ]
+    },
+    "scam_warned": {
+     "k": 23,
+     "n": 26,
+     "p": 0.8846,
+     "ci95": [
+      0.7102,
+      0.96
+     ]
+    },
+    "scam_not_clear": {
+     "k": 26,
+     "n": 26,
+     "p": 1.0,
+     "ci95": [
+      0.8713,
+      1
+     ]
+    },
+    "scam_clear": {
+     "k": 0,
+     "n": 26,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.1287
+     ]
+    }
+   }
+  },
+  "all": {
+   "n": 93,
+   "scam": 54,
+   "genuine": 39,
+   "confusion": {
+    "RED": {
+     "scam": 23,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 31,
+     "genuine": 21
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 18
+    }
+   },
+   "red_precision": {
+    "k": 23,
+    "n": 23,
+    "p": 1.0,
+    "ci95": [
+     0.8569,
+     1
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 54,
+    "n": 54,
+    "p": 1.0,
+    "ci95": [
+     0.9336,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 23,
+    "n": 54,
+    "p": 0.4259,
+    "ci95": [
+     0.3033,
+     0.5584
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 39,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.0897
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 7,
+    "n": 17,
+    "p": 0.4118,
+    "ci95": [
+     0.2161,
+     0.6399
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 54,
+    "p": 0.0,
+    "ci95": [
+     0.0,
+     0.0664
+    ]
+   },
+   "genuine_marked_amber": {
+    "k": 21,
+    "n": 39,
+    "p": 0.5385,
+    "ci95": [
+     0.3857,
+     0.6843
+    ]
+   },
+   "tiers": {
+    "confusion": {
+     "WARN": {
+      "scam": 48,
+      "genuine": 0
+     },
+     "CHECK": {
+      "scam": 6,
+      "genuine": 11
+     },
+     "CLEAR": {
+      "scam": 0,
+      "genuine": 28
+     }
+    },
+    "genuine_warned": {
+     "k": 0,
+     "n": 39,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.0897
+     ]
+    },
+    "genuine_not_clear": {
+     "k": 11,
+     "n": 39,
+     "p": 0.2821,
+     "ci95": [
+      0.1654,
+      0.4378
+     ]
+    },
+    "scam_warned": {
+     "k": 48,
+     "n": 54,
+     "p": 0.8889,
+     "ci95": [
+      0.7781,
+      0.9481
+     ]
+    },
+    "scam_not_clear": {
+     "k": 54,
+     "n": 54,
+     "p": 1.0,
+     "ci95": [
+      0.9336,
+      1
+     ]
+    },
+    "scam_clear": {
+     "k": 0,
+     "n": 54,
+     "p": 0.0,
+     "ci95": [
+      0.0,
+      0.0664
+     ]
+    }
+   }
+  }
+ },
+ "ablation": {
+  "without_A": {
+   "n": 51,
+   "scam": 26,
+   "genuine": 25,
+   "confusion": {
+    "RED": {
+     "scam": 5,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 21,
+     "genuine": 25
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 0
+    }
+   },
+   "red_precision": {
+    "k": 5,
+    "n": 5,
+    "p": 1.0,
+    "ci95": [
+     0.5655,
+     1
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 26,
+    "n": 26,
+    "p": 1.0,
+    "ci95": [
+     0.8713,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 5,
+    "n": 26,
+    "p": 0.1923,
+    "ci95": [
+     0.0851,
+     0.3788
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 25,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1332
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 0,
+    "n": 7,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3543
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 26,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1287
+    ]
+   },
+   "genuine_marked_amber": {
+    "k": 25,
+    "n": 25,
+    "p": 1.0,
+    "ci95": [
+     0.8668,
+     1
+    ]
+   }
+  },
+  "without_B": {
+   "n": 51,
+   "scam": 26,
+   "genuine": 25,
+   "confusion": {
+    "RED": {
+     "scam": 9,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 17,
+     "genuine": 17
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 8
+    }
+   },
+   "red_precision": {
+    "k": 9,
+    "n": 9,
+    "p": 1.0,
+    "ci95": [
+     0.7008,
+     1
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 26,
+    "n": 26,
+    "p": 1.0,
+    "ci95": [
+     0.8713,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 9,
+    "n": 26,
+    "p": 0.3462,
+    "ci95": [
+     0.1941,
+     0.5378
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 25,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1332
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 0,
+    "n": 7,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3543
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 26,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1287
+    ]
+   },
+   "genuine_marked_amber": {
+    "k": 17,
+    "n": 25,
+    "p": 0.68,
+    "ci95": [
+     0.4841,
+     0.828
+    ]
+   }
+  },
+  "without_C": {
+   "n": 51,
+   "scam": 26,
+   "genuine": 25,
+   "confusion": {
+    "RED": {
+     "scam": 3,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 23,
+     "genuine": 12
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 13
+    }
+   },
+   "red_precision": {
+    "k": 3,
+    "n": 3,
+    "p": 1.0,
+    "ci95": [
+     0.4385,
+     1
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 26,
+    "n": 26,
+    "p": 1.0,
+    "ci95": [
+     0.8713,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 3,
+    "n": 26,
+    "p": 0.1154,
+    "ci95": [
+     0.04,
+     0.2898
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 25,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1332
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 4,
+    "n": 7,
+    "p": 0.5714,
+    "ci95": [
+     0.2505,
+     0.8418
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 26,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1287
+    ]
+   },
+   "genuine_marked_amber": {
+    "k": 12,
+    "n": 25,
+    "p": 0.48,
+    "ci95": [
+     0.3003,
+     0.665
+    ]
+   }
+  }
+ },
+ "key_experiment": {
+  "by_condition": {
+   "genuine/crop": {
+    "n": 3,
+    "detector_says_fake": 3,
+    "pramaan_red": 0,
+    "pramaan_amber": 1,
+    "video_scores": [
+     0.614,
+     0.159,
+     0.206
+    ],
+    "audio_scores": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "genuine/lowq": {
+    "n": 3,
+    "detector_says_fake": 3,
+    "pramaan_red": 0,
+    "pramaan_amber": 1,
+    "video_scores": [
+     0.887,
+     0.853,
+     0.921
+    ],
+    "audio_scores": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "genuine/original": {
+    "n": 3,
+    "detector_says_fake": 3,
+    "pramaan_red": 0,
+    "pramaan_amber": 1,
+    "video_scores": [
+     0.203,
+     0.187,
+     0.104
+    ],
+    "audio_scores": [
+     1.0,
+     0.826,
+     0.996
+    ]
+   },
+   "genuine/trimflip": {
+    "n": 3,
+    "detector_says_fake": 3,
+    "pramaan_red": 0,
+    "pramaan_amber": 1,
+    "video_scores": [
+     0.696,
+     0.641,
+     0.444
+    ],
+    "audio_scores": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "genuine/whatsapp": {
+    "n": 3,
+    "detector_says_fake": 3,
+    "pramaan_red": 0,
+    "pramaan_amber": 1,
+    "video_scores": [
+     0.233,
+     0.309,
+     0.206
+    ],
+    "audio_scores": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "scam/crop": {
+    "n": 1,
+    "detector_says_fake": 1,
+    "pramaan_red": 1,
+    "pramaan_amber": 0,
+    "video_scores": [
+     0.893
+    ],
+    "audio_scores": [
+     0.0
+    ]
+   },
+   "scam/original": {
+    "n": 3,
+    "detector_says_fake": 0,
+    "pramaan_red": 3,
+    "pramaan_amber": 0,
+    "video_scores": [
+     0.192,
+     0.156,
+     0.396
+    ],
+    "audio_scores": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "scam/whatsapp": {
+    "n": 3,
+    "detector_says_fake": 2,
+    "pramaan_red": 3,
+    "pramaan_amber": 0,
+    "video_scores": [
+     0.657,
+     0.632,
+     0.252
+    ],
+    "audio_scores": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "detector": "GenD CLIP-L/14 (FF++)",
+  "genuine_false_alarm": {
+   "detector_alone": {
+    "k": 15,
+    "n": 15,
+    "p": 1.0,
+    "ci95": [
+     0.7961,
+     1
+    ]
+   },
+   "pramaan_red": {
+    "k": 0,
+    "n": 15,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.2039
+    ]
+   }
+  },
+  "fake_caught": {
+   "detector_alone": {
+    "k": 3,
+    "n": 7,
+    "p": 0.4286,
+    "ci95": [
+     0.1582,
+     0.7495
+    ]
+   },
+   "pramaan_red": {
+    "k": 7,
+    "n": 7,
+    "p": 1.0,
+    "ci95": [
+     0.6457,
+     1
+    ]
+   }
+  },
+  "per_detector": {
+   "video": {
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "genuine_flagged_fake": {
+     "k": 6,
+     "n": 15,
+     "p": 0.4,
+     "ci95": [
+      0.1982,
+      0.6425
+     ]
+    },
+    "fakes_flagged": {
+     "k": 3,
+     "n": 7,
+     "p": 0.4286,
+     "ci95": [
+      0.1582,
+      0.7495
+     ]
+    }
+   },
+   "audio": {
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "genuine_flagged_fake": {
+     "k": 15,
+     "n": 15,
+     "p": 1.0,
+     "ci95": [
+      0.7961,
+      1
+     ]
+    },
+    "fakes_flagged": {
+     "k": 0,
+     "n": 7,
+     "p": 0.0,
+     "ci95": [
+      0,
+      0.3543
+     ]
+    }
+   }
+  }
+ },
+ "latency_seconds": {
+  "text": {
+   "n": 64,
+   "p50": 0.11,
+   "p95": 0.82,
+   "max": 8.12
+  },
+  "video": {
+   "n": 22,
+   "p50": 5.37,
+   "p95": 6.87,
+   "max": 9.77
+  },
+  "document": {
+   "n": 7,
+   "p50": 0.85,
+   "p95": 4.88,
+   "max": 4.88
+  }
+ },
+ "subgroups": {
+  "lang": {
+   "en": {
+    "n": 39,
+    "correct_side": 29,
+    "levels": {
+     "AMBER": 21,
+     "RED": 10,
+     "GREEN": 8
+    },
+    "labels": {
+     "scam": 21,
+     "genuine": 18
+    }
+   },
+   "hi": {
+    "n": 9,
+    "correct_side": 8,
+    "levels": {
+     "AMBER": 3,
+     "GREEN": 5,
+     "RED": 1
+    },
+    "labels": {
+     "scam": 3,
+     "genuine": 6
+    }
+   },
+   "hinglish": {
+    "n": 3,
+    "correct_side": 2,
+    "levels": {
+     "AMBER": 3
+    },
+    "labels": {
+     "scam": 2,
+     "genuine": 1
+    }
+   }
+  },
+  "input": {
+   "document": {
+    "n": 5,
+    "correct_side": 4,
+    "levels": {
+     "RED": 4,
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 4,
+     "genuine": 1
+    }
+   },
+   "text": {
+    "n": 32,
+    "correct_side": 25,
+    "levels": {
+     "AMBER": 22,
+     "RED": 5,
+     "GREEN": 5
+    },
+    "labels": {
+     "scam": 20,
+     "genuine": 12
+    }
+   },
+   "video": {
+    "n": 14,
+    "correct_side": 10,
+    "levels": {
+     "RED": 2,
+     "AMBER": 4,
+     "GREEN": 8
+    },
+    "labels": {
+     "scam": 2,
+     "genuine": 12
+    }
+   }
+  },
+  "cat": {
+   "awareness": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "GREEN": 1
+    },
+    "labels": {
+     "genuine": 1
+    }
+   },
+   "bank_advisory": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "GREEN": 2
+    },
+    "labels": {
+     "genuine": 2
+    }
+   },
+   "bank_alert": {
+    "n": 3,
+    "correct_side": 0,
+    "levels": {
+     "AMBER": 3
+    },
+    "labels": {
+     "genuine": 3
+    }
+   },
+   "bank_impersonation": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "broker": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "GREEN": 1
+    },
+    "labels": {
+     "genuine": 1
+    }
+   },
+   "circular_copy": {
+    "n": 1,
+    "correct_side": 0,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "genuine": 1
+    }
+   },
+   "courier": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "digital_arrest": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "AMBER": 2
+    },
+    "labels": {
+     "scam": 2
+    }
+   },
+   "electricity": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "forex": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "forged_notice": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "RED": 2
+    },
+    "labels": {
+     "scam": 2
+    }
+   },
+   "genuine_video": {
+    "n": 12,
+    "correct_side": 8,
+    "levels": {
+     "AMBER": 4,
+     "GREEN": 8
+    },
+    "labels": {
+     "genuine": 12
+    }
+   },
+   "injection": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "RED": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "investment": {
+    "n": 4,
+    "correct_side": 4,
+    "levels": {
+     "AMBER": 3,
+     "RED": 1
+    },
+    "labels": {
+     "scam": 4
+    }
+   },
+   "job": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "kyc": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "RED": 2
+    },
+    "labels": {
+     "scam": 2
+    }
+   },
+   "loan": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "lottery": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "otp": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "AMBER": 2
+    },
+    "labels": {
+     "scam": 2
+    }
+   },
+   "payment_request": {
+    "n": 1,
+    "correct_side": 0,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "genuine": 1
+    }
+   },
+   "personal": {
+    "n": 3,
+    "correct_side": 0,
+    "levels": {
+     "AMBER": 3
+    },
+    "labels": {
+     "genuine": 3
+    }
+   },
+   "poster_qr": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "RED": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "regulator_notice": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "RED": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "remote_access": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "revoiced_video": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "RED": 2
+    },
+    "labels": {
+     "scam": 2
+    }
+   },
+   "screenshot": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "RED": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "sip": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "GREEN": 1
+    },
+    "labels": {
+     "genuine": 1
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "d01",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "investment",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH",
+    "UPI_NOT_VALID_FOR_SEBI_CLAIM"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 8.12,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "d02",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "hinglish",
+   "cat": "investment",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH",
+    "UPI_NOT_VALID_FOR_SEBI_CLAIM"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "d03",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "UPI_FOR_REGULATOR",
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.11,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "d04",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "kyc",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "DOMAIN_LOOKALIKE",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.82,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "d05",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "regulator_notice",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "UPI_FOR_REGULATOR",
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "d06",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "otp",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "DOMAIN_LOOKALIKE",
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.89,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "d07",
+   "split": "dev",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_alert",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.06,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "d08",
+   "split": "dev",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "safety_advice",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.03,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "dm01",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "revoiced_video",
+   "sub": null,
+   "input": "video",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "SOURCE_MISMATCH",
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.192,
+    "per_face": [
+     0.522,
+     0.056,
+     0.055,
+     0.136
+    ],
+    "flagged": false,
+    "seconds": 6.66
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 0.0,
+    "flagged": false,
+    "seconds": 1.81
+   },
+   "seconds": 9.77,
+   "detector_flag": false,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "dm02",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "revoiced_video",
+   "sub": null,
+   "input": "video",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "SOURCE_MISMATCH",
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.156,
+    "per_face": [
+     0.119,
+     0.259,
+     0.161,
+     0.086
+    ],
+    "flagged": false,
+    "seconds": 2.85
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 0.0,
+    "flagged": false,
+    "seconds": 1.46
+   },
+   "seconds": 5.21,
+   "detector_flag": false,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "dm03",
+   "split": "dev",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "original",
+   "input": "video",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.203,
+    "per_face": [
+     0.417,
+     0.304,
+     0.036,
+     0.057
+    ],
+    "flagged": false,
+    "seconds": 2.98
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.77
+   },
+   "seconds": 6.2,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "dm04",
+   "split": "dev",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "original",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.187,
+    "per_face": [
+     0.224,
+     0.403,
+     0.035,
+     0.088
+    ],
+    "flagged": false,
+    "seconds": 2.74
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 0.826,
+    "flagged": true,
+    "seconds": 2.11
+   },
+   "seconds": 6.16,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "dm05",
+   "split": "dev",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "hi",
+   "cat": "genuine_video",
+   "sub": "original",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.104,
+    "per_face": [
+     0.253,
+     0.058,
+     0.04,
+     0.063
+    ],
+    "flagged": false,
+    "seconds": 2.85
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 0.996,
+    "flagged": true,
+    "seconds": 2.37
+   },
+   "seconds": 6.87,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "dm06",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "forged_notice",
+   "sub": null,
+   "input": "document",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "DOC_SOURCE_MISMATCH",
+    "QR_PAYEE_NOT_CLAIMED_ENTITY",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.96,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "dm07",
+   "split": "dev",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_notice",
+   "sub": null,
+   "input": "document",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.3,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NONE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "dm08",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "lipsync_video",
+   "sub": null,
+   "input": "video",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "SOURCE_MISMATCH",
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.396,
+    "per_face": [
+     0.495,
+     0.155,
+     0.817,
+     0.118
+    ],
+    "flagged": false,
+    "seconds": 2.8
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 3,
+    "score": 0.0,
+    "flagged": false,
+    "seconds": 1.19
+   },
+   "seconds": 4.74,
+   "detector_flag": false,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "dm09",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "lipsync_video",
+   "sub": "whatsapp",
+   "input": "video",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "SOURCE_MISMATCH",
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.657,
+    "per_face": [
+     0.63,
+     0.384,
+     0.865,
+     0.751
+    ],
+    "flagged": true,
+    "seconds": 2.87
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 3,
+    "score": 0.0,
+    "flagged": false,
+    "seconds": 1.27
+   },
+   "seconds": 4.72,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "dm10",
+   "split": "dev",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "lipsync_video",
+   "sub": "crop",
+   "input": "video",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "SOURCE_MISMATCH",
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.893,
+    "per_face": [
+     0.882,
+     0.869,
+     0.905,
+     0.916
+    ],
+    "flagged": true,
+    "seconds": 3.2
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 3,
+    "score": 0.0,
+    "flagged": false,
+    "seconds": 1.13
+   },
+   "seconds": 4.91,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t01",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "investment",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "UPI_UNVERIFIED",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.14,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t02",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "hi",
+   "cat": "investment",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "UPI_UNVERIFIED",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t03",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "hinglish",
+   "cat": "investment",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "UPI_UNVERIFIED",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t04",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "investment",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "UPI_NOT_VALID_FOR_SEBI_CLAIM",
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.12,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t05",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_REMOTE_ACCESS",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.21,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t06",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "hi",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_AUTHORITY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.12,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t07",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "kyc",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "DOMAIN_LOOKALIKE",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.16,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t08",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "kyc",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "DOMAIN_LOOKALIKE",
+    "ASK_CREDENTIALS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.14,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t09",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "otp",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t10",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "hinglish",
+   "cat": "otp",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.08,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t11",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "remote_access",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH",
+    "ASK_REMOTE_ACCESS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t12",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "lottery",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "UPI_UNVERIFIED",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t13",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "loan",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "UPI_UNVERIFIED",
+    "ASK_SIDELOAD_APP"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.11,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t14",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "forex",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "UPI_UNVERIFIED",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.11,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t15",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "regulator_notice",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "DOC_REFERENCE_IMPOSSIBLE",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.12,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t16",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "courier",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_PAY_WITH_PRESSURE",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_AUTHORITY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t17",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "electricity",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PHONE_UNVERIFIED",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_AUTHORITY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.1,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t18",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "job",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "UPI_UNVERIFIED",
+    "PLAYBOOK_MATCH",
+    "LINK_TO_PRIVATE_CHAT"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.15,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t19",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "injection",
+   "sub": null,
+   "input": "text",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "UPI_FOR_REGULATOR",
+    "ASK_PAY_WITH_PRESSURE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.15,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "t20",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "bank_impersonation",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "A"
+   ],
+   "reasons": [
+    "UPI_PERSONAL_FOR_BANK",
+    "PRESSURE_URGENCY",
+    "PHONE_MOBILE_FOR_INSTITUTION"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.15,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t21",
+   "split": "test",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_alert",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "A"
+   ],
+   "reasons": [
+    "UPI_PERSONAL_FOR_BANK",
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.12,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t22",
+   "split": "test",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_alert",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.06,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "t23",
+   "split": "test",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "sip",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "UPI_VALID_HANDLE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t24",
+   "split": "test",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.06,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t25",
+   "split": "test",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "broker",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "UPI_VALID_HANDLE"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.1,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t26",
+   "split": "test",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "hi",
+   "cat": "bank_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.06,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t27",
+   "split": "test",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_alert",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.11,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t28",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "personal",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.08,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t29",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "hinglish",
+   "cat": "personal",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "t30",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "awareness",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.04,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "t31",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "payment_request",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "UPI_UNVERIFIED"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.1,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "t32",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "hi",
+   "cat": "personal",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.06,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm01",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "revoiced_video",
+   "sub": "whatsapp",
+   "input": "video",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "SOURCE_MISMATCH",
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.632,
+    "per_face": [
+     0.052,
+     0.739,
+     0.832,
+     0.904
+    ],
+    "flagged": true,
+    "seconds": 3.05
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 0.0,
+    "flagged": false,
+    "seconds": 1.88
+   },
+   "seconds": 5.72,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "tm02",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "revoiced_video",
+   "sub": "whatsapp",
+   "input": "video",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "SOURCE_MISMATCH",
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.252,
+    "per_face": [
+     0.171,
+     0.22,
+     0.485,
+     0.132
+    ],
+    "flagged": false,
+    "seconds": 2.95
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 0.0,
+    "flagged": false,
+    "seconds": 1.64
+   },
+   "seconds": 5.23,
+   "detector_flag": false,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "tm03",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "whatsapp",
+   "input": "video",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.233,
+    "per_face": [
+     0.203,
+     0.49,
+     0.088,
+     0.152
+    ],
+    "flagged": false,
+    "seconds": 3.12
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.71
+   },
+   "seconds": 5.49,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm04",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "crop",
+   "input": "video",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "DETECTOR_INDICATOR"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.614,
+    "per_face": [
+     0.144,
+     0.583,
+     0.856,
+     0.873
+    ],
+    "flagged": true,
+    "seconds": 2.9
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.81
+   },
+   "seconds": 5.37,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm05",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "trimflip",
+   "input": "video",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "DETECTOR_INDICATOR"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.696,
+    "per_face": [
+     0.846,
+     0.545,
+     0.911,
+     0.481
+    ],
+    "flagged": true,
+    "seconds": 2.79
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 2,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 0.84
+   },
+   "seconds": 4.15,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm06",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "lowq",
+   "input": "video",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "PLAYBOOK_MATCH",
+    "DETECTOR_INDICATOR"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.887,
+    "per_face": [
+     0.888,
+     0.842,
+     0.924,
+     0.897
+    ],
+    "flagged": true,
+    "seconds": 2.96
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 4,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.7
+   },
+   "seconds": 5.24,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "INDICATORS",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "tm07",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "whatsapp",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.309,
+    "per_face": [
+     0.304,
+     0.386,
+     0.062,
+     0.484
+    ],
+    "flagged": false,
+    "seconds": 2.87
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.94
+   },
+   "seconds": 5.51,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "tm08",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "crop",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.159,
+    "per_face": [
+     0.155,
+     0.179,
+     0.048,
+     0.254
+    ],
+    "flagged": false,
+    "seconds": 3.07
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.77
+   },
+   "seconds": 5.52,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "tm09",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "trimflip",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.641,
+    "per_face": [
+     0.848,
+     0.373,
+     0.49,
+     0.852
+    ],
+    "flagged": true,
+    "seconds": 2.93
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 2,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 0.89
+   },
+   "seconds": 4.25,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm10",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "genuine_video",
+   "sub": "lowq",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.853,
+    "per_face": [
+     0.972,
+     0.886,
+     0.98,
+     0.573
+    ],
+    "flagged": true,
+    "seconds": 2.74
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.99
+   },
+   "seconds": 5.35,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "tm11",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "hi",
+   "cat": "genuine_video",
+   "sub": "whatsapp",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.206,
+    "per_face": [
+     0.388,
+     0.073,
+     0.065,
+     0.3
+    ],
+    "flagged": false,
+    "seconds": 2.79
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 2.18
+   },
+   "seconds": 5.72,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm12",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "hi",
+   "cat": "genuine_video",
+   "sub": "crop",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.206,
+    "per_face": [
+     0.083,
+     0.248,
+     0.277,
+     0.216
+    ],
+    "flagged": false,
+    "seconds": 3.08
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 2.15
+   },
+   "seconds": 6.07,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm13",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "hi",
+   "cat": "genuine_video",
+   "sub": "trimflip",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.444,
+    "per_face": [
+     0.163,
+     0.464,
+     0.592,
+     0.557
+    ],
+    "flagged": false,
+    "seconds": 2.96
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 2,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 0.89
+   },
+   "seconds": 4.3,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm14",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "hi",
+   "cat": "genuine_video",
+   "sub": "lowq",
+   "input": "video",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R2b_official_original",
+   "strong_lanes": [],
+   "reasons": [
+    "SOURCE_MATCH_SAME_WORDS",
+    "OFFICIAL_ORIGINAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": {
+    "kind": "video",
+    "detector": "GenD CLIP-L/14 (FF++)",
+    "faces": 4,
+    "score": 0.921,
+    "per_face": [
+     0.885,
+     0.948,
+     0.92,
+     0.931
+    ],
+    "flagged": true,
+    "seconds": 2.8
+   },
+   "audio_detector": {
+    "kind": "audio",
+    "detector": "wav2vec2 synthetic-speech (MelodyMachine V2)",
+    "chunks": 5,
+    "score": 1.0,
+    "flagged": true,
+    "seconds": 1.97
+   },
+   "seconds": 5.52,
+   "detector_flag": true,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "INDICATORS",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "tm15",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "forged_notice",
+   "sub": null,
+   "input": "document",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "DOC_REFERENCE_IMPOSSIBLE",
+    "QR_PAYEE_NOT_CLAIMED_ENTITY",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.82,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "tm16",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "forged_notice",
+   "sub": null,
+   "input": "document",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "B",
+    "C"
+   ],
+   "reasons": [
+    "DOC_ACTIVE_CONTENT",
+    "UPI_FOR_REGULATOR",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.53,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "SOURCE_MISMATCH",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "tm17",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "poster_qr",
+   "sub": null,
+   "input": "document",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "CAMPAIGN_MEMORY_HIT",
+    "PLAYBOOK_MATCH",
+    "UPI_NOT_VALID_FOR_SEBI_CLAIM"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 4.88,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NONE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "tm18",
+   "split": "test",
+   "label": "scam",
+   "kind": null,
+   "lang": "hi",
+   "cat": "screenshot",
+   "sub": null,
+   "input": "document",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "strong_lanes": [
+    "A",
+    "C"
+   ],
+   "reasons": [
+    "UPI_FOR_REGULATOR",
+    "PLAYBOOK_MATCH",
+    "PHONE_MOBILE_FOR_INSTITUTION"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.3,
+   "lane_status": {
+    "A": "CONTRADICTED",
+    "B": "NONE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "tm19",
+   "split": "test",
+   "label": "genuine",
+   "kind": "personal",
+   "lang": "en",
+   "cat": "circular_copy",
+   "sub": null,
+   "input": "document",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "DOC_SOURCE_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.85,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "p01",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "reward_apk",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_SIDELOAD_APP",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.19,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p02",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "kyc_phishing",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.07,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p03",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "reward_link",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "DOMAIN_NOT_OFFICIAL_FOR_CLAIM",
+    "SITE_NOT_FOUND"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.19,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p04",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "tax_refund",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.12,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p05",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "kyc_phishing",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p06",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "utility_bill",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_AUTHORITY",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.12,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p07",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_GUARANTEED_RETURNS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.23,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p08",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_PAY_WITH_PRESSURE",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_AUTHORITY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.22,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p09",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_AUTHORITY",
+    "PRESSURE_THREAT"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.16,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p10",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "investment_tips",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_GUARANTEED_RETURNS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p11",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "loan_fee",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_TOO_GOOD"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p12",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "lottery",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_TOO_GOOD"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p13",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "telecom_threat",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.14,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p14",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "parcel_address",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "DOMAIN_UNVERIFIED",
+    "SITE_NOT_FOUND"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.55,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p15",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "task_job",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_TOO_GOOD"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.09,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p16",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "loan_fee",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_CREDENTIALS",
+    "PLAYBOOK_MATCH"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.08,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "q01",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.03,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q02",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.03,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q03",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.03,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q04",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.03,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q05",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.04,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q06",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "utility_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.02,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q07",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.06,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q08",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "regulator_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 0.03,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  }
+ ]
+}

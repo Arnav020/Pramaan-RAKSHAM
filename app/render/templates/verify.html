@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Verify {{ serial }} · Pramaan{% endblock %}
+{% block style %}
+  .seal { text-align: center; margin: 40px auto 10px; max-width: 640px; }
+  .seal .big { font-family: var(--serif); font-size: 34px; font-weight: 700; margin: 12px 0 4px; }
+  .seal .hi { font-family: var(--hindi); font-size: 20px; color: var(--muted); }
+  .ok { color: var(--ok); } .no { color: var(--bad); }
+  .ring { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto; display: grid; place-items: center; font-size: 56px; border: 6px double currentColor; }
+  .card { max-width: 640px; margin: 22px auto; }
+{% endblock %}
+{% block body %}
+{% with here="check" %}{% include "_nav.html" %}{% endwith %}
+{% if genuine %}
+<div class="seal ok">
+  <div class="ring">✔</div>
+  <div class="big">Genuine Pramaan verdict</div>
+  <div class="hi">यह असली प्रमाण कार्ड है</div>
+</div>
+<div class="panel card">
+  <p style="margin-top:0">Card <b class="mono">{{ serial }}</b> was issued by Pramaan on <b>{{ issued }}</b>. Its digital signature checks out (key <span class="mono">{{ key_id }}</span>).</p>
+  <p><b>What Pramaan actually said:</b> {{ rec.verdict.title_en }}</p>
+  <ol>{% for r in rec.verdict.reasons %}<li>{{ r.text_en }}</li>{% endfor %}</ol>
+  {% if corrected %}<p><b>Corrected after an appeal:</b> a bank analyst reviewed this verdict on {{ corrected.decided_at|ist }} and found it was wrong.</p>{% endif %}
+  <p style="margin-bottom:0">If the card you were shown says anything different, it was altered. <a href="/p/{{ rec.id }}">See the full proof</a>.</p>
+</div>
+{% else %}
+<div class="seal no">
+  <div class="ring">✖</div>
+  <div class="big">{{ "This card's signature does not match" if found else "Pramaan never issued this card" }}</div>
+  <div class="hi">{{ "इस कार्ड का हस्ताक्षर मेल नहीं खाता" if found else "यह कार्ड प्रमाण ने जारी नहीं किया" }}</div>
+</div>
+<div class="panel card">
+  <p style="margin:0">A screenshot that looks like a Pramaan card is <b>not proof</b> unless this page says "Genuine". Do not trust it, and do not pay. If you have already paid, call <a href="tel:1930">1930</a>.</p>
+</div>
+{% endif %}
+{% endblock %}

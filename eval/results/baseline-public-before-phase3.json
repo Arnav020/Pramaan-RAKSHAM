@@ -1,0 +1,1496 @@
+{
+ "generated_at": "2026-10-23T20:42:43.137861+00:00",
+ "git_commit": "9401984",
+ "split": "public",
+ "use_llm": true,
+ "rules_version": "2.0",
+ "test_split_sha256": "f858b772dc2d7c6319939488d47f450e43eb46baaab0d054d18a1516775d58a1",
+ "test_split_frozen_sha256": "f858b772dc2d7c6319939488d47f450e43eb46baaab0d054d18a1516775d58a1",
+ "test_split_unchanged": true,
+ "public_split_sha256": "a13caed227f0d2944490d6948ddc2e8231f861112a91dc4aebb30bdb79a05cea",
+ "public_split_unchanged": true,
+ "public_sources": [
+  {
+   "id": "p01",
+   "label": "scam",
+   "cat": "reward_apk",
+   "fidelity": "verbatim",
+   "date": "2025-12-27",
+   "source": "https://www.latestly.com/social-viral/fact-check/did-you-receive-an-sms-or-whatsapp-message-asking-you-to-download-an-app-to-redeem-sbi-reward-points-pib-fact-check-debunks-fake-message-going-viral-7253978.html"
+  },
+  {
+   "id": "p02",
+   "label": "scam",
+   "cat": "kyc_phishing",
+   "fidelity": "verbatim",
+   "date": "2022-08-30",
+   "source": "https://www.businesstoday.in/technology/story/message-from-sbi-to-update-your-pan-card-details-is-a-scam-do-not-fall-for-it-345946-2022-08-30"
+  },
+  {
+   "id": "p03",
+   "label": "scam",
+   "cat": "reward_link",
+   "fidelity": "verbatim",
+   "date": "2024-11-10",
+   "source": "https://www.thetechoutlook.com/news/security/fraudsters-target-sbi-customers-with-fake-yono-rewards-message/"
+  },
+  {
+   "id": "p04",
+   "label": "scam",
+   "cat": "tax_refund",
+   "fidelity": "verbatim",
+   "date": "2023-08-03",
+   "source": "https://www.businesstoday.in/personal-finance/tax/story/itr-refund-status-centre-issues-scam-alert-on-fraudulent-messages-392717-2023-08-03"
+  },
+  {
+   "id": "p05",
+   "label": "scam",
+   "cat": "kyc_phishing",
+   "fidelity": "verbatim",
+   "date": "2023-03-09",
+   "source": "https://english.factcrescendo.com/?p=15481"
+  },
+  {
+   "id": "p06",
+   "label": "scam",
+   "cat": "utility_bill",
+   "fidelity": "excerpt+described",
+   "date": "2022-06-23",
+   "source": "https://sentinelassam.com/topheadlines/beware-of-fake-sms-on-power-bills-598773"
+  },
+  {
+   "id": "p07",
+   "label": "scam",
+   "cat": "digital_arrest",
+   "fidelity": "victim_account",
+   "date": "2024-11-07",
+   "source": "https://www.tribuneindia.com/news/chandigarh/73-year-old-put-under-digital-arrest-duped-of-16-lakh"
+  },
+  {
+   "id": "p08",
+   "label": "scam",
+   "cat": "digital_arrest",
+   "fidelity": "victim_account",
+   "date": "2024-12-01",
+   "source": "https://www.deccanherald.com/india/uttarakhand/woman-put-under-digital-arrest-in-dehradun-duped-of-rs-17-crore-3315601"
+  },
+  {
+   "id": "p09",
+   "label": "scam",
+   "cat": "digital_arrest",
+   "fidelity": "described",
+   "date": "2024-05-20",
+   "source": "https://www.thenewsminute.com/karnataka/fedex-scam-bengaluru-software-engineer-loses-rs-1-crore-to-fraudsters"
+  },
+  {
+   "id": "p10",
+   "label": "scam",
+   "cat": "investment_tips",
+   "fidelity": "described",
+   "date": "2014-12-08",
+   "source": "https://www.business-standard.com/article/pti-stories/sebi-exchanges-tighten-noose-on-sms-tipsters-114120800514_1.html"
+  },
+  {
+   "id": "p11",
+   "label": "scam",
+   "cat": "loan_fee",
+   "fidelity": "described",
+   "date": "2025-06-01",
+   "source": "https://www.indusind.bank.in/iblogs/?p=14978"
+  },
+  {
+   "id": "p12",
+   "label": "scam",
+   "cat": "lottery",
+   "fidelity": "described",
+   "date": "2022-11-01",
+   "source": "https://eastmojo.com/fact-check/2022/11/01/fact-check-kbc-lottery-with-rs-25-lakh-reward-on-whatsapp-is-fake/"
+  },
+  {
+   "id": "p13",
+   "label": "scam",
+   "cat": "telecom_threat",
+   "fidelity": "described",
+   "date": "2024-06-14",
+   "source": "https://www.voicendata.com/news/trai-warns-against-fake-calls-threatening-mobile-disconnection-8937750"
+  },
+  {
+   "id": "p14",
+   "label": "scam",
+   "cat": "parcel_address",
+   "fidelity": "described",
+   "date": "2024-04-10",
+   "source": "https://cyberpeace.org/resources/blogs/factcheck-beware-fake-india-post-delivery-scam-alert"
+  },
+  {
+   "id": "p15",
+   "label": "scam",
+   "cat": "task_job",
+   "fidelity": "described",
+   "date": "2023-05-06",
+   "source": "https://newschecker.in/scam-watch/fraud-terror-and-trail-of-death-the-telegram-task-scam-spreading-fast-in-india"
+  },
+  {
+   "id": "p16",
+   "label": "scam",
+   "cat": "loan_fee",
+   "fidelity": "described",
+   "date": "2026-09-03",
+   "source": "https://www.outlookmoney.com/news/fake-whatsapp-messages-claiming-mudra-loan-approval-are-scams-pib-fact-check-issues-advisory"
+  },
+  {
+   "id": "q01",
+   "label": "genuine",
+   "cat": "bank_advisory",
+   "fidelity": "verbatim",
+   "date": "2021-04-05",
+   "source": "https://money9.com/news/banking/sbi-cautions-customers-against-online-fd-fraud-advises-not-to-share-bank-details-22446.html"
+  },
+  {
+   "id": "q02",
+   "label": "genuine",
+   "cat": "bank_advisory",
+   "fidelity": "described",
+   "date": "2023-03-09",
+   "source": "https://english.factcrescendo.com/?p=15481"
+  },
+  {
+   "id": "q03",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2025-12-27",
+   "source": "https://www.latestly.com/social-viral/fact-check/did-you-receive-an-sms-or-whatsapp-message-asking-you-to-download-an-app-to-redeem-sbi-reward-points-pib-fact-check-debunks-fake-message-going-viral-7253978.html"
+  },
+  {
+   "id": "q04",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2024-06-14",
+   "source": "https://www.voicendata.com/news/trai-warns-against-fake-calls-threatening-mobile-disconnection-8937750"
+  },
+  {
+   "id": "q05",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2023-08-03",
+   "source": "https://www.businesstoday.in/personal-finance/tax/story/itr-refund-status-centre-issues-scam-alert-on-fraudulent-messages-392717-2023-08-03"
+  },
+  {
+   "id": "q06",
+   "label": "genuine",
+   "cat": "utility_advisory",
+   "fidelity": "described",
+   "date": "2022-06-23",
+   "source": "https://sentinelassam.com/topheadlines/beware-of-fake-sms-on-power-bills-598773"
+  },
+  {
+   "id": "q07",
+   "label": "genuine",
+   "cat": "govt_advisory",
+   "fidelity": "described",
+   "date": "2026-01-20",
+   "source": "https://www.newsonair.gov.in/govt-debunks-sms-from-india-post-asking-people-to-update-their-address"
+  },
+  {
+   "id": "q08",
+   "label": "genuine",
+   "cat": "regulator_advisory",
+   "fidelity": "described",
+   "date": "2025-01-01",
+   "source": "https://investor.sebi.gov.in/pdf/Pump%20and%20Dump%20Scam%20final.pdf"
+  }
+ ],
+ "machine": "Windows AMD64 · Intel64 Family 6 Model 154 Stepping 3, G",
+ "skipped": [],
+ "metrics": {
+  "public": {
+   "n": 24,
+   "scam": 16,
+   "genuine": 8,
+   "confusion": {
+    "RED": {
+     "scam": 0,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 16,
+     "genuine": 7
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 1
+    }
+   },
+   "red_precision": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 16,
+    "n": 16,
+    "p": 1.0,
+    "ci95": [
+     0.8064,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 1,
+    "n": 8,
+    "p": 0.125,
+    "ci95": [
+     0.0224,
+     0.4709
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   }
+  },
+  "all": {
+   "n": 24,
+   "scam": 16,
+   "genuine": 8,
+   "confusion": {
+    "RED": {
+     "scam": 0,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 16,
+     "genuine": 7
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 1
+    }
+   },
+   "red_precision": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 16,
+    "n": 16,
+    "p": 1.0,
+    "ci95": [
+     0.8064,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 1,
+    "n": 8,
+    "p": 0.125,
+    "ci95": [
+     0.0224,
+     0.4709
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   }
+  }
+ },
+ "ablation": {
+  "without_A": {
+   "n": 24,
+   "scam": 16,
+   "genuine": 8,
+   "confusion": {
+    "RED": {
+     "scam": 0,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 16,
+     "genuine": 8
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 0
+    }
+   },
+   "red_precision": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 16,
+    "n": 16,
+    "p": 1.0,
+    "ci95": [
+     0.8064,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   }
+  },
+  "without_B": {
+   "n": 24,
+   "scam": 16,
+   "genuine": 8,
+   "confusion": {
+    "RED": {
+     "scam": 0,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 16,
+     "genuine": 8
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 0
+    }
+   },
+   "red_precision": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 16,
+    "n": 16,
+    "p": 1.0,
+    "ci95": [
+     0.8064,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   }
+  },
+  "without_C": {
+   "n": 24,
+   "scam": 16,
+   "genuine": 8,
+   "confusion": {
+    "RED": {
+     "scam": 0,
+     "genuine": 0
+    },
+    "AMBER": {
+     "scam": 16,
+     "genuine": 7
+    },
+    "GREEN": {
+     "scam": 0,
+     "genuine": 1
+    }
+   },
+   "red_precision": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "scam_recall_amber_or_red": {
+    "k": 16,
+    "n": 16,
+    "p": 1.0,
+    "ci95": [
+     0.8064,
+     1
+    ]
+   },
+   "scam_recall_red": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   },
+   "false_red_on_genuine": {
+    "k": 0,
+    "n": 8,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.3244
+    ]
+   },
+   "green_on_official_genuine": {
+    "k": 1,
+    "n": 8,
+    "p": 0.125,
+    "ci95": [
+     0.0224,
+     0.4709
+    ]
+   },
+   "scam_marked_green": {
+    "k": 0,
+    "n": 16,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1936
+    ]
+   }
+  }
+ },
+ "key_experiment": {
+  "by_condition": {},
+  "detector": null,
+  "genuine_false_alarm": {
+   "detector_alone": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "pramaan_red": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   }
+  },
+  "fake_caught": {
+   "detector_alone": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   },
+   "pramaan_red": {
+    "k": 0,
+    "n": 0,
+    "p": null,
+    "ci95": [
+     null,
+     null
+    ]
+   }
+  },
+  "per_detector": {
+   "video": {
+    "detector": null,
+    "genuine_flagged_fake": {
+     "k": 0,
+     "n": 0,
+     "p": null,
+     "ci95": [
+      null,
+      null
+     ]
+    },
+    "fakes_flagged": {
+     "k": 0,
+     "n": 0,
+     "p": null,
+     "ci95": [
+      null,
+      null
+     ]
+    }
+   },
+   "audio": {
+    "detector": null,
+    "genuine_flagged_fake": {
+     "k": 0,
+     "n": 0,
+     "p": null,
+     "ci95": [
+      null,
+      null
+     ]
+    },
+    "fakes_flagged": {
+     "k": 0,
+     "n": 0,
+     "p": null,
+     "ci95": [
+      null,
+      null
+     ]
+    }
+   }
+  }
+ },
+ "latency_seconds": {
+  "text": {
+   "n": 24,
+   "p50": 2.01,
+   "p95": 4.31,
+   "max": 5.01
+  }
+ },
+ "subgroups": {
+  "lang": {
+   "en": {
+    "n": 24,
+    "correct_side": 17,
+    "levels": {
+     "AMBER": 23,
+     "GREEN": 1
+    },
+    "labels": {
+     "scam": 16,
+     "genuine": 8
+    }
+   }
+  },
+  "input": {
+   "text": {
+    "n": 24,
+    "correct_side": 17,
+    "levels": {
+     "AMBER": 23,
+     "GREEN": 1
+    },
+    "labels": {
+     "scam": 16,
+     "genuine": 8
+    }
+   }
+  },
+  "cat": {
+   "bank_advisory": {
+    "n": 2,
+    "correct_side": 0,
+    "levels": {
+     "AMBER": 2
+    },
+    "labels": {
+     "genuine": 2
+    }
+   },
+   "digital_arrest": {
+    "n": 3,
+    "correct_side": 3,
+    "levels": {
+     "AMBER": 3
+    },
+    "labels": {
+     "scam": 3
+    }
+   },
+   "govt_advisory": {
+    "n": 4,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 3,
+     "GREEN": 1
+    },
+    "labels": {
+     "genuine": 4
+    }
+   },
+   "investment_tips": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "kyc_phishing": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "AMBER": 2
+    },
+    "labels": {
+     "scam": 2
+    }
+   },
+   "loan_fee": {
+    "n": 2,
+    "correct_side": 2,
+    "levels": {
+     "AMBER": 2
+    },
+    "labels": {
+     "scam": 2
+    }
+   },
+   "lottery": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "parcel_address": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "regulator_advisory": {
+    "n": 1,
+    "correct_side": 0,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "genuine": 1
+    }
+   },
+   "reward_apk": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "reward_link": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "task_job": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "tax_refund": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "telecom_threat": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   },
+   "utility_advisory": {
+    "n": 1,
+    "correct_side": 0,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "genuine": 1
+    }
+   },
+   "utility_bill": {
+    "n": 1,
+    "correct_side": 1,
+    "levels": {
+     "AMBER": 1
+    },
+    "labels": {
+     "scam": 1
+    }
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "p01",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "reward_apk",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_SIDELOAD_APP",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.98,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p02",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "kyc_phishing",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.87,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p03",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "reward_link",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_NOT_OFFICIAL_FOR_CLAIM",
+    "SITE_NOT_FOUND"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 2.01,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p04",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "tax_refund",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.21,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p05",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "kyc_phishing",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.72,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p06",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "utility_bill",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PRESSURE_AUTHORITY",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.55,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p07",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_GUARANTEED_RETURNS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.85,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p08",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_AUTHORITY",
+    "PRESSURE_SECRECY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 2.13,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p09",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "digital_arrest",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_AUTHORITY",
+    "PRESSURE_THREAT"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.77,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p10",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "investment_tips",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_GUARANTEED_RETURNS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 4.31,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p11",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "loan_fee",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_TOO_GOOD"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.44,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p12",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "lottery",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "PLAYBOOK_MATCH",
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_TOO_GOOD"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.24,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p13",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "telecom_threat",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_CREDENTIALS",
+    "PRESSURE_URGENCY"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.92,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p14",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "parcel_address",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_UNVERIFIED",
+    "PRESSURE_THREAT",
+    "SITE_NOT_FOUND"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 5.01,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  },
+  {
+   "id": "p15",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "task_job",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_PAY_WITH_PRESSURE",
+    "PRESSURE_TOO_GOOD",
+    "ASK_PRIVATE_GROUP"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-20b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.77,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "p16",
+   "split": "public",
+   "label": "scam",
+   "kind": null,
+   "lang": "en",
+   "cat": "loan_fee",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [
+    "C"
+   ],
+   "reasons": [
+    "ASK_CREDENTIALS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.5,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   }
+  },
+  {
+   "id": "q01",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.89,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q02",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "bank_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.18,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q03",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 2.15,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q04",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "GREEN",
+   "rule": "R3_verified_sender",
+   "strong_lanes": [],
+   "reasons": [
+    "DOMAIN_OFFICIAL"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.79,
+   "lane_status": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q05",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.63,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q06",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "utility_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.31,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q07",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "govt_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [],
+   "extractor": "rules+groq:openai/gpt-oss-20b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 3.91,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   }
+  },
+  {
+   "id": "q08",
+   "split": "public",
+   "label": "genuine",
+   "kind": "official",
+   "lang": "en",
+   "cat": "regulator_advisory",
+   "sub": null,
+   "input": "text",
+   "level": "AMBER",
+   "rule": "R5_default_cant_verify",
+   "strong_lanes": [],
+   "reasons": [
+    "PRESSURE_GUARANTEED_RETURNS"
+   ],
+   "extractor": "rules+groq:openai/gpt-oss-120b",
+   "video_detector": null,
+   "audio_detector": null,
+   "seconds": 1.31,
+   "lane_status": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   }
+  }
+ ]
+}

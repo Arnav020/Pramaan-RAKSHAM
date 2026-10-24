@@ -40,3 +40,6 @@ data/store/
 app/static/_card_*.html
 app/static/_doc_tmp.html
 data/vault/
+
+# Public evaluation datasets (downloaded and hash-checked by eval/open_kit.py)
+data/open/

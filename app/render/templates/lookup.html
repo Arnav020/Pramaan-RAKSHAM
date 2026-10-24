@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Pramaan Lookup · check before you pay{% endblock %}
+{% block style %}
+  .lead { font-size: 18px; color: var(--muted); max-width: 760px; margin: 0 0 18px; }
+  form.q { display: flex; gap: 10px; flex-wrap: wrap; }
+  form.q input { flex: 1 1 320px; font: 500 18px var(--mono); padding: 13px 14px; border: 2px solid var(--sage); border-radius: 10px; background: #fff; color: var(--ink); }
+  form.q input:focus-visible { outline: 3px solid var(--copperL); outline-offset: 1px; }
+  form.q button { font-size: 17px; padding: 12px 22px; }
+  .examples { margin-top: 10px; font-size: 14px; color: var(--muted); }
+  .examples a { font-family: var(--mono); margin-right: 10px; }
+  .result { margin-top: 24px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--panel); overflow: hidden; }
+  .result .top { padding: 18px 22px; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; border-bottom: 1px solid var(--line); }
+  @media (max-width: 600px) { .result .top { grid-template-columns: 1fr; } }
+  .mark { font-family: var(--serif); font-weight: 700; letter-spacing: 2px; font-size: 15px; text-transform: uppercase; border: 3px double; border-radius: 8px;
+          padding: 8px 14px; transform: rotate(-3deg); text-align: center; }
+  .warning .mark, .pattern .mark { color: var(--bad); border-color: var(--bad); background: var(--badT); }
+  .official .mark { color: var(--ok); border-color: var(--ok); background: var(--okT); }
+  .no_warning .mark, .invalid .mark { color: var(--warn); border-color: var(--warn); background: var(--warnT); }
+  .top h2 { margin: 0; font-size: 24px; display: block; }
+  .top .val { font-family: var(--mono); font-size: 15px; color: var(--muted); margin-top: 4px; overflow-wrap: anywhere; }
+  .top .adv { margin-top: 8px; font-weight: 600; }
+  .top .adv .hindi { display: block; font-weight: 500; color: var(--muted); font-size: 14.5px; }
+  .body { padding: 16px 22px 20px; display: grid; gap: 14px; }
+  .facts { list-style: none; margin: 0; padding: 0; }
+  .facts li { display: grid; grid-template-columns: 92px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .facts li:last-child { border-bottom: 0; }
+  .camp { border-left: 5px solid var(--bad); background: var(--badT); padding: 10px 14px; border-radius: 0 8px 8px 0; }
+  .seen { font-size: 15px; } .seen b { font-family: var(--serif); font-size: 26px; color: var(--sage); }
+  .note { font-size: 13px; color: var(--muted); }
+{% endblock %}
+{% block body %}
+{% with here="lookup" %}{% include "_nav.html" %}{% endwith %}
+<h1 style="font-family:var(--serif);font-size:34px;margin:6px 0 6px">Check before you pay</h1>
+<p class="lead">Paste a UPI ID, phone number or link from a message or a call. Pramaan checks it against India's official rules and against scam campaigns already confirmed by bank analysts. The same check runs inside a bank app at the payment screen.</p>
+<form class="q" method="get" action="/lookup" role="search">
+  <input name="q" value="{{ q }}" placeholder="name@bank · 98765 43210 · website.in" aria-label="UPI ID, phone number or link" autocomplete="off" required>
+  <button class="btn primary" type="submit">Look up</button>
+</form>
+<div class="examples">Try: <a href="/lookup?q=profitwealth@ybl">profitwealth@ybl</a><a href="/lookup?q=demofund.mf@validhdfc">demofund.mf@validhdfc</a><a href="/lookup?q=sbi-kyc-update.in">sbi-kyc-update.in</a><a href="/lookup?q=sbi.bank.in">sbi.bank.in</a></div>
+
+{% if res %}
+<section class="result {{ res.result }}" aria-live="polite">
+  <div class="top">
+    <div class="mark">{{ {'warning': 'Confirmed scam', 'pattern': 'Scam pattern', 'official': 'Official', 'no_warning': 'No warning', 'invalid': 'Not found'}[res.result] }}</div>
+    <div><h2>{{ res.headline_en }}</h2><div class="hindi" style="color:var(--muted)">{{ res.headline_hi }}</div>
+      {% if res.value %}<div class="val">{{ res.kind|upper }} · {{ res.value }}</div>{% endif %}
+      <div class="adv">{{ res.advice_en }}<span class="hindi">{{ res.advice_hi }}</span></div></div>
+  </div>
+  {% if res.value %}
+  <div class="body">
+    {% for c in res.campaigns %}<div class="camp"><b>{{ c.title }}</b><br><span style="font-size:14px">Confirmed by bank analysts on {{ c.confirmed_on }} · campaign <span class="mono">{{ c.id }}</span></span></div>{% endfor %}
+    <div class="seen"><b>{{ res.seen_30d }}</b> {{ 'check' if res.seen_30d == 1 else 'checks' }} in the last 30 days contained this {{ {'upi': 'UPI ID', 'phone': 'number', 'link': 'link'}[res.kind] }}.</div>
+    {% if res.facts %}<ul class="facts">{% for f in res.facts %}<li><span class="chip {{ f.strength|lower }}">{{ f.strength }}</span><span>{{ f.text_en }}</span></li>{% endfor %}</ul>{% endif %}
+    {% if res.site and not res.site.skipped %}<div class="note">Website: {% if res.site.exists %}exists{% if res.site.registered %} · registered {{ res.site.registered }}{% endif %}{% if res.site.title %} · calls itself "{{ res.site.title }}"{% endif %}{% else %}does not exist{% endif %}. We looked at its homepage only.</div>{% endif %}
+    <div class="note" id="review">Is this your own UPI ID, number or website, and you think the result is wrong?
+      <button class="btn" style="padding:4px 10px;font-size:13px" onclick="review()">Ask a bank analyst to review it</button>
+      Only campaigns confirmed by bank analysts are ever named here.</div>
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+{% endblock %}
+{% block script %}{% if res and res.value %}
+<script>
+async function review() {
+  const note = prompt("What should the analyst know? (optional)") || "";
+  const r = await fetch("/api/appeal-lookup", {method: "POST", headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({indicator: {{ res.indicator|tojson }}, note})});
+  document.getElementById("review").textContent = r.ok ? "Thank you. A bank analyst will review this result." : "Could not send the request. Please try again later.";
+}
+</script>{% endif %}{% endblock %}

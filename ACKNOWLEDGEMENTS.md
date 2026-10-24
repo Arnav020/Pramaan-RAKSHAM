@@ -24,9 +24,10 @@ The hackathon rules require us to disclose every external code library, model, d
 - RBI Alert List of unauthorised forex trading platforms: all 95 entities, list updated 19 Nov 2025 (PDF downloaded manually; SHA-256 recorded in the data file).
 - RBI notifications (25 recent circulars, public metadata, fetched politely from rbi.org.in on 22 Oct 2026) for document Source-Match.
 - SEBI register counts of research analysts and investment advisers (sebi.gov.in; no bulk copy).
-- Scam playbooks (15) summarised from public advisories and fact-checks, each linked in `playbooks.yaml`: SEBI PR 27/2025 and SEBI investor warnings on fake trading groups, RBI BE(A)WARE booklet (Mar 2022), RBI Sachet, RBI Alert List additions (Nov 2025), I4C advisories on digital arrest and stock scams (reported Nov 2024), ED charge sheet reporting, PIB Fact Check (SBI reward-points APK, Dec 2025; India Post address SMS, Jan 2026), the Centre's alert on fake income-tax refund messages (Aug 2023), power-utility warnings (APDCL, MSEDCL, PSPCL, Jun 2022), Newschecker on Telegram task scams (2023).
+- Scam playbooks (19) summarised from public advisories and fact-checks, each linked in `playbooks.yaml`: SEBI PR 27/2025 and SEBI investor warnings on fake trading groups, RBI BE(A)WARE booklet (Mar 2022), RBI Sachet, RBI Alert List additions (Nov 2025), I4C advisories on digital arrest and stock scams (reported Nov 2024), ED charge sheet reporting, PIB Fact Check (SBI reward-points APK, Dec 2025; India Post address SMS, Jan 2026), the Centre's alert on fake income-tax refund messages (Aug 2023), power-utility warnings (APDCL, MSEDCL, PSPCL, Jun 2022), Newschecker on Telegram task scams (2023). Added 24 Oct (finale): ACMA (Australian Government) 'Hi Mum' scam alert (Jan 2024), Business Today on RBI wrong-UPI-transfer guidance (Aug 2024), Business Standard/PTI customs-clearance warning (Dec 2017), The Week/PTI 'gift from abroad' case (Jun 2025), Bajaj Finserv consumer guide on work-from-home scams (secondary source).
 - **Public evaluation split** (`eval/public_set.yaml`, 24 items): short scam and genuine-message quotes, each with its URL and date, from Business Today, LatestLY, Fact Crescendo, The Sentinel (Assam), Voice&Data, The Tech Outlook, The Tribune, Deccan Herald, The News Minute, Business Standard, IndusInd Bank, EastMojo, CyberPeace Foundation, Newschecker, Outlook Money, Money9, News On AIR (PIB) and SEBI's investor site. Quotes are kept short for evaluation and attributed; the articles remain their publishers' work.
 - DoT Financial Fraud Risk Indicator: **mocked** with fictional numbers; the real feed is only available to regulated entities.
+- **Open evaluation dataset** (`eval/open_kit.py`, downloaded at run time, not redistributed): Mishra, S. and Soni, D. (2022). *SMS Phishing Dataset for Machine Learning and Pattern Recognition*. Mendeley Data, V1. doi:10.17632/f45bkkt8pr.1. Licence: CC BY 4.0. We changed nothing in it; labels are lower-cased when read.
 
 ## Models (run locally on CPU)
 - **multilingual-e5-small** (`intfloat/multilingual-e5-small`, MIT; Wang et al., 2024): sentence embeddings for the scam-pattern matcher over our own exemplar sentences.
@@ -56,7 +57,7 @@ The hackathon rules require us to disclose every external code library, model, d
 - **PDFium** via pypdfium2 (Apache-2.0/BSD-3): rendering PDF pages
 - Jinja2 (BSD-3), qrcode (BSD), cryptography (Apache-2.0/BSD): templates, QR codes, Ed25519 verdict signatures
 - **Playwright** (Apache-2.0) with headless **Chromium**: renders the verdict certificate to PNG
-- Windows **System.Speech** synthesizer: offline voice for our Plan-B test fakes (re-voiced copies of our own consented clips)
+- Windows **System.Speech** synthesizer: offline voice for our Plan-B test fakes (re-voiced copies of our own consented clips) and the synthetic stress-test voice notes
 
 ## Fonts (SIL Open Font License, bundled in `app/static/fonts/`)
 - Gelasio (Georgia-metric serif), Noto Sans, Noto Sans Devanagari, Noto Serif Devanagari, JetBrains Mono

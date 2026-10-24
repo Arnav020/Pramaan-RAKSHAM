@@ -81,6 +81,10 @@ def init() -> None:
     with conn() as c:
         c.executescript(SCHEMA)
         c.execute("PRAGMA journal_mode=WAL")
+        cols = {r["name"] for r in c.execute("PRAGMA table_info(appeals)")}
+        for col in ("notify_channel", "notify_chat", "note_out"):   # added 24 Oct: the outcome goes back to the person
+            if col not in cols:
+                c.execute(f"ALTER TABLE appeals ADD COLUMN {col} TEXT")
     from app.store import campaigns
     campaigns.init()
 
@@ -185,6 +189,29 @@ def purge_expired() -> int:
     return n
 
 
+def purge_caches(hours: float = 24) -> int:
+    """The AI-reading cache (data/cache/llm) holds what the AI quoted from a message, and the site cache holds which
+    sites people asked about: both follow the same 24-hour rule as the content itself on a public server.
+    On by default when Pramaan is served over HTTPS; PRAMAAN_PURGE_CACHES=on/off overrides (the team's laptop keeps
+    the cache of the synthetic and public evaluation items, so a re-run reproduces the same AI answers)."""
+    import os
+    import time
+    from app.config import DATA_DIR, get_settings
+    flag = os.getenv("PRAMAAN_PURGE_CACHES", "auto").lower()
+    if flag in ("0", "off", "false") or (flag == "auto" and not get_settings().public_base_url.startswith("https://")):
+        return 0
+    cutoff, n = time.time() - hours * 3600, 0
+    for sub in ("llm", "site"):
+        for p in (DATA_DIR / "cache" / sub).glob("*.json"):
+            try:
+                if p.stat().st_mtime < cutoff:
+                    p.unlink()
+                    n += 1
+            except OSError:
+                pass
+    return n
+
+
 def get_lang(chat_ref: str) -> str | None:
     with conn() as c:
         r = c.execute("SELECT lang FROM prefs WHERE chat_ref = ?", (chat_ref,)).fetchone()
@@ -229,10 +256,18 @@ def purge_watchers() -> int:
             c.execute("DELETE FROM trust_links WHERE expires_at < ?", (now,)).rowcount
 
 
-def add_appeal(check_id: str, note: str = "") -> int:
+def add_appeal(check_id: str, note: str = "", notify: tuple[str, str] | None = None) -> int:
+    """notify: (channel, chat id) to tell the person the outcome. Kept only until the appeal is decided.
+    A repeat appeal on the same check while one is open returns the open one (no queue flooding)."""
     with conn() as c:
-        cur = c.execute("INSERT INTO appeals(check_id, note, created_at) VALUES(?, ?, ?)",
-                        (check_id, note.strip()[:300], datetime.now(timezone.utc).isoformat(timespec="seconds")))
+        open_one = c.execute("SELECT id FROM appeals WHERE check_id = ? AND status = 'open'", (check_id,)).fetchone()
+        if open_one:
+            if notify:
+                c.execute("UPDATE appeals SET notify_channel = ?, notify_chat = ? WHERE id = ?", (*notify, open_one["id"]))
+            return open_one["id"]
+        cur = c.execute("INSERT INTO appeals(check_id, note, created_at, notify_channel, notify_chat) VALUES(?, ?, ?, ?, ?)",
+                        (check_id, note.strip()[:300], datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                         notify[0] if notify else None, notify[1] if notify else None))
         return cur.lastrowid
 
 
@@ -245,18 +280,39 @@ def list_appeals(status: str | None = None, limit: int = 50) -> list[dict]:
         return [dict(r) for r in c.execute(q + " ORDER BY a.id DESC LIMIT ?", (*args, limit)).fetchall()]
 
 
-def decide_appeal(appeal_id: int, decision: str, by: str) -> bool:
+def decide_appeal(appeal_id: int, decision: str, by: str, note_out: str = "") -> dict | None:
+    """Decide an open appeal. Returns the appeal as it was (with where to send the outcome), or None.
+    The chat address is erased in the same step: it is never kept after the answer."""
     assert decision in ("upheld", "dismissed")
     with conn() as c:
-        return c.execute("UPDATE appeals SET status = ?, decided_at = ?, decided_by = ? WHERE id = ? AND status = 'open'",
-                         (decision, datetime.now(timezone.utc).isoformat(timespec="seconds"), by, appeal_id)).rowcount == 1
+        r = c.execute("SELECT * FROM appeals WHERE id = ? AND status = 'open'", (appeal_id,)).fetchone()
+        if r is None:
+            return None
+        now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        c.execute("UPDATE appeals SET status = ?, decided_at = ?, decided_by = ?, note_out = ?, notify_channel = NULL, notify_chat = NULL "
+                  "WHERE id = ?", (decision, now, by, note_out.strip()[:300], appeal_id))
+    out = dict(r) | {"status": decision, "decided_at": now}
+    out["minutes"] = round((datetime.fromisoformat(now) - datetime.fromisoformat(r["created_at"])).total_seconds() / 60, 1)
+    return out
+
+
+def upheld_appeal(check_id: str) -> dict | None:
+    """A verdict an analyst has corrected after an appeal: shown on its proof and verify pages."""
+    with conn() as c:
+        r = c.execute("SELECT id, decided_at, note_out FROM appeals WHERE check_id = ? AND status = 'upheld' ORDER BY id DESC LIMIT 1",
+                      (check_id,)).fetchone()
+    return dict(r) if r else None
 
 
 def appeal_counts() -> dict:
+    """Live counts, plus how long a decided appeal waited for a person (median minutes)."""
     with conn() as c:
         rows = c.execute("SELECT status, COUNT(*) n FROM appeals GROUP BY status").fetchall()
+        waits = [(datetime.fromisoformat(r["decided_at"]) - datetime.fromisoformat(r["created_at"])).total_seconds() / 60
+                 for r in c.execute("SELECT created_at, decided_at FROM appeals WHERE decided_at IS NOT NULL")]
     out = {"open": 0, "upheld": 0, "dismissed": 0}
     out.update({r["status"]: r["n"] for r in rows})
+    out["median_minutes"] = round(sorted(waits)[len(waits) // 2], 1) if waits else None
     return out
 
 

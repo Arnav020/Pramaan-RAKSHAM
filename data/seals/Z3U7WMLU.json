@@ -1,0 +1,16 @@
+{
+ "payload": {
+  "v": 1,
+  "iss": "demobank",
+  "code": "Z3U7WMLU",
+  "type": "notice",
+  "id": "DB/FD/2026/0451",
+  "title": "Fixed deposit maturity notice",
+  "issued": "2026-10-24T02:31:37+05:30",
+  "th": "3d6a50d37825900803277a66455db4a1",
+  "kid": ""
+ },
+ "signature": "Hmx8mxytTgnHc6y26ZPsQsz-gIZ6z8mJ0upnKAWm7GEjKElzcInjVxiY7CF_LT4RfW8yyjO-6lcL5wg2OHmeCQ",
+ "text": "Demo Bank\nTEST ISSUER · fictional bank for the hackathon demo\nFixed deposit maturity notice\nRef DB/FD/2026/0451 · 24 Oct 2026\n\nDear customer, your fixed deposit number FD-0451 of Rs 50,000 matures on 1 Nov 2026. The maturity amount will be credited automatically to your linked Demo Bank savings account ending 4821. No action is needed from you.\nDemo Bank will never ask you to pay a fee, share an OTP or move money to receive your maturity amount. If anyone does, call the number printed on your passbook or report it on 1930.\n\nCustomer Safety Team, Demo Bank",
+ "revoked": null
+}

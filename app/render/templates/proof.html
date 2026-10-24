@@ -1,0 +1,363 @@
+{% extends "base.html" %}
+{% set L = {"A": "A · WHO", "B": "B · CHANGED", "C": "C · WHAT"} %}
+{% set stamp = ("#5B6B66", "#E6E9E4") if v.amber_kind == "no_risk_signs" else {"RED": ("#A8322D", "#F5DEDA"), "AMBER": ("#A87310", "#F5EAD0"), "GREEN": ("#2E7D52", "#E0EFE5")}[v.level.value] %}
+{% block title %}{{ rec.serial }} · Pramaan proof{% endblock %}
+{% block style %}
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 26px; align-items: center; margin-top: 18px; }
+  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
+  .stamp { transform: rotate(-3deg); border: 6px double {{ stamp[0] }}; color: {{ stamp[0] }}; border-radius: 12px; padding: 14px 20px; text-align: center; background: {{ stamp[1] }}66; }
+  .stamp .en { font-family: var(--serif); font-weight: 700; font-size: 30px; text-transform: uppercase; letter-spacing: 2px; line-height: 1.1; }
+  .stamp .hi { font-family: var(--hindi); font-weight: 700; font-size: 20px; margin-top: 6px; }
+  .site { display: grid; grid-template-columns: 214px minmax(0, 1fr); gap: 20px; align-items: start; }
+  @media (max-width: 640px) { .site { grid-template-columns: 1fr; } }
+  .phone { border: 9px solid #1A1D1B; border-radius: 26px; overflow: hidden; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.18); width: 214px; position: relative; }
+  .phone img { display: block; width: 100%; height: 400px; object-fit: cover; object-position: top; }
+  .phone .bar { font: 600 10px var(--mono); background: #1A1D1B; color: #ECE7DC; padding: 3px 10px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .phone .nopic { height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 18px; color: var(--muted); font-size: 14px; }
+  dl.sitefacts { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 6px 14px; margin: 0; font-size: 15px; }
+  dl.sitefacts dt { font-size: 11.5px; font-weight: 700; letter-spacing: 1.3px; color: var(--muted); text-transform: uppercase; padding-top: 3px; }
+  dl.sitefacts dd { margin: 0; overflow-wrap: anywhere; }
+  .warn { color: var(--bad); font-weight: 700; }
+  .fresh { font-size: 12.5px; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .advice { margin: 16px 0 0; font-weight: 600; font-size: 17px; line-height: 1.4; }
+  .advice .hindi { display: block; font-weight: 500; font-size: 15px; color: var(--muted); margin-top: 2px; }
+  .signed { display: inline-flex; gap: 8px; align-items: center; margin-top: 18px; font-size: 13px; color: var(--ok); font-weight: 600; text-decoration: none; }
+  .reasons { list-style: none; padding: 0; margin: 0; counter-reset: r; }
+  .reasons li { display: grid; grid-template-columns: 40px 1fr; gap: 10px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .reasons li:first-child { border-top: 0; }
+  .reasons .num { font-family: var(--serif); font-size: 36px; color: var(--copper); line-height: 1; }
+  .reasons .hi { display: block; font-family: var(--hindi); color: var(--muted); font-size: 15px; margin-top: 2px; }
+
+  .players { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .players { grid-template-columns: 1fr; } }
+  .player { border: 2px solid var(--line); border-radius: 10px; overflow: hidden; background: #111; position: relative; }
+  .player.ref { border-color: var(--ok); } .player.q { border-color: var(--bad); }
+  .player video { width: 100%; display: block; aspect-ratio: 16 / 9; background: #000; }
+  .player .lbl { position: absolute; left: 8px; top: 8px; color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; padding: 3px 8px; border-radius: 4px; }
+  .player.ref .lbl { background: var(--ok); } .player.q .lbl { background: var(--bad); }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 12px 0; }
+  .controls .sep { flex: 1; }
+  .scripts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .scripts { grid-template-columns: 1fr; } }
+  .script { font-size: 18px; line-height: 1.75; min-height: 120px; }
+  .script h4 { margin: 0 0 6px; font-size: 12px; letter-spacing: 2px; color: var(--muted); }
+  .w { border-radius: 3px; padding: 0 1px; transition: background .15s; }
+  .w.ins { background: var(--badT); color: var(--bad); font-weight: 600; }
+  .w.del { color: var(--dim); text-decoration: line-through; text-decoration-color: var(--bad); text-decoration-thickness: 2px; }
+  .w.now { outline: 2px solid var(--copper); background: var(--copperT); }
+  .strip { margin-top: 14px; }
+  .strip svg { width: 100%; height: 70px; display: block; }
+  .facts { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 10px; font-size: 14px; color: var(--muted); }
+  .facts b { color: var(--ink); font-family: var(--mono); font-size: 15px; }
+
+  table.rails { width: 100%; border-collapse: collapse; font-size: 15px; table-layout: fixed; overflow-wrap: anywhere; }
+  table.rails th:nth-child(2), table.rails td:nth-child(2) { width: 118px; }
+  table.rails .chip { white-space: nowrap; overflow-wrap: normal; }
+  @media (max-width: 560px) {
+    table.rails, table.rails tbody, table.rails tr, table.rails td { display: block; width: auto !important; }
+    table.rails tr:first-child { display: none; }
+    table.rails tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
+    table.rails td { border: 0; padding: 3px 0; }
+  }
+  .mono, .fact, .panel { overflow-wrap: anywhere; }
+  table.rails th { text-align: left; font-size: 12px; letter-spacing: 1.5px; color: var(--muted); border-bottom: 2px solid var(--sage); padding: 6px 8px; }
+  table.rails td { border-bottom: 1px solid var(--line); padding: 10px 8px; vertical-align: top; }
+  table.rails .src { font-size: 12px; color: var(--dim); }
+  .pb { border-left: 4px solid var(--copper); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  details { margin-top: 10px; } summary { cursor: pointer; font-weight: 600; color: var(--sage); }
+  pre.trace { max-height: 420px; overflow: auto; background: #1A1D1B; color: #E9E6DE; font-size: 12px; padding: 14px; border-radius: 8px; }
+  .docgrid { display: grid; grid-template-columns: 300px 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 700px) { .docgrid { grid-template-columns: 1fr; } }
+  .docpage { position: relative; display: block; border: 2px solid var(--bad); border-radius: 10px; overflow: hidden; background: #fff; }
+  .docpage img { width: 100%; display: block; }
+  .docpage .lbl { position: absolute; left: 8px; top: 8px; background: var(--bad); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; padding: 3px 8px; border-radius: 4px; }
+  .docfacts { display: flex; flex-direction: column; gap: 12px; }
+  .fact { border-radius: 10px; padding: 12px 14px; background: var(--panel); border: 1.5px solid var(--line); }
+  .fact small { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 4px; }
+  .fact.real { background: var(--okT); border-color: var(--ok); } .fact.real small { color: var(--ok); }
+  .fact.bad { background: var(--badT); border-color: var(--bad); } .fact.bad small { color: var(--bad); }
+  .kv { display: grid; grid-template-columns: 180px 1fr; gap: 4px 12px; font-size: 14px; }
+  .kv div:nth-child(odd) { color: var(--muted); }
+  .corrected { margin-top: 14px; padding: 10px 14px; border-radius: 10px; background: var(--okT); border: 1.5px solid var(--ok); font-size: 15px; }
+  .corrected .hindi { display: block; font-family: var(--hindi); color: var(--muted); font-size: 14px; }
+  .useractions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .btn.ghost { background: transparent; color: var(--sage); border: 1.5px solid var(--sage); padding: 6px 12px; font-size: 14px; }
+{% endblock %}
+{% block body %}
+{% set ns = namespace(n=0) %}
+<header class="bar">
+  <a class="brand" href="/">Pramaan<span>प्रमाण</span></a>
+  <div class="meta"><div class="serial">{{ rec.serial }}</div>{{ issued }} · <a href="?lang={{ 'en' if lang == 'hi' else 'hi' }}">{{ 'English' if lang == 'hi' else 'हिंदी' }}</a></div>
+</header>
+<div class="rule2"></div>
+
+<section class="hero">
+  <div>
+    <div class="stamp"><div class="en">{{ v.title_en.split('.')[0] }}</div><div class="hi">{{ v.title_hi.split('।')[0] }}</div></div>
+    {% if v.advice_en %}<p class="advice">{{ v.advice_en }}<span class="hindi">{{ v.advice_hi }}</span></p>{% endif %}
+    <a class="signed" href="{{ verify_url }}">✔ Signed verdict · key {{ key_id }} · tap to verify</a>
+    {% if freshness.seconds %}<div class="fresh">{% if freshness.cached %}Pre-checked at {{ freshness.at }} IST · AI reading reused from cache · {{ '%.1f'|format(freshness.seconds) }} s{% else %}Checked live at {{ freshness.at }} IST in {{ '%.1f'|format(freshness.seconds) }} s{% endif %}</div>{% endif %}
+    {% if corrected %}
+    <div class="corrected"><b>Corrected by a bank analyst</b> on {{ corrected.decided_at|ist }} after an appeal: this verdict was wrong.{% if corrected.note_out %} <i>{{ corrected.note_out }}</i>{% endif %}
+      <span class="hindi">अपील के बाद बैंक विश्लेषक ने माना कि यह नतीजा ग़लत था।</span></div>
+    {% endif %}
+    <div class="useractions">
+      <button class="btn ghost" id="listen" type="button">🔊 {{ 'सुनें' if lang == 'hi' else 'Listen' }}</button>
+      {% if not corrected %}<button class="btn ghost" id="appeal" type="button">⚖️ {{ 'यह नतीजा ग़लत लगता है' if lang == 'hi' else 'This looks wrong' }}</button>{% endif %}
+    </div>
+    <p class="fresh" id="appeal-out" hidden></p>
+  </div>
+  <ol class="reasons">
+    {% for r in v.reasons %}
+    <li><div class="num">{{ loop.index }}</div><div>
+      <span class="chip {{ r.strength.value|lower }}">{{ L[r.lane.value] }} · {{ r.strength.value }}</span><br>
+      {{ r.text_hi if lang == 'hi' else r.text_en }}<span class="hi">{{ r.text_en if lang == 'hi' else r.text_hi }}</span>
+    </div></li>
+    {% endfor %}
+  </ol>
+</section>
+
+{% if doc %}
+<h2>{% set ns.n = ns.n + 1 %}<span class="n">{{ "%02d" % ns.n }}</span> The document <span class="hi">दस्तावेज़ की जाँच</span></h2>
+<p class="sub">What the {{ 'notice' if doc.kind == 'pdf' else 'image' }} says on its face, what is actually inside it, and whether its reference numbers belong to it.</p>
+<div class="docgrid">
+  {% if doc.page %}<a class="docpage" href="/media/q/{{ rec.id }}/{{ doc.page }}" target="_blank"><img src="/media/q/{{ rec.id }}/{{ doc.page }}" alt="first page"><span class="lbl">AS SHARED</span></a>{% endif %}
+  <div class="docfacts">
+    {% for r in doc.refs %}
+      {% if r.code == 'DOC_SOURCE_MISMATCH' %}
+      <div class="fact real"><small>GENUINE {{ r.ref }} · {{ r.real_date }}</small>The real circular with this number is <b>"{{ r.real_title }}"</b>. It has nothing to do with what this notice asks.
+        <br><a href="{{ r.real_url }}" target="_blank" rel="noopener">Open the real circular on rbi.org.in ↗</a></div>
+      {% elif r.code == 'DOC_REFERENCE_IMPOSSIBLE' %}
+      <div class="fact bad"><small>{{ r.ref }} CANNOT EXIST</small>{{ r.why_en }}.</div>
+      {% elif r.code == 'DOC_SOURCE_MATCH' %}
+      <div class="fact real"><small>REFERENCE CHECKS OUT</small>{{ r.ref }} is the genuine circular "{{ r.real_title }}". <a href="{{ r.real_url }}" target="_blank" rel="noopener">Compare ↗</a></div>
+      {% elif r.code == 'DOC_REFERENCE_NOT_FOUND' %}
+      <div class="fact"><small>{{ r.ref }} NOT FOUND</small>Not among the RBI circulars we index. Check it yourself on rbi.org.in.</div>
+      {% endif %}
+    {% endfor %}
+    {% for q in doc.qr %}
+      {% if q.upi %}
+      <div class="fact bad"><small>THE QR CODE REALLY PAYS</small><b>{{ q.payee_name or 'no name given' }}</b> · <span class="mono">{{ q.upi }}</span>{% if q.amount %} · ₹{{ q.amount }}{% endif %}{% if q.note %}<br>Note on the payment: "{{ q.note }}"{% endif %}</div>
+      {% elif '/s/' in (q.raw or '') %}
+      <div class="fact"><small>THE QR CODE OPENS A PRAMAAN SEAL PAGE</small><span class="mono">{{ q.raw }}</span><br>It shows what the issuer really sealed. The seal check is in the reasons above.</div>
+      {% else %}
+      <div class="fact"><small>THE QR CODE CONTAINS</small><span class="mono">{{ q.raw }}</span></div>
+      {% endif %}
+    {% endfor %}
+    {% if doc.kind == 'pdf' or doc.kind == 'image' %}
+    <table class="rails">
+      <tr><th colspan="2">INSIDE THE FILE</th></tr>
+      {% if doc.kind == 'pdf' %}<tr><td>Made with</td><td>{{ doc.producer or '—' }}{% if doc.creator and doc.creator != doc.producer %} / {{ doc.creator }}{% endif %}{% if doc.editor_hint %} <span class="chip weak">consumer editor</span>{% endif %}</td></tr>
+      <tr><td>Edited after creation</td><td>{{ 'yes, ' ~ doc.incremental_saves ~ ' later save(s)' if doc.incremental_saves else 'no' }}</td></tr>
+      <tr><td>Hidden active content</td><td>{% if doc.active_content %}<span class="chip bad">{{ doc.active_content|join(', ') }}</span>{% else %}none{% endif %}</td></tr>
+      <tr><td>Links inside</td><td class="mono">{{ doc.links|join(', ') or 'none' }}</td></tr>{% endif %}
+      <tr><td>Text read by</td><td>{{ doc.ocr or 'embedded text layer' }}</td></tr>
+    </table>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% if expired %}
+<div class="panel" style="margin-top:18px"><b>Deleted for privacy.</b> The shared media and the message text were removed 24 hours after this check.
+The verdict, its reasons and its signature remain. <span class="hindi">गोपनीयता के लिए 24 घंटे बाद मीडिया और मैसेज मिटा दिए गए।</span></div>
+{% endif %}
+
+{% if src and not expired %}
+<h2>{% set ns.n = ns.n + 1 %}<span class="n">{{ "%02d" % ns.n }}</span> Same footage, different words? <span class="hi">वही फ़ुटेज, अलग शब्द?</span></h2>
+<p class="sub">We searched our index of genuine official-channel videos by the content of the frames (no face recognition). This video re-uses <b>{{ src.title_en }}</b>.
+Press play: both videos run in sync, and words that are not in the original are highlighted as they are spoken.</p>
+<div class="players">
+  <div class="player ref"><video id="ref" src="{{ ref_media }}" preload="auto" playsinline muted></video><span class="lbl">ORIGINAL · OFFICIAL CHANNEL</span></div>
+  <div class="player q">{% if query_media %}<video id="qv" src="{{ query_media }}" preload="auto" playsinline></video>{% endif %}<span class="lbl">FORWARDED VIDEO</span></div>
+</div>
+<div class="controls">
+  <button class="btn primary" id="play">▶ Play both in sync</button>
+  <button class="btn" id="hear">🔊 Hear the original</button>
+  <span class="sep"></span>
+  <span class="chip {{ 'bad' if v.lanes['B'].status == 'SOURCE_MISMATCH' else 'positive' }}">{{ v.lanes['B'].status.replace('_', ' ') }}</span>
+</div>
+<div class="scripts">
+  <div class="panel script"><h4>WHAT THE FORWARDED VIDEO SAYS</h4><div id="qwords"></div></div>
+  <div class="panel script"><h4>WHAT THE ORIGINAL SAYS</h4><div id="rwords"></div></div>
+</div>
+<div class="panel strip">
+  <div class="facts">
+    <span>Frames matched <b>{{ src.matched_frames }}/{{ src.total_frames }}</b></span>
+    <span>Median fingerprint distance <b>{{ src.median_distance }}/256</b></span>
+    <span>Time offset <b>{{ src.offset_s }} s</b></span>
+    {% if diff %}<span>Words found in the original <b>{{ (diff.similarity * 100)|round|int }}%</b></span>{% endif %}
+  </div>
+  <svg id="strip" viewBox="0 0 1000 70" preserveAspectRatio="none"></svg>
+  <div class="sub" style="font-size:13px;margin:4px 0 0">Each bar is one keyframe of the forwarded video: short green bars match the original's footage (PDQ perceptual hash; 0 = identical, &gt;90 = different footage).</div>
+</div>
+{% endif %}
+
+<h2>{% set ns.n = ns.n + 1 %}<span class="n">{{ "%02d" % ns.n }}</span> Who is really behind this? <span class="hi">असल में कौन है?</span></h2>
+<p class="sub">Every contact point in the message, checked against India's official trust rails. Each rule cites where our data came from.</p>
+<div class="panel">
+{% if rails %}
+<table class="rails">
+  <tr><th>FINDING</th><th>STRENGTH</th><th>SOURCE OF OUR DATA</th></tr>
+  {% for row in rails %}
+  <tr>
+    <td><span class="mono">{{ row.params.get('upi') or row.params.get('domain') or row.params.get('phone') or row.params.get('header') or row.params.get('reg_no') or row.params.get('email') or row.params.get('entity') or '' }}</span><br>
+        {% if row.text %}{{ row.text }}{% else %}<span style="color:var(--muted)">{{ row.code.replace('_',' ').lower() }}</span>{% endif %}</td>
+    <td><span class="chip {{ row.strength|lower }}">{{ row.strength }}</span></td>
+    <td class="src">{% if row.source %}{% if row.source.source_url %}<a href="{{ row.source.source_url }}" target="_blank" rel="noopener">{{ row.source.dataset }}</a>{% else %}{{ row.source.dataset }}{% endif %}{% if row.source.fetched_at %}<br>checked {{ row.source.fetched_at }}{% endif %}{% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p style="margin:0">No UPI ID, phone number, link or sender ID to check. Without one, nobody can confirm who sent this, so the safest answer is <b>"can't verify"</b>.</p>
+{% endif %}
+<div class="facts" style="margin-top:12px">Claimed sender:
+  {% for c in extraction.claims %}<span class="chip">{{ c.type.value.replace('_',' ') }}{% if c.name %}: {{ c.name }}{% endif %}</span>{% else %}<span>none stated</span>{% endfor %}
+</div>
+</div>
+
+{% for s in sites if not s.skipped or s.skipped == 'short_link' %}
+<h3 style="font-family:var(--serif);font-size:21px;margin:22px 0 6px">We visited {{ s.host }} so you don't have to <span class="hi" style="font-family:var(--hindi);font-size:15px;color:var(--muted)">हमने आपकी जगह वेबसाइट देखी</span></h3>
+<p class="sub">Homepage only, never the link from the message (it may carry a code that tells the scammer you clicked). Nothing was typed, downloaded or submitted.</p>
+<div class="panel site">
+  <div class="phone">
+    <div class="bar">🔒 {{ s.host }}</div>
+    {% if s.screenshot and not expired %}<img src="/media/q/{{ rec.id }}/{{ s.screenshot }}" alt="Homepage of {{ s.host }} as our locked-down browser saw it">
+    {% elif s.skipped == 'short_link' %}<div class="nopic">Short link: not opened, because the short code itself may be personal to you.</div>
+    {% elif s.exists == false %}<div class="nopic"><span class="warn">This website does not exist.</span></div>
+    {% else %}<div class="nopic">No picture: the site did not load in time.</div>{% endif %}
+  </div>
+  <dl class="sitefacts">
+    <dt>Exists</dt><dd>{% if s.exists %}Yes{% elif s.exists == false %}<span class="warn">No: the address does not resolve</span>{% else %}Not checked{% endif %}</dd>
+    {% if s.registered %}<dt>Registered</dt><dd>{{ s.registered }}{% if s.age_days is not none %} · {% if s.age_days <= 90 %}<span class="warn">{{ s.age_days }} days old</span>{% else %}{{ (s.age_days / 365.25)|round(1) }} years old{% endif %}{% endif %}</dd>{% endif %}
+    {% if s.registrar %}<dt>Registrar</dt><dd>{{ s.registrar }}</dd>{% endif %}
+    {% if s.free_host %}<dt>Hosted on</dt><dd><span class="warn">a free {{ s.free_host }} site</span>: anyone can create one in minutes, and it has no registration record of its own</dd>{% endif %}
+    {% if s.rendered %}<dt>Read as</dt><dd>the page after its scripts ran (the downloaded file was nearly empty)</dd>{% endif %}
+    {% if s.title %}<dt>Calls itself</dt><dd>"{{ s.title }}"</dd>{% endif %}
+    {% if s.description %}<dt>Says</dt><dd>{{ s.description }}</dd>{% endif %}
+    {% if s.redirected_to %}<dt>Sends you to</dt><dd class="warn">{{ s.redirected_to }}</dd>{% endif %}
+    <dt>Asks you to type</dt><dd>{% if s.asks_for %}<span class="warn">{{ s.asks_for|join(', ') }}</span>{% else %}Nothing sensitive on the first page{% endif %}</dd>
+    {% if s.apk_links %}<dt>App downloads</dt><dd class="warn">{{ s.apk_links|length }} .apk file{{ 's' if s.apk_links|length > 1 }} outside the Play Store</dd>{% endif %}
+    {% if s.impersonates %}<dt>Presents itself as</dt><dd class="warn">{{ s.impersonates }} (not their official site)</dd>{% endif %}
+    {% if s.upi_on_page %}<dt>UPI IDs on the page</dt><dd class="mono">{{ s.upi_on_page|join(', ') }}</dd>{% endif %}
+    <dt>Looked at</dt><dd>{{ s.checked_at|ist }} · <span style="color:var(--muted)">an old website is not proof of safety; a new one asking for money is a warning sign</span></dd>
+  </dl>
+</div>
+{% endfor %}
+
+<h2>{% set ns.n = ns.n + 1 %}<span class="n">{{ "%02d" % ns.n }}</span> What is it asking you to do? <span class="hi">यह आपसे क्या करवाना चाहता है?</span></h2>
+<div class="panel">
+  <div>Asks: {% for a in intent.asks %}<span class="chip bad">{{ a.replace('_',' ') }}</span>{% else %}<span class="chip weak">nothing</span>{% endfor %}
+       &nbsp; Pressure: {% for p in intent.pressure %}<span class="chip bad">{{ p.replace('_',' ') }}</span>{% else %}<span class="chip weak">none</span>{% endfor %}</div>
+  {% for pb in playbooks[:1] %}
+  <div class="panel pb" style="margin-top:12px">
+    <b>Closest known scam pattern: {{ pb.name_en }}</b><br><span class="hindi">{{ pb.name_hi }}</span>
+    <p style="margin:6px 0">{{ pb.summary_en }}</p>
+    <div style="font-size:13px">From public advisories: {% for s in pb.sources %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</div>
+  </div>
+  {% endfor %}
+  {% if extraction.hidden_instructions %}<p style="margin:10px 0 0"><span class="chip bad">HIDDEN INSTRUCTIONS</span> This message contains text aimed at automated checkers ("ignore previous instructions…"). It did not change our rules; we report it as a warning sign.</p>{% endif %}
+</div>
+
+<h2>{% set ns.n = ns.n + 1 %}<span class="n">{{ "%02d" % ns.n }}</span> What to do now <span class="hi">अब क्या करें</span></h2>
+<div class="actions">
+  <a class="btn primary" href="tel:1930">📞 Already paid? Call 1930 now</a>
+  <a class="btn" href="https://cybercrime.gov.in" target="_blank" rel="noopener">Report at cybercrime.gov.in</a>
+  <a class="btn" href="https://sancharsaathi.gov.in" target="_blank" rel="noopener">Report suspected fraud (Sanchar Saathi · Chakshu)</a>
+  <a class="btn" href="https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognised=yes" target="_blank" rel="noopener">Check an adviser on SEBI's register</a>
+  <a class="btn" href="/p/{{ rec.id }}/golden-hour.txt" download>📝 Complaint drafts (1930 · NCRP · bank)</a>
+  <button class="btn danger" id="report">🚩 Report to the bank</button>
+</div>
+<p class="sub" id="reported" style="display:none"></p>
+<p class="sub" style="margin-top:10px">If you already paid, speed matters: a report to 1930 within hours can let banks freeze money before it moves on (CFCFRMS). The complaint drafts are filled in from this check; you add the transaction ID (UTR), amount and time yourself, because Pramaan never asks for them. We cannot promise recovery.</p>
+
+<h2>{% set ns.n = ns.n + 1 %}<span class="n">{{ "%02d" % ns.n }}</span> How this verdict was decided <span class="hi">फ़ैसला कैसे हुआ</span></h2>
+<div class="panel">
+  <div class="kv">
+    <div>Rule that fired</div><div class="mono">{{ v.rule_id }} (rule table v{{ v.rules_version }})</div>
+    <div>Lane A · WHO</div><div>{{ v.lanes['A'].status }}</div>
+    <div>Lane B · CHANGED</div><div>{{ v.lanes['B'].status }}</div>
+    <div>Lane C · WHAT</div><div>ask risk {{ v.lanes['C'].status }}</div>
+    <div>Lanes with strong evidence</div><div>{{ v.strong_lanes|map(attribute='value')|join(', ') or 'none' }} {% if v.level.value == 'RED' %}(red needs two different lanes){% endif %}</div>
+    <div>Extractor</div><div class="mono">{{ extraction.extractor }}</div>
+    <div>Check time</div><div class="mono">{{ '%.1f'|format(rec.timings.get('total', 0)) }} s</div>
+  </div>
+  <details><summary>Full reason-code trace (for analysts)</summary><pre class="trace">{{ trace }}</pre></details>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+document.getElementById("report").onclick = async (e) => {
+  e.target.disabled = true;
+  const r = await fetch("/api/report/{{ rec.id }}", {method: "POST", headers: {"Content-Type": "application/json"}, body: "{}"});
+  const j = await r.json(), el = document.getElementById("reported");
+  el.style.display = "block";
+  el.innerHTML = r.ok ? `Reported. Evidence sealed in the vault (record #${j.chain_seq}, ${j.files} files) and filed under campaign <b>${j.campaign_id}</b> for one analyst review.` : "Could not report. Please try again.";
+};
+const P = {{ proof_json | safe }};
+const norm = s => s.toLowerCase().normalize("NFKC").replace(/[^\p{L}\p{N}\s]/gu, " ").trim().split(/\s+/).filter(Boolean);
+function render(el, words, marks, cls) {
+  el.innerHTML = "";
+  words.forEach((w, i) => { const s = document.createElement("span"); s.className = "w" + (marks[i] ? " " + cls : ""); s.textContent = (w.word || w).trim() + " ";
+    if (w.start !== undefined) { s.dataset.s = w.start; s.dataset.e = w.end; } el.appendChild(s); });
+}
+if (P.source && P.query_transcript) {
+  const qw = (P.query_transcript.words && P.query_transcript.words.length) ? P.query_transcript.words : P.query_transcript.text.split(/\s+/);
+  const rw = (P.ref_transcript && P.ref_transcript.words && P.ref_transcript.words.length) ? P.ref_transcript.words : ((P.ref_transcript || {}).text || "").split(/\s+/);
+  render(document.getElementById("qwords"), qw, P.qflags || [], "ins");
+  render(document.getElementById("rwords"), rw, P.rflags || [], "del");
+  // frame strip
+  const svg = document.getElementById("strip"), pairs = P.source.pairs || [], tot = P.source.total_frames || pairs.length || 1;
+  const byT = {}; pairs.forEach(p => byT[p[0].toFixed(2)] = p[2]);
+  for (let i = 0; i < tot; i++) { const t = (i / 2).toFixed(2), d = byT[t]; const h = d === undefined ? 66 : Math.max(4, d / 128 * 66);
+    const r = document.createElementNS("http://www.w3.org/2000/svg", "rect"); r.setAttribute("x", (i / tot * 1000) + 1); r.setAttribute("width", Math.max(2, 1000 / tot - 2));
+    r.setAttribute("y", 70 - h); r.setAttribute("height", h); r.setAttribute("fill", d === undefined ? "#D6CDBB" : (d <= 45 ? "#2E7D52" : "#A8322D")); svg.appendChild(r); }
+  // synced playback
+  const ref = document.getElementById("ref"), qv = document.getElementById("qv"), off = P.source.offset_s || 0;
+  const play = document.getElementById("play"), hear = document.getElementById("hear");
+  play.onclick = () => { if (!qv) return; if (qv.paused) { qv.currentTime = 0; ref.currentTime = Math.max(0, off); qv.play(); ref.play(); play.textContent = "❚❚ Pause"; } else { qv.pause(); ref.pause(); play.textContent = "▶ Play both in sync"; } };
+  hear.onclick = () => { ref.muted = !ref.muted; if (qv) qv.muted = !ref.muted; hear.textContent = ref.muted ? "🔊 Hear the original" : "🔊 Hear the forwarded video"; };
+  if (qv) qv.addEventListener("timeupdate", () => {
+    const t = qv.currentTime; if (Math.abs(ref.currentTime - (t + off)) > 0.35 && !ref.paused) ref.currentTime = t + off;
+    document.querySelectorAll("#qwords .w").forEach(s => s.classList.toggle("now", s.dataset.s !== undefined && t >= +s.dataset.s && t <= +s.dataset.e + 0.05));
+  });
+}
+</script>
+<script>
+// "Listen": read the verdict aloud with the phone's own voice (speech synthesis runs on the device; nothing is sent anywhere).
+(function () {
+  const lang = {{ lang|tojson }};
+  const say = lang === "hi"
+    ? [{{ v.title_hi|tojson }}, {{ (v.advice_hi or '')|tojson }}, {% for r in v.reasons %}{{ r.text_hi|tojson }}, {% endfor %}]
+    : [{{ v.title_en|tojson }}, {{ (v.advice_en or '')|tojson }}, {% for r in v.reasons %}{{ r.text_en|tojson }}, {% endfor %}];
+  const b = document.getElementById("listen");
+  if (!("speechSynthesis" in window)) { b.hidden = true; return; }
+  b.onclick = () => {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(say.filter(Boolean).join(". "));
+    u.lang = lang === "hi" ? "hi-IN" : "en-IN";
+    const v = speechSynthesis.getVoices().find(x => x.lang && x.lang.toLowerCase().startsWith(u.lang.slice(0, 2)));
+    if (v) u.voice = v;
+    u.rate = 0.92;
+    speechSynthesis.speak(u);
+  };
+})();
+// "This looks wrong": a bank analyst reviews the verdict; nothing about who asked is stored.
+(function () {
+  const b = document.getElementById("appeal"), out = document.getElementById("appeal-out");
+  if (!b) return;
+  b.onclick = async () => {
+    const note = (prompt({{ ('क्या ग़लत है? (वैकल्पिक, एक पंक्ति)' if lang == 'hi' else "What's wrong? (optional, one line)")|tojson }}) || "").slice(0, 300);
+    b.disabled = true;
+    const r = await fetch("/api/appeal/{{ rec.id }}", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({note})});
+    out.hidden = false;
+    out.textContent = r.ok
+      ? {{ ('धन्यवाद। बैंक विश्लेषक इसे देखेंगे; फ़ैसला इसी पेज पर दिखेगा। तब तक भेजने वाले के आधिकारिक नंबर पर पुष्टि करके आगे बढ़ सकते हैं।' if lang == 'hi' else "Thank you. A bank analyst will review it and the outcome appears on this page. Meanwhile you are not blocked: confirm with the sender's official number and go ahead.")|tojson }}
+      : {{ ('अभी नहीं भेजा जा सका। थोड़ी देर बाद फिर कोशिश करें।' if lang == 'hi' else 'Could not send it just now. Please try again in a few minutes.')|tojson }};
+    if (!r.ok) b.disabled = false;
+  };
+})();
+</script>
+{% endblock %}

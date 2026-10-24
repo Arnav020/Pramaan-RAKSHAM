@@ -7,8 +7,11 @@
 #  - Verified sender + any suspicious signal goes to amber and to the analyst.
 #  - Amber is the default when unsure.
 
-version: "2.1"
+version: "2.2"
 # 2.1 (24 Oct 2026): Pramaan Seal replaces the planned C2PA check; unchanged official-channel media is green.
+# 2.2 (24 Oct 2026, finale): green is never given to a message that matches a known scam pattern, even when every
+#      link in it is official (an official link can be pasted into any scam), and a sealed text with a high-risk
+#      ask goes to the analyst instead of green (a hacked issuer account).
 
 rules:
   - id: R1_two_lane_strong
@@ -18,7 +21,7 @@ rules:
   # A valid Pramaan Seal from a trusted issuer whose content is unchanged: the institution itself vouches for the text.
   - id: R2_sealed_content
     verdict: GREEN
-    when: {has_signal: SEALED, max_strong_lanes: 0}
+    when: {has_signal: SEALED, max_strong_lanes: 0, lane_c_not: HIGH}
 
   # The exact words of a genuine video from an institution's registered official channel, nothing contradicted,
   # no high-risk request. Weak detector hints do not override proven provenance (see the Lab's key experiment).
@@ -28,7 +31,7 @@ rules:
 
   - id: R3_verified_sender
     verdict: GREEN
-    when: {lane_a: VERIFIED, lane_b_in: [NONE, NOT_APPLICABLE], lane_c_not: HIGH, max_strong_lanes: 0}
+    when: {lane_a: VERIFIED, lane_b_in: [NONE, NOT_APPLICABLE], lane_c_not: HIGH, max_strong_lanes: 0, no_signal: PLAYBOOK_MATCH}
 
   - id: R4_verified_but_suspicious
     verdict: AMBER

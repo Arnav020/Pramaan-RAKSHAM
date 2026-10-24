@@ -1,0 +1,2449 @@
+{
+ "set": "stress_set",
+ "llm": true,
+ "sites": false,
+ "summary": {
+  "ok": 70,
+  "soft": 1
+ },
+ "items": [
+  {
+   "id": "s01",
+   "cat": "kyc",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank:State Bank of India"
+   ],
+   "asks": [
+    "click_link"
+   ],
+   "contacts": [
+    "url:http://sbi-yono-kyc.co.in/update"
+   ],
+   "outcome": "ok",
+   "seconds": 11.24,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "sbi-yono-kyc.co.in imitates State Bank of India, but it is not their official site (sbi.bank.in).",
+    "It follows the pattern of a known scam: KYC update / account block phishing."
+   ]
+  },
+  {
+   "id": "s02",
+   "cat": "kyc",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE",
+    "C:ASK_CREDENTIALS"
+   ],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank:HDFC Bank"
+   ],
+   "asks": [
+    "click_link",
+    "credentials"
+   ],
+   "contacts": [
+    "url:https://hdfcbank-verify.top"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "hdfcbank-verify.top imitates HDFC Bank, but it is not their official site (hdfc.bank.in).",
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these."
+   ]
+  },
+  {
+   "id": "s03",
+   "cat": "kyc",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS"
+   ],
+   "weak": [
+    "A:DOMAIN_SHORTENER",
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_THREAT"
+   ],
+   "claims": [
+    "bank"
+   ],
+   "asks": [
+    "click_link",
+    "credentials"
+   ],
+   "contacts": [
+    "url:https://bit.ly/kyc-upd8"
+   ],
+   "outcome": "ok",
+   "seconds": 0.11,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "The link is hidden behind a URL shortener (bit.ly), so its real destination is unknown.",
+    "It follows the pattern of a known scam: KYC update / account block phishing."
+   ]
+  },
+  {
+   "id": "s04",
+   "cat": "otp",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:PHONE_MOBILE_FOR_INSTITUTION",
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank:ICICI Bank"
+   ],
+   "asks": [
+    "call_back",
+    "credentials"
+   ],
+   "contacts": [
+    "phone:9123400011"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "9123400011 is an ordinary mobile number. Banks and financial firms must call customers from 1600-series numbers.",
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
+   ]
+  },
+  {
+   "id": "s05",
+   "cat": "otp",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank"
+   ],
+   "asks": [
+    "credentials"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing).",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "s06",
+   "cat": "card",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE",
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [],
+   "claims": [
+    "bank:Axis Bank"
+   ],
+   "asks": [
+    "click_link",
+    "credentials"
+   ],
+   "contacts": [
+    "url:https://axis-cardlimit.in"
+   ],
+   "outcome": "ok",
+   "seconds": 0.07,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "axis-cardlimit.in imitates Axis Bank, but it is not their official site (axis.bank.in).",
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
+   ]
+  },
+  {
+   "id": "s07",
+   "cat": "kyc_hi",
+   "expect": "warn",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:PHONE_FRI_HIGH",
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:PHONE_UNVERIFIED",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "credentials"
+   ],
+   "contacts": [
+    "phone:9000012345"
+   ],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "The number 9000012345 is rated 'VERY_HIGH' on the fraud-risk indicator (demo data).",
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
+   ]
+  },
+  {
+   "id": "s08",
+   "cat": "kyc_hinglish",
+   "expect": "warn",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank:Punjab National Bank"
+   ],
+   "asks": [
+    "click_link"
+   ],
+   "contacts": [
+    "url:https://pnb-kyc-online.com"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "pnb-kyc-online.com imitates Punjab National Bank, but it is not their official site (pnb.bank.in).",
+    "It follows the pattern of a known scam: KYC update / account block phishing."
+   ]
+  },
+  {
+   "id": "s09",
+   "cat": "wrong_transfer",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:ramesh.k77@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.12,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: 'I sent money to you by mistake' refund trick.",
+    "We could not link ramesh.k77@ybl to any verified business.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "s10",
+   "cat": "collect_request",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS"
+   ],
+   "weak": [],
+   "claims": [
+    "payment_app:PhonePe"
+   ],
+   "asks": [
+    "credentials"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these."
+   ]
+  },
+  {
+   "id": "s11",
+   "cat": "family",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:aarav.new21@okaxis"
+   ],
+   "outcome": "ok",
+   "seconds": 0.14,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation.",
+    "We could not link aarav.new21@okaxis to any verified business.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "s12",
+   "cat": "refund",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_REMOTE_ACCESS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [],
+   "claims": [],
+   "asks": [
+    "install_app",
+    "remote_access"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Screen-sharing / remote-access app scam.",
+    "It asks you to install a screen-sharing app, which gives someone control of your phone."
+   ]
+  },
+  {
+   "id": "s13",
+   "cat": "fastag",
+   "expect": "warn",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:UPI_FOR_REGULATOR",
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:NHAI / FASTag",
+    "payment_app:FASTag"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:fastag.kyc.help@paytm"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like fastag.kyc.help@paytm.",
+    "It asks for money while pushing threats."
+   ]
+  },
+  {
+   "id": "s14",
+   "cat": "digital_arrest",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_SECRECY",
+    "C:PRESSURE_THREAT"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts",
+    "public_figure:Inspector Sharma"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.21,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money.",
+    "It asks for money while pushing threats.",
+    "It leans on official-sounding authority."
+   ]
+  },
+  {
+   "id": "s15",
+   "cat": "digital_arrest",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:UPI_FOR_REGULATOR",
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_SECRECY",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:cbi.case.verify@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like cbi.case.verify@ybl.",
+    "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
+    "It asks for money while pushing threats."
+   ]
+  },
+  {
+   "id": "s16",
+   "cat": "customs",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for money while pushing threats.",
+    "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
+    "It threatens arrest, a block or legal action."
+   ]
+  },
+  {
+   "id": "s17",
+   "cat": "tax",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE",
+    "C:ASK_CREDENTIALS"
+   ],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:Income Tax Department"
+   ],
+   "asks": [
+    "credentials"
+   ],
+   "contacts": [
+    "url:https://incometax-refund-gov.in"
+   ],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "incometax-refund-gov.in imitates Income Tax Department, but it is not their official site (incometax.gov.in).",
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these."
+   ]
+  },
+  {
+   "id": "s18",
+   "cat": "challan",
+   "expect": "warn",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE",
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:Parivahan / e-Challan (Ministry of Road Transport)",
+    "regulator:Police / CBI / ED / Customs / Courts"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "url:https://echallan-parivahan-pay.com"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "echallan-parivahan-pay.com imitates Parivahan / e-Challan (Ministry of Road Transport), but it is not their official site (parivahan.gov.in).",
+    "It asks for money while pushing threats."
+   ]
+  },
+  {
+   "id": "s19",
+   "cat": "electricity",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:PHONE_UNVERIFIED",
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "call_back"
+   ],
+   "contacts": [
+    "phone:9876500001"
+   ],
+   "outcome": "ok",
+   "seconds": 0.11,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
+    "We could not verify who uses 9876500001.",
+    "It leans on official-sounding authority."
+   ]
+  },
+  {
+   "id": "s20",
+   "cat": "regulator",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:UPI_FOR_REGULATOR",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [],
+   "claims": [
+    "regulator:Reserve Bank of India"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:rbi.helpdesk@axl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like rbi.helpdesk@axl.",
+    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
+   ]
+  },
+  {
+   "id": "s21",
+   "cat": "trai",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS"
+   ],
+   "weak": [
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:Department of Telecommunications / Sanchar Saathi"
+   ],
+   "asks": [
+    "call_back",
+    "credentials"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It leans on official-sounding authority.",
+    "It threatens arrest, a block or legal action."
+   ]
+  },
+  {
+   "id": "s22",
+   "cat": "investment",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:UPI_NOT_VALID_FOR_SEBI_CLAIM",
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "C:ASK_PRIVATE_GROUP",
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_TOO_GOOD"
+   ],
+   "claims": [
+    "sebi_intermediary:SEBI-registered intermediary"
+   ],
+   "asks": [
+    "pay",
+    "private_group"
+   ],
+   "contacts": [
+    "upi:vipstocks.club@ibl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "vipstocks.club@ibl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
+    "It asks for money while pushing guaranteed returns, an offer too good to be true."
+   ]
+  },
+  {
+   "id": "s23",
+   "cat": "crypto",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:DOMAIN_NOT_OFFICIAL_FOR_CLAIM",
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "payment_app:cryptoearnpro.io"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "url:https://cryptoearnpro.io"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Unauthorised forex / crypto trading platform.",
+    "cryptoearnpro.io is not an official domain of the institution named. Indian banks now use addresses ending in .bank.in.",
+    "It asks for money while pushing guaranteed returns."
+   ]
+  },
+  {
+   "id": "s24",
+   "cat": "task",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:LINK_TO_PRIVATE_CHAT",
+    "C:ASK_PRIVATE_GROUP",
+    "C:PRESSURE_TOO_GOOD"
+   ],
+   "claims": [],
+   "asks": [
+    "pay",
+    "private_group"
+   ],
+   "contacts": [
+    "url:https://t.me/dailyearn_tasks"
+   ],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Task-based 'part-time job' scam.",
+    "The link moves you to a private chat (t.me).",
+    "It asks for money while pushing an offer too good to be true."
+   ]
+  },
+  {
+   "id": "s25",
+   "cat": "ipo",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "A:LINK_TO_PRIVATE_CHAT",
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_TOO_GOOD",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "call_back",
+    "pay"
+   ],
+   "contacts": [
+    "url:https://wa.me/919000077777"
+   ],
+   "outcome": "ok",
+   "seconds": 0.13,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for money while pushing an offer too good to be true.",
+    "The link moves you to a private chat (wa.me).",
+    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam."
+   ]
+  },
+  {
+   "id": "s26",
+   "cat": "investment_hi",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_TOO_GOOD",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:stockking88@paytm"
+   ],
+   "outcome": "ok",
+   "seconds": 0.06,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam.",
+    "We could not link stockking88@paytm to any verified business.",
+    "It asks for money while pushing guaranteed returns, an offer too good to be true."
+   ]
+  },
+  {
+   "id": "s27",
+   "cat": "celebrity",
+   "expect": "warn",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:UPI_NOT_VALID_FOR_SEBI_CLAIM",
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_TOO_GOOD"
+   ],
+   "claims": [
+    "public_figure"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:earnfast.rk@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "earnfast.rk@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
+    "It asks for money while pushing guaranteed returns, an offer too good to be true."
+   ]
+  },
+  {
+   "id": "s28",
+   "cat": "lottery",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_TOO_GOOD"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:kbc.claim.office@okicici"
+   ],
+   "outcome": "ok",
+   "seconds": 0.11,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Lottery / prize with a 'processing fee'.",
+    "We could not link kbc.claim.office@okicici to any verified business.",
+    "It asks for money while pushing an offer too good to be true."
+   ]
+  },
+  {
+   "id": "s29",
+   "cat": "loan",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:loanapproval.desk@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.14,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Instant-loan app with upfront fee.",
+    "We could not link loanapproval.desk@ybl to any verified business.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "s30",
+   "cat": "apk",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_SIDELOAD_APP",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank:State Bank of India"
+   ],
+   "asks": [
+    "install_app"
+   ],
+   "contacts": [
+    "app:sbi_rewards.apk"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Fake reward points / refund link or app.",
+    "It asks you to install an app file (sbi_rewards.apk) from outside the official app store.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "s31",
+   "cat": "job",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:amazonjobs.hr@paytm"
+   ],
+   "outcome": "ok",
+   "seconds": 0.12,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Job offer that asks for a fee first.",
+    "We could not link amazonjobs.hr@paytm to any verified business."
+   ]
+  },
+  {
+   "id": "s32",
+   "cat": "insurance",
+   "expect": "warn",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:PHONE_MOBILE_FOR_INSTITUTION",
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_TOO_GOOD"
+   ],
+   "claims": [
+    "nbfc:LIC"
+   ],
+   "asks": [
+    "call_back",
+    "pay"
+   ],
+   "contacts": [
+    "phone:9811100022"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "9811100022 is an ordinary mobile number. Banks and financial firms must call customers from 1600-series numbers.",
+    "It asks for money while pushing an offer too good to be true."
+   ]
+  },
+  {
+   "id": "s33",
+   "cat": "gift",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_AUTHORITY"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.14,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Gift from abroad held at customs.",
+    "It leans on official-sounding authority."
+   ]
+  },
+  {
+   "id": "s34",
+   "cat": "evasion_spaced",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "credentials"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.06,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing).",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "s35",
+   "cat": "evasion_numbers",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_THREAT"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.07,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for money while pushing threats.",
+    "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
+    "It threatens arrest, a block or legal action."
+   ]
+  },
+  {
+   "id": "s36",
+   "cat": "evasion_injection",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:HIDDEN_INSTRUCTIONS",
+    "C:PRESSURE_GUARANTEED_RETURNS"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:profitking@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",
+    "We could not link profitking@ybl to any verified business.",
+    "It asks for money while pushing guaranteed returns."
+   ]
+  },
+  {
+   "id": "s37",
+   "cat": "evasion_calm",
+   "expect": "check",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "public_figure:Priya"
+   ],
+   "asks": [
+    "call_back"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Can't verify. Check before you act",
+   "reasons": []
+  },
+  {
+   "id": "s38",
+   "cat": "evasion_hinglish",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_GUARANTEED_RETURNS"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:doublepaisa@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.07,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for money while pushing guaranteed returns.",
+    "We could not link doublepaisa@ybl to any verified business.",
+    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme."
+   ]
+  },
+  {
+   "id": "g01",
+   "cat": "otp_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank:HDFC Bank"
+   ],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "g02",
+   "cat": "debit_alert",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [
+    "A:UPI_PERSONAL_FOR_BANK"
+   ],
+   "weak": [],
+   "claims": [
+    "bank:State Bank of India"
+   ],
+   "asks": [
+    "call_back"
+   ],
+   "contacts": [
+    "upi:swiggy@icici"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "Banks do not ask customers to pay into a personal UPI ID like swiggy@icici."
+   ]
+  },
+  {
+   "id": "g03",
+   "cat": "friend_upi",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "A:UPI_UNVERIFIED"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:rahul.kumar@okhdfcbank"
+   ],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "We could not link rahul.kumar@okhdfcbank to any verified business."
+   ]
+  },
+  {
+   "id": "g04",
+   "cat": "personal",
+   "expect": "clear",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.07,
+   "title": "No warning signs. Nothing to verify",
+   "reasons": []
+  },
+  {
+   "id": "g05",
+   "cat": "friend_money",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.05,
+   "title": "Can't verify. Check before you act",
+   "reasons": []
+  },
+  {
+   "id": "g06",
+   "cat": "news",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_THREAT"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts"
+   ],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
+    "It threatens arrest, a block or legal action."
+   ]
+  },
+  {
+   "id": "g07",
+   "cat": "bank_advisory",
+   "expect": "clear",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "bank:State Bank of India"
+   ],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.02,
+   "title": "No warning signs. Nothing to verify",
+   "reasons": []
+  },
+  {
+   "id": "g08",
+   "cat": "bank_offer",
+   "expect": "not_red",
+   "level": "GREEN",
+   "amber_kind": null,
+   "tier": "CLEAR",
+   "rule": "R3_verified_sender",
+   "lanes": {
+    "A": "VERIFIED",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "bank:SBI"
+   ],
+   "asks": [
+    "click_link"
+   ],
+   "contacts": [
+    "url:https://sbi.bank.in"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Verified sender",
+   "reasons": [
+    "The link goes to sbi.bank.in, an official domain of State Bank of India."
+   ]
+  },
+  {
+   "id": "g09",
+   "cat": "tax_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "claims": [
+    "regulator:Income Tax Department"
+   ],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "It follows the pattern of a known scam: Fake reward points / refund link or app."
+   ]
+  },
+  {
+   "id": "g10",
+   "cat": "mf_ad",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "sebi_intermediary"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Can't verify. Check before you act",
+   "reasons": []
+  },
+  {
+   "id": "g11",
+   "cat": "bill",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.07,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "g12",
+   "cat": "delivery",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.07,
+   "title": "No warning signs. Nothing to verify",
+   "reasons": []
+  },
+  {
+   "id": "g13",
+   "cat": "kyc_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "bank"
+   ],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "No warning signs. Nothing to verify",
+   "reasons": []
+  },
+  {
+   "id": "g14",
+   "cat": "shop_payment",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [
+    "A:UPI_UNVERIFIED"
+   ],
+   "claims": [],
+   "asks": [],
+   "contacts": [
+    "upi:sharmastore@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "We could not link sharmastore@ybl to any verified business."
+   ]
+  },
+  {
+   "id": "g15",
+   "cat": "salary",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "bank:ICICI Bank"
+   ],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "No warning signs. Nothing to verify",
+   "reasons": []
+  },
+  {
+   "id": "g16",
+   "cat": "hindi_personal",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.05,
+   "title": "Can't verify. Check before you act",
+   "reasons": []
+  },
+  {
+   "id": "g17",
+   "cat": "investing_talk",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [],
+   "asks": [],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.07,
+   "title": "No warning signs. Nothing to verify",
+   "reasons": []
+  },
+  {
+   "id": "g18",
+   "cat": "insurance_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "A:DOMAIN_UNVERIFIED"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "url:https://licindia.in"
+   ],
+   "outcome": "ok",
+   "seconds": 0.1,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "We could not verify who owns licindia.in."
+   ]
+  },
+  {
+   "id": "m01",
+   "cat": "screenshot_kyc",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:SMS_HEADER_UNKNOWN",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank:State Bank of India"
+   ],
+   "asks": [],
+   "contacts": [
+    "url:http://sbi-yono-update.co.in/kyc",
+    "sms_header:VK-SBIUPD"
+   ],
+   "outcome": "ok",
+   "seconds": 7.1,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "sbi-yono-update.co.in imitates State Bank of India, but it is not their official site (sbi.bank.in).",
+    "It follows the pattern of a known scam: KYC update / account block phishing."
+   ]
+  },
+  {
+   "id": "m02",
+   "cat": "screenshot_investment",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:UPI_NOT_VALID_FOR_SEBI_CLAIM",
+    "C:ASK_PAY_WITH_PRESSURE"
+   ],
+   "weak": [
+    "A:PHONE_UNVERIFIED",
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "sebi_intermediary:SEBI-registered intermediary"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:vipclub.stocks@ybl",
+    "phone:9000033333"
+   ],
+   "outcome": "ok",
+   "seconds": 5.18,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "vipclub.stocks@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
+    "It asks for money while pushing guaranteed returns."
+   ]
+  },
+  {
+   "id": "m03",
+   "cat": "screenshot_family_hi",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:PHONE_UNVERIFIED",
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:rohit.help22@ybl",
+    "phone:9000044444"
+   ],
+   "outcome": "ok",
+   "seconds": 4.45,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation.",
+    "We could not link rohit.help22@ybl to any verified business.",
+    "We could not verify who uses 9000044444."
+   ]
+  },
+  {
+   "id": "m04",
+   "cat": "screenshot_otp_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "bank:HDFC Bank"
+   ],
+   "asks": [],
+   "contacts": [
+    "sms_header:AX-HDFCBK-T"
+   ],
+   "outcome": "ok",
+   "seconds": 4.57,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "The text names AX-HDFCBK-T, a real header of HDFC Bank. Anyone can type a header: check the sender line in your SMS app."
+   ]
+  },
+  {
+   "id": "m05",
+   "cat": "screenshot_debit_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "A:SMS_HEADER_UNKNOWN"
+   ],
+   "claims": [
+    "bank:State Bank of India"
+   ],
+   "asks": [
+    "call_back"
+   ],
+   "contacts": [
+    "sms_header:JD-SBIUPI-S",
+    "phone:1800111109"
+   ],
+   "outcome": "ok",
+   "seconds": 4.96,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "The SMS sender JD-SBIUPI-S is not a header we can match to a bank."
+   ]
+  },
+  {
+   "id": "m06",
+   "cat": "pdf_court",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:QR_PAYEE_NOT_CLAIMED_ENTITY",
+    "A:UPI_FOR_REGULATOR",
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:court.fine.deposit@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 1.05,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "The QR code pays court.fine.deposit@ybl in the name of \"Mahesh Verma\", not Police / CBI / ED / Customs / Courts.",
+    "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
+    "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like court.fine.deposit@ybl."
+   ]
+  },
+  {
+   "id": "m07",
+   "cat": "pdf_court_scanned",
+   "expect": "red",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule": "R1_two_lane_strong",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "A:QR_PAYEE_NOT_CLAIMED_ENTITY",
+    "A:UPI_FOR_REGULATOR",
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_THREAT"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:court.fine.deposit@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 9.61,
+   "title": "Matches a known scam pattern. Do not pay",
+   "reasons": [
+    "The QR code pays court.fine.deposit@ybl in the name of \"Mahesh Verma\", not Police / CBI / ED / Customs / Courts.",
+    "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
+    "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like court.fine.deposit@ybl."
+   ]
+  },
+  {
+   "id": "m08",
+   "cat": "pdf_bank_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "CONTRADICTED",
+    "B": "NONE",
+    "C": "LOW"
+   },
+   "strong": [
+    "A:DOMAIN_LOOKALIKE"
+   ],
+   "weak": [],
+   "claims": [
+    "bank:Demo Bank"
+   ],
+   "asks": [
+    "call_back"
+   ],
+   "contacts": [
+    "url:https://demobank.bank.in"
+   ],
+   "outcome": "ok",
+   "seconds": 0.44,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "demobank.bank.in imitates Demo Bank, but it is not their official site (demobank.test)."
+   ]
+  },
+  {
+   "id": "m09",
+   "cat": "qr_electricity",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_THREAT"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:bill.clear.help@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 5.22,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
+    "We could not link bill.clear.help@ybl to any verified business.",
+    "It asks for money while pushing threats."
+   ]
+  },
+  {
+   "id": "m10",
+   "cat": "qr_shop_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:sharmastore@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 3.47,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "We could not link sharmastore@ybl to any verified business.",
+    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam."
+   ]
+  },
+  {
+   "id": "m11",
+   "cat": "voice_otp",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank"
+   ],
+   "asks": [
+    "credentials"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 2.58,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing).",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "m12",
+   "cat": "voice_digital_arrest",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_SECRECY",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "regulator:Police / CBI / ED / Customs / Courts",
+    "public_figure:Officer Rathore"
+   ],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 2.29,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
+    "It asks for money while pushing threats.",
+    "It leans on official-sounding authority."
+   ]
+  },
+  {
+   "id": "m13",
+   "cat": "voice_genuine",
+   "expect": "clear",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "NONE"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [],
+   "asks": [],
+   "contacts": [],
+   "outcome": "soft",
+   "seconds": 0.96,
+   "title": "Can't verify. Check before you act",
+   "reasons": []
+  },
+  {
+   "id": "m14",
+   "cat": "video_investment_ad",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_TOO_GOOD",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [
+    "upi:cryptoking@ybl"
+   ],
+   "outcome": "ok",
+   "seconds": 2.58,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",
+    "We could not link cryptoking@ybl to any verified business.",
+    "It asks for money while pushing guaranteed returns, an offer too good to be true."
+   ]
+  },
+  {
+   "id": "m15",
+   "cat": "video_awareness_genuine",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NONE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [
+    "bank"
+   ],
+   "asks": [
+    "call_back"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 2.4,
+   "title": "Can't verify. Check before you act",
+   "reasons": []
+  }
+ ]
+}

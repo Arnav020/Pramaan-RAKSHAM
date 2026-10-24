@@ -19,7 +19,7 @@ _SEBI_INTERMEDIARY = re.compile(
     re.IGNORECASE,
 )
 _SEBI_REGULATOR = re.compile(r"(?:from|by|of)\s+sebi\b|sebi\s+(?:officer|official|notice|department|order)|सेबी\s*(?:अधिकारी|नोटिस)", re.IGNORECASE)
-_GENERIC_BANK = re.compile(r"\byour\s+bank\b|bank\s+(?:manager|official|officer|executive)|customer\s+care|kyc\s+(?:update|expired?|pending)|बैंक\s*(?:मैनेजर|अधिकारी)", re.IGNORECASE)
+_GENERIC_BANK = re.compile(r"\byour\s+bank\b(?!\s+(?:details|account\s+details))|bank\s+(?:manager|official|officer|executive)|customer\s+care|kyc\s+(?:update|expired?|pending)|बैंक\s*(?:मैनेजर|अधिकारी)", re.IGNORECASE)
 _PUBLIC_FIGURE = re.compile(r"\[public figure\]|famous\s+(?:investor|businessman|billionaire)|celebrity|मशहूर\s*निवेशक", re.IGNORECASE)
 
 
@@ -51,8 +51,13 @@ def detect_claims(text: str) -> list[Claim]:
             add(ClaimType.BANK, ent.name, ent.name)
         elif not (ent.id == "sebi" and any(c.type == ClaimType.SEBI_INTERMEDIARY for c in claims)):
             add(ClaimType.REGULATOR, ent.name, ent.name)
+    # OCR of a scanned notice often loses the spaces ("SUPREMECOURTOFINDIA"): long multi-word names are also
+    # looked for in the text with spaces removed (short ones are not, so 'courtesy' never reads as 'court').
+    squashed = re.sub(r"\s+", "", low)
     for r in reg.regulators:  # police / CBI / court style claims (several may apply)
-        if r.id == "police" and any(a.strip() and re.search(rf"\b{re.escape(a.strip())}\b", low) for a in r.aliases):
+        if r.id == "police" and any(a.strip() and (re.search(rf"\b{re.escape(a.strip())}\b", low)
+                                                   or (" " in a.strip() and len(a.strip()) >= 9 and a.strip().replace(" ", "") in squashed))
+                                    for a in r.aliases):
             add(ClaimType.REGULATOR, r.name, "law-enforcement claim")
     m = _GENERIC_BANK.search(t)
     if m and not any(c.type == ClaimType.BANK for c in claims):

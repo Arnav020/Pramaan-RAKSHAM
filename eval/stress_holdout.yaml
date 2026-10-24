@@ -1,0 +1,36 @@
+# STRESS HOLD-OUT: written AFTER the stress-set fixes of 24 Oct 2026 (night), and not used to change any rule.
+# It checks that those fixes generalise beyond the exact sentences in stress_set.yaml, and that genuine messages
+# did not start getting warnings. Same expectations as stress_set.yaml. Still a small, self-written dev check,
+# not a measurement. All names, IDs, numbers and domains are fictional.
+
+items:
+  # scams, phrased differently from stress_set.yaml
+  - {id: h01, expect: red, cat: kyc, text: "Kotak Bank alert: your account is on hold. Complete your e-KYC at kotak-ekyc-verify.in and enter your net banking password to restore access."}
+  - {id: h02, expect: warn, cat: otp, text: "Your Paytm wallet will be closed today. To keep it active please read out the verification code you received to our agent."}
+  - {id: h03, expect: red, cat: tax, text: "Income tax refund of Rs 22,300 approved. Provide your account details on itr-refunds.co to get the money credited within 24 hours."}
+  - {id: h04, expect: warn, cat: challan, text: "Traffic police: overspeeding challan Rs 1,000 unpaid. Pay now on traffic-challan-online.in or your licence will be suspended within 48 hours."}
+  - {id: h05, expect: red, cat: post, text: "India Post: your parcel could not be delivered due to an incomplete address. Pay Rs 25 redelivery charge at indiapost-redelivery.top within 12 hours."}
+  - {id: h06, expect: warn, cat: family, text: "Papa it's me, my phone fell in water so I'm using a friend's number. Please send 8000 on GPay to kavya.help@okicici, I'll explain later, can't talk now."}
+  - {id: h07, expect: warn, cat: wrong_transfer, text: "Sir maine galti se aapko 3000 bhej diye, please wapas kar do, ye UPI hai: sunil.b88@ybl. Bahut zaroori hai."}
+  - {id: h08, expect: warn, cat: job, text: "Congratulations, you are shortlisted for a data entry job at Flipkart, salary Rs 32,000. Pay the Rs 2,100 training kit fee to confirm your joining."}
+  - {id: h09, expect: warn, cat: gift, text: "Hello dear, the gift I sent you from Canada has reached Delhi airport. The customs officer says you must pay Rs 28,000 duty before it is released."}
+  - {id: h10, expect: warn, cat: investment, text: "Our AI trading bot gives 3% daily profit, completely risk-free. Start with Rs 5,000 today, send to aitrade.pro@ybl and see the money grow."}
+  - {id: h11, expect: warn, cat: lottery, text: "Your mobile number won Rs 15 lakh in the Jio anniversary lucky draw. Pay Rs 8,500 GST to claim the prize money."}
+  - {id: h12, expect: warn, cat: remote, text: "Dear customer, to fix your UPI problem please install QuickSupport from Play Store and share the code shown on screen with our technician."}
+  - {id: h13, expect: warn, cat: digital_arrest_hi, text: "मैं सीबीआई अधिकारी बोल रहा हूँ। आपके नाम से ड्रग्स वाला पार्सल पकड़ा गया है। गिरफ़्तारी से बचने के लिए तुरंत 1 लाख रुपये ट्रांसफर करें और किसी को मत बताना।"}
+  - {id: h14, expect: warn, cat: electricity, text: "BSES: Dear customer your power supply will be disconnected tonight. Your bill is pending. Call electricity officer 9123456780 now."}
+  - {id: h15, expect: warn, cat: spaced, text: "U r g e n t: your card is b l o c k e d. Send the O T P to unblock it now."}
+  - {id: h16, expect: warn, cat: insurance, text: "Your old policy maturity of Rs 3,40,000 is pending. Pay the processing charges of Rs 9,800 to release the amount."}
+  # genuine, phrased differently too
+  - {id: k01, expect: not_red, cat: otp_genuine, text: "Use 739204 to log in to your Axis Bank internet banking. Never share this OTP with anyone, including bank staff."}
+  - {id: k02, expect: not_red, cat: credit_alert, text: "Your A/c XX7781 is credited with Rs 3,000 by UPI from PRIYA S. Ref 6612 0091 2231. -Canara Bank"}
+  - {id: k03, expect: not_red, cat: govt_genuine, text: "Your Aadhaar is now linked with your PAN. You can check the status on incometax.gov.in. -Income Tax Department"}
+  - {id: k04, expect: not_red, cat: challan_genuine, text: "A challan of Rs 500 has been issued for vehicle DL01AB1234. View and pay only on echallan.parivahan.gov.in."}
+  - {id: k05, expect: not_red, cat: post_genuine, text: "Your Speed Post article EB123456789IN has been delivered. Track at indiapost.gov.in."}
+  - {id: k06, expect: not_red, cat: family_genuine, text: "Papa, I paid the hostel fee today. Will send you the receipt tonight."}
+  - {id: k07, expect: not_red, cat: refund_genuine, text: "Your refund of Rs 799 for order 4501 has been initiated to your original payment method. It may take 5-7 working days."}
+  - {id: k08, expect: not_red, cat: bill_genuine, text: "Your BSES bill of Rs 2,140 is due on 05 Nov. Pay through the BSES app or website. Ignore if paid."}
+  - {id: k09, expect: not_red, cat: job_genuine, text: "Thank you for applying. Your interview is scheduled on Monday at 11 am. There is no fee at any stage of our hiring process."}
+  - {id: k10, expect: not_red, cat: friend_hinglish, text: "Kal movie ke tickets maine book kar diye, tu 250 bhej dena jab time mile."}
+  - {id: k11, expect: not_red, cat: insurance_genuine, text: "Your LIC policy 12345678 has matured. The maturity amount will be paid to your registered bank account after document verification at the branch."}
+  - {id: k12, expect: not_red, cat: news_hi, text: "पुलिस ने लोगों को चेतावनी दी है कि कोई भी सीबीआई अधिकारी बनकर फ़ोन करे और पैसे माँगे तो तुरंत 1930 पर शिकायत करें।"}

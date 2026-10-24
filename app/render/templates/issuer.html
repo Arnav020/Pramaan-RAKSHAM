@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}{{ issuer.name }} · Pramaan Seal issuer console{% endblock %}
+{% block style %}
+  .grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; margin-top: 14px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.3px; color: var(--muted); text-transform: uppercase; margin: 14px 0 6px; }
+  input[type=text], textarea, select { width: 100%; font: inherit; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); }
+  textarea { min-height: 170px; resize: vertical; line-height: 1.5; }
+  input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+  .seg { display: inline-flex; border: 1.5px solid var(--sage); border-radius: 8px; overflow: hidden; }
+  .seg label { margin: 0; padding: 8px 14px; cursor: pointer; text-transform: none; letter-spacing: 0; font-size: 15px; color: var(--sage); }
+  .seg input { display: none; } .seg input:checked + span { font-weight: 700; }
+  .seg label:has(input:checked) { background: var(--sage); color: #fff; }
+  .fresh { border: 2px solid var(--ok); background: var(--okT); border-radius: 12px; padding: 16px 18px; }
+  .fresh h3 { font-family: var(--serif); margin: 0 0 6px; font-size: 20px; color: var(--ok); }
+  .smsbox { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; white-space: pre-wrap; font-size: 15px; }
+  .list .item { border-bottom: 1px solid var(--line); padding: 10px 2px; display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+  .list .item:last-child { border-bottom: 0; }
+  .status { font-weight: 700; letter-spacing: 1.3px; font-size: 11.5px; padding: 2px 8px; border-radius: 4px; }
+  .status.active { background: var(--okT); color: var(--ok); } .status.revoked { background: var(--badT); color: var(--bad); }
+{% endblock %}
+{% block body %}
+<header class="bar"><a class="brand" href="/">Pramaan<span>प्रमाण</span></a><div class="meta">Pramaan Seal · issuer <b>{{ issuer.name }}</b> <span class="tag-demo">TEST ISSUER</span></div></header>
+<div class="rule2"></div>
+<p class="sub">Seal what {{ issuer.name }} sends. The seal signs the exact text, so customers (and Pramaan) can prove a notice is genuine and spot any edit: a changed amount, account, UPI ID or link.</p>
+
+{% if fresh %}
+<div class="fresh">
+  <h3>✓ Sealed: <span class="mono">{{ fresh.payload.code }}</span></h3>
+  {% if sms %}
+  <p style="margin:0 0 8px">Send this exact SMS. The last line lets anyone verify it.</p>
+  <div class="smsbox">{{ sms }}</div>
+  {% else %}
+  <p style="margin:0 0 10px">Your sealed notice is ready.</p>
+  <div class="row" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn primary" href="/issuer/seal/{{ fresh.payload.code }}.pdf">⬇ PDF</a>
+    <a class="btn" href="/issuer/seal/{{ fresh.payload.code }}.png">⬇ Image</a>
+    <a class="btn" href="/s/{{ fresh.payload.code }}" target="_blank" rel="noopener">Open the seal page</a></div>
+  {% endif %}
+</div>
+{% endif %}
+
+<div class="grid">
+  <form class="panel" method="post" action="/issuer/seal">
+    <h2 style="margin:0 0 4px;font-size:22px">Seal a new message</h2>
+    <div class="seg" role="radiogroup" aria-label="Type">
+      <label><input type="radio" name="doc_type" value="notice" checked><span>Notice (PDF)</span></label>
+      <label><input type="radio" name="doc_type" value="sms"><span>SMS</span></label>
+    </div>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" maxlength="160" required placeholder="Fixed deposit maturity notice">
+    <label for="ref">Reference (optional)</label>
+    <input type="text" id="ref" name="ref" maxlength="40" placeholder="DB/FD/2026/0451">
+    <label for="body">Text</label>
+    <textarea id="body" name="body" maxlength="4000" required placeholder="Dear customer, your fixed deposit of ₹50,000 matures on 1 Nov 2026…"></textarea>
+    <div style="margin-top:14px"><button class="btn primary" type="submit">Seal and issue</button></div>
+  </form>
+  <div class="panel list">
+    <h2 style="margin:0 0 8px;font-size:22px">Issued by {{ issuer.name }}</h2>
+    {% for s in seals %}
+    <div class="item"><span class="status {{ 'revoked' if s.revoked else 'active' }}">{{ 'REVOKED' if s.revoked else 'ACTIVE' }}</span>
+      <a class="mono" href="/s/{{ s.code }}" target="_blank" rel="noopener">{{ s.code }}</a><span>{{ s.title }}</span>
+      <span style="color:var(--muted);font-size:13px">{{ s.doc_type }} · {{ s.issued }}</span></div>
+    {% else %}<p class="sub" style="margin:0">Nothing sealed yet.</p>{% endfor %}
+    <p class="sub" style="margin:12px 0 0;font-size:13px">To withdraw a seal, ask the bank's lead analyst on the Pramaan Desk.</p>
+  </div>
+</div>
+
+<h2 id="video" style="margin-top:30px">Register an official video <span class="tag-demo">LIVE DEMO</span></h2>
+<p class="sub">Source-Match can only find footage that was registered. Record a short clip (10 to 30 seconds) of someone speaking, register it
+as {{ issuer.name }}'s official video, then make a <b>test edit</b>: the same footage with a new recording by the same person saying something else.
+Send the edit to Pramaan and it should find this original and show the changed words side by side. Clips and edits are deleted after 24 hours.</p>
+<div class="grid">
+  <form class="panel" method="post" action="/issuer/video" enctype="multipart/form-data" id="regform">
+    <h3 style="margin:0 0 4px">1 · Register the genuine clip</h3>
+    <label for="vtitle">Title</label>
+    <input type="text" id="vtitle" name="title" maxlength="80" placeholder="Safety message from our branch manager">
+    <label for="vfile">Video, 10 to 30 seconds (record now or choose a file; 80 MB max)</label>
+    <input type="file" id="vfile" name="video" accept="video/*" capture="user" required>
+    <label for="vlang">Spoken language</label>
+    <select id="vlang" name="language"><option value="">Detect</option><option value="en">English</option><option value="hi">Hindi</option></select>
+    <label style="text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink);display:flex;gap:8px;align-items:flex-start">
+      <input type="checkbox" name="consent" value="yes" required style="margin-top:4px">
+      <span>The person in this video agrees to its use in this demonstration, including a labelled test edit. No public figure, no one who has not agreed.</span></label>
+    <div style="margin-top:14px"><button class="btn primary" type="submit">Register (about 10 seconds)</button></div>
+  </form>
+  <div class="panel list">
+    <h3 style="margin:0 0 8px">2 · Make a labelled test edit</h3>
+    {% for vd in videos %}
+    <div class="item" style="display:block{{ ';background:var(--okT);border-radius:8px;padding:10px' if vd.id == new_video else '' }}">
+      <div><span class="status active">REGISTERED</span> <b>{{ vd.title_en }}</b> <span class="mono" style="font-size:12px">{{ vd.id }}</span>
+        <span style="color:var(--muted);font-size:13px">· deleted {{ vd.expires_at|ist }}</span></div>
+      <div style="font-size:14px;color:var(--muted);margin:4px 0 8px">Heard: “{{ vd.transcript[:220] }}{{ '…' if vd.transcript|length > 220 else '' }}”</div>
+      <form method="post" action="/issuer/video/{{ vd.id }}/edit" enctype="multipart/form-data" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <input type="file" name="voice" accept="audio/*,video/*" capture="user" required aria-label="New voice recording">
+        <button class="btn" type="submit">⬇ Make test edit</button>
+      </form>
+      <form method="post" action="/issuer/video/{{ vd.id }}/delete" style="margin-top:6px"><button class="btn danger" type="submit" style="padding:4px 10px;font-size:13px">Delete now</button></form>
+    </div>
+    {% else %}<p class="sub" style="margin:0">No live videos registered.</p>{% endfor %}
+    <p class="sub" style="margin:12px 0 0;font-size:13px">3 · Forward the downloaded edit to the Pramaan bot or the web check. It carries a visible TEST EDIT band; footage is never altered, only the sound track is replaced.</p>
+  </div>
+</div>
+{% endblock %}

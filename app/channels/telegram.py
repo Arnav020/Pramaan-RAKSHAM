@@ -47,8 +47,8 @@ TXT = {
                   "When they open it, they see this check and can call you. (The link works once, for 24 hours.)",
                   "🤝 <b>कुछ करने से पहले किसी भरोसेमंद से पूछें।</b>\nअगला मैसेज अपने बेटे, बेटी या दोस्त को फ़ॉरवर्ड करें। "
                   "वे इसे खोलकर यह जाँच देख सकेंगे और आपको कॉल कर सकेंगे। (लिंक एक बार, 24 घंटे तक चलेगा।)"),
-    "appeal_sent": ("⚖️ Thank you. A bank analyst will review this verdict. If it was wrong, the rules are corrected for everyone. (We don't store who asked.)",
-                    "⚖️ धन्यवाद। बैंक विश्लेषक इस नतीजे की जाँच करेंगे। अगर यह ग़लत था, तो नियम सबके लिए सुधारे जाएँगे। (हम यह नहीं रखते कि किसने पूछा।)"),
+    "appeal_sent": ("⚖️ Thank you. A bank analyst will review this verdict and we'll message you the answer here. Your chat address is deleted as soon as it is answered. Meanwhile, nothing stops you: confirm with the sender's official number and go ahead.",
+                    "⚖️ धन्यवाद। बैंक विश्लेषक इस नतीजे की जाँच करेंगे और जवाब आपको यहीं भेजेंगे। जवाब के बाद आपका चैट पता मिटा दिया जाता है। तब तक आप रुके नहीं हैं: भेजने वाले के आधिकारिक नंबर पर पुष्टि करें और आगे बढ़ें।"),
     "trust_expired": ("This link has expired or was already used. Ask them to send a new one.", "यह लिंक पुराना हो गया है। उनसे नया लिंक भेजने को कहें।"),
     "trust_told": ("✅ <b>Your trusted contact has seen this check and is calling you now.</b>\nPlease don't pay or share any code until you've spoken.",
                    "✅ <b>आपके भरोसेमंद व्यक्ति ने यह जाँच देख ली है और अभी आपको कॉल कर रहे हैं।</b>\nबात होने तक भुगतान न करें, कोई कोड न बताएँ।"),
@@ -206,14 +206,14 @@ class Bot:
 
     def caption(self, rec: Record, lang: str, on_call: bool = False) -> str:
         v = rec.verdict
-        icon = {"RED": "🔴", "AMBER": "🟡", "GREEN": "🟢"}[v.level.value]
+        icon = "⚪" if v.amber_kind == "no_risk_signs" else {"RED": "🔴", "AMBER": "🟡", "GREEN": "🟢"}[v.level.value]
         title = v.title_hi if lang == "hi" else v.title_en
         lines = []
         if on_call:
             en, hi_ = CALL_HEADER[v.level.value]
             lines += [hi_ if lang == "hi" else en, ""]
         lines.append(f"{icon} <b>{title}</b>")
-        if v.amber_kind in ("high_risk", "nothing_to_check") and not on_call:
+        if v.amber_kind in ("high_risk", "nothing_to_check", "no_risk_signs") and not on_call:
             lines.append(f"<i>{v.advice_hi if lang == 'hi' else v.advice_en}</i>")
         for i, r in enumerate(v.reasons[:3], 1):
             lines.append(f"{i}. {r.text_hi if lang == 'hi' else r.text_en}")
@@ -360,7 +360,7 @@ class Bot:
                    else "👪 <b>Family</b>\nAsk someone you trust before you pay, or warn your family about this.")
             await self.call("sendMessage", chat_id=chat_id, text=txt, parse_mode="HTML", reply_markup=json.dumps(self.family_keyboard(rec, lang)))
         elif action == "appeal":
-            await asyncio.to_thread(db.add_appeal, rec.id, "via Telegram")
+            await asyncio.to_thread(db.add_appeal, rec.id, "via Telegram", ("telegram", str(chat_id)))
             await self.call("sendMessage", chat_id=chat_id, text=t("appeal_sent", lang))
         elif action == "watch":
             db.add_watcher(rec.id, "telegram", str(chat_id))

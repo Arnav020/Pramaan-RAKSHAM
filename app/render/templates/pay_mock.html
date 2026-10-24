@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Pay-time check · how a bank app uses Pramaan (mock){% endblock %}
+{% block style %}
+  .stage { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 36px; align-items: start; margin-top: 10px; }
+  @media (max-width: 900px) { .stage { grid-template-columns: 1fr; } .phone { margin: 0 auto; } }
+  .explain h1 { font-family: var(--serif); font-size: 32px; margin: 0 0 10px; line-height: 1.2; }
+  .explain ol { padding-left: 20px; } .explain li { margin: 8px 0; }
+  .ribbon { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 1.6px; color: var(--copper); border: 1.5px solid var(--copperL);
+            border-radius: 6px; padding: 4px 10px; margin-bottom: 12px; }
+  .phone { width: 360px; max-width: 100%; border: 12px solid #1A1D1B; border-radius: 36px; background: #F7F8F7; overflow: clip; position: relative;
+           box-shadow: 0 14px 40px rgba(0,0,0,.18); height: 740px; }
+  .appbar { background: #24423C; color: #fff; padding: 16px 18px 14px; }
+  .appbar .bn { font-family: var(--serif); font-weight: 700; font-size: 19px; }
+  .appbar .mk { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 3px #24423C, inset 0 0 0 5px #D9A46A; vertical-align: -2px; margin-right: 8px; }
+  .appbar .sub2 { font-size: 12px; opacity: .8; margin-top: 2px; }
+  .mockline { background: #F3E5D3; color: #8A5524; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-align: center; padding: 5px; }
+  .screen { padding: 18px; }
+  .screen label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.1px; color: #595C55; text-transform: uppercase; margin: 14px 0 6px; }
+  .screen input { width: 100%; font: 500 17px var(--sans); padding: 12px; border: 1.5px solid #C9CFCC; border-radius: 10px; background: #fff; color: #1A1D1B; }
+  .screen input.mono { font-family: var(--mono); }
+  .screen input:focus-visible { outline: 2px solid #D9A46A; outline-offset: 1px; }
+  .paybtn { width: 100%; margin-top: 22px; font: 700 17px var(--sans); padding: 14px; border: 0; border-radius: 12px; background: #24423C; color: #fff; cursor: pointer; }
+  .hint { font-size: 12.5px; color: #595C55; margin-top: 8px; }
+  .hint a { font-family: var(--mono); cursor: pointer; }
+  .sheet { position: absolute; left: 0; right: 0; bottom: 0; max-height: 88%; overflow-y: auto; background: #fff; border-radius: 22px 22px 0 0; padding: 20px 18px 22px;
+           box-shadow: 0 -10px 30px rgba(0,0,0,.18); transform: translateY(105%); transition: transform .35s ease; visibility: hidden; }
+  .sheet.open { visibility: visible; }
+  .sheet.open { transform: translateY(0); }
+  .sheet .tag { font-size: 11.5px; font-weight: 700; letter-spacing: 1.4px; color: #A8322D; text-transform: uppercase; }
+  .sheet h3 { font-family: var(--serif); font-size: 21px; margin: 4px 0 8px; line-height: 1.25; }
+  .sheet .why { font-size: 14.5px; margin: 0 0 6px; }
+  .sheet .campaign { background: #F5DEDA; border-left: 4px solid #A8322D; border-radius: 0 8px 8px 0; padding: 8px 10px; font-size: 13.5px; margin: 8px 0; }
+  .ring { display: flex; align-items: center; gap: 12px; margin: 12px 0; font-size: 14px; color: #595C55; }
+  .ring svg { flex: none; }
+  .sheet button { width: 100%; font: 700 15.5px var(--sans); padding: 12px; border-radius: 11px; cursor: pointer; margin-top: 8px; }
+  .b1 { background: #24423C; color: #fff; border: 0; } .b2 { background: #fff; color: #24423C; border: 1.5px solid #24423C; }
+  .b3 { background: none; border: 0; color: #595C55; text-decoration: underline; font-weight: 600 !important; }
+  .b3:disabled { color: #A9ACA6; text-decoration: none; cursor: default; }
+  .done { text-align: center; padding: 60px 18px; display: none; }
+  .done .ok { width: 64px; height: 64px; border-radius: 50%; background: #2E7D52; color: #fff; display: grid; place-items: center; font-size: 34px; margin: 0 auto 12px; }
+  @media (prefers-reduced-motion: reduce) { .sheet { transition: none; } }
+{% endblock %}
+{% block body %}
+{% with here="partners" %}{% include "_nav.html" %}{% endwith %}
+<div class="stage">
+  <div class="explain">
+    <div class="ribbon">MOCK · HOW A BANK APP WOULD USE PRAMAAN · NO MONEY MOVES</div>
+    <h1>The last second before the money moves</h1>
+    <p class="sub">Most scams end at the payment screen. A bank app can call Pramaan's Lookup API with the payee's UPI ID, in under a second, before the customer confirms.</p>
+    <ol>
+      <li>Type a payee. Try <b class="mono">profitwealth@ybl</b> after an analyst has confirmed its campaign on the Desk, or a look-alike such as <b class="mono">sbi-kyc-update.in</b>.</li>
+      <li>If Pramaan knows something, the app pauses calmly: what we know, a 30-second pause, and "call someone you trust".</li>
+      <li>"Pay anyway" stays possible. Pramaan never blocks a payment; the bank decides its own friction.</li>
+      <li>A payee with no warning passes silently, so honest payments stay fast.</li>
+    </ol>
+    <p class="sub" style="font-size:14px">API: <span class="mono">GET /api/v1/lookup?q=&lt;UPI ID&gt;</span> with the bank's <span class="mono">X-Pramaan-Key</span>. See <a href="/partners">For banks</a>.</p>
+  </div>
+
+  <div class="phone" role="region" aria-label="Mock bank app">
+    <div class="appbar"><div class="bn"><span class="mk"></span>Demo Bank</div><div class="sub2">Pay to UPI ID · fictional bank</div></div>
+    <div class="mockline">MOCK SCREEN · NO REAL PAYMENT</div>
+    <div class="screen" id="form">
+      <label for="payee">Payee UPI ID</label>
+      <input id="payee" class="mono" placeholder="name@bank" autocomplete="off" spellcheck="false">
+      <div class="hint">Try: <a onclick="fill('profitwealth@ybl')">profitwealth@ybl</a> · <a onclick="fill('demofund.mf@validhdfc')">demofund.mf@validhdfc</a></div>
+      <label for="amount">Amount (₹)</label>
+      <input id="amount" inputmode="numeric" value="10,000">
+      <label for="note">Note</label>
+      <input id="note" value="VIP group membership">
+      <button class="paybtn" onclick="pay()">Pay ₹<span id="amt">10,000</span></button>
+    </div>
+    <div class="done" id="done"><div class="ok">✓</div><h3 style="font-family:var(--serif);margin:0 0 6px">Payment sent (mock)</h3><p class="sub" style="margin:0">No money moved. This screen only shows where Pramaan sits.</p>
+      <button class="b2" style="margin-top:18px;padding:10px 16px;border-radius:10px;cursor:pointer" onclick="reset()">Try another payee</button></div>
+    <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-title">
+      <div class="tag" id="sh-tag">Pause before you pay</div>
+      <h3 id="sh-title"></h3>
+      <p class="why" id="sh-why"></p>
+      <div id="sh-camps"></div>
+      <div class="ring"><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="19" fill="none" stroke="#E2E6E4" stroke-width="5"/>
+        <circle id="arc" cx="22" cy="22" r="19" fill="none" stroke="#B5763A" stroke-width="5" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="0" transform="rotate(-90 22 22)"/></svg>
+        <span>We've paused this payment for <b id="secs">30</b> seconds so you can check.</span></div>
+      <button class="b1" onclick="cancelPay()">Cancel payment</button>
+      <button class="b2" onclick="family()">Call someone I trust first</button>
+      <button class="b3" id="anyway" onclick="payAnyway()" disabled>Pay anyway (<span id="secs2">30</span>)</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+let timer = null;
+const $ = id => document.getElementById(id);
+function fill(v) { $("payee").value = v; }
+$("amount").addEventListener("input", e => $("amt").textContent = e.target.value || "0");
+async function pay() {
+  const q = $("payee").value.trim();
+  if (!q) { $("payee").focus(); return; }
+  let res = null;
+  try { const r = await fetch("/api/v1/lookup?q=" + encodeURIComponent(q)); if (r.ok) res = await r.json(); } catch (e) {}
+  if (!res || !["warning", "pattern"].includes(res.result)) { return done(); }   // nothing known: pass silently
+  $("sh-title").textContent = res.result === "warning" ? "This payee is part of a scam campaign confirmed by bank analysts" : "This payee matches a known scam pattern";
+  const strong = res.facts.find(f => f.strength === "STRONG");
+  const why = res.campaigns.length ? "Bank analysts reviewed reports about this UPI ID and confirmed it is used in a scam." : (strong || {}).text_en || res.advice_en;
+  $("sh-why").textContent = why + (res.seen_30d ? ` ${res.seen_30d} people checked it with Pramaan in the last 30 days.` : "");
+  $("sh-camps").innerHTML = "";
+  for (const c of res.campaigns) { const d = document.createElement("div"); d.className = "campaign"; d.textContent = `${c.title} · confirmed ${c.confirmed_on}`; $("sh-camps").appendChild(d); }
+  $("sheet").classList.add("open"); startTimer();
+}
+function startTimer() {
+  let s = 30; const arc = $("arc"); clearInterval(timer);
+  $("anyway").disabled = true; $("anyway").innerHTML = 'Pay anyway (<span id="secs2">30</span>)';
+  const tick = () => { $("secs").textContent = s; $("secs2").textContent = s; arc.setAttribute("stroke-dashoffset", (119.4 * (30 - s) / 30).toFixed(1));
+    if (s <= 0) { clearInterval(timer); $("anyway").disabled = false; $("anyway").textContent = "Pay anyway"; } s--; };
+  tick(); timer = setInterval(tick, 1000);
+}
+function cancelPay() { clearInterval(timer); $("sheet").classList.remove("open"); $("sh-tag").textContent = "Pause before you pay"; }
+function family() { $("sh-tag").textContent = "Good choice. Call them now; the payment stays paused."; }
+function payAnyway() { clearInterval(timer); $("sheet").classList.remove("open"); done(); }
+function done() { $("form").style.display = "none"; $("done").style.display = "block"; }
+function reset() { $("done").style.display = "none"; $("form").style.display = "block"; $("anyway").innerHTML = 'Pay anyway (<span id="secs2">30</span>)'; }
+</script>
+{% endblock %}

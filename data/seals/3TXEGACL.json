@@ -1,0 +1,16 @@
+{
+ "payload": {
+  "v": 1,
+  "iss": "demobank",
+  "code": "3TXEGACL",
+  "type": "sms",
+  "id": "3TXEGACL",
+  "title": "FD maturity credit",
+  "issued": "2026-10-24T02:31:39+05:30",
+  "th": "a964a8716ce1dfe8b211103c5bafa9d5",
+  "kid": "5986cbf5114e"
+ },
+ "signature": "o93eGHC70oT8uFfBAm5UKJP0JJkxzQeqKO2uBJWhTpNK2OxmGFHk_SDlXJw00YI4uD_kM8zo9EQVYStY45PfCw",
+ "text": "Demo Bank: Rs 50,000 credited to your savings account ending 4821 on maturity of FD-0451. No action needed.",
+ "revoked": null
+}

@@ -29,7 +29,17 @@ def normalise_text(text: str) -> str:
     """Undo common obfuscation: odd Unicode forms, zero-width chars, Hindi digits."""
     text = unicodedata.normalize("NFKC", text or "")
     text = text.translate(_ZERO_WIDTH).translate(_DEVANAGARI_DIGITS)
+    # letters spaced out to slip past filters: "b l o c k e d", "O T P" (three or more single letters in a row)
+    text = _SPACED_LETTERS.sub(lambda m: m.group(0).replace(" ", ""), text)
+    # a link broken at a hyphen across two lines (screenshots, OCR): "http://sbi-yono-\nupdate.co.in" is one address
+    text = _BROKEN_LINK.sub(r"\1", text)
     return text
+
+
+_BROKEN_LINK = re.compile(r"((?:https?://|www\.)[^\s]*-)[ \t]*\n[ \t]*(?=[A-Za-z0-9])")
+
+
+_SPACED_LETTERS = re.compile(r"(?<![A-Za-z])(?:[A-Za-z] ){2,}[A-Za-z](?![A-Za-z])")
 
 
 # UPI IDs look like emails without a TLD: name@handle (handle has no dot).
@@ -38,7 +48,7 @@ _UPI_RE = re.compile(r"(?<![\w.@-])([a-zA-Z0-9][\w.\-]{1,255})\s?@\s?([a-zA-Z][a
 _EMAIL_RE = re.compile(r"(?<![\w.@-])([\w.+\-]+)@([a-zA-Z0-9\-]+(?:\.[a-zA-Z0-9\-]+)+)")
 
 _URL_RE = re.compile(
-    r"(?:(?:https?|hxxps?)://|www\.)[^\s<>\"'()]+"
+    r"(?:(?:https?|hxxps?):/{1,2}|www\.)[^\s<>\"'()]+"
     r"|(?<![\w@./-])(?:[a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z]{2,24}(?:/[^\s<>\"'()]*)?",
     re.IGNORECASE,
 )
@@ -134,16 +144,43 @@ def _norm_phone(raw: str) -> str | None:
     return None
 
 
+def is_ip_host(host: str) -> bool:
+    """'95.141.32.7' (a link with no domain name at all)."""
+    return bool(re.fullmatch(r"(?:\d{1,3}\.){3}\d{1,3}", host or "")) and all(int(x) <= 255 for x in host.split("."))
+
+
 def registrable_domain(host_or_url: str) -> tuple[str, str]:
     """Return (registrable domain, full host). 'https://x.sbi.bank.in/a' -> ('sbi.bank.in', 'x.sbi.bank.in')."""
     s = host_or_url.strip().lower()
-    s = re.sub(r"^(?:https?|hxxps?)://", "", s)
+    s = re.sub(r"^(?:https?|hxxps?):/{1,2}", "", s)
     host = re.split(r"[/?#:]", s, maxsplit=1)[0].strip(".")
     ext = _TLD(host)
     if not ext.suffix:
         return host, host
     reg = ".".join(p for p in (ext.domain, ext.suffix) if p)
+    if reg in FREE_HOSTS and host != reg:
+        # 'invest-best-one.vercel.app' belongs to whoever made it in a minute, not to Vercel
+        reg = ".".join(host.split(".")[-(reg.count(".") + 2):])
     return reg, host
+
+
+# Free hosting platforms: anyone can create <name>.<platform> in minutes, with no registration record
+# and no age of its own. Each such site is its own owner, and a registry lookup would only date the platform.
+FREE_HOSTS = frozenset({
+    "vercel.app", "netlify.app", "github.io", "pages.dev", "workers.dev", "web.app", "firebaseapp.com", "herokuapp.com",
+    "onrender.com", "glitch.me", "replit.app", "repl.co", "surge.sh", "fly.dev", "railway.app", "webflow.io", "framer.app",
+    "framer.website", "carrd.co", "wixsite.com", "weebly.com", "blogspot.com", "wordpress.com", "godaddysites.com",
+    "000webhostapp.com", "ngrok-free.app", "ngrok.io", "azurewebsites.net", "streamlit.app", "gitbook.io", "notion.site",
+})
+
+
+def free_host_platform(host_or_url: str) -> str | None:
+    """'invest-best-one.vercel.app' -> 'vercel.app'; None for an ordinary registered domain."""
+    reg, host = registrable_domain(host_or_url)
+    for p in FREE_HOSTS:
+        if host.endswith("." + p) and reg != p:
+            return p
+    return None
 
 
 def extract_contact_points(text: str) -> list[ContactPoint]:
@@ -180,6 +217,10 @@ def extract_contact_points(text: str) -> list[ContactPoint]:
             continue
         raw = m.group(0).rstrip(".,;:!?)")
         reg, host = registrable_domain(raw)
+        if is_ip_host(host) and re.match(r"(?i)(?:https?|hxxps?):/", raw):
+            # A link to a bare IP address ('http://95.141.32.7:81/login'): no registered name, a classic phishing sign
+            add(ContactType.URL, re.sub(r"(?i)^(?:https?|hxxps?):/{1,2}", "http://", raw), m, raw)
+            continue
         if "." not in reg or reg.replace(".", "").isdigit():
             continue
         ext = _TLD(host)

@@ -2,7 +2,7 @@
 # advisory it comes from. A message "matches" a playbook when enough of its
 # indicator groups are present (see app/lanes/lane_c.py). Update monthly.
 
-version: "2026-10-22"
+version: "2026-10-24"
 
 playbooks:
   - id: investment_vip_group
@@ -159,7 +159,8 @@ playbooks:
     summary_hi: "कोई आपसे OTP, PIN, CVV या पासवर्ड माँगता है। कोई बैंक, नियामक या ऐप कभी ये नहीं माँगता।"
     sources:
       - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
-    required: [secret]
+    # Both ideas are needed: a genuine OTP SMS mentions "OTP" too, but never asks you to share it.
+    required: [secret, share]
     groups:
       secret: ['\botp\b', '\bpin\b', '\bcvv\b', 'password', 'mpin', 'ओटीपी', 'पिन']
       share: ['share', 'tell', 'send', 'give', 'confirm', 'batao', 'बताएं', 'भेजें']
@@ -213,3 +214,61 @@ playbooks:
       forex: ['forex', '\bfx\b', 'currency\s+trading', 'binary\s+option', 'crypto', 'फ़ॉरेक्स']
       profit: ['profit', 'daily\s+returns?', 'earn', 'income', 'मुनाफ']
       pay: ['deposit', 'fund', 'pay', 'usdt', 'जमा']
+
+  # ---- added 24 Oct 2026 (finale night) after the stress test (eval/stress_set.yaml) showed these were not covered
+  - id: family_impersonation
+    name_en: "'Hi Mum, this is my new number' family impersonation"
+    name_hi: "'मम्मी, ये मेरा नया नंबर है' परिवार के नाम पर धोखाधड़ी"
+    summary_en: "Someone texts from an unknown number pretending to be your child or relative, says their phone broke, and needs money urgently. Call them on the number you already have before sending anything."
+    summary_hi: "कोई अनजान नंबर से ख़ुद को आपका बच्चा या रिश्तेदार बताता है, कहता है फ़ोन टूट गया, और तुरंत पैसे माँगता है। कुछ भी भेजने से पहले उन्हें उनके पुराने नंबर पर कॉल करें।"
+    sources:
+      - {title: "ACMA (Australian Government) scam alert: re-emergence of the 'Hi Mum' scam (Jan 2024)", url: "https://www.acma.gov.au/articles/2024-01/scam-alert-re-emergence-hi-mum-scam"}
+    required: [new_number, money]
+    groups:
+      new_number: ['new\s+number', 'phone\s+(?:broke|is\s+broken|got\s+broken|is\s+lost|was\s+stolen|fell|is\s+damaged)', 'lost\s+my\s+phone', 'naya\s+number', 'नया\s+नंबर']
+      money: ['send', 'transfer', '\bpay\b', 'need\s+(?:rs|₹|\d)', 'bhej', 'भेज']
+      relation: ['\b(?:hi|hello|hey)\s+(?:mom|mum|mummy|maa|dad|papa|daddy)\b', '\b(?:mom|mum|mummy|papa|beta|didi)\b', 'मम्मी', 'पापा']
+      evasion: ['don''?t\s+call', 'can''?t\s+(?:talk|call)', 'explain\s+later', 'call\s+mat', 'urgent', 'कॉल\s+मत']
+
+  - id: accidental_transfer
+    name_en: "'I sent money to you by mistake' refund trick"
+    name_hi: "'गलती से आपको पैसे भेज दिए' वापसी वाली चाल"
+    summary_en: "A stranger says they sent you money by mistake and asks you to send it back, often after a fake credit SMS or with a collect request. A real wrong transfer is reversed through the banks' dispute process: check your own account statement first and never send money or enter your PIN because of a message."
+    summary_hi: "कोई अजनबी कहता है कि उसने गलती से आपको पैसे भेज दिए और वापस माँगता है, अक्सर नकली क्रेडिट SMS या कलेक्ट रिक्वेस्ट के साथ। असली गलत ट्रांसफ़र बैंकों की शिकायत प्रक्रिया से लौटता है: पहले अपना खाता विवरण देखें, और मैसेज के कहने पर न पैसे भेजें, न PIN डालें।"
+    sources:
+      - {title: "Business Today: how to get money back from a wrong UPI transfer, RBI guidelines (Aug 2024)", url: "https://www.businesstoday.in/amp/personal-finance/news/story/upi-rules-how-to-get-money-back-if-paid-a-wrong-upi-address-here-are-rbis-guidelines-442277-2024-08-20"}
+    required: [mistake, back]
+    groups:
+      mistake: ['by\s+mistake', 'wrong(?:ly)?\s+(?:sent|transferred)', 'sent\s+(?:it\s+)?to\s+(?:the\s+)?wrong', 'galti\s+se', 'गलती\s+से', 'accidentally\s+(?:sent|transferred)']
+      back: ['\breturn', 'send\s+(?:it\s+)?back', 'refund\s+(?:it|me)', 'wapas', 'वापस']
+      money: ['\brs\b', '₹', '\d{3,}', 'upi', '@']
+      plea: ['please\s+help', 'urgent', 'school\s+fees?', 'hospital', 'medical', 'jaldi']
+
+  - id: gift_parcel_customs
+    name_en: "Gift from abroad held at customs"
+    name_hi: "विदेश से आया तोहफ़ा कस्टम में अटका"
+    summary_en: "An online friend or admirer abroad sends a 'gift', then a fake customs officer asks for clearance fees. Customs never asks you to pay duty into an individual's account or by UPI."
+    summary_hi: "विदेश में बैठा कोई ऑनलाइन दोस्त 'तोहफ़ा' भेजता है, फिर नकली कस्टम अधिकारी क्लियरेंस फ़ीस माँगता है। कस्टम कभी किसी व्यक्ति के खाते या UPI में ड्यूटी नहीं मँगवाता।"
+    sources:
+      - {title: "Business Standard (PTI): Customs warns against calls seeking money for goods clearance (Dec 2017)", url: "https://business-standard.com/amp/article/pti-stories/beware-of-calls-seeking-money-for-goods-clearance-customs-117123100153_1.html"}
+      - {title: "The Week (PTI): Navi Mumbai woman loses Rs 49 lakh to a 'gift' from abroad (Jun 2025)", url: "https://www.theweek.in/wire-updates/national/2025/06/08/bes9-mh-woman-gift-fraud.html"}
+    required: [gift, fee]
+    groups:
+      gift: ['\bgift', 'box\s+(?:with|of|containing)', 'तोहफ़?ा', 'गिफ़्ट']
+      abroad: ['abroad', 'london', '\buk\b', '\busa?\b', 'dubai', 'foreign', 'england', 'canada', 'airport', 'dollars?', 'विदेश']
+      fee: ['customs', 'clearance', '\bduty\b', 'release\s+(?:fee|charges?)', 'कस्टम']
+      money: ['\bpay', 'transfer', 'deposit', '\brs\b', '₹']
+
+  - id: job_fee
+    name_en: "Job offer that asks for a fee first"
+    name_hi: "नौकरी का ऑफ़र जो पहले फ़ीस माँगे"
+    summary_en: "A job, often 'work from home' or with a big company's name, that asks you to pay a registration, training or security fee before you start. Genuine employers do not charge candidates to hire them."
+    summary_hi: "नौकरी का ऑफ़र, अक्सर 'वर्क फ़्रॉम होम' या किसी बड़ी कंपनी के नाम से, जो काम शुरू होने से पहले रजिस्ट्रेशन, ट्रेनिंग या सिक्योरिटी फ़ीस माँगे। असली कंपनियाँ नौकरी देने के लिए उम्मीदवार से पैसे नहीं लेतीं।"
+    sources:
+      - {title: "Bajaj Finserv consumer guide: work-from-home scams in India (secondary source)", url: "https://www.bajajfinserv.in/work-from-home-scam-guide"}
+    required: [job, fee]
+    groups:
+      job: ['\bjob\b', 'work\s+from\s+home', 'vacancy', 'hiring', 'recruitment', 'salary', 'नौकरी']
+      fee: ['registration\s+fee', 'joining\s+fee', 'security\s+deposit', 'training\s+fee', 'kit\s+fee', 'confirm\s+your\s+(?:seat|job|offer|joining)', 'refundable\s+deposit', 'फ़ीस']
+      brand: ['amazon', 'flipkart', '\btcs\b', 'infosys', 'government\s+job', '\bhr\b', 'company']
+      pay: ['\bpay', 'upi', '@', 'transfer', '₹', '\brs\b']

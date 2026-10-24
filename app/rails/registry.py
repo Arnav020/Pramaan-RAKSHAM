@@ -29,6 +29,7 @@ class Entity:
     domains: list[str]
     sms_headers: list[str] = field(default_factory=list)
     collects_money_from_public: bool = True
+    government: bool = False      # a government body: its websites are on gov.in / nic.in
 
 
 @dataclass
@@ -103,7 +104,8 @@ def get_registry() -> Registry:
     banks_d, regs_d, upi_d = _load("banks.json"), _load("regulators.json"), _load("upi.json")
     alert_d, fri_d, sebi_d = _load("alert_list.json"), _load("fri_mock.json"), _load("sebi_register_snapshot.json")
     banks = [Entity(id=b["id"], name=b["name"], kind="bank", aliases=b["aliases"], domains=b["domains"], sms_headers=b.get("sms_headers", [])) for b in banks_d["banks"]]
-    regs = [Entity(id=r["id"], name=r["name"], kind="regulator", aliases=r["aliases"], domains=r["domains"], collects_money_from_public=r.get("collects_money_from_public", False)) for r in regs_d["regulators"]]
+    regs = [Entity(id=r["id"], name=r["name"], kind="regulator", aliases=r["aliases"], domains=r["domains"], collects_money_from_public=r.get("collects_money_from_public", False), government=r.get("government", False))
+            for r in regs_d["regulators"]]
     return Registry(
         banks=banks,
         regulators=regs,

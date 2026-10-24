@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Sign in · Pramaan Seal for institutions{% endblock %}
+{% block style %}
+  .signin { max-width: 460px; margin: 60px auto 20px; }
+  .signin h1 { font-family: var(--serif); font-size: 30px; margin: 0 0 6px; }
+  .signin label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.3px; color: var(--muted); text-transform: uppercase; margin: 18px 0 6px; }
+  .signin input { width: 100%; font: inherit; padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); }
+  .signin input:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+  .err { color: var(--bad); font-weight: 600; margin-top: 12px; }
+{% endblock %}
+{% block body %}
+<header class="bar"><a class="brand" href="/">Pramaan<span>प्रमाण</span></a><div class="meta">Pramaan Seal · for banks and regulators</div></header>
+<div class="rule2"></div>
+<div class="panel signin">
+  <h1>Issuer console</h1>
+  <p class="sub" style="margin:0">Sign the notices and SMS your institution sends, so customers can prove what is genuine.</p>
+  <form method="post" action="/issuer/login" autocomplete="off">
+    <label for="token">Issuer token</label>
+    <input id="token" name="token" type="password" required autofocus>
+    <div style="margin-top:16px"><button class="btn primary" type="submit">Sign in</button></div>
+  </form>
+  {% if error %}<div class="err">{{ error }}</div>{% endif %}
+</div>
+{% endblock %}

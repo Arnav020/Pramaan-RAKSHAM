@@ -1,0 +1,295 @@
+{
+ "generated_at": "2026-10-24T11:49:34.074809+00:00",
+ "seconds": 31.0,
+ "paraphrase": {
+  "semantic_off": {
+   "original": {
+    "flagged": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 19,
+     "n": 20,
+     "p": 0.95
+    }
+   },
+   "hinglish": {
+    "flagged": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8
+    }
+   },
+   "formal": {
+    "flagged": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8
+    }
+   },
+   "typos": {
+    "flagged": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8
+    }
+   },
+   "hindi": {
+    "flagged": {
+     "k": 15,
+     "n": 20,
+     "p": 0.75
+    },
+    "red": {
+     "k": 3,
+     "n": 20,
+     "p": 0.15
+    },
+    "playbook_named": {
+     "k": 13,
+     "n": 20,
+     "p": 0.65
+    }
+   }
+  },
+  "semantic_on": {
+   "original": {
+    "flagged": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 19,
+     "n": 20,
+     "p": 0.95
+    }
+   },
+   "hinglish": {
+    "flagged": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    }
+   },
+   "formal": {
+    "flagged": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 20,
+     "n": 20,
+     "p": 1.0
+    }
+   },
+   "typos": {
+    "flagged": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    },
+    "red": {
+     "k": 5,
+     "n": 20,
+     "p": 0.25
+    },
+    "playbook_named": {
+     "k": 17,
+     "n": 20,
+     "p": 0.85
+    }
+   },
+   "hindi": {
+    "flagged": {
+     "k": 15,
+     "n": 20,
+     "p": 0.75
+    },
+    "red": {
+     "k": 3,
+     "n": 20,
+     "p": 0.15
+    },
+    "playbook_named": {
+     "k": 16,
+     "n": 20,
+     "p": 0.8
+    }
+   }
+  },
+  "n_scams": 20
+ },
+ "unseen": {
+  "families": {
+   "delivery_phishing": {
+    "n": 1,
+    "flagged_with_playbook": 1,
+    "flagged_without": 0,
+    "named_other_pattern": 1,
+    "never_green": 1
+   },
+   "digital_arrest": {
+    "n": 6,
+    "flagged_with_playbook": 5,
+    "flagged_without": 5,
+    "named_other_pattern": 2,
+    "never_green": 6
+   },
+   "fake_loan": {
+    "n": 2,
+    "flagged_with_playbook": 2,
+    "flagged_without": 2,
+    "named_other_pattern": 1,
+    "never_green": 2
+   },
+   "fake_regulator_notice": {
+    "n": 4,
+    "flagged_with_playbook": 4,
+    "flagged_without": 3,
+    "named_other_pattern": 1,
+    "never_green": 4
+   },
+   "fake_trading_app": {
+    "n": 1,
+    "flagged_with_playbook": 1,
+    "flagged_without": 1,
+    "named_other_pattern": 0,
+    "never_green": 1
+   },
+   "investment_vip_group": {
+    "n": 6,
+    "flagged_with_playbook": 6,
+    "flagged_without": 6,
+    "named_other_pattern": 4,
+    "never_green": 6
+   },
+   "kyc_phishing": {
+    "n": 6,
+    "flagged_with_playbook": 5,
+    "flagged_without": 2,
+    "named_other_pattern": 3,
+    "never_green": 6
+   },
+   "lottery_fee": {
+    "n": 2,
+    "flagged_with_playbook": 2,
+    "flagged_without": 2,
+    "named_other_pattern": 0,
+    "never_green": 2
+   },
+   "otp_vishing": {
+    "n": 3,
+    "flagged_with_playbook": 3,
+    "flagged_without": 3,
+    "named_other_pattern": 1,
+    "never_green": 3
+   },
+   "remote_access": {
+    "n": 1,
+    "flagged_with_playbook": 1,
+    "flagged_without": 1,
+    "named_other_pattern": 1,
+    "never_green": 1
+   },
+   "reward_refund_phishing": {
+    "n": 4,
+    "flagged_with_playbook": 4,
+    "flagged_without": 2,
+    "named_other_pattern": 1,
+    "never_green": 4
+   },
+   "task_job_scam": {
+    "n": 2,
+    "flagged_with_playbook": 1,
+    "flagged_without": 1,
+    "named_other_pattern": 2,
+    "never_green": 2
+   },
+   "unauthorised_forex": {
+    "n": 1,
+    "flagged_with_playbook": 1,
+    "flagged_without": 1,
+    "named_other_pattern": 1,
+    "never_green": 1
+   },
+   "utility_disconnection": {
+    "n": 2,
+    "flagged_with_playbook": 0,
+    "flagged_without": 0,
+    "named_other_pattern": 0,
+    "never_green": 2
+   }
+  },
+  "total": {
+   "n": 41,
+   "flagged_with_playbook": 36,
+   "flagged_without": 29,
+   "named_other_pattern": 18,
+   "never_green": 41
+  }
+ },
+ "notes": [
+  "Rewrites are made by the AI extractor's model (Groq gpt-oss) from frozen TEST scams; synthetic, never used for tuning.",
+  "flagged = red, or the request recognised as high-risk (Lane C HIGH).",
+  "Unseen-family items: test and public text scams, grouped by the playbook the full system matched."
+ ]
+}

@@ -1,0 +1,135 @@
+{
+ "split": "dev",
+ "n_scam": 6,
+ "n_genuine_or_benign": 9,
+ "scam_raw_min": 0.017,
+ "scam_raw_median": 0.0535,
+ "genuine_raw_max": 0.016,
+ "genuine_raw_median": -0.069,
+ "thresholds": {
+  "match": 0.035,
+  "strong": 0.065
+ },
+ "items": [
+  {
+   "id": "d01",
+   "label": "scam",
+   "raw": 0.041
+  },
+  {
+   "id": "d02",
+   "label": "scam",
+   "raw": 0.044
+  },
+  {
+   "id": "d03",
+   "label": "scam",
+   "raw": 0.065
+  },
+  {
+   "id": "d04",
+   "label": "scam",
+   "raw": 0.082
+  },
+  {
+   "id": "d05",
+   "label": "scam",
+   "raw": 0.017
+  },
+  {
+   "id": "d06",
+   "label": "scam",
+   "raw": 0.063
+  },
+  {
+   "id": "d07",
+   "label": "genuine",
+   "raw": 0.016
+  },
+  {
+   "id": "d08",
+   "label": "genuine",
+   "raw": -1.0
+  }
+ ],
+ "benign": [
+  {
+   "text": "Happy Diwali to you and your family, see you at dinner on Sunday.",
+   "raw": -0.04
+  },
+  {
+   "text": "Your order has been shipped and will arrive on Thursday.",
+   "raw": -0.069
+  },
+  {
+   "text": "Meeting moved to 4 pm, please bring the printed report.",
+   "raw": -0.134
+  },
+  {
+   "text": "Rs 2,000 credited to your account from Ramesh via UPI. Available balance Rs 14,560.",
+   "raw": -0.003
+  },
+  {
+   "text": "Your electricity bill of Rs 1,240 is generated. Pay by 30 Oct through the official app.",
+   "raw": -0.012
+  },
+  {
+   "text": "Demo Bank will never ask for your OTP, PIN or password. Report fraud on 1930.",
+   "raw": -1.0
+  },
+  {
+   "text": "Mom, I reached the hostel safely, will call you at night.",
+   "raw": -0.076
+  }
+ ],
+ "matches": [
+  {
+   "id": "d01",
+   "label": "scam",
+   "best": 0.041,
+   "playbook": "money_doubling"
+  },
+  {
+   "id": "d02",
+   "label": "scam",
+   "best": 0.044,
+   "playbook": "investment_vip_group"
+  },
+  {
+   "id": "d03",
+   "label": "scam",
+   "best": 0.065,
+   "playbook": "digital_arrest"
+  },
+  {
+   "id": "d04",
+   "label": "scam",
+   "best": 0.082,
+   "playbook": "kyc_phishing"
+  },
+  {
+   "id": "d05",
+   "label": "scam",
+   "best": null,
+   "playbook": null
+  },
+  {
+   "id": "d06",
+   "label": "scam",
+   "best": 0.063,
+   "playbook": "otp_vishing"
+  },
+  {
+   "id": "d07",
+   "label": "genuine",
+   "best": null,
+   "playbook": null
+  },
+  {
+   "id": "d08",
+   "label": "genuine",
+   "best": null,
+   "playbook": null
+  }
+ ]
+}

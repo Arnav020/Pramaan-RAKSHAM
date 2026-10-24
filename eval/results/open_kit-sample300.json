@@ -1,0 +1,3057 @@
+{
+ "generated_at": "2026-10-24T11:26:53.080098+00:00",
+ "seconds": 23.7,
+ "dataset": {
+  "citation": "Mishra, S. and Soni, D. (2022). SMS Phishing Dataset for Machine Learning and Pattern Recognition. Mendeley Data, V1. doi:10.17632/f45bkkt8pr.1. CC BY 4.0.",
+  "url": "https://data.mendeley.com/public-files/datasets/f45bkkt8pr/files/edb361de-918d-469f-9106-e84823830665/file_downloaded",
+  "sha256": "9bbf3188fdad81495d8e82825648b9b63b53fc86841a3d26c02629990b233cc3",
+  "n_total": 5971,
+  "n_run": 300,
+  "sample": 300,
+  "label_note": "LABEL values are lower-cased (the file mixes 'Smishing'/'smishing', 'Spam'/'spam')."
+ },
+ "config": {
+  "rules_version": "2.2",
+  "llm": false,
+  "semantic": "on",
+  "site_visits": false,
+  "detectors": false
+ },
+ "tuned_on_this_set": false,
+ "per_label": {
+  "ham": {
+   "n": 243,
+   "tiers": {
+    "WARN": 0,
+    "CHECK": 13,
+    "CLEAR": 230
+   },
+   "levels": {
+    "AMBER": 243
+   },
+   "warned": {
+    "k": 0,
+    "n": 243,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.0156
+    ]
+   },
+   "not_clear": {
+    "k": 13,
+    "n": 243,
+    "p": 0.0535,
+    "ci95": [
+     0.0315,
+     0.0894
+    ]
+   },
+   "red": {
+    "k": 0,
+    "n": 243,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.0156
+    ]
+   },
+   "top_signals": [
+    [
+     "PRESSURE_THREAT",
+     4
+    ],
+    [
+     "PLAYBOOK_MATCH",
+     3
+    ],
+    [
+     "PRESSURE_URGENCY",
+     2
+    ],
+    [
+     "DOMAIN_UNVERIFIED",
+     1
+    ],
+    [
+     "DOMAIN_FREE_HOSTING",
+     1
+    ],
+    [
+     "PRESSURE_SECRECY",
+     1
+    ]
+   ]
+  },
+  "smishing": {
+   "n": 32,
+   "tiers": {
+    "WARN": 0,
+    "CHECK": 29,
+    "CLEAR": 3
+   },
+   "levels": {
+    "AMBER": 32
+   },
+   "warned": {
+    "k": 0,
+    "n": 32,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1072
+    ]
+   },
+   "not_clear": {
+    "k": 29,
+    "n": 32,
+    "p": 0.9062,
+    "ci95": [
+     0.7578,
+     0.9676
+    ]
+   },
+   "red": {
+    "k": 0,
+    "n": 32,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1072
+    ]
+   },
+   "top_signals": [
+    [
+     "PHONE_UNVERIFIED",
+     18
+    ],
+    [
+     "DOMAIN_UNVERIFIED",
+     5
+    ],
+    [
+     "PLAYBOOK_MATCH",
+     4
+    ],
+    [
+     "PRESSURE_URGENCY",
+     3
+    ],
+    [
+     "PHONE_MOBILE_FOR_INSTITUTION",
+     3
+    ],
+    [
+     "EMAIL_DOMAIN_UNVERIFIED",
+     1
+    ]
+   ]
+  },
+  "spam": {
+   "n": 25,
+   "tiers": {
+    "WARN": 1,
+    "CHECK": 14,
+    "CLEAR": 10
+   },
+   "levels": {
+    "AMBER": 25
+   },
+   "warned": {
+    "k": 1,
+    "n": 25,
+    "p": 0.04,
+    "ci95": [
+     0.0071,
+     0.1954
+    ]
+   },
+   "not_clear": {
+    "k": 15,
+    "n": 25,
+    "p": 0.6,
+    "ci95": [
+     0.4074,
+     0.766
+    ]
+   },
+   "red": {
+    "k": 0,
+    "n": 25,
+    "p": 0.0,
+    "ci95": [
+     0,
+     0.1332
+    ]
+   },
+   "top_signals": [
+    [
+     "PHONE_UNVERIFIED",
+     8
+    ],
+    [
+     "DOMAIN_UNVERIFIED",
+     7
+    ],
+    [
+     "UPI_UNVERIFIED",
+     2
+    ],
+    [
+     "PLAYBOOK_MATCH",
+     1
+    ],
+    [
+     "ASK_PRIVATE_GROUP",
+     1
+    ],
+    [
+     "DOMAIN_SHORTENER",
+     1
+    ]
+   ]
+  }
+ },
+ "failures": {
+  "smishing_cleared": [
+   {
+    "id": "m4596",
+    "text": "BangBabes Ur order is on the way. U SHOULD receive a Service Msg 2 download UR content. If U do not, GoTo wap. bangb. tv on UR mobile internet/service menu",
+    "said": []
+   },
+   {
+    "id": "m5816",
+    "text": "Promotion Number: 8714714 - UR awarded a City Break and could WIN a £200 Summer Shopping spree every WK. Txt STORE to 88039 . SkilGme. TsCs087147403231Winawk!Age16 £1.50perWKsub",
+    "said": []
+   },
+   {
+    "id": "m1443",
+    "text": "Congratulations, Your entry into our contest last month made you a WINNER! Goto http://www.apple.com.text.won.com�to claim your prize! You have 24 hours to claim",
+    "said": []
+   }
+  ],
+  "ham_warned": [],
+  "ham_red": []
+ },
+ "latency_s": {
+  "p50": 0.04,
+  "p95": 0.13
+ },
+ "items": [
+  {
+   "id": "m3274",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1534",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4007",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0493",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PRESSURE_THREAT"
+   ]
+  },
+  {
+   "id": "m0738",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5431",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0956",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3708",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5891",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0600",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5137",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2178",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0377",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0878",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4393",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4242",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0713",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2425",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0923",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5577",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4302",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0613",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5719",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1252",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2257",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5892",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0637",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5828",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5917",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4026",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0510",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2239",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0475",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5630",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1351",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2913",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4256",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1472",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5475",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1194",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5767",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3121",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5665",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1844",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1045",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5876",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5771",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1917",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3776",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0989",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5548",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0645",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5710",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0617",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2087",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5020",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5389",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PRESSURE_THREAT"
+   ]
+  },
+  {
+   "id": "m4337",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3175",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4709",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4583",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3664",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3018",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2508",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1836",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2464",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0835",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5801",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3022",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5325",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5008",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3476",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4542",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2895",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0745",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m1197",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5183",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1673",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3464",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1547",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4948",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4277",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0400",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0787",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5644",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5788",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3172",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3446",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3543",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5024",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5858",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4613",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0703",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0951",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2719",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4803",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0666",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0626",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3132",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5838",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4515",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2861",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3911",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3511",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PRESSURE_THREAT"
+   ]
+  },
+  {
+   "id": "m0237",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4675",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3598",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1714",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1187",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4995",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0611",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2212",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2890",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1309",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2495",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4040",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3965",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5022",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0822",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1692",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4545",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4086",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5563",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2797",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1390",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4366",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5569",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2803",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4215",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3634",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3854",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2325",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1536",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0846",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1798",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1540",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2336",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2352",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0126",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4907",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5952",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1858",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2650",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2834",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0041",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1485",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4254",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_THREAT"
+   ]
+  },
+  {
+   "id": "m5418",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3742",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5726",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3224",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1269",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5217",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_FREE_HOSTING"
+   ]
+  },
+  {
+   "id": "m0551",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4620",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5656",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3984",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4042",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4052",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3999",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1051",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4875",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4067",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0640",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1943",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0688",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2117",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4465",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1646",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1116",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3445",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0537",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1037",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0001",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5730",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5437",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1029",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3686",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0265",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0719",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2106",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3817",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1511",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2544",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3514",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3693",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4806",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1243",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1170",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4940",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4713",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4866",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ]
+  },
+  {
+   "id": "m4897",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3153",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0877",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1471",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1036",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3468",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2672",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4847",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1638",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5228",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0242",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2081",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5356",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3665",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1494",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5499",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0281",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5355",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3000",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PRESSURE_SECRECY"
+   ]
+  },
+  {
+   "id": "m0925",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2635",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5252",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3719",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1698",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3601",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2254",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5398",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5483",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5093",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ]
+  },
+  {
+   "id": "m3334",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2256",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1988",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2413",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4071",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2290",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2034",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5242",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4985",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3599",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0299",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0289",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2811",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4781",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2612",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1972",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3484",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4528",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3538",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3697",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0821",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2234",
+   "label": "ham",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0942",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2109",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED",
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m4462",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m1776",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED",
+    "PRESSURE_URGENCY"
+   ]
+  },
+  {
+   "id": "m3190",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m1862",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m4596",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5816",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0005",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m4553",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m3261",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED",
+    "PLAYBOOK_MATCH"
+   ]
+  },
+  {
+   "id": "m0743",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_MOBILE_FOR_INSTITUTION"
+   ]
+  },
+  {
+   "id": "m1163",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m3687",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m1795",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m4547",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_MOBILE_FOR_INSTITUTION"
+   ]
+  },
+  {
+   "id": "m1630",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ]
+  },
+  {
+   "id": "m4068",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m3149",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m0788",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED",
+    "PLAYBOOK_MATCH"
+   ]
+  },
+  {
+   "id": "m3761",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4365",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m3795",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED",
+    "PLAYBOOK_MATCH",
+    "PRESSURE_URGENCY"
+   ]
+  },
+  {
+   "id": "m1443",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1581",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1242",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_MOBILE_FOR_INSTITUTION"
+   ]
+  },
+  {
+   "id": "m0233",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "EMAIL_DOMAIN_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m1417",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m5535",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m4413",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m1384",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m5829",
+   "label": "smishing",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m5147",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m3630",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m3011",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED",
+    "UPI_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m4011",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5887",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2208",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m0949",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m3429",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED",
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m0820",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0114",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m0086",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m4970",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4433",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED",
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m3976",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED",
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m0634",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED",
+    "PLAYBOOK_MATCH"
+   ]
+  },
+  {
+   "id": "m3328",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m4617",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "ASK_PRIVATE_GROUP",
+    "UPI_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m5885",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "PHONE_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m0842",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m2801",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5379",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED"
+   ]
+  },
+  {
+   "id": "m1149",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m5130",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_SHORTENER"
+   ]
+  },
+  {
+   "id": "m5408",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
+   "rule": "R5_default_cant_verify",
+   "codes": []
+  },
+  {
+   "id": "m1271",
+   "label": "spam",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "codes": [
+    "DOMAIN_UNVERIFIED"
+   ]
+  }
+ ]
+}
