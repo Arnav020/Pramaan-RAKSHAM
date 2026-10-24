@@ -203,11 +203,31 @@ def check_phone(cp: ContactPoint, ex: Extraction) -> list[Signal]:
     elif p.startswith(("1800", "1860")):
         sigs.append(_sig("PHONE_TOLL_FREE", Strength.INFO, phone=p))
     elif len(p) == 10 and p[0] in "6789":
-        if _has_claim(ex, ClaimType.BANK, ClaimType.NBFC, ClaimType.REGULATOR):
+        if _has_claim(ex, ClaimType.BANK, ClaimType.NBFC, ClaimType.REGULATOR) and _staff_number(ex.text, p):
+            # "call your RM Ravi on 98...": individual bank staff do use mobiles; a helpline or "officer" never does
+            sigs.append(_sig("PHONE_MOBILE_STAFF", Strength.WEAK, "trai_1600", phone=p))
+        elif _has_claim(ex, ClaimType.BANK, ClaimType.NBFC, ClaimType.REGULATOR):
             sigs.append(_sig("PHONE_MOBILE_FOR_INSTITUTION", Strength.STRONG, "trai_1600", phone=p))
         else:
             sigs.append(_sig("PHONE_UNVERIFIED", Strength.WEAK, phone=p))
     return sigs
+
+
+# "your RM / your loan officer / your agent" names one staff member; scams say "our officer / our customer care".
+_STAFF_ROLE = re.compile(r"\b(?:relationship\s+manager|branch\s+manager|personal\s+banker|policy\s+agent"
+                         r"|your\s+(?:rm|agent|loan\s+officer|account\s+manager|branch))\b", re.IGNORECASE)
+
+
+def _staff_number(text: str, phone: str) -> bool:
+    """The number is given as a named staff member's (within a few words before it), not as a helpline."""
+    digits = re.sub(r"\D", "", text)
+    if phone not in digits:
+        return False
+    for m in _STAFF_ROLE.finditer(text):
+        after = re.sub(r"\D", "", text[m.end():m.end() + 45])
+        if after.startswith(phone) or phone in after[:12]:
+            return True
+    return False
 
 
 # --------------------------------------------------------------- SMS header etc.

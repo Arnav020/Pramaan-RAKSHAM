@@ -1,0 +1,104 @@
+{
+ "generated_at": "2026-10-24T19:59:48.827890+00:00",
+ "gates_frozen_at": "2026-10-25T01:30:00+05:30",
+ "passed": 12,
+ "total": 12,
+ "gates": [
+  {
+   "id": "frozen_test_no_false_red",
+   "status": "PASS",
+   "measured": 0,
+   "target": "== 0",
+   "why": "No genuine message in the frozen test split is ever marked red.",
+   "file": "latest.json"
+  },
+  {
+   "id": "public_no_false_red",
+   "status": "PASS",
+   "measured": 0,
+   "target": "== 0",
+   "why": "No genuine official advisory quoted from the news is marked red.",
+   "file": "latest.json"
+  },
+  {
+   "id": "open_ham_red_rate",
+   "status": "PASS",
+   "measured": 0.0,
+   "target": "<= 0.001",
+   "why": "At most 1 in 1,000 legitimate SMS in a public dataset we never trained on is marked red.",
+   "file": "open_kit.json"
+  },
+  {
+   "id": "open_ham_warn_rate",
+   "status": "PASS",
+   "measured": 0.0004,
+   "target": "<= 0.005",
+   "why": "At most 1 in 200 legitimate SMS is told \"don't act\".",
+   "file": "open_kit.json"
+  },
+  {
+   "id": "frozen_test_genuine_warned",
+   "status": "PASS",
+   "measured": 0.0,
+   "target": "<= 0.04",
+   "why": "At most 1 in 25 genuine test items is told \"don't act\".",
+   "file": "latest.json"
+  },
+  {
+   "id": "frozen_test_no_scam_cleared",
+   "status": "PASS",
+   "measured": 0,
+   "target": "== 0",
+   "why": "No scam in the frozen test split is cleared.",
+   "file": "latest.json"
+  },
+  {
+   "id": "public_no_scam_cleared",
+   "status": "PASS",
+   "measured": 0,
+   "target": "== 0",
+   "why": "No real scam quoted from the news is cleared.",
+   "file": "latest.json"
+  },
+  {
+   "id": "frozen_test_scams_warned",
+   "status": "PASS",
+   "measured": 0.9231,
+   "target": ">= 0.85",
+   "why": "At least 85% of test scams get a \"don't act\" warning, not only \"check first\".",
+   "file": "latest.json"
+  },
+  {
+   "id": "open_smishing_cleared",
+   "status": "PASS",
+   "measured": 0.0721,
+   "target": "<= 0.1",
+   "why": "At most 10% of phishing SMS in the open dataset are cleared (most are UK/US prize texts with no Indian rail to check).",
+   "file": "open_kit.json"
+  },
+  {
+   "id": "redteam_defended",
+   "status": "PASS",
+   "measured": true,
+   "target": "== True",
+   "why": "Every red-team attack that is not a declared known miss is defended.",
+   "file": "redteam.json"
+  },
+  {
+   "id": "spotcheck_no_hard_errors",
+   "status": "PASS",
+   "measured": 0,
+   "target": "== 0",
+   "why": "In the jury spot-check kit, no scam is cleared and no genuine item is marked red.",
+   "file": "spotcheck.json"
+  },
+  {
+   "id": "spotcheck_pass_rate",
+   "status": "PASS",
+   "measured": 0.9184,
+   "target": ">= 0.9",
+   "why": "At least 90% of kit items get exactly the expected kind of answer.",
+   "file": "spotcheck.json"
+  }
+ ]
+}

@@ -135,3 +135,74 @@ def test_money_doubling_poster_text_is_high_risk():
 def test_genuine_sip_ad_is_not_warned():
     r = v("Start investing in mutual funds with a SIP from Rs 500 a month. Mutual fund investments are subject to market risks.")
     assert r.level != VerdictLevel.RED and r.amber_kind != "high_risk"
+
+
+def test_kyc_script_with_a_bare_lookalike_domain_and_mobile_is_red():
+    # Before: only Lane A was strong (look-alike domain, mobile for a bank); the KYC playbook missed the bare address.
+    r = v("Your SBI KYC expires today, update at sbi-kyc-update.in or call 9123456780")
+    assert r.level == VerdictLevel.RED
+
+
+# ---------------------------------------------------------------- 25 Oct, after the blind set: no new false reds
+GENUINE_STAFF = (
+    "Dear HDFC Bank customer, your relationship manager Ravi (9876543210) will call you today about your pending KYC update. You can also visit your branch.",
+    "SBI: Your KYC update is due by 31 Dec. Please visit your branch or call your branch manager on 9812345678 for help. Never share OTP.",
+    "ICICI Bank: Your credit card bill of Rs 12,400 is due tomorrow. Pay via iMobile or call your RM on 9898989898. Late fee applies.",
+    "Axis Bank: Loan EMI of Rs 8,200 is overdue. Please pay today to avoid penalty. For help call your loan officer 9000011111.",
+)
+
+
+def test_genuine_bank_reminders_with_a_staff_mobile_are_never_red():
+    for t in GENUINE_STAFF:
+        r = v(t)
+        assert r.level != VerdictLevel.RED and r.amber_kind != "high_risk", t
+
+
+def test_helpline_or_officer_on_a_mobile_is_still_red():
+    r = v("SBI customer care: your account is blocked. Call our officer on 9123456780 and share the OTP to unblock.")
+    assert r.level == VerdictLevel.RED
+
+
+def test_corroborated_red_needs_lane_a_and_a_script():
+    from app.fusion.engine import corroborated
+    r = v("Your SBI KYC expires today, update at sbi-kyc-update.in or call 9123456780")
+    assert corroborated(r.lanes) and r.level == VerdictLevel.RED
+    r = v("Your KYC is due. Please visit your branch.")      # a script hint alone, nothing contradicted in Lane A
+    assert not corroborated(r.lanes) and r.level != VerdictLevel.RED
+
+
+def test_a_card_bill_is_not_the_instant_loan_scam():
+    r = v("ICICI Bank: Your credit card bill of Rs 12,400 is due tomorrow. Pay via iMobile.")
+    assert not any(s.code == "PLAYBOOK_MATCH" and s.params.get("playbook") == "fake_loan" for s in r.lanes["C"].signals)
+
+
+def test_ai_named_script_alone_is_never_strong():
+    from app.extract.rules_extractor import extract_with_rules
+    from app.lanes.lane_c import run_lane_c
+    ex = extract_with_rules("Your KYC update is pending. You can visit your branch.")
+    ex.ai_script = {"id": "kyc_phishing", "quote": "Your KYC update is pending"}
+    c = run_lane_c(ex)
+    pm = [s for s in c.signals if s.code == "PLAYBOOK_MATCH"]
+    assert pm and pm[0].strength.value == "WEAK" and pm[0].params["method"] in ("ai", "rules+ai")
+
+
+def test_ai_threat_needs_a_real_threat_in_its_quote():
+    from app.extract.extractor import merge_llm
+    from app.extract.rules_extractor import extract_with_rules
+    base = extract_with_rules("Your bill is due tomorrow. Late fee applies.")
+    got = merge_llm(base, {"pressure": [{"type": "threat", "quote": "Late fee applies"}]}, "test")
+    assert Pressure.THREAT not in got.pressure
+
+
+# ---------------------------------------------------------------- 25 Oct, found by the jury kit (public item p02)
+def test_account_is_closed_and_update_pan_by_link():
+    assert Pressure.THREAT in detect_pressure("Your SBI YONO Account is Closed Today")
+    assert AskType.CREDENTIALS in detect_asks("Update your PAN NUMBER in the following link")
+    assert AskType.CLICK_LINK in detect_asks("Update your PAN NUMBER in the following link")
+    assert AskType.PAY in detect_asks("Deposit the processing charges first to claim the prize.")
+
+
+def test_harmless_account_and_link_wording_is_not_a_warning():
+    for t in ("Your account has been credited with Rs 500.", "Please read the link below for our new interest rates."):
+        r = v(t)
+        assert r.level != VerdictLevel.RED and r.amber_kind != "high_risk", t

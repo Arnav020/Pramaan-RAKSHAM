@@ -7,16 +7,22 @@
 #  - Verified sender + any suspicious signal goes to amber and to the analyst.
 #  - Amber is the default when unsure.
 
-version: "2.2"
+version: "2.3"
 # 2.1 (24 Oct 2026): Pramaan Seal replaces the planned C2PA check; unchanged official-channel media is green.
 # 2.2 (24 Oct 2026, finale): green is never given to a message that matches a known scam pattern, even when every
 #      link in it is official (an official link can be pasted into any scam), and a sealed text with a high-risk
 #      ask goes to the analyst instead of green (a hacked issuer account).
+# 2.3 (25 Oct 2026, finale night): corroborated red. Lane A caught a hard contradiction AND Lane C matched a published
+#      scam script with pressure or a request. Still two independent lanes; Lane C need not be strong on its own.
 
 rules:
   - id: R1_two_lane_strong
     verdict: RED
     when: {min_strong_lanes: 2}
+
+  - id: R1b_corroborated
+    verdict: RED
+    when: {corroborated: true}
 
   # A valid Pramaan Seal from a trusted issuer whose content is unchanged: the institution itself vouches for the text.
   - id: R2_sealed_content

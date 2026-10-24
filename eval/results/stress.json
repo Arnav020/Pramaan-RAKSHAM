@@ -1,6 +1,6 @@
 {
  "set": "stress_set",
- "llm": false,
+ "llm": true,
  "sites": false,
  "summary": {
   "ok": 71,
@@ -25,17 +25,20 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "bank:State Bank of India"
    ],
-   "asks": [],
+   "asks": [
+    "click_link"
+   ],
    "contacts": [
     "url:http://sbi-yono-kyc.co.in/update"
    ],
    "outcome": "ok",
-   "seconds": 14.17,
+   "seconds": 11.2,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "sbi-yono-kyc.co.in imitates State Bank of India, but it is not their official site (sbi.bank.in).",
@@ -61,23 +64,26 @@
    ],
    "weak": [
     "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_THREAT",
     "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "bank:HDFC Bank"
    ],
    "asks": [
+    "click_link",
     "credentials"
    ],
    "contacts": [
     "url:https://hdfcbank-verify.top"
    ],
    "outcome": "ok",
-   "seconds": 0.13,
+   "seconds": 0.09,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "hdfcbank-verify.top imitates HDFC Bank, but it is not their official site (hdfc.bank.in).",
-    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these."
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: KYC update / account block phishing."
    ]
   },
   {
@@ -99,19 +105,21 @@
    "weak": [
     "A:DOMAIN_SHORTENER",
     "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "bank"
    ],
    "asks": [
+    "click_link",
     "credentials"
    ],
    "contacts": [
     "url:https://bit.ly/kyc-upd8"
    ],
    "outcome": "ok",
-   "seconds": 0.12,
+   "seconds": 0.11,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
@@ -151,7 +159,7 @@
     "phone:9123400011"
    ],
    "outcome": "ok",
-   "seconds": 0.1,
+   "seconds": 0.11,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "9123400011 is an ordinary mobile number. Banks and financial firms must call customers from 1600-series numbers.",
@@ -185,7 +193,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
@@ -221,7 +229,7 @@
     "url:https://axis-cardlimit.in"
    ],
    "outcome": "ok",
-   "seconds": 0.1,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "axis-cardlimit.in imitates Axis Bank, but it is not their official site (axis.bank.in).",
@@ -244,6 +252,7 @@
    },
    "strong": [
     "A:PHONE_FRI_HIGH",
+    "C:ASK_CREDENTIALS",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
@@ -252,15 +261,18 @@
     "C:PRESSURE_URGENCY"
    ],
    "claims": [],
-   "asks": [],
+   "asks": [
+    "credentials"
+   ],
    "contacts": [
     "phone:9000012345"
    ],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "The number 9000012345 is rated 'VERY_HIGH' on the fraud-risk indicator (demo data).",
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
     "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
    ]
   },
@@ -295,7 +307,7 @@
     "url:https://pnb-kyc-online.com"
    ],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "pnb-kyc-online.com imitates Punjab National Bank, but it is not their official site (pnb.bank.in).",
@@ -352,19 +364,24 @@
     "C": "HIGH"
    },
    "strong": [
-    "C:ASK_CREDENTIALS"
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
    ],
    "weak": [],
-   "claims": [],
+   "claims": [
+    "payment_app:PhonePe"
+   ],
    "asks": [
+    "click_link",
     "credentials"
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.06,
+   "seconds": 0.05,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
-    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these."
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: Fake reward points / refund link or app."
    ]
   },
   {
@@ -385,6 +402,7 @@
    ],
    "weak": [
     "A:UPI_UNVERIFIED",
+    "C:PRESSURE_SECRECY",
     "C:PRESSURE_URGENCY"
    ],
    "claims": [],
@@ -395,12 +413,12 @@
     "upi:aarav.new21@okaxis"
    ],
    "outcome": "ok",
-   "seconds": 0.11,
+   "seconds": 0.1,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation.",
     "We could not link aarav.new21@okaxis to any verified business.",
-    "It pushes you to act immediately."
+    "It asks you to keep this secret from others."
    ]
   },
   {
@@ -421,14 +439,16 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [],
-   "claims": [],
+   "claims": [
+    "public_figure:Flipkart"
+   ],
    "asks": [
     "install_app",
     "remote_access"
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.1,
+   "seconds": 0.08,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Screen-sharing / remote-access app scam.",
@@ -458,7 +478,8 @@
     "C:PRESSURE_URGENCY"
    ],
    "claims": [
-    "regulator:NHAI / FASTag"
+    "regulator:NHAI / FASTag",
+    "payment_app:FASTag"
    ],
    "asks": [
     "pay"
@@ -471,7 +492,8 @@
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like fastag.kyc.help@paytm.",
-    "It asks for money while pushing threats."
+    "It asks for money while pushing threats.",
+    "It follows the pattern of a known scam: KYC update / account block phishing."
    ]
   },
   {
@@ -494,10 +516,12 @@
    "weak": [
     "C:PRESSURE_AUTHORITY",
     "C:PRESSURE_SECRECY",
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
-    "regulator:Police / CBI / ED / Customs / Courts"
+    "regulator:Police / CBI / ED / Customs / Courts",
+    "public_figure:Inspector Sharma"
    ],
    "asks": [
     "pay"
@@ -545,7 +569,7 @@
     "upi:cbi.case.verify@ybl"
    ],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.1,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like cbi.case.verify@ybl.",
@@ -571,7 +595,9 @@
    ],
    "weak": [
     "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "regulator:Police / CBI / ED / Customs / Courts"
@@ -581,12 +607,12 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.06,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for money while pushing threats.",
     "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
-    "It threatens arrest, a block or legal action."
+    "It leans on official-sounding authority."
    ]
   },
   {
@@ -619,11 +645,12 @@
     "url:https://incometax-refund-gov.in"
    ],
    "outcome": "ok",
-   "seconds": 0.07,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "incometax-refund-gov.in imitates Income Tax Department, but it is not their official site (incometax.gov.in).",
-    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these."
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: Fake reward points / refund link or app."
    ]
   },
   {
@@ -641,7 +668,8 @@
    },
    "strong": [
     "A:DOMAIN_LOOKALIKE",
-    "C:ASK_PAY_WITH_PRESSURE"
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
    ],
    "weak": [
     "C:PRESSURE_THREAT",
@@ -658,10 +686,11 @@
     "url:https://echallan-parivahan-pay.com"
    ],
    "outcome": "ok",
-   "seconds": 0.07,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "echallan-parivahan-pay.com imitates Parivahan / e-Challan (Ministry of Road Transport), but it is not their official site (parivahan.gov.in).",
+    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money.",
     "It asks for money while pushing threats."
    ]
   },
@@ -669,25 +698,27 @@
    "id": "s19",
    "cat": "electricity",
    "expect": "warn",
-   "level": "AMBER",
-   "amber_kind": "high_risk",
+   "level": "RED",
+   "amber_kind": null,
    "tier": "WARN",
-   "rule": "R5_default_cant_verify",
+   "rule": "R1_two_lane_strong",
    "lanes": {
-    "A": "UNVERIFIABLE",
+    "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
     "C": "HIGH"
    },
    "strong": [
+    "A:PHONE_MOBILE_FOR_INSTITUTION",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "A:PHONE_UNVERIFIED",
     "C:PRESSURE_AUTHORITY",
     "C:PRESSURE_THREAT",
     "C:PRESSURE_URGENCY"
    ],
-   "claims": [],
+   "claims": [
+    "regulator"
+   ],
    "asks": [
     "call_back"
    ],
@@ -695,12 +726,11 @@
     "phone:9876500001"
    ],
    "outcome": "ok",
-   "seconds": 0.08,
-   "title": "Warning signs of a scam. Don't pay or share anything",
+   "seconds": 0.09,
+   "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
-    "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
-    "We could not verify who uses 9876500001.",
-    "It leans on official-sounding authority."
+    "9876500001 is an ordinary mobile number. Banks and financial firms must call customers from 1600-series numbers.",
+    "It follows the pattern of a known scam: Electricity / utility disconnection threat."
    ]
   },
   {
@@ -718,9 +748,12 @@
    },
    "strong": [
     "A:UPI_FOR_REGULATOR",
+    "C:ASK_PAY_WITH_PRESSURE",
     "C:PLAYBOOK_MATCH"
    ],
-   "weak": [],
+   "weak": [
+    "C:PRESSURE_THREAT"
+   ],
    "claims": [
     "regulator:Reserve Bank of India"
    ],
@@ -731,11 +764,12 @@
     "upi:rbi.helpdesk@axl"
    ],
    "outcome": "ok",
-   "seconds": 0.07,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like rbi.helpdesk@axl.",
-    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
+    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money.",
+    "It asks for money while pushing threats."
    ]
   },
   {
@@ -752,26 +786,29 @@
     "C": "HIGH"
    },
    "strong": [
-    "C:ASK_CREDENTIALS"
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
    ],
    "weak": [
     "C:PRESSURE_AUTHORITY",
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "regulator:Department of Telecommunications / Sanchar Saathi"
    ],
    "asks": [
+    "call_back",
     "credentials"
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.06,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
-    "It leans on official-sounding authority.",
-    "It threatens arrest, a block or legal action."
+    "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
+    "It leans on official-sounding authority."
    ]
   },
   {
@@ -807,11 +844,12 @@
     "upi:vipstocks.club@ibl"
    ],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.1,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "vipstocks.club@ibl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
-    "It asks for money while pushing guaranteed returns."
+    "It asks for money while pushing guaranteed returns.",
+    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ]
   },
   {
@@ -844,7 +882,7 @@
     "url:https://cryptoearnpro.io"
    ],
    "outcome": "ok",
-   "seconds": 0.08,
+   "seconds": 0.1,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Unauthorised forex / crypto trading platform.",
@@ -866,11 +904,13 @@
     "C": "HIGH"
    },
    "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
     "A:LINK_TO_PRIVATE_CHAT",
-    "C:ASK_PRIVATE_GROUP"
+    "C:ASK_PRIVATE_GROUP",
+    "C:PRESSURE_TOO_GOOD"
    ],
    "claims": [],
    "asks": [
@@ -886,7 +926,7 @@
    "reasons": [
     "It follows the pattern of a known scam: Task-based 'part-time job' scam.",
     "The link moves you to a private chat (t.me).",
-    "It invites you into a private group or channel."
+    "It asks for money while pushing an offer too good to be true."
    ]
   },
   {
@@ -903,12 +943,13 @@
     "C": "HIGH"
    },
    "strong": [
-    "C:ASK_PAY_WITH_PRESSURE"
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
    ],
    "weak": [
     "A:LINK_TO_PRIVATE_CHAT",
-    "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_TOO_GOOD"
+    "C:PRESSURE_TOO_GOOD",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [],
    "asks": [
@@ -922,9 +963,9 @@
    "seconds": 0.11,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
-    "It asks for money while pushing an offer too good to be true.",
+    "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam.",
     "The link moves you to a private chat (wa.me).",
-    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam."
+    "It asks for money while pushing an offer too good to be true."
    ]
   },
   {
@@ -984,12 +1025,15 @@
    ],
    "weak": [
     "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_GUARANTEED_RETURNS"
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_TOO_GOOD",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "public_figure"
    ],
    "asks": [
+    "click_link",
     "pay"
    ],
    "contacts": [
@@ -1000,7 +1044,8 @@
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "earnfast.rk@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
-    "It asks for money while pushing guaranteed returns."
+    "It asks for money while pushing guaranteed returns, an offer too good to be true.",
+    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam."
    ]
   },
   {
@@ -1032,7 +1077,7 @@
     "upi:kbc.claim.office@okicici"
    ],
    "outcome": "ok",
-   "seconds": 0.11,
+   "seconds": 0.1,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Lottery / prize with a 'processing fee'.",
@@ -1054,12 +1099,16 @@
     "C": "HIGH"
    },
    "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "A:UPI_UNVERIFIED"
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_TOO_GOOD"
    ],
-   "claims": [],
+   "claims": [
+    "nbfc"
+   ],
    "asks": [
     "pay"
    ],
@@ -1067,11 +1116,12 @@
     "upi:loanapproval.desk@ybl"
    ],
    "outcome": "ok",
-   "seconds": 0.11,
+   "seconds": 0.1,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Instant-loan app with upfront fee.",
-    "We could not link loanapproval.desk@ybl to any verified business."
+    "We could not link loanapproval.desk@ybl to any verified business.",
+    "It asks for money while pushing an offer too good to be true."
    ]
   },
   {
@@ -1104,7 +1154,7 @@
     "app:sbi_rewards.apk"
    ],
    "outcome": "ok",
-   "seconds": 0.08,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Fake reward points / refund link or app.",
@@ -1139,7 +1189,7 @@
     "upi:amazonjobs.hr@paytm"
    ],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.08,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Job offer that asks for a fee first.",
@@ -1167,7 +1217,9 @@
     "C:PLAYBOOK_MATCH",
     "C:PRESSURE_TOO_GOOD"
    ],
-   "claims": [],
+   "claims": [
+    "public_figure:LIC"
+   ],
    "asks": [
     "call_back",
     "pay"
@@ -1176,7 +1228,7 @@
     "phone:9811100022"
    ],
    "outcome": "ok",
-   "seconds": 0.1,
+   "seconds": 0.09,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for money while pushing an offer too good to be true.",
@@ -1201,7 +1253,8 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "C:PRESSURE_AUTHORITY"
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "regulator:Police / CBI / ED / Customs / Courts"
@@ -1215,7 +1268,8 @@
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Gift from abroad held at customs.",
-    "It leans on official-sounding authority."
+    "It leans on official-sounding authority.",
+    "It pushes you to act immediately."
    ]
   },
   {
@@ -1236,6 +1290,7 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
+    "C:PRESSURE_THREAT",
     "C:PRESSURE_URGENCY"
    ],
    "claims": [],
@@ -1249,7 +1304,7 @@
    "reasons": [
     "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
     "It follows the pattern of a known scam: OTP / PIN sharing (vishing).",
-    "It pushes you to act immediately."
+    "It threatens arrest, a block or legal action."
    ]
   },
   {
@@ -1361,11 +1416,11 @@
     "C": "HIGH"
    },
    "strong": [
-    "C:ASK_PAY_WITH_PRESSURE"
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
    ],
    "weak": [
     "A:UPI_UNVERIFIED",
-    "C:PLAYBOOK_MATCH",
     "C:PRESSURE_GUARANTEED_RETURNS"
    ],
    "claims": [],
@@ -1376,12 +1431,12 @@
     "upi:doublepaisa@ybl"
    ],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
-    "It asks for money while pushing guaranteed returns.",
+    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",
     "We could not link doublepaisa@ybl to any verified business.",
-    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme."
+    "It asks for money while pushing guaranteed returns."
    ]
   },
   {
@@ -1420,7 +1475,7 @@
    "lanes": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
-    "C": "NONE"
+    "C": "LOW"
    },
    "strong": [
     "A:UPI_PERSONAL_FOR_BANK"
@@ -1429,7 +1484,9 @@
    "claims": [
     "bank:State Bank of India"
    ],
-   "asks": [],
+   "asks": [
+    "call_back"
+   ],
    "contacts": [
     "upi:swiggy@icici"
    ],
@@ -1515,7 +1572,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.07,
+   "seconds": 0.05,
    "title": "Can't verify. Check before you act",
    "reasons": []
   },
@@ -1538,12 +1595,13 @@
     "C:PRESSURE_THREAT"
    ],
    "claims": [
-    "regulator:Police / CBI / ED / Customs / Courts"
+    "regulator:Police / CBI / ED / Customs / Courts",
+    "public_figure:CBI"
    ],
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.08,
+   "seconds": 0.07,
    "title": "Can't verify. Check before you act",
    "reasons": [
     "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
@@ -1579,27 +1637,34 @@
    "id": "g08",
    "cat": "bank_offer",
    "expect": "not_red",
-   "level": "GREEN",
-   "amber_kind": null,
-   "tier": "CLEAR",
-   "rule": "R3_verified_sender",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R4_verified_but_suspicious",
    "lanes": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
-    "C": "NONE"
+    "C": "LOW"
    },
    "strong": [],
-   "weak": [],
-   "claims": [],
-   "asks": [],
+   "weak": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "claims": [
+    "bank:SBI"
+   ],
+   "asks": [
+    "install_app"
+   ],
    "contacts": [
     "url:https://sbi.bank.in"
    ],
    "outcome": "ok",
-   "seconds": 0.1,
-   "title": "Verified sender",
+   "seconds": 0.07,
+   "title": "Can't verify. Check before you act",
    "reasons": [
-    "The link goes to sbi.bank.in, an official domain of State Bank of India."
+    "The link goes to sbi.bank.in, an official domain of State Bank of India.",
+    "It follows the pattern of a known scam: Instant-loan app with upfront fee."
    ]
   },
   {
@@ -1625,7 +1690,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.1,
+   "seconds": 0.09,
    "title": "Can't verify. Check before you act",
    "reasons": [
     "It follows the pattern of a known scam: Fake reward points / refund link or app."
@@ -1636,27 +1701,87 @@
    "cat": "mf_ad",
    "expect": "not_red",
    "level": "AMBER",
-   "amber_kind": "no_risk_signs",
-   "tier": "CLEAR",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
    "rule": "R5_default_cant_verify",
    "lanes": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
-    "C": "NONE"
+    "C": "LOW"
    },
    "strong": [],
    "weak": [],
-   "claims": [],
-   "asks": [],
+   "claims": [
+    "sebi_intermediary"
+   ],
+   "asks": [
+    "pay"
+   ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.11,
-   "title": "No warning signs. Nothing to verify",
+   "seconds": 0.1,
+   "title": "Can't verify. Check before you act",
    "reasons": []
   },
   {
    "id": "g11",
    "cat": "bill",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.06,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "g12",
+   "cat": "delivery",
+   "expect": "not_red",
+   "level": "AMBER",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "LOW"
+   },
+   "strong": [],
+   "weak": [],
+   "claims": [],
+   "asks": [
+    "install_app"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.05,
+   "title": "Can't verify. Check before you act",
+   "reasons": []
+  },
+  {
+   "id": "g13",
+   "cat": "kyc_genuine",
    "expect": "not_red",
    "level": "AMBER",
    "amber_kind": "nothing_to_check",
@@ -1671,63 +1796,17 @@
    "weak": [
     "C:PLAYBOOK_MATCH"
    ],
-   "claims": [],
-   "asks": [],
-   "contacts": [],
-   "outcome": "ok",
-   "seconds": 0.05,
-   "title": "Can't verify. Check before you act",
-   "reasons": [
-    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam."
-   ]
-  },
-  {
-   "id": "g12",
-   "cat": "delivery",
-   "expect": "not_red",
-   "level": "AMBER",
-   "amber_kind": "no_risk_signs",
-   "tier": "CLEAR",
-   "rule": "R5_default_cant_verify",
-   "lanes": {
-    "A": "UNVERIFIABLE",
-    "B": "NOT_APPLICABLE",
-    "C": "NONE"
-   },
-   "strong": [],
-   "weak": [],
-   "claims": [],
-   "asks": [],
-   "contacts": [],
-   "outcome": "ok",
-   "seconds": 0.06,
-   "title": "No warning signs. Nothing to verify",
-   "reasons": []
-  },
-  {
-   "id": "g13",
-   "cat": "kyc_genuine",
-   "expect": "not_red",
-   "level": "AMBER",
-   "amber_kind": "no_risk_signs",
-   "tier": "CLEAR",
-   "rule": "R5_default_cant_verify",
-   "lanes": {
-    "A": "UNVERIFIABLE",
-    "B": "NOT_APPLICABLE",
-    "C": "NONE"
-   },
-   "strong": [],
-   "weak": [],
    "claims": [
     "bank"
    ],
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.07,
-   "title": "No warning signs. Nothing to verify",
-   "reasons": []
+   "seconds": 0.06,
+   "title": "Can't verify. Check before you act",
+   "reasons": [
+    "It follows the pattern of a known scam: KYC update / account block phishing."
+   ]
   },
   {
    "id": "g14",
@@ -1779,7 +1858,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.07,
+   "seconds": 0.08,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },
@@ -1797,16 +1876,20 @@
     "C": "LOW"
    },
    "strong": [],
-   "weak": [],
+   "weak": [
+    "C:PLAYBOOK_MATCH"
+   ],
    "claims": [],
    "asks": [
     "pay"
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.03,
+   "seconds": 0.04,
    "title": "Can't verify. Check before you act",
-   "reasons": []
+   "reasons": [
+    "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation."
+   ]
   },
   {
    "id": "g17",
@@ -1848,7 +1931,9 @@
    "weak": [
     "A:DOMAIN_UNVERIFIED"
    ],
-   "claims": [],
+   "claims": [
+    "public_figure:LIC"
+   ],
    "asks": [
     "pay"
    ],
@@ -1856,7 +1941,7 @@
     "url:https://licindia.in"
    ],
    "outcome": "ok",
-   "seconds": 0.08,
+   "seconds": 0.09,
    "title": "Can't verify. Check before you act",
    "reasons": [
     "We could not verify who owns licindia.in."
@@ -1893,7 +1978,7 @@
     "sms_header:VK-SBIUPD"
    ],
    "outcome": "ok",
-   "seconds": 3.85,
+   "seconds": 7.73,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "sbi-yono-update.co.in imitates State Bank of India, but it is not their official site (sbi.bank.in).",
@@ -1920,7 +2005,8 @@
    "weak": [
     "A:PHONE_UNVERIFIED",
     "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_GUARANTEED_RETURNS"
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "sebi_intermediary:SEBI-registered intermediary"
@@ -1933,35 +2019,41 @@
     "phone:9000033333"
    ],
    "outcome": "ok",
-   "seconds": 2.74,
+   "seconds": 5.51,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "vipclub.stocks@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
-    "It asks for money while pushing guaranteed returns."
+    "It asks for money while pushing guaranteed returns.",
+    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ]
   },
   {
    "id": "m03",
    "cat": "screenshot_family_hi",
    "expect": "warn",
-   "level": "AMBER",
-   "amber_kind": "high_risk",
+   "level": "RED",
+   "amber_kind": null,
    "tier": "WARN",
-   "rule": "R5_default_cant_verify",
+   "rule": "R1_two_lane_strong",
    "lanes": {
-    "A": "UNVERIFIABLE",
+    "A": "CONTRADICTED",
     "B": "NONE",
     "C": "HIGH"
    },
    "strong": [
+    "A:UPI_NOT_VALID_FOR_SEBI_CLAIM",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
     "A:PHONE_UNVERIFIED",
-    "A:UPI_UNVERIFIED"
+    "C:PRESSURE_SECRECY",
+    "C:PRESSURE_URGENCY"
    ],
-   "claims": [],
+   "claims": [
+    "public_figure"
+   ],
    "asks": [
+    "call_back",
     "pay"
    ],
    "contacts": [
@@ -1969,12 +2061,11 @@
     "phone:9000044444"
    ],
    "outcome": "ok",
-   "seconds": 2.38,
-   "title": "Warning signs of a scam. Don't pay or share anything",
+   "seconds": 4.5,
+   "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
-    "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation.",
-    "We could not link rohit.help22@ybl to any verified business.",
-    "We could not verify who uses 9000044444."
+    "rohit.help22@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
+    "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation."
    ]
   },
   {
@@ -2000,7 +2091,7 @@
     "sms_header:AX-HDFCBK-T"
    ],
    "outcome": "ok",
-   "seconds": 2.56,
+   "seconds": 4.55,
    "title": "Can't verify. Check before you act",
    "reasons": [
     "The text names AX-HDFCBK-T, a real header of HDFC Bank. Anyone can type a header: check the sender line in your SMS app."
@@ -2017,25 +2108,31 @@
    "lanes": {
     "A": "UNVERIFIABLE",
     "B": "NONE",
-    "C": "NONE"
+    "C": "LOW"
    },
    "strong": [],
    "weak": [
-    "A:SMS_HEADER_UNKNOWN"
+    "A:SMS_HEADER_UNKNOWN",
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "bank:State Bank of India"
    ],
-   "asks": [],
+   "asks": [
+    "call_back"
+   ],
    "contacts": [
     "sms_header:JD-SBIUPI-S",
     "phone:1800111109"
    ],
    "outcome": "ok",
-   "seconds": 2.75,
+   "seconds": 4.92,
    "title": "Can't verify. Check before you act",
    "reasons": [
-    "The SMS sender JD-SBIUPI-S is not a header we can match to a bank."
+    "The SMS sender JD-SBIUPI-S is not a header we can match to a bank.",
+    "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money.",
+    "It pushes you to act immediately."
    ]
   },
   {
@@ -2053,7 +2150,7 @@
    },
    "strong": [
     "A:QR_PAYEE_NOT_CLAIMED_ENTITY",
-    "A:UPI_FOR_REGULATOR",
+    "A:UPI_NOT_VALID_FOR_SEBI_CLAIM",
     "C:ASK_PAY_WITH_PRESSURE",
     "C:PLAYBOOK_MATCH"
    ],
@@ -2062,7 +2159,8 @@
     "C:PRESSURE_URGENCY"
    ],
    "claims": [
-    "regulator:Police / CBI / ED / Customs / Courts"
+    "regulator:Police / CBI / ED / Customs / Courts",
+    "public_figure:Supreme Court of India"
    ],
    "asks": [
     "pay"
@@ -2071,12 +2169,12 @@
     "upi:court.fine.deposit@ybl"
    ],
    "outcome": "ok",
-   "seconds": 0.56,
+   "seconds": 1.12,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "The QR code pays court.fine.deposit@ybl in the name of \"Mahesh Verma\", not Police / CBI / ED / Customs / Courts.",
     "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
-    "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like court.fine.deposit@ybl."
+    "court.fine.deposit@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one."
    ]
   },
   {
@@ -2094,15 +2192,17 @@
    },
    "strong": [
     "A:QR_PAYEE_NOT_CLAIMED_ENTITY",
-    "A:UPI_FOR_REGULATOR",
+    "A:UPI_NOT_VALID_FOR_SEBI_CLAIM",
     "C:ASK_PAY_WITH_PRESSURE",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
-    "regulator:Police / CBI / ED / Customs / Courts"
+    "regulator:Police / CBI / ED / Customs / Courts",
+    "public_figure:Supreme Court of India"
    ],
    "asks": [
     "pay"
@@ -2111,12 +2211,12 @@
     "upi:court.fine.deposit@ybl"
    ],
    "outcome": "ok",
-   "seconds": 5.26,
+   "seconds": 9.39,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "The QR code pays court.fine.deposit@ybl in the name of \"Mahesh Verma\", not Police / CBI / ED / Customs / Courts.",
     "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
-    "RBI, SEBI, police and courts never ask the public to send money to a UPI ID like court.fine.deposit@ybl."
+    "court.fine.deposit@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one."
    ]
   },
   {
@@ -2146,7 +2246,7 @@
     "url:https://demobank.bank.in"
    ],
    "outcome": "ok",
-   "seconds": 0.28,
+   "seconds": 0.42,
    "title": "Can't verify. Check before you act",
    "reasons": [
     "demobank.bank.in imitates Demo Bank, but it is not their official site (demobank.test)."
@@ -2171,7 +2271,8 @@
    ],
    "weak": [
     "A:UPI_UNVERIFIED",
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [],
    "asks": [
@@ -2181,7 +2282,7 @@
     "upi:bill.clear.help@ybl"
    ],
    "outcome": "ok",
-   "seconds": 2.53,
+   "seconds": 4.75,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
@@ -2215,7 +2316,7 @@
     "upi:sharmastore@ybl"
    ],
    "outcome": "ok",
-   "seconds": 1.76,
+   "seconds": 3.42,
    "title": "Can't verify. Check before you act",
    "reasons": [
     "We could not link sharmastore@ybl to any verified business.",
@@ -2250,7 +2351,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.54,
+   "seconds": 2.81,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
@@ -2289,7 +2390,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 1.52,
+   "seconds": 2.2,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
@@ -2316,7 +2417,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "soft",
-   "seconds": 0.73,
+   "seconds": 0.95,
    "title": "Can't verify. Check before you act",
    "reasons": []
   },
@@ -2339,9 +2440,12 @@
    ],
    "weak": [
     "A:UPI_UNVERIFIED",
-    "C:PRESSURE_GUARANTEED_RETURNS"
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_URGENCY"
    ],
-   "claims": [],
+   "claims": [
+    "payment_app:CryptoKing"
+   ],
    "asks": [
     "pay"
    ],
@@ -2349,7 +2453,7 @@
     "upi:cryptoking@ybl"
    ],
    "outcome": "ok",
-   "seconds": 2.01,
+   "seconds": 2.57,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",
@@ -2378,7 +2482,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 1.74,
+   "seconds": 2.4,
    "title": "Can't verify. Check before you act",
    "reasons": []
   },
@@ -2408,7 +2512,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 12.57,
+   "seconds": 12.97,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",

@@ -334,15 +334,27 @@ if (P.source && P.query_transcript) {
     : [{{ v.title_en|tojson }}, {{ (v.advice_en or '')|tojson }}, {% for r in v.reasons %}{{ r.text_en|tojson }}, {% endfor %}];
   const b = document.getElementById("listen");
   if (!("speechSynthesis" in window)) { b.hidden = true; return; }
+  const PLAY = b.textContent, STOP = lang === "hi" ? "■ रोकें" : "■ Stop";
+  let on = false;
+  function idle() { on = false; b.textContent = PLAY; b.setAttribute("aria-pressed", "false"); }
+  function stop() { speechSynthesis.cancel(); idle(); }
+  speechSynthesis.cancel();          // speech left over from a page we came back from
+  b.setAttribute("aria-pressed", "false");
   b.onclick = () => {
+    if (on) { stop(); return; }
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(say.filter(Boolean).join(". "));
     u.lang = lang === "hi" ? "hi-IN" : "en-IN";
     const v = speechSynthesis.getVoices().find(x => x.lang && x.lang.toLowerCase().startsWith(u.lang.slice(0, 2)));
     if (v) u.voice = v;
     u.rate = 0.92;
+    u.onend = idle; u.onerror = idle;
+    on = true; b.textContent = STOP; b.setAttribute("aria-pressed", "true");
     speechSynthesis.speak(u);
   };
+  // Leaving the page (link, Back, closing the tab) stops the voice instead of letting it talk over the next page.
+  window.addEventListener("pagehide", stop);
+  document.addEventListener("visibilitychange", () => { if (document.hidden && on) stop(); });
 })();
 // "This looks wrong": a bank analyst reviews the verdict; nothing about who asked is stored.
 (function () {

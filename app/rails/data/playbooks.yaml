@@ -149,7 +149,8 @@ playbooks:
     groups:
       kyc: ['\bkyc\b', 'pan\s+(?:update|link)', 'aadhaar\s+(?:update|link)', 'केवाईसी']
       threat: ['block', 'suspend', 'expire', 'deactivat', 'close', 'ब्लॉक', 'बंद']
-      link: ['http', 'www', 'link', 'click', '\.[a-z]{2,}/', 'लिंक']
+      # a bare address counts too ('update at sbi-kyc-update.in'), as does being told where to update
+      link: ['http', 'www', 'link', 'click', '\.[a-z]{2,}/', '\b[a-z0-9-]+\.(?:in|com|co|net|org|info|xyz|top|online|site|live|app)\b', 'update\s+(?:it\s+)?(?:at|on|via)\b', 'लिंक']
 
   - id: otp_vishing
     high_risk_alone: true
@@ -199,8 +200,9 @@ playbooks:
       - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
     required: [loan, fee]
     groups:
-      loan: ['loan', 'credit', 'लोन', 'कर्ज']
-      fee: ['processing\s+fee', 'upfront', 'insurance\s+fee', 'gst\s+charge', 'pay', 'फ़ीस']
+      loan: ['loan', 'instant\s+credit', 'लोन', 'कर्ज']
+      # an UPFRONT fee to release the loan, not an EMI or card bill ('credit' + 'pay' matched genuine card bills)
+      fee: ['processing\s+fee', 'upfront', 'insurance\s+fee', 'gst\s+charge', 'verification\s+fee', 'release\s+(?:the\s+)?loan', 'before\s+(?:the\s+)?(?:loan|disburs)', 'फ़ीस']
 
   - id: unauthorised_forex
     name_en: "Unauthorised forex / crypto trading platform"

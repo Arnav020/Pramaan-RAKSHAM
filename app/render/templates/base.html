@@ -52,5 +52,27 @@
 </footer>
 </div>
 {% block script %}{% endblock %}
+<script>
+// Every plain file picker gets a "×" to remove the chosen file, and pickers are emptied when the page is shown again
+// from the Back button (browsers otherwise restore the last file). Pages with their own picker UI mark it .sr-only.
+(function () {
+  const inputs = [...document.querySelectorAll('input[type="file"]:not(.sr-only)')];
+  inputs.forEach(inp => {
+    const x = document.createElement("button");
+    x.type = "button"; x.textContent = "×"; x.hidden = true; x.className = "file-x";
+    x.setAttribute("aria-label", "Remove the file"); x.title = "Remove the file";
+    x.style.cssText = "border:0;background:var(--line);width:26px;height:26px;border-radius:50%;font-size:16px;line-height:1;cursor:pointer;margin-left:6px";
+    inp.insertAdjacentElement("afterend", x);
+    const sync = () => { x.hidden = !(inp.files && inp.files.length); };
+    inp.addEventListener("change", sync);
+    x.onclick = () => { inp.value = ""; sync(); inp.focus(); };
+    sync();
+  });
+  window.addEventListener("pageshow", e => {
+    const nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    if (e.persisted || (nav && nav.type === "back_forward")) inputs.forEach(inp => { inp.value = ""; inp.dispatchEvent(new Event("change")); });
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-24T18:31:00.819784+00:00",
- "seconds": 61.3,
+ "generated_at": "2026-10-24T19:55:15.902942+00:00",
+ "seconds": 73.1,
  "machine": "Windows AMD64",
  "passed": 34,
  "total": 34,
@@ -47,7 +47,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 15.72
+   "seconds": 11.41
   },
   {
    "id": "PI-2",
@@ -86,7 +86,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.16
+   "seconds": 0.19
   },
   {
    "id": "PI-3",
@@ -164,7 +164,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.14
+   "seconds": 0.12
   },
   {
    "id": "PI-5",
@@ -203,7 +203,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.19
+   "seconds": 0.11
   },
   {
    "id": "OB-1",
@@ -239,7 +239,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.11
+   "seconds": 0.06
   },
   {
    "id": "OB-2",
@@ -276,7 +276,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.09
+   "seconds": 0.05
   },
   {
    "id": "OB-3",
@@ -295,6 +295,7 @@
     "ASK_PAY_WITH_PRESSURE",
     "PLAYBOOK_MATCH",
     "PRESSURE_GUARANTEED_RETURNS",
+    "PRESSURE_TOO_GOOD",
     "UPI_UNVERIFIED"
    ],
    "lanes": {
@@ -307,12 +308,12 @@
    ],
    "hidden_instructions": false,
    "reasons": [
-    "It asks for money while pushing guaranteed returns.",
+    "It asks for money while pushing guaranteed returns, an offer too good to be true.",
     "We could not link profitwealth@ybl to any verified business.",
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 0.08
+   "seconds": 0.06
   },
   {
    "id": "OB-4",
@@ -323,19 +324,20 @@
    "input": "text",
    "known_miss": false,
    "fix": "",
-   "level": "AMBER",
-   "amber_kind": "unverified",
-   "tier": "CHECK",
-   "rule_id": "R5_default_cant_verify",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule_id": "R1_two_lane_strong",
    "codes": [
     "PHONE_MOBILE_FOR_INSTITUTION",
     "PLAYBOOK_MATCH",
-    "PRESSURE_THREAT"
+    "PRESSURE_THREAT",
+    "PRESSURE_URGENCY"
    ],
    "lanes": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
-    "C": "LOW"
+    "C": "HIGH"
    },
    "contacts": [
     "9876543210"
@@ -343,11 +345,10 @@
    "hidden_instructions": false,
    "reasons": [
     "9876543210 is an ordinary mobile number. Banks and financial firms must call customers from 1600-series numbers.",
-    "It follows the pattern of a known scam: KYC update / account block phishing.",
-    "It threatens arrest, a block or legal action."
+    "It follows the pattern of a known scam: KYC update / account block phishing."
    ],
    "status": "PASS",
-   "seconds": 0.08
+   "seconds": 0.06
   },
   {
    "id": "OB-5",
@@ -382,7 +383,7 @@
     "It follows the pattern of a known scam: KYC update / account block phishing."
    ],
    "status": "PASS",
-   "seconds": 0.1
+   "seconds": 0.07
   },
   {
    "id": "OB-6",
@@ -400,6 +401,7 @@
    "codes": [
     "DOMAIN_PUNYCODE",
     "PLAYBOOK_MATCH",
+    "PRESSURE_THREAT",
     "PRESSURE_URGENCY",
     "SITE_NOT_FOUND"
    ],
@@ -418,7 +420,7 @@
     "The website it points to, sbі-kyc.in, does not exist. A real organisation's website would."
    ],
    "status": "PASS",
-   "seconds": 0.62
+   "seconds": 0.06
   },
   {
    "id": "OB-7",
@@ -436,6 +438,7 @@
    "codes": [
     "DOMAIN_ZONE_SPOOF",
     "PLAYBOOK_MATCH",
+    "PRESSURE_THREAT",
     "PRESSURE_URGENCY",
     "SITE_NOT_FOUND"
    ],
@@ -454,7 +457,7 @@
     "The website it points to, sbi.bank.in.secure-unlock.co, does not exist. A real organisation's website would."
    ],
    "status": "PASS",
-   "seconds": 0.09
+   "seconds": 0.07
   },
   {
    "id": "CM-1",
@@ -490,7 +493,7 @@
     "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
    ],
    "status": "PASS",
-   "seconds": 0.04
+   "seconds": 0.06
   },
   {
    "id": "CM-2",
@@ -508,7 +511,6 @@
    "codes": [
     "DOMAIN_OFFICIAL",
     "PLAYBOOK_MATCH",
-    "PRESSURE_URGENCY",
     "UPI_PERSONAL_FOR_BANK"
    ],
    "lanes": {
@@ -527,7 +529,7 @@
     "The link goes to hdfc.bank.in, an official domain of HDFC Bank."
    ],
    "status": "PASS",
-   "seconds": 0.06
+   "seconds": 0.04
   },
   {
    "id": "CM-3",
@@ -591,7 +593,7 @@
     "It asks for money while pushing threats."
    ],
    "status": "PASS",
-   "seconds": 0.11
+   "seconds": 0.1
   },
   {
    "id": "MD-1",
@@ -612,6 +614,7 @@
     "DETECTOR_INDICATOR",
     "PLAYBOOK_MATCH",
     "PRESSURE_GUARANTEED_RETURNS",
+    "PRESSURE_TOO_GOOD",
     "PRESSURE_URGENCY",
     "SOURCE_MISMATCH",
     "UPI_NOT_VALID_FOR_SEBI_CLAIM"
@@ -631,7 +634,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 7.92
+   "seconds": 18.05
   },
   {
    "id": "MD-2",
@@ -671,7 +674,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 5.06
+   "seconds": 7.43
   },
   {
    "id": "MD-3",
@@ -702,7 +705,7 @@
     "An automated video deepfake detector flagged possible manipulation. Detectors make mistakes, so on its own this is only a hint."
    ],
    "status": "PASS",
-   "seconds": 4.97
+   "seconds": 7.05
   },
   {
    "id": "MD-4",
@@ -719,24 +722,21 @@
    "rule_id": "R5_default_cant_verify",
    "codes": [
     "DETECTOR_INDICATOR",
-    "PLAYBOOK_MATCH",
-    "PRESSURE_SECRECY",
     "SOURCE_MATCH_SAME_WORDS"
    ],
    "lanes": {
     "A": "UNVERIFIABLE",
     "B": "INDICATORS",
-    "C": "LOW"
+    "C": "NONE"
    },
    "contacts": [],
    "hidden_instructions": false,
    "reasons": [
     "This video matches the genuine investor interview by Arnav Mehra (official channel), and the words are the same.",
-    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",
     "An automated video deepfake detector flagged possible manipulation. Detectors make mistakes, so on its own this is only a hint."
    ],
    "status": "PASS",
-   "seconds": 6.45
+   "seconds": 8.64
   },
   {
    "id": "MD-5",
@@ -779,7 +779,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 0.8
+   "seconds": 1.46
   },
   {
    "id": "SE-1",
@@ -820,7 +820,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 7.81
+   "seconds": 11.48
   },
   {
    "id": "SE-2",
@@ -862,7 +862,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 6.45
+   "seconds": 2.18
   },
   {
    "id": "SE-3",
@@ -873,10 +873,10 @@
    "input": "text",
    "known_miss": false,
    "fix": "",
-   "level": "AMBER",
-   "amber_kind": "unverified",
-   "tier": "CHECK",
-   "rule_id": "R5_default_cant_verify",
+   "level": "RED",
+   "amber_kind": null,
+   "tier": "WARN",
+   "rule_id": "R1_two_lane_strong",
    "codes": [
     "DOMAIN_LOOKALIKE",
     "PLAYBOOK_MATCH",
@@ -888,7 +888,7 @@
    "lanes": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
-    "C": "LOW"
+    "C": "HIGH"
    },
    "contacts": [
     "https://demobank-kyc.in"
@@ -900,7 +900,7 @@
     "The seal code ABCDEFGH was never issued: the 'verified' seal on this is fake."
    ],
    "status": "PASS",
-   "seconds": 0.71
+   "seconds": 0.1
   },
   {
    "id": "SE-4",
@@ -944,6 +944,7 @@
    "tier": "CLEAR",
    "rule_id": "R2_sealed_content",
    "codes": [
+    "PLAYBOOK_MATCH",
     "SEALED"
    ],
    "lanes": {
@@ -957,7 +958,7 @@
     "Signed by Demo Bank with a Pramaan Seal on 2026-10-24: this is exactly the text they sent."
    ],
    "status": "PASS",
-   "seconds": 0.12
+   "seconds": 0.1
   },
   {
    "id": "SE-5",
@@ -973,7 +974,6 @@
    "tier": "CHECK",
    "rule_id": "R5_default_cant_verify",
    "codes": [
-    "PRESSURE_URGENCY",
     "SEAL_CONTENT_CHANGED"
    ],
    "lanes": {
@@ -984,11 +984,10 @@
    "contacts": [],
    "hidden_instructions": false,
    "reasons": [
-    "This carries Demo Bank's genuine seal, but the text was changed after signing. Not in what Demo Bank sent: removed 'no'.",
-    "It pushes you to act immediately."
+    "This carries Demo Bank's genuine seal, but the text was changed after signing. Not in what Demo Bank sent: removed 'no'."
    ],
    "status": "PASS",
-   "seconds": 0.11
+   "seconds": 0.1
   },
   {
    "id": "AU-1",
@@ -1104,7 +1103,9 @@
    "rule_id": "R1_two_lane_strong",
    "codes": [
     "ASK_PAY_WITH_PRESSURE",
+    "PLAYBOOK_MATCH",
     "PRESSURE_GUARANTEED_RETURNS",
+    "PRESSURE_URGENCY",
     "UPI_NOT_VALID_FOR_SEBI_CLAIM"
    ],
    "lanes": {
@@ -1118,10 +1119,11 @@
    "hidden_instructions": false,
    "reasons": [
     "profitwealth@ybl is not a SEBI-validated '@valid' UPI ID. SEBI-registered advisers and brokers must collect money through one.",
+    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.14
+   "seconds": 0.08
   },
   {
    "id": "KM-1",
@@ -1146,7 +1148,7 @@
    "hidden_instructions": false,
    "reasons": [],
    "status": "KNOWN_MISS",
-   "seconds": 0.11
+   "seconds": 0.07
   },
   {
    "id": "KM-2",
@@ -1183,7 +1185,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "KNOWN_MISS",
-   "seconds": 0.12
+   "seconds": 0.08
   },
   {
    "id": "KM-3",
@@ -1219,7 +1221,7 @@
     "It threatens arrest, a block or legal action."
    ],
    "status": "KNOWN_MISS",
-   "seconds": 0.14
+   "seconds": 0.09
   },
   {
    "id": "FG-1",

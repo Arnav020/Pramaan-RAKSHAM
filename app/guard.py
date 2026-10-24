@@ -37,13 +37,15 @@ class RateLimiter:
             return True
 
 
-def _limits() -> tuple[int, int]:
-    raw = os.getenv("PRAMAAN_WEB_RATE", "20/600")          # 20 checks per 10 minutes per IP
+def _limits(var: str = "PRAMAAN_WEB_RATE", default: str = "20/600") -> tuple[int, int]:
+    raw = os.getenv(var, default)                           # e.g. 20 checks per 10 minutes per IP
     n, _, w = raw.partition("/")
     return int(n), int(w or 600)
 
 
 WEB = RateLimiter(*_limits())
+# The /kit page runs a whole folder in one go (the jury kit has 49 files); it gets its own, larger allowance.
+KIT = RateLimiter(*_limits("PRAMAAN_KIT_RATE", "60/600"))
 
 
 def client_ip(request: Request) -> str:
@@ -59,7 +61,8 @@ def client_ip(request: Request) -> str:
 def enforce_rate(request: Request, bucket: str = "check") -> None:
     if partner_for_key(request.headers.get("x-pramaan-key", "")):
         return                     # a bank's own servers calling with their partner key
-    if not WEB.allow(f"{bucket}:{client_ip(request)}"):
+    limiter = KIT if bucket == "kit" else WEB
+    if not limiter.allow(f"{bucket}:{client_ip(request)}"):
         raise HTTPException(429, SLOW_EN)
 
 

@@ -163,16 +163,35 @@ def run_lane_c(ex: Extraction) -> LaneResult:
     sem = _semantic(ex.text)
     # "Call our officer on 98xxxxxxxx": inside a known scam script, a request to call a personal mobile number is as
     # risky as a payment request (it is how the 'officer' then takes the money). Genuine notices give official numbers.
+    from app.lanes.lane_a import _staff_number
     call_mobile = AskType.CALL_BACK in asks and any(
-        cp.type == ContactType.PHONE and len(cp.value) == 10 and cp.value[0] in "6789" for cp in ex.contact_points)
+        cp.type == ContactType.PHONE and len(cp.value) == 10 and cp.value[0] in "6789" and not _staff_number(ex.text, cp.value)
+        for cp in ex.contact_points)
+    high_risk_ask = bool(asks & _HIGH_RISK_ASKS) or call_mobile
     if top:
         pb, score, present = top
         prov = Provenance(dataset=f"Scam playbooks v{version}", source_url=pb.sources[0]["url"], note=pb.sources[0]["title"])
-        strong = score >= 0.75 and (bool(asks & _HIGH_RISK_ASKS) or pb.high_risk_alone or call_mobile)
+        # A COMPLETE match of a published script that also threatens the reader ("disconnected tonight, call our
+        # officer") is high risk even when the ask itself is not a payment.
+        strong = score >= 0.75 and (high_risk_ask or pb.high_risk_alone or (score >= 1.0 and Pressure.THREAT in pressure))
         same = next((m for m in sem if m["playbook"] == pb.id), None)
+        ai_same = bool(ex.ai_script and ex.ai_script["id"] == pb.id)
         sigs.append(_sig("PLAYBOOK_MATCH", Strength.STRONG if strong else Strength.WEAK, prov,
                          playbook=pb.id, name_en=pb.name_en, name_hi=pb.name_hi, score=score, indicators=present,
-                         method="rules+semantic" if same else "rules", similarity=same["similarity"] if same else None))
+                         method="rules" + ("+semantic" if same else "") + ("+ai" if ai_same else ""),
+                         similarity=same["similarity"] if same else None))
+    elif ex.ai_script and (pb := next((p for p in pbs if p.id == ex.ai_script["id"]), None)) is not None:
+        # The phrase rules found no pattern, but the AI reader named a published script and quoted the words that show
+        # it (checked to be in the message). Stricter than a rule match: strong ONLY next to a high-risk request found
+        # in the message (never on the AI's naming alone). The AI names the pattern; the rules still decide the verdict.
+        prov = Provenance(dataset=f"Scam playbooks v{version} · named by the AI reader", source_url=pb.sources[0]["url"], note=pb.sources[0]["title"])
+        # Strong only next to a request that is risky in itself (OTP/PIN, remote access, a payment pushed with threats or
+        # promises, a call to a personal mobile). A bare "send 500" or "apply on the app" is everyday life.
+        strong = call_mobile or any(s.code in ("ASK_CREDENTIALS", "ASK_REMOTE_ACCESS", "ASK_PAY_WITH_PRESSURE", "ASK_SIDELOAD_APP")
+                                    and s.strength == Strength.STRONG for s in sigs)
+        sigs.append(_sig("PLAYBOOK_MATCH", Strength.STRONG if strong else Strength.WEAK, prov,
+                         playbook=pb.id, name_en=pb.name_en, name_hi=pb.name_hi, score=None, indicators=[],
+                         method="ai", quote=ex.ai_script["quote"]))
     elif sem and (asks - {AskType.NONE} or pressure or sem[0]["similarity"] >= _sem_strong()):
         # The phrase rules found no pattern, but the meaning is close to a known scam (a rewording).
         # A resemblance alone is not enough: the message must also ask for something or apply pressure,

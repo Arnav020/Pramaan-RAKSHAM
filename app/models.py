@@ -133,6 +133,7 @@ class Extraction(BaseModel):
     ai_saw: str | None = None                                  # the masked text sent to the AI (analyst trace; wiped after 24 h)
     ai_masked: dict[str, int] = Field(default_factory=dict)    # what was masked before the AI saw it, by kind
     injection_score: float | None = None                       # Prompt Guard 2: probability of instructions aimed at AI
+    ai_script: dict | None = None    # {"id", "quote"}: the known scam script the AI says the wording follows (quote checked)
 
 
 class Signal(BaseModel):

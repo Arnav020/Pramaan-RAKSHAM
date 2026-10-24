@@ -17,7 +17,7 @@ ASK_PATTERNS: dict[AskType, re.Pattern] = {
     AskType.PAY: re.compile(
         r"\b(?:pay|send|transfer|deposit|invest|remit)\b.{0,40}?(?:₹|\brs\.?|\binr\b|\brupees?\b|\d{3,}|\d+\s?k\b|\bupi\b|@|\baccount\b|\ba/c\b|phonepe|g\s?pay|google\s+pay|paytm)"
         r"|(?:₹|\brs\.?|\binr)\s?\d[\d,]*.{0,30}?\b(?:pay|send|transfer|deposit|fee|charges?|tax)\b"
-        r"|registration\s+fee|processing\s+fee|security\s+deposit|safety\s+deposit|refundable\s+deposit|pay\s+(?:the\s+)?tax\s+to\s+withdraw"
+        r"|registration\s+fee|processing\s+(?:fee|charges?)|security\s+deposit|safety\s+deposit|refundable\s+deposit|pay\s+(?:the\s+)?tax\s+to\s+withdraw"
         # an investment call to action on an ad or poster ("START INVESTING NOW"; OCR may drop the spaces)
         r"|\b(?:start|begin)\s*investing|\binvest(?:ing)?\s*now\b|\bjoin\s+now\s+and\s+(?:invest|earn)\b"
         # "please return it to name@ybl": a request to send money back
@@ -33,6 +33,8 @@ ASK_PATTERNS: dict[AskType, re.Pattern] = {
         r"|\b(?:share|send|give|enter|provide|confirm|submit|verify)\b.{0,25}?\b(?:(?:debit|credit|atm)\s+card(?:\s+(?:details|number))?|card\s+details"
         r"|bank\s+(?:account\s+)?details|account\s+details|net\s*banking\s+(?:id|details|password|login)|pan(?:\s+(?:card|number|details))?|aadhaa?r(?:\s+(?:number|details))?)\b"
         r"|\botp\b.{0,25}?\b(?:share|send|tell|batao|bhejo|bata)\b|ओटीपी|पिन\s*(?:बताएं|बताइए|भेजें)|otp\s*batao"
+        # "Update your PAN NUMBER in the following link": your details, through a link in a message
+        r"|\bupdate\b.{0,25}?\b(?:pan|aadhaa?r|kyc|card\s+details|bank\s+details|account\s+details)\b.{0,40}?\b(?:link|click|below|here|http|www)"
         # the OTP by another name ("read out the verification code you received")
         r"|\b(?:share|send|tell|give|enter|provide|confirm|read\s+out|say|forward)\b.{0,30}?\b(?:verification|security|confirmation|secret)\s+code\b"
         r"|\b(?:share|send|tell|give|read\s+out|forward)\b.{0,20}?\bcode\s+(?:you|we)\s+(?:just\s+)?(?:received|got|sent)\b",
@@ -48,7 +50,7 @@ ASK_PATTERNS: dict[AskType, re.Pattern] = {
         r"|ग्रुप\s*(?:ज्वाइन|जॉइन|में\s*जुड़)|group\s+join\s+kar",
         _F,
     ),
-    AskType.CLICK_LINK: re.compile(r"\b(?:click|tap|open|visit)\b.{0,25}?\b(?:link|below|here|url)\b|लिंक\s*पर\s*क्लिक|link\s+pe\s+click", _F),
+    AskType.CLICK_LINK: re.compile(r"\b(?:click|tap|open|visit)\b.{0,25}?\b(?:link|below|here|url)\b|\b(?:following|below|this|given|the)\s+link\b|\blink\s+(?:below|given)\b|लिंक\s*पर\s*क्लिक|link\s+pe\s+click", _F),
     AskType.REMOTE_ACCESS: re.compile(r"anydesk|teamviewer|quicksupport|screen\s*share|स्क्रीन\s*शेयर", _F),
     AskType.CALL_BACK: re.compile(r"\b(?:call|contact|whatsapp)\b\s+(?:us|me|our|on|at)\b|कॉल\s*कर(?:ें|िए)"
                                   # "call electricity officer 9123456780": a call request followed by a mobile number
@@ -79,7 +81,7 @@ PRESSURE_PATTERNS: dict[Pressure, re.Pattern] = {
         _F,
     ),
     Pressure.THREAT: re.compile(
-        r"\b(?:arrest(?:ed)?|warrant|fir\b|legal\s+action|court\s+action|account\s+(?:will\s+be\s+)?(?:blocked|suspended|frozen|freezed|closed)|money\s+laundering|case\s+registered|penalty|jail)\b"
+        r"\b(?:arrest(?:ed)?|warrant|fir\b|legal\s+action|court\s+action|account\s+(?:(?:will|is|has|was)\s+(?:been\s+|be\s+)?)?(?:blocked|suspended|frozen|freezed|closed|deactivated)|money\s+laundering|case\s+registered|jail)\b"
         # a service cut off on a deadline ("will be cut tonight", "deactivated within 2 hours", "disconnected ... otherwise")
         r"|\bwill\s+be\s+(?:cut|disconnected|deactivated|blocked|suspended|frozen|freezed|closed)\b.{0,25}?\b(?:tonight|today|otherwise|within|immediately|in\s+\d+\s*(?:hours?|hrs?|minutes?))\b"
         r"|\b(?:tonight|today|immediately|now)\b.{0,40}?\bwill\s+be\s+(?:cut|disconnected|deactivated|blocked)\b|\bpolice\s+will\s+(?:visit|come|arrest)\b"

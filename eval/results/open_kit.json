@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-24T18:25:01.356321+00:00",
- "seconds": 559.9,
+ "generated_at": "2026-10-24T19:54:00.640813+00:00",
+ "seconds": 391.3,
  "dataset": {
   "citation": "Mishra, S. and Soni, D. (2022). SMS Phishing Dataset for Machine Learning and Pattern Recognition. Mendeley Data, V1. doi:10.17632/f45bkkt8pr.1. CC BY 4.0.",
   "url": "https://data.mendeley.com/public-files/datasets/f45bkkt8pr/files/edb361de-918d-469f-9106-e84823830665/file_downloaded",
@@ -11,7 +11,7 @@
   "label_note": "LABEL values are lower-cased (the file mixes 'Smishing'/'smishing', 'Spam'/'spam')."
  },
  "config": {
-  "rules_version": "2.2",
+  "rules_version": "2.3",
   "llm": false,
   "semantic": "on",
   "site_visits": false,
@@ -23,8 +23,8 @@
    "n": 4844,
    "tiers": {
     "WARN": 2,
-    "CHECK": 200,
-    "CLEAR": 4642
+    "CHECK": 197,
+    "CLEAR": 4645
    },
    "levels": {
     "AMBER": 4842,
@@ -40,12 +40,12 @@
     ]
    },
    "not_clear": {
-    "k": 202,
+    "k": 199,
     "n": 4844,
-    "p": 0.0417,
+    "p": 0.0411,
     "ci95": [
-     0.0364,
-     0.0477
+     0.0358,
+     0.047
     ]
    },
    "red": {
@@ -68,7 +68,7 @@
     ],
     [
      "PLAYBOOK_MATCH",
-     30
+     27
     ],
     [
      "PRESSURE_THREAT",
@@ -96,8 +96,8 @@
    "n": 638,
    "tiers": {
     "WARN": 5,
-    "CHECK": 584,
-    "CLEAR": 49
+    "CHECK": 587,
+    "CLEAR": 46
    },
    "levels": {
     "AMBER": 638
@@ -112,12 +112,12 @@
     ]
    },
    "not_clear": {
-    "k": 589,
+    "k": 592,
     "n": 638,
-    "p": 0.9232,
+    "p": 0.9279,
     "ci95": [
-     0.8999,
-     0.9414
+     0.9052,
+     0.9455
     ]
    },
    "red": {
@@ -140,7 +140,7 @@
     ],
     [
      "PLAYBOOK_MATCH",
-     114
+     115
     ],
     [
      "DOMAIN_UNVERIFIED",
@@ -168,8 +168,8 @@
    "n": 489,
    "tiers": {
     "WARN": 4,
-    "CHECK": 296,
-    "CLEAR": 189
+    "CHECK": 297,
+    "CLEAR": 188
    },
    "levels": {
     "AMBER": 489
@@ -184,12 +184,12 @@
     ]
    },
    "not_clear": {
-    "k": 300,
+    "k": 301,
     "n": 489,
-    "p": 0.6135,
+    "p": 0.6155,
     "ci95": [
-     0.5696,
-     0.6556
+     0.5717,
+     0.6576
     ]
    },
    "red": {
@@ -255,16 +255,6 @@
     "said": []
    },
    {
-    "id": "m0736",
-    "text": "A transaction of AUD 590.3 was made with your bank account on 08/02/17 11:17:37 if unauthorised follow this link http://gommbanklogin:netbank.com",
-    "said": []
-   },
-   {
-    "id": "m0961",
-    "text": "Your Bank of America online account has been suspended, log in to restore http://itdo/bankofamerica-session-user",
-    "said": []
-   },
-   {
     "id": "m1015",
     "text": "Congratulations ur awarded either £500 of CD gift vouchers & Free entry 2 our £100 weekly draw txt MUSIC to 87066 TnCs www.Ldew.com1win150ppmx3age16",
     "said": []
@@ -313,6 +303,16 @@
     "id": "m2229",
     "text": "Win a £1000 cash prize or a prize worth £5000",
     "said": []
+   },
+   {
+    "id": "m2230",
+    "text": "This is the 2nd time we have tried to contact u. U have won the £400 prize. 2 claim is easy, just call 087104711148 NOW! Only 10p per minute. BT-national-rate",
+    "said": []
+   },
+   {
+    "id": "m2561",
+    "text": "CDs 4u: Congratulations ur awarded £500 of CD gift vouchers or £125 gift guaranteed & Freeentry 2 £100 wkly draw xt MUSIC to 87066 TnCs www.ldew.com1win150ppmx3age16",
+    "said": []
    }
   ],
   "ham_warned": [
@@ -335,8 +335,8 @@
   "ham_red": []
  },
  "latency_s": {
-  "p50": 0.06,
-  "p95": 0.29
+  "p50": 0.05,
+  "p95": 0.15
  },
  "items": [
   {
@@ -7300,8 +7300,8 @@
    "id": "m0736",
    "label": "smishing",
    "level": "AMBER",
-   "amber_kind": "no_risk_signs",
-   "tier": "CLEAR",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
    "rule": "R5_default_cant_verify",
    "codes": []
   },
@@ -9413,10 +9413,13 @@
    "id": "m0961",
    "label": "smishing",
    "level": "AMBER",
-   "amber_kind": "no_risk_signs",
-   "tier": "CLEAR",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
    "rule": "R5_default_cant_verify",
-   "codes": []
+   "codes": [
+    "PLAYBOOK_MATCH",
+    "PRESSURE_THREAT"
+   ]
   },
   {
    "id": "m0962",
@@ -13435,8 +13438,7 @@
    "tier": "CHECK",
    "rule": "R5_default_cant_verify",
    "codes": [
-    "DOMAIN_UNVERIFIED",
-    "PRESSURE_THREAT"
+    "DOMAIN_UNVERIFIED"
    ]
   },
   {
@@ -14194,10 +14196,12 @@
    "id": "m1468",
    "label": "spam",
    "level": "AMBER",
-   "amber_kind": "no_risk_signs",
-   "tier": "CLEAR",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
    "rule": "R5_default_cant_verify",
-   "codes": []
+   "codes": [
+    "PLAYBOOK_MATCH"
+   ]
   },
   {
    "id": "m1469",
@@ -20641,12 +20645,10 @@
    "id": "m2154",
    "label": "ham",
    "level": "AMBER",
-   "amber_kind": "nothing_to_check",
-   "tier": "CHECK",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
    "rule": "R5_default_cant_verify",
-   "codes": [
-    "PLAYBOOK_MATCH"
-   ]
+   "codes": []
   },
   {
    "id": "m2155",
@@ -23438,9 +23440,7 @@
    "tier": "CHECK",
    "rule": "R5_default_cant_verify",
    "codes": [
-    "DOMAIN_UNVERIFIED",
-    "PLAYBOOK_MATCH",
-    "PRESSURE_THREAT"
+    "DOMAIN_UNVERIFIED"
    ]
   },
   {
@@ -24971,8 +24971,8 @@
    "id": "m2617",
    "label": "smishing",
    "level": "AMBER",
-   "amber_kind": "no_risk_signs",
-   "tier": "CLEAR",
+   "amber_kind": "nothing_to_check",
+   "tier": "CHECK",
    "rule": "R5_default_cant_verify",
    "codes": []
   },
@@ -25691,8 +25691,7 @@
    "tier": "CHECK",
    "rule": "R5_default_cant_verify",
    "codes": [
-    "PHONE_UNVERIFIED",
-    "PLAYBOOK_MATCH"
+    "PHONE_UNVERIFIED"
    ]
   },
   {
@@ -27953,7 +27952,8 @@
    "tier": "CHECK",
    "rule": "R5_default_cant_verify",
    "codes": [
-    "DOMAIN_UNVERIFIED"
+    "DOMAIN_UNVERIFIED",
+    "PLAYBOOK_MATCH"
    ]
   },
   {
@@ -50957,12 +50957,10 @@
    "id": "m5380",
    "label": "ham",
    "level": "AMBER",
-   "amber_kind": "nothing_to_check",
-   "tier": "CHECK",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
    "rule": "R5_default_cant_verify",
-   "codes": [
-    "PLAYBOOK_MATCH"
-   ]
+   "codes": []
   },
   {
    "id": "m5381",
@@ -53161,12 +53159,10 @@
    "id": "m5615",
    "label": "ham",
    "level": "AMBER",
-   "amber_kind": "nothing_to_check",
-   "tier": "CHECK",
+   "amber_kind": "no_risk_signs",
+   "tier": "CLEAR",
    "rule": "R5_default_cant_verify",
-   "codes": [
-    "PLAYBOOK_MATCH"
-   ]
+   "codes": []
   },
   {
    "id": "m5616",

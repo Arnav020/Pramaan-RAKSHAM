@@ -1,6 +1,6 @@
 {
  "set": "stress_holdout",
- "llm": false,
+ "llm": true,
  "sites": false,
  "summary": {
   "ok": 28
@@ -24,23 +24,26 @@
     "C:ASK_CREDENTIALS"
    ],
    "weak": [
-    "C:PLAYBOOK_MATCH"
+    "C:PLAYBOOK_MATCH",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "bank:Kotak Mahindra Bank"
    ],
    "asks": [
+    "click_link",
     "credentials"
    ],
    "contacts": [
     "url:https://kotak-ekyc-verify.in"
    ],
    "outcome": "ok",
-   "seconds": 12.08,
+   "seconds": 14.71,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "kotak-ekyc-verify.in imitates Kotak Mahindra Bank, but it is not their official site (kotak.bank.in).",
-    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these."
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: KYC update / account block phishing."
    ]
   },
   {
@@ -57,13 +60,16 @@
     "C": "HIGH"
    },
    "strong": [
-    "C:ASK_CREDENTIALS"
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
-   "claims": [],
+   "claims": [
+    "payment_app:Paytm"
+   ],
    "asks": [
     "credentials"
    ],
@@ -147,7 +153,7 @@
     "url:https://traffic-challan-online.in"
    ],
    "outcome": "ok",
-   "seconds": 0.07,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "The message claims to be from Police / CBI / ED / Customs / Courts, but the link goes to traffic-challan-online.in. Government websites end in .gov.in or .nic.in.",
@@ -175,7 +181,8 @@
     "C:PRESSURE_URGENCY"
    ],
    "claims": [
-    "regulator:India Post"
+    "regulator:India Post",
+    "public_figure:India Post"
    ],
    "asks": [
     "pay"
@@ -184,7 +191,7 @@
     "url:https://indiapost-redelivery.top"
    ],
    "outcome": "ok",
-   "seconds": 0.09,
+   "seconds": 0.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "indiapost-redelivery.top imitates India Post, but it is not their official site (indiapost.gov.in).",
@@ -242,7 +249,8 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "A:UPI_UNVERIFIED"
+    "A:UPI_UNVERIFIED",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [],
    "asks": [
@@ -252,11 +260,12 @@
     "upi:sunil.b88@ybl"
    ],
    "outcome": "ok",
-   "seconds": 0.11,
+   "seconds": 0.12,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: 'I sent money to you by mistake' refund trick.",
-    "We could not link sunil.b88@ybl to any verified business."
+    "We could not link sunil.b88@ybl to any verified business.",
+    "It pushes you to act immediately."
    ]
   },
   {
@@ -276,13 +285,15 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [],
-   "claims": [],
+   "claims": [
+    "public_figure:Flipkart"
+   ],
    "asks": [
     "pay"
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.08,
+   "seconds": 0.09,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Job offer that asks for a fee first."
@@ -305,7 +316,8 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "C:PRESSURE_AUTHORITY"
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [
     "regulator:Police / CBI / ED / Customs / Courts"
@@ -315,11 +327,12 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.06,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Gift from abroad held at customs.",
-    "It leans on official-sounding authority."
+    "It leans on official-sounding authority.",
+    "It pushes you to act immediately."
    ]
   },
   {
@@ -336,11 +349,11 @@
     "C": "HIGH"
    },
    "strong": [
-    "C:ASK_PAY_WITH_PRESSURE"
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
    ],
    "weak": [
     "A:UPI_UNVERIFIED",
-    "C:PLAYBOOK_MATCH",
     "C:PRESSURE_GUARANTEED_RETURNS"
    ],
    "claims": [],
@@ -351,12 +364,12 @@
     "upi:aitrade.pro@ybl"
    ],
    "outcome": "ok",
-   "seconds": 0.08,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
-    "It asks for money while pushing guaranteed returns.",
+    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam.",
     "We could not link aitrade.pro@ybl to any verified business.",
-    "It follows the pattern of a known scam: Unauthorised forex / crypto trading platform."
+    "It asks for money while pushing guaranteed returns."
    ]
   },
   {
@@ -385,7 +398,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.06,
+   "seconds": 0.05,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Lottery / prize with a 'processing fee'.",
@@ -449,7 +462,8 @@
     "C:PRESSURE_URGENCY"
    ],
    "claims": [
-    "regulator:Police / CBI / ED / Customs / Courts"
+    "regulator:Police / CBI / ED / Customs / Courts",
+    "public_figure:CBI officer"
    ],
    "asks": [
     "pay"
@@ -468,24 +482,27 @@
    "id": "h14",
    "cat": "electricity",
    "expect": "warn",
-   "level": "AMBER",
-   "amber_kind": "high_risk",
+   "level": "RED",
+   "amber_kind": null,
    "tier": "WARN",
-   "rule": "R5_default_cant_verify",
+   "rule": "R1_two_lane_strong",
    "lanes": {
-    "A": "UNVERIFIABLE",
+    "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
     "C": "HIGH"
    },
    "strong": [
+    "A:PHONE_MOBILE_FOR_INSTITUTION",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "A:PHONE_UNVERIFIED",
     "C:PRESSURE_AUTHORITY",
-    "C:PRESSURE_THREAT"
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
    ],
-   "claims": [],
+   "claims": [
+    "regulator:BSES"
+   ],
    "asks": [
     "call_back"
    ],
@@ -493,12 +510,11 @@
     "phone:9123456780"
    ],
    "outcome": "ok",
-   "seconds": 0.08,
-   "title": "Warning signs of a scam. Don't pay or share anything",
+   "seconds": 0.09,
+   "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
-    "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
-    "We could not verify who uses 9123456780.",
-    "It leans on official-sounding authority."
+    "9123456780 is an ordinary mobile number. Banks and financial firms must call customers from 1600-series numbers.",
+    "It follows the pattern of a known scam: Electricity / utility disconnection threat."
    ]
   },
   {
@@ -553,7 +569,8 @@
    ],
    "weak": [
     "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_TOO_GOOD"
+    "C:PRESSURE_TOO_GOOD",
+    "C:PRESSURE_URGENCY"
    ],
    "claims": [],
    "asks": [
@@ -623,29 +640,34 @@
    "id": "k03",
    "cat": "govt_genuine",
    "expect": "not_red",
-   "level": "GREEN",
-   "amber_kind": null,
-   "tier": "CLEAR",
-   "rule": "R3_verified_sender",
+   "level": "AMBER",
+   "amber_kind": "unverified",
+   "tier": "CHECK",
+   "rule": "R4_verified_but_suspicious",
    "lanes": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
-    "C": "NONE"
+    "C": "LOW"
    },
    "strong": [],
-   "weak": [],
+   "weak": [
+    "C:PLAYBOOK_MATCH"
+   ],
    "claims": [
     "regulator:Income Tax Department"
    ],
-   "asks": [],
+   "asks": [
+    "click_link"
+   ],
    "contacts": [
     "url:https://incometax.gov.in"
    ],
    "outcome": "ok",
    "seconds": 0.07,
-   "title": "Verified sender",
+   "title": "Can't verify. Check before you act",
    "reasons": [
-    "The link goes to incometax.gov.in, an official domain of Income Tax Department."
+    "The link goes to incometax.gov.in, an official domain of Income Tax Department.",
+    "It follows the pattern of a known scam: Fake reward points / refund link or app."
    ]
   },
   {
@@ -659,12 +681,19 @@
    "lanes": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
-    "C": "NONE"
+    "C": "LOW"
    },
    "strong": [],
-   "weak": [],
-   "claims": [],
-   "asks": [],
+   "weak": [
+    "C:PRESSURE_AUTHORITY"
+   ],
+   "claims": [
+    "regulator:Parivahan"
+   ],
+   "asks": [
+    "click_link",
+    "pay"
+   ],
    "contacts": [
     "url:https://echallan.parivahan.gov.in"
    ],
@@ -698,7 +727,7 @@
     "url:https://indiapost.gov.in"
    ],
    "outcome": "ok",
-   "seconds": 0.08,
+   "seconds": 0.06,
    "title": "Verified sender",
    "reasons": [
     "The link goes to indiapost.gov.in, an official domain of India Post."
@@ -767,7 +796,9 @@
    "weak": [
     "C:PLAYBOOK_MATCH"
    ],
-   "claims": [],
+   "claims": [
+    "payment_app:BSES"
+   ],
    "asks": [
     "pay"
    ],
@@ -823,7 +854,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.03,
+   "seconds": 0.04,
    "title": "Can't verify. Check before you act",
    "reasons": []
   },
@@ -846,7 +877,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 0.06,
+   "seconds": 0.07,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },

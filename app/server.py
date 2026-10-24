@@ -145,6 +145,35 @@ async def api_check(request: Request, text: str = Form(""), lang: str = Form("en
     return await _run_web_check(text, lang, files)
 
 
+@app.post("/api/kit-check")
+async def api_kit_check(request: Request, text: str = Form(""), lang: str = Form("en"), files: list[UploadFile] | None = File(None)):
+    """The same check, for the /kit page running a whole folder: its own rate allowance, recorded as channel 'kit'."""
+    enforce_rate(request, "kit")
+    return await _run_web_check(text, lang, files, channel="kit")
+
+
+def _kit_manifest() -> list[dict]:
+    import csv
+    p = DATA_DIR / "kit" / "expected.csv"
+    if not p.exists():
+        return []
+    with open(p, encoding="utf-8") as f:
+        return [r for r in csv.DictReader(f) if (DATA_DIR / "kit" / r["file"]).is_file()]
+
+
+@app.get("/kit", response_class=HTMLResponse)
+async def kit_page():
+    return env.get_template("kit.html").render(kit=_kit_manifest())
+
+
+@app.get("/kit/files/{name}")
+async def kit_file(name: str):
+    """Our own spot-check kit, read-only: only files listed in data/kit/expected.csv are served."""
+    if name not in {r["file"] for r in _kit_manifest()}:
+        raise HTTPException(404)
+    return FileResponse(DATA_DIR / "kit" / name, filename=name)
+
+
 async def _run_web_check(text: str, lang: str, files: list[UploadFile] | None, channel: str = "web") -> dict:
     tmp = Path(tempfile.mkdtemp(prefix="pramaan_up_"))
     try:
@@ -162,7 +191,7 @@ async def _run_web_check(text: str, lang: str, files: list[UploadFile] | None, c
         if not text.strip() and not paths:
             raise HTTPException(400, "Send a message, a file, or both.")
         rec = await check_and_record(text[:8000], paths, channel=channel, language_hint="hi" if lang == "hi" else None)
-        return {"id": rec.id, "serial": rec.serial, "level": rec.verdict.level.value, "title_en": rec.verdict.title_en,
+        return {"id": rec.id, "serial": rec.serial, "level": rec.verdict.level.value, "amber_kind": rec.verdict.amber_kind, "title_en": rec.verdict.title_en,
                 "title_hi": rec.verdict.title_hi, "reasons": [r.model_dump() for r in rec.verdict.reasons],
                 "proof_url": rec.proof_url, "card_url": f"/card/{rec.id}.png?lang={lang}", "verify_url": rec.verify_url}
     finally:

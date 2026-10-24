@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}Pramaan test kit · run your own files{% endblock %}
+{% block style %}
+  [hidden] { display: none !important; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 780px; margin: 0 0 18px; }
+  .drop { border: 2px dashed var(--line); border-radius: 14px; background: var(--panel); padding: 22px; display: grid; gap: 12px; justify-items: start; }
+  .drop.drag { border-color: var(--copper); background: #fff; }
+  .drop .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .sum { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 18px 0 10px; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .tile .v { font-family: var(--serif); font-size: 30px; line-height: 1; color: var(--sage); font-variant-numeric: tabular-nums; }
+  .tile .l { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .tile.bad .v { color: var(--bad); }
+  .wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 14.5px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); background: var(--panel); }
+  td.f { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; max-width: 260px; }
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12.5px; font-weight: 700; letter-spacing: .5px; white-space: nowrap; }
+  .RED { background: var(--badT); color: var(--bad); } .WARN { background: var(--warnT); color: var(--bad); }
+  .CHECK { background: var(--warnT); color: var(--warn); } .CLEAR { background: var(--okT); color: var(--ok); }
+  .PASS { color: var(--ok); font-weight: 700; } .soft { color: var(--warn); font-weight: 700; } .HARD, .ERROR { color: var(--bad); font-weight: 700; }
+  .why { color: var(--muted); font-size: 13px; }
+  .note { font-size: 13px; color: var(--muted); }
+{% endblock %}
+{% block body %}
+{% with here="kit" %}{% include "_nav.html" %}{% endwith %}
+<h1 style="font-family:var(--serif);font-size:34px;margin:6px 0 6px">Test kit: try your own files</h1>
+<p class="lead">Drop any mix of messages (<span class="mono">.txt</span>), screenshots, PDFs, voice notes or videos. Pramaan checks each one exactly as the
+Check page does and shows what a person would be told. Add an <span class="mono">expected.csv</span> (<span class="mono">file,label</span> with
+<span class="mono">scam</span> or <span class="mono">genuine</span>) to get a pass / fail score.</p>
+
+<div class="drop" id="drop">
+  <div class="row">
+    <input class="sr-only" type="file" id="files" multiple accept=".txt,.csv,image/*,application/pdf,audio/*,video/*">
+    <label class="btn primary" for="files">Choose files</label>
+    {% if kit %}<button class="btn" type="button" id="ours">Run our {{ kit|length }}-item kit</button>{% endif %}
+    <button class="btn" type="button" id="stop" hidden>Stop</button>
+    <button class="btn" type="button" id="reset" hidden>Clear</button>
+  </div>
+  <div class="note" id="status">Or drop files here. Each file is one check; nothing is sent to anyone but Pramaan, and it is deleted after 24 hours.</div>
+</div>
+
+<div class="sum" id="sum" hidden>
+  <div class="tile"><div class="v" id="s-n">0</div><div class="l">files checked</div></div>
+  <div class="tile"><div class="v" id="s-pass">0</div><div class="l">pass</div></div>
+  <div class="tile"><div class="v" id="s-soft">0</div><div class="l">soft (wrong, not an accusation)</div></div>
+  <div class="tile bad"><div class="v" id="s-hard">0</div><div class="l">hard (scam cleared or genuine red)</div></div>
+</div>
+<div class="wrap" id="wrap" hidden>
+  <table><thead><tr><th>File</th><th>Expected</th><th>Pramaan said</th><th>Result</th><th>Why (first reason)</th></tr></thead><tbody id="rows"></tbody></table>
+</div>
+<p class="note" style="margin-top:12px">How a result is scored: a scam passes only if the person is told <b>don't act</b> (red, or "Warning signs of a scam");
+"check first" is a soft miss and "no warning" is a hard one. A genuine message passes with anything except a warning; red is a hard error.
+The same table from the command line: <span class="mono">python -m eval.spotcheck &lt;folder&gt;</span>. Our kit's targets are fixed in
+<span class="mono">eval/gates.yaml</span>.</p>
+{% endblock %}
+{% block script %}
+<script>
+const KIT = {{ kit|tojson }};
+const $ = id => document.getElementById(id);
+const rows = $("rows"); let stopping = false, running = false;
+const LABEL = {RED: "Red · scam pattern", WARN: "Warning signs", CHECK: "Check first", CLEAR: "No warning"};
+
+function tier(level, kind) {
+  if (level === "RED" || (level === "AMBER" && kind === "high_risk")) return "WARN";
+  if (level === "GREEN" || (level === "AMBER" && kind === "no_risk_signs")) return "CLEAR";
+  return "CHECK";
+}
+function score(label, level, t) {
+  if (label === "scam") return t === "WARN" ? "PASS" : t === "CLEAR" ? "HARD" : "soft";
+  if (label === "genuine") return level === "RED" ? "HARD" : t === "WARN" ? "soft" : "PASS";
+  return "-";
+}
+function parseCsv(text) {
+  const out = {}; const lines = text.split(/\r?\n/).filter(Boolean); const head = lines.shift().split(",").map(s => s.trim().toLowerCase());
+  const fi = head.indexOf("file"), li = head.indexOf("label");
+  for (const l of lines) { const c = l.split(","); if (c[fi]) out[c[fi].trim()] = (c[li] || "").trim().toLowerCase(); }
+  return out;
+}
+function tally() {
+  const r = [...rows.querySelectorAll("tr")].map(tr => tr.dataset.result);
+  $("s-n").textContent = r.filter(x => x).length;
+  $("s-pass").textContent = r.filter(x => x === "PASS").length;
+  $("s-soft").textContent = r.filter(x => x === "soft").length;
+  $("s-hard").textContent = r.filter(x => x === "HARD").length;
+}
+function addRow(name, label) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td class="f"></td><td>${label || "–"}</td><td class="said"><span class="why">waiting…</span></td><td class="res"></td><td class="why w"></td>`;
+  tr.querySelector(".f").textContent = name; rows.appendChild(tr); return tr;
+}
+async function check(file, tr, label) {
+  const fd = new FormData();
+  if (/\.txt$/i.test(file.name)) fd.append("text", (await file.text()).slice(0, 6000)); else fd.append("files", file, file.name);
+  fd.append("lang", "en");
+  for (let attempt = 0; attempt < 4; attempt++) {
+    let r;
+    try { r = await fetch("/api/kit-check", {method: "POST", body: fd}); } catch (e) { r = null; }
+    if (r && r.status === 429) { tr.querySelector(".said").innerHTML = '<span class="why">busy, waiting 30 s…</span>'; await new Promise(x => setTimeout(x, 30000)); continue; }
+    if (!r || !r.ok) { const j = r ? await r.json().catch(() => ({})) : {}; tr.dataset.result = "ERROR";
+      tr.querySelector(".said").textContent = "Error"; tr.querySelector(".res").innerHTML = '<span class="ERROR">ERROR</span>';
+      tr.querySelector(".w").textContent = j.detail || "Network error"; return; }
+    const j = await r.json(), t = tier(j.level, j.amber_kind), res = score(label, j.level, t);
+    tr.dataset.result = res === "-" ? "done" : res;
+    const shown = j.level === "RED" ? "RED" : t;
+    tr.querySelector(".said").innerHTML = `<a href="${j.proof_url}" target="_blank" rel="noopener"><span class="pill ${shown}">${LABEL[shown]}</span></a>`;
+    tr.querySelector(".res").innerHTML = res === "-" ? "–" : `<span class="${res}">${res}</span>`;
+    tr.querySelector(".w").textContent = (j.reasons && j.reasons[0] && j.reasons[0].text_en) || j.title_en;
+    return;
+  }
+  tr.dataset.result = "ERROR"; tr.querySelector(".said").textContent = "Gave up (rate limit)";
+}
+async function runAll(files, expected) {
+  if (running) return;
+  running = true; stopping = false; rows.innerHTML = "";
+  $("sum").hidden = false; $("wrap").hidden = false; $("stop").hidden = false; $("reset").hidden = true;
+  const list = files.filter(f => !/\.csv$/i.test(f.name) && !/readme\.md$/i.test(f.name));
+  const trs = list.map(f => addRow(f.name, expected[f.name]));
+  for (let i = 0; i < list.length && !stopping; i++) {
+    $("status").textContent = `Checking ${i + 1} of ${list.length}: ${list[i].name}`;
+    await check(list[i], trs[i], expected[list[i].name]); tally();
+  }
+  $("status").textContent = stopping ? "Stopped." : `Done: ${list.length} files. Tap a verdict to open its full proof.`;
+  running = false; $("stop").hidden = true; $("reset").hidden = false;
+}
+async function fromFiles(fileList) {
+  const files = [...fileList]; let expected = {};
+  const csv = files.find(f => /expected\.csv$/i.test(f.name));
+  if (csv) expected = parseCsv(await csv.text());
+  runAll(files, expected);
+}
+$("files").addEventListener("change", e => { fromFiles(e.target.files); e.target.value = ""; });
+const drop = $("drop");
+["dragenter", "dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("drag"); }));
+["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("drag"); }));
+drop.addEventListener("drop", e => { if (e.dataTransfer.files.length) fromFiles(e.dataTransfer.files); });
+$("stop").onclick = () => { stopping = true; $("status").textContent = "Stopping after this file…"; };
+$("reset").onclick = () => { rows.innerHTML = ""; $("sum").hidden = true; $("wrap").hidden = true; $("reset").hidden = true;
+  $("status").textContent = "Or drop files here. Each file is one check; nothing is sent to anyone but Pramaan, and it is deleted after 24 hours."; };
+if ($("ours")) $("ours").onclick = async () => {
+  $("status").textContent = "Loading our kit…";
+  const files = [], expected = {};
+  for (const k of KIT) {
+    const r = await fetch(`/kit/files/${encodeURIComponent(k.file)}`); if (!r.ok) continue;
+    files.push(new File([await r.blob()], k.file)); expected[k.file] = k.label;
+  }
+  runAll(files, expected);
+};
+</script>
+{% endblock %}

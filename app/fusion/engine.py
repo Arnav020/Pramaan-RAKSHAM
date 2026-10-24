@@ -45,7 +45,25 @@ def _matches(cond: dict, lanes: dict[str, LaneResult], strong: list[Lane]) -> bo
         return False
     if "lane_c_not" in cond and (c is not None and c.status == cond["lane_c_not"]):
         return False
+    if cond.get("corroborated") and not corroborated(lanes):
+        return False
     return True
+
+
+def corroborated(lanes: dict[str, LaneResult]) -> bool:
+    """Two independent lanes agree, one of them less sharply: Lane A caught a hard contradiction (look-alike domain,
+    personal UPI ID or mobile number for an institution...) AND Lane C matched a published scam script, with pressure
+    or a request. Lane C need not be strong on its own, because Lane A has already caught the sender lying."""
+    a, c = lanes.get("A"), lanes.get("C")
+    if a is None or c is None or not a.available or not c.available:
+        return False
+    a_strong = any(s.strength == Strength.STRONG for s in a.signals)
+    # A near-complete match by the phrase rules (at least 3 of 4 indicator groups), never a partial, semantic or
+    # AI-named one: a forwarded murder-mystery riddle mentioning police must not corroborate anything.
+    script = any(s.code == "PLAYBOOK_MATCH" and str(s.params.get("method", "")).startswith("rules")
+                 and (s.params.get("score") or 0) >= 0.75 for s in c.signals)
+    pushing = c.status != "NONE" and (any(s.code.startswith(("PRESSURE_", "ASK_")) for s in c.signals) or bool(c.detail.get("asks")))
+    return a_strong and script and pushing
 
 
 def user_visible(s: Signal) -> bool:
@@ -59,7 +77,8 @@ def pick_reasons(level: VerdictLevel, signals: list[Signal], limit: int = 3) -> 
     if level == VerdictLevel.GREEN:
         pool = [s for s in signals if s.strength == Strength.POSITIVE]
     elif level == VerdictLevel.RED:
-        pool = [s for s in signals if s.strength == Strength.STRONG]
+        # the named scam script is part of the evidence for a corroborated red, even when it is weak on its own
+        pool = [s for s in signals if s.strength == Strength.STRONG or s.code == "PLAYBOOK_MATCH"]
     else:
         pool = [s for s in signals if s.strength in (Strength.STRONG, Strength.WEAK, Strength.POSITIVE)]
         if not pool:   # never an amber card with no reason: context notes ("anyone can type a header") explain it

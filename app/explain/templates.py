@@ -57,6 +57,8 @@ T: dict[str, tuple[str, str]] = {
                              "लिंक आपको एक प्राइवेट चैट ({domain}) पर ले जाता है।"),
     "DOMAIN_NOT_OFFICIAL_FOR_CLAIM": ("{domain} is not an official domain of the institution named. Indian banks now use addresses ending in .bank.in.",
                                       "{domain} बताई गई संस्था का आधिकारिक डोमेन नहीं है। भारतीय बैंक अब .bank.in वाले पते इस्तेमाल करते हैं।"),
+    "PHONE_MOBILE_STAFF": ("{phone} is an ordinary mobile number, given as a bank staff member's. Staff may use mobiles, but confirm through your branch or the number on your card before acting on a call.",
+                           "{phone} एक आम मोबाइल नंबर है, जिसे बैंक कर्मचारी का बताया गया है। कर्मचारी मोबाइल इस्तेमाल कर सकते हैं, पर कॉल पर कुछ करने से पहले अपनी शाखा या कार्ड पर छपे नंबर से पुष्टि करें।"),
     "DOMAIN_GOVERNMENT": ("{domain} is a government address: only Indian government bodies can register names ending in .gov.in or .nic.in.",
                           "{domain} सरकारी पता है: .gov.in या .nic.in वाले नाम सिर्फ़ भारत सरकार की संस्थाएँ ले सकती हैं।"),
     "DOMAIN_NOT_GOV_FOR_GOVT_CLAIM": ("The message claims to be from {claimed}, but the link goes to {domain}. Government websites end in .gov.in or .nic.in.",

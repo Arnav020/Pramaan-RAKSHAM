@@ -43,3 +43,6 @@ data/vault/
 
 # Public evaluation datasets (downloaded and hash-checked by eval/open_kit.py)
 data/open/
+
+# local editor / preview config
+.claude/

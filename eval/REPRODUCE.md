@@ -21,11 +21,27 @@ for the AI extractor and speech-to-text.
 
 | # | Command | Data | Output | Time |
 |---|---|---|---|---|
-| 1 | `python -m pytest` | Fixtures inside the tests | pass / fail (174 tests) | ~1 min |
+| 1 | `python -m pytest` | Fixtures inside the tests | pass / fail (all tests) | ~1 min |
 | 2 | `python -m eval.run` | `eval/dataset.yaml` (test 51, dev 18) and `eval/public_set.yaml` (24) | `latest.json` | ~5 min |
 | 3 | `python -m eval.open_kit` | 5,971 public SMS (below), downloaded once and hash-checked | `open_kit.json` | ~6 min |
 | 4 | `python -m eval.redteam` | Attacks defined in `eval/redteam.py` | `redteam.json` | ~2 min |
 | 5 | `python -m eval.robustness` | AI rewrites of frozen test scams; playbooks hidden one at a time | `robustness.json` | ~7 min |
+| 6 | `python -m eval.spotcheck [folder]` | The jury kit, `data/kit/` (49 files), or **any folder of your own files** | `spotcheck.json` | ~4 min |
+| 7 | `python -m eval.gates` | Every result file above, against the targets in `eval/gates.yaml` | `gates.json` | instant |
+
+## Spot-check kit (try it on your own files)
+
+`data/kit/` holds 49 files: the whole public split (24 real messages quoted in the news, with sources), the whole blind
+set (10 scams written outside our rule-writing) and 15 synthetic media files (screenshots, QR posters, PDFs, voice notes,
+videos). Nothing was hand-picked. `expected.csv` gives each file's truth. Run `python -m eval.spotcheck` for a
+pass / fail table, point it at any folder of `.txt` messages and media, or drop the files on the site's **/kit** page.
+A scam passes only if the person is told "don't act"; a genuine item passes with anything except a warning.
+
+## Pass / fail targets
+
+`eval/gates.yaml` states, for every result, the promise we make (no genuine message red, no scam cleared, at most 1 in
+200 legitimate SMS warned, ...). They were written on 25 Oct at 01:30 IST, after that night's runs and before the final
+run. `python -m eval.gates` prints PASS / FAIL for each. A failed gate is reported with its real number, never edited.
 
 ## Datasets
 

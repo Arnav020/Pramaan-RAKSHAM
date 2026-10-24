@@ -1,0 +1,50 @@
+file,label,set,source
+public_p01_reward_apk.txt,scam,public split (real message quoted in the news; frozen),https://www.latestly.com/social-viral/fact-check/did-you-receive-an-sms-or-whatsapp-message-asking-you-to-download-an-app-to-redeem-sbi-reward-points-pib-fact-check-debunks-fake-message-going-viral-7253978.html
+public_p02_kyc_phishing.txt,scam,public split (real message quoted in the news; frozen),https://www.businesstoday.in/technology/story/message-from-sbi-to-update-your-pan-card-details-is-a-scam-do-not-fall-for-it-345946-2022-08-30
+public_p03_reward_link.txt,scam,public split (real message quoted in the news; frozen),https://www.thetechoutlook.com/news/security/fraudsters-target-sbi-customers-with-fake-yono-rewards-message/
+public_p04_tax_refund.txt,scam,public split (real message quoted in the news; frozen),https://www.businesstoday.in/personal-finance/tax/story/itr-refund-status-centre-issues-scam-alert-on-fraudulent-messages-392717-2023-08-03
+public_p05_kyc_phishing.txt,scam,public split (real message quoted in the news; frozen),https://english.factcrescendo.com/?p=15481
+public_p06_utility_bill.txt,scam,public split (real message quoted in the news; frozen),https://sentinelassam.com/topheadlines/beware-of-fake-sms-on-power-bills-598773
+public_p07_digital_arrest.txt,scam,public split (real message quoted in the news; frozen),https://www.tribuneindia.com/news/chandigarh/73-year-old-put-under-digital-arrest-duped-of-16-lakh
+public_p08_digital_arrest.txt,scam,public split (real message quoted in the news; frozen),https://www.deccanherald.com/india/uttarakhand/woman-put-under-digital-arrest-in-dehradun-duped-of-rs-17-crore-3315601
+public_p09_digital_arrest.txt,scam,public split (real message quoted in the news; frozen),https://www.thenewsminute.com/karnataka/fedex-scam-bengaluru-software-engineer-loses-rs-1-crore-to-fraudsters
+public_p10_investment_tips.txt,scam,public split (real message quoted in the news; frozen),https://www.business-standard.com/article/pti-stories/sebi-exchanges-tighten-noose-on-sms-tipsters-114120800514_1.html
+public_p11_loan_fee.txt,scam,public split (real message quoted in the news; frozen),https://www.indusind.bank.in/iblogs/?p=14978
+public_p12_lottery.txt,scam,public split (real message quoted in the news; frozen),https://eastmojo.com/fact-check/2022/11/01/fact-check-kbc-lottery-with-rs-25-lakh-reward-on-whatsapp-is-fake/
+public_p13_telecom_threat.txt,scam,public split (real message quoted in the news; frozen),https://www.voicendata.com/news/trai-warns-against-fake-calls-threatening-mobile-disconnection-8937750
+public_p14_parcel_address.txt,scam,public split (real message quoted in the news; frozen),https://cyberpeace.org/resources/blogs/factcheck-beware-fake-india-post-delivery-scam-alert
+public_p15_task_job.txt,scam,public split (real message quoted in the news; frozen),https://newschecker.in/scam-watch/fraud-terror-and-trail-of-death-the-telegram-task-scam-spreading-fast-in-india
+public_p16_loan_fee.txt,scam,public split (real message quoted in the news; frozen),https://www.outlookmoney.com/news/fake-whatsapp-messages-claiming-mudra-loan-approval-are-scams-pib-fact-check-issues-advisory
+public_q01_bank_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://money9.com/news/banking/sbi-cautions-customers-against-online-fd-fraud-advises-not-to-share-bank-details-22446.html
+public_q02_bank_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://english.factcrescendo.com/?p=15481
+public_q03_govt_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://www.latestly.com/social-viral/fact-check/did-you-receive-an-sms-or-whatsapp-message-asking-you-to-download-an-app-to-redeem-sbi-reward-points-pib-fact-check-debunks-fake-message-going-viral-7253978.html
+public_q04_govt_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://www.voicendata.com/news/trai-warns-against-fake-calls-threatening-mobile-disconnection-8937750
+public_q05_govt_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://www.businesstoday.in/personal-finance/tax/story/itr-refund-status-centre-issues-scam-alert-on-fraudulent-messages-392717-2023-08-03
+public_q06_utility_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://sentinelassam.com/topheadlines/beware-of-fake-sms-on-power-bills-598773
+public_q07_govt_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://www.newsonair.gov.in/govt-debunks-sms-from-india-post-asking-people-to-update-their-address
+public_q08_regulator_advisory.txt,genuine,public split (real message quoted in the news; frozen),https://investor.sebi.gov.in/pdf/Pump%20and%20Dump%20Scam%20final.pdf
+blind_b01_investment.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b02_kyc.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b03_lottery.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b04_electricity.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b05_upi_refund.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b06_job.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b07_delivery.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b08_family.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b09_support.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+blind_b10_task.txt,scam,blind set (written outside the rule-writing),"team, 25 Oct 2026"
+shot_sms_kyc.png,scam,synthetic media (eval/generate/make_stress_media.py),generated
+shot_wa_investment.png,scam,synthetic media (eval/generate/make_stress_media.py),generated
+shot_wa_family_hi.png,scam,synthetic media (eval/generate/make_stress_media.py),generated
+shot_sms_otp_genuine.png,genuine,synthetic media (eval/generate/make_stress_media.py),generated
+shot_sms_debit_genuine.png,genuine,synthetic media (eval/generate/make_stress_media.py),generated
+notice_court_summons.pdf,scam,synthetic media (eval/generate/make_stress_media.py),generated
+notice_court_summons_scanned.pdf,scam,synthetic media (eval/generate/make_stress_media.py),generated
+notice_bank_genuine.pdf,genuine,synthetic media (eval/generate/make_stress_media.py),generated
+poster_qr_electricity.png,scam,synthetic media (eval/generate/make_stress_media.py),generated
+poster_qr_shop_genuine.png,genuine,synthetic media (eval/generate/make_stress_media.py),generated
+voice_bank_otp.wav,scam,synthetic media (eval/generate/make_stress_media.py),generated
+voice_digital_arrest.wav,scam,synthetic media (eval/generate/make_stress_media.py),generated
+voice_genuine_reminder.wav,genuine,synthetic media (eval/generate/make_stress_media.py),generated
+video_investment_ad.mp4,scam,synthetic media (eval/generate/make_stress_media.py),generated
+video_awareness_genuine.mp4,genuine,synthetic media (eval/generate/make_stress_media.py),generated

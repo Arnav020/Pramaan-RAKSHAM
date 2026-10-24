@@ -13,6 +13,18 @@
   textarea:focus-visible, input:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
   .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .file { font-size: 14px; }
+  [hidden] { display: none !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .pick { cursor: pointer; }
+  .chip-file { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; padding: 6px 6px 6px 12px; border: 1.5px solid var(--line);
+               border-radius: 999px; background: #fff; font-size: 14px; }
+  .chip-file .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 260px; }
+  .chip-file .sz { color: var(--muted); font-size: 13px; white-space: nowrap; flex: none; }
+  .chip-file button { border: 0; background: var(--line); color: var(--ink); width: 26px; height: 26px; border-radius: 50%; font-size: 16px;
+                      line-height: 1; cursor: pointer; flex: none; }
+  .chip-file button:hover, .chip-file button:focus-visible { background: var(--copper); color: #fff; }
+  form.check.drag { outline: 2px dashed var(--copper); outline-offset: 4px; }
+  .ghost-link { background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font: inherit; font-size: 14px; padding: 0; }
   #out { margin-top: 14px; }
   #out img { width: 100%; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
   .busy { color: var(--muted); font-style: italic; }
@@ -52,12 +64,17 @@
     <h2>Check something</h2>
     <textarea name="text" placeholder="Paste the message, UPI ID or link here… / यहाँ मैसेज, UPI आईडी या लिंक डालें…" aria-label="Message to check"></textarea>
     <div class="row">
-      <input class="file" type="file" name="files" accept="video/*,audio/*,image/*,application/pdf" aria-label="Video, voice note, image or PDF">
+      <input class="sr-only" id="file" type="file" name="files" accept="video/*,audio/*,image/*,application/pdf" aria-label="Video, voice note, image or PDF">
+      <label class="btn pick" for="file" id="pick">📎 Add a file · फ़ाइल जोड़ें</label>
+      <span class="chip-file" id="chip" hidden><span class="nm" id="chip-name"></span><span class="sz" id="chip-size"></span>
+        <button type="button" id="chip-x" aria-label="Remove the file · फ़ाइल हटाएँ" title="Remove">×</button></span>
+      <span class="sub" style="font-size:13px" id="pick-hint">Video, voice note, screenshot or PDF · or drop it here</span>
     </div>
     <div class="row">
       <label><input type="radio" name="lang" value="en" checked> English</label>
       <label><input type="radio" name="lang" value="hi"> हिंदी</label>
-      <button class="btn primary" type="submit" style="margin-left:auto">Check it · जाँचें</button>
+      <button class="ghost-link" type="button" id="clear" hidden>Clear · साफ़ करें</button>
+      <button class="btn primary" type="submit" id="go" style="margin-left:auto">Check it · जाँचें</button>
     </div>
     <div id="out" aria-live="polite"></div>
   </form>
@@ -103,15 +120,53 @@
 {% endblock %}
 {% block script %}
 <script>
-const f = document.getElementById("f"), out = document.getElementById("out");
+const f = document.getElementById("f"), out = document.getElementById("out"), file = document.getElementById("file"),
+      ta = f.querySelector("textarea"), go = document.getElementById("go"), clearBtn = document.getElementById("clear"),
+      chip = document.getElementById("chip"), pick = document.getElementById("pick"), hint = document.getElementById("pick-hint");
+const GO_LABEL = go.textContent;
+let busy = false;
+
+function size(n) { return n > 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+function sync() {
+  const fl = file.files && file.files[0];
+  if (out.dataset.hint && (fl || ta.value.trim())) { out.innerHTML = ""; delete out.dataset.hint; }   // the "add something first" hint is done
+  chip.hidden = !fl; pick.hidden = !!fl; hint.hidden = !!fl;
+  if (fl) { document.getElementById("chip-name").textContent = fl.name; document.getElementById("chip-size").textContent = size(fl.size); }
+  clearBtn.hidden = !(fl || ta.value.trim() || out.innerHTML);
+}
+function removeFile() { file.value = ""; sync(); pick.focus(); }
+function resetAll() { f.reset(); out.innerHTML = ""; busy = false; go.disabled = false; go.textContent = GO_LABEL; sync(); }
+
+file.addEventListener("change", sync);
+ta.addEventListener("input", sync);
+document.getElementById("chip-x").onclick = removeFile;
+clearBtn.onclick = () => { resetAll(); ta.focus(); };
+// Drop a file anywhere on the form
+["dragenter", "dragover"].forEach(ev => f.addEventListener(ev, e => { e.preventDefault(); f.classList.add("drag"); }));
+["dragleave", "drop"].forEach(ev => f.addEventListener(ev, e => { e.preventDefault(); f.classList.remove("drag"); }));
+f.addEventListener("drop", e => { if (e.dataTransfer.files.length) { file.files = e.dataTransfer.files; sync(); } });
+// Coming back from a proof page (Back button): start clean, not with the last file and result still filled in
+window.addEventListener("pageshow", e => {
+  const nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+  if (e.persisted || (nav && nav.type === "back_forward")) resetAll(); else sync();
+});
+
 f.onsubmit = async e => {
-  e.preventDefault(); out.innerHTML = '<p class="busy">Checking… प्रमाण जाँच रहा है…</p>';
+  e.preventDefault();
+  if (busy) return;
+  if (!ta.value.trim() && !(file.files && file.files.length)) {
+    out.innerHTML = '<p class="busy">Paste a message, UPI ID or link, or add a file first. · पहले मैसेज डालें या फ़ाइल जोड़ें।</p>';
+    out.dataset.hint = "1"; sync(); return;
+  }
+  busy = true; go.disabled = true; go.textContent = "Checking… · जाँच रहा है…";
+  out.innerHTML = '<p class="busy">Checking… प्रमाण जाँच रहा है…</p>';
   try {
     const r = await fetch("/api/check", {method: "POST", body: new FormData(f)}); const j = await r.json();
     if (!r.ok) { out.textContent = j.detail || "Something went wrong."; return; }
     out.innerHTML = `<p><a class="btn primary" href="${j.proof_url}">See the full proof →</a></p><img src="${j.card_url}" alt="">`;
     out.querySelector("img").alt = j.title_en;
   } catch (err) { out.textContent = "Network error. Please try again."; }
+  finally { busy = false; go.disabled = false; go.textContent = GO_LABEL; sync(); }
 };
 </script>
 {% endblock %}

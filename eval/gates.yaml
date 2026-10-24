@@ -1,0 +1,38 @@
+# Pass / fail targets ("gates") for every measured result, checked by python -m eval.gates.
+#
+# Written 25 Oct 2026 at about 01:30 IST, AFTER we had seen that night's runs, and BEFORE the final run that is
+# submitted. They are not tuned to make the final run pass: each one states the promise we make to a user. If a gate
+# fails we report the real number and the failure cases; we do not edit a gate, a test set or a rule to make it pass.
+#
+# Tiers: WARN = "don't act" (red, or amber with a high-risk request) · CHECK = "check first" · CLEAR = no warning.
+
+frozen_at: "2026-10-25T01:30:00+05:30"
+
+gates:
+  # ---- the promise we make above all: no false accusations
+  - {id: frozen_test_no_false_red,     file: latest.json,   path: metrics.test.false_red_on_genuine.k,  op: "==", value: 0,
+     why: "No genuine message in the frozen test split is ever marked red."}
+  - {id: public_no_false_red,          file: latest.json,   path: metrics.public.false_red_on_genuine.k, op: "==", value: 0,
+     why: "No genuine official advisory quoted from the news is marked red."}
+  - {id: open_ham_red_rate,            file: open_kit.json, path: per_label.ham.red.p,  op: "<=", value: 0.001,
+     why: "At most 1 in 1,000 legitimate SMS in a public dataset we never trained on is marked red."}
+  - {id: open_ham_warn_rate,           file: open_kit.json, path: per_label.ham.warned.p, op: "<=", value: 0.005,
+     why: "At most 1 in 200 legitimate SMS is told \"don't act\"."}
+  - {id: frozen_test_genuine_warned,   file: latest.json,   path: metrics.test.tiers.genuine_warned.p, op: "<=", value: 0.04,
+     why: "At most 1 in 25 genuine test items is told \"don't act\"."}
+  # ---- scams are never waved through
+  - {id: frozen_test_no_scam_cleared,  file: latest.json,   path: metrics.test.tiers.scam_clear.k, op: "==", value: 0,
+     why: "No scam in the frozen test split is cleared."}
+  - {id: public_no_scam_cleared,       file: latest.json,   path: metrics.public.tiers.scam_clear.k, op: "==", value: 0,
+     why: "No real scam quoted from the news is cleared."}
+  - {id: frozen_test_scams_warned,     file: latest.json,   path: metrics.test.tiers.scam_warned.p, op: ">=", value: 0.85,
+     why: "At least 85% of test scams get a \"don't act\" warning, not only \"check first\"."}
+  - {id: open_smishing_cleared,        file: open_kit.json, path: per_label.smishing.clear_rate, op: "<=", value: 0.10,
+     why: "At most 10% of phishing SMS in the open dataset are cleared (most are UK/US prize texts with no Indian rail to check)."}
+  # ---- attacks and spot checks
+  - {id: redteam_defended,             file: redteam.json,  path: passed_all, op: "==", value: true,
+     why: "Every red-team attack that is not a declared known miss is defended."}
+  - {id: spotcheck_no_hard_errors,     file: spotcheck.json, path: summary.HARD, op: "==", value: 0,
+     why: "In the jury spot-check kit, no scam is cleared and no genuine item is marked red."}
+  - {id: spotcheck_pass_rate,          file: spotcheck.json, path: summary.pass_rate, op: ">=", value: 0.90,
+     why: "At least 90% of kit items get exactly the expected kind of answer."}

@@ -83,7 +83,7 @@ Reasons come from fixed English and Hindi sentences.
 
 ## Results
 
-All numbers come from `python -m eval.run` (24 Oct 2026, rules v2.2), `python -m eval.open_kit`, `python -m eval.redteam` and the study scripts. They are read from `eval/results/`; none is typed in by hand. To reproduce everything: `python -m eval.kit` ([eval/REPRODUCE.md](eval/REPRODUCE.md)).
+All numbers come from `python -m eval.run` (25 Oct 2026, rules v2.3), `python -m eval.open_kit`, `python -m eval.redteam` and the study scripts. They are read from `eval/results/`; none is typed in by hand. To reproduce everything: `python -m eval.kit` ([eval/REPRODUCE.md](eval/REPRODUCE.md)).
 
 Every verdict is also scored by **what the person is told**, so a false alarm on a genuine message counts even when it isn't red:
 **Warn** = don't act (red, or amber with a high-risk request) · **Check first** = confirm through an official channel · **Clear** = green, or "No warning signs".
@@ -102,9 +102,14 @@ Every verdict is also scored by **what the person is told**, so a false alarm on
 
 **Public split, 24 items.** Real scam messages and genuine official formats quoted in news reports and advisories, with sources, frozen before the 24 Oct detection changes (`eval/PUBLIC_FROZEN.sha256`).
 - **0 of 8** genuine items warned or red; all 8 clear.
-- **13 of 16** scams warned, 3 "check first", **0** cleared.
+- **14 of 16** scams warned, 2 "check first", **0** cleared.
 - 1 is red (p14, a fake India Post link); the rest stay amber: the published quotes rarely carry a payment ID or link we can check, so the two-lane rule holds them there.
-- Disclosure: four playbooks (23 Oct) were added after this set's first run showed the gap, and the finale-night stress test (`eval/stress_set.yaml`) was written by people who had read this set. The "after" numbers are not fully independent of it.
+- Disclosure: four playbooks (23 Oct) were added after this set's first run showed the gap, and the finale-night stress test (`eval/stress_set.yaml`) was written by people who had read this set. The "after" numbers are not fully independent of it. Items p02 and p12 were also fixed after the jury kit showed them (p02, a real SBI phishing SMS, had come back "No warning signs" with the AI off).
+
+**Jury spot-check kit, 49 files** (`data/kit/`: the whole public split, the whole blind set of 10 scams written outside our rule-writing, and 15 synthetic screenshots, QR posters, PDFs, voice notes and videos; `python -m eval.spotcheck`, or the **/kit** page).
+- With the AI reader on, as the site runs: **47 of 49** pass, **0** hard errors (no scam cleared, no genuine item red), 2 "check first" where we wanted "don't act".
+- Rules only: 45 of 49 pass, 0 hard errors.
+- All 12 pass / fail targets in `eval/gates.yaml` pass on the final run (`eval/results/gates.json`).
 
 **Open dataset, 5,971 public SMS** we never trained on (Mishra & Soni 2022, Mendeley Data, CC BY 4.0; `eval/open_kit.py`, rules only). Frozen first run:
 
@@ -116,7 +121,7 @@ Every verdict is also scored by **what the person is told**, so a false alarm on
 
 - False alarms are rare and never red.
 - Most phishing is not cleared (585 of 638), but it is rarely escalated to "warn": the set is mostly UK and US prize texts from before UPI, and our rails and playbooks are Indian.
-- Its failure list showed that links written as a bare IP address were dropped. We fixed that general gap and re-ran: phishing cleared 53 → 49, legitimate warned unchanged at 1. After the finale-night stress-test rules: legitimate warned 2 of 4,844 (still 0 red), phishing warned 5, cleared 49. The frozen run stays the headline.
+- Its failure list showed that links written as a bare IP address were dropped. We fixed that general gap and re-ran: phishing cleared 53 → 49, legitimate warned unchanged at 1. Final run (25 Oct, rules v2.3): legitimate warned 2 of 4,844, **0 red**; phishing warned 5, cleared 46 of 638 (7.2%). The frozen run stays the headline.
 
 **Key experiment (videos, test + dev).**
 - On 15 genuine videos (original, WhatsApp-compressed, cropped, trimmed and mirrored, blurry), our open-source detectors alone called **15 of 15** fake. Pramaan marked **0 of 15** red.
@@ -172,7 +177,9 @@ With no keys it runs rules-only. Optional keys:
 | Command | What |
 |---|---|
 | `python -m eval.kit` | The whole test kit in one command (tests, both evaluations, red team, robustness) → `eval/results/kit_summary.json` |
-| `python -m pytest` | 174 automated tests (~1 min). Tests that need our private clips skip themselves. |
+| `python -m eval.spotcheck [folder]` | The 49-file jury kit in `data/kit/`, or any folder of your own messages and media → a pass / fail table. Also on the site at **/kit**. |
+| `python -m eval.gates` | Every result against the pass / fail targets fixed in `eval/gates.yaml` (12 of 12 pass on the final run) |
+| `python -m pytest` | 186 automated tests (~1 min). Tests that need our private clips skip themselves. |
 | `python -m eval.run` | Labelled evaluation (~5 min with detectors) → `/lab` |
 | `python -m eval.open_kit` | The 5,971-message public dataset, hash-checked (~6 min) → `/lab` |
 | `python -m eval.redteam` | Red-team suite (~2 min) → `/redteam` |

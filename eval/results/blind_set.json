@@ -1,0 +1,353 @@
+{
+ "set": "blind_set",
+ "llm": true,
+ "sites": false,
+ "summary": {
+  "ok": 10
+ },
+ "items": [
+  {
+   "id": "b01",
+   "cat": "investment",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_GUARANTEED_RETURNS",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "call_back",
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 11.73,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Money-doubling / unregulated deposit scheme.",
+    "It asks for money while pushing guaranteed returns.",
+    "It promises guaranteed returns. SEBI-registered advisers cannot promise guaranteed returns."
+   ]
+  },
+  {
+   "id": "b02",
+   "cat": "kyc",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank"
+   ],
+   "asks": [
+    "click_link"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: KYC update / account block phishing.",
+    "It threatens arrest, a block or legal action.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "b03",
+   "cat": "lottery",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_TOO_GOOD"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.11,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Lottery / prize with a 'processing fee'.",
+    "It asks for money while pushing an offer too good to be true.",
+    "It offers a prize or reward that sounds too good to be true."
+   ]
+  },
+  {
+   "id": "b04",
+   "cat": "electricity",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_AUTHORITY",
+    "C:PRESSURE_THREAT",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "call_back"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.06,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
+    "It leans on official-sounding authority.",
+    "It threatens arrest, a block or legal action."
+   ]
+  },
+  {
+   "id": "b05",
+   "cat": "upi_refund",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "credentials"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.06,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: Fake reward points / refund link or app.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "b06",
+   "cat": "job",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Job offer that asks for a fee first.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "b07",
+   "cat": "delivery",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "click_link"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.06,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Parcel / delivery address-update phishing.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "b08",
+   "cat": "family",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation.",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "b09",
+   "cat": "support",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_CREDENTIALS",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [
+    "bank"
+   ],
+   "asks": [
+    "call_back",
+    "credentials"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.09,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing).",
+    "It pushes you to act immediately."
+   ]
+  },
+  {
+   "id": "b10",
+   "cat": "task",
+   "expect": "warn",
+   "level": "AMBER",
+   "amber_kind": "high_risk",
+   "tier": "WARN",
+   "rule": "R5_default_cant_verify",
+   "lanes": {
+    "A": "UNVERIFIABLE",
+    "B": "NOT_APPLICABLE",
+    "C": "HIGH"
+   },
+   "strong": [
+    "C:ASK_PAY_WITH_PRESSURE",
+    "C:PLAYBOOK_MATCH"
+   ],
+   "weak": [
+    "C:PRESSURE_TOO_GOOD",
+    "C:PRESSURE_URGENCY"
+   ],
+   "claims": [],
+   "asks": [
+    "pay"
+   ],
+   "contacts": [],
+   "outcome": "ok",
+   "seconds": 0.08,
+   "title": "Warning signs of a scam. Don't pay or share anything",
+   "reasons": [
+    "It follows the pattern of a known scam: Task-based 'part-time job' scam.",
+    "It asks for money while pushing an offer too good to be true.",
+    "It offers a prize or reward that sounds too good to be true."
+   ]
+  }
+ ]
+}

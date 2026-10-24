@@ -1,0 +1,16 @@
+# BLIND set: 10 scam messages written by someone outside the rule-writing (sent by the team on 25 Oct 2026, 00:30),
+# run BEFORE any change made because of them. The baseline result is recorded in BUILD_LOG.md. Changes made after
+# that are structural (fusion corroboration, AI-named scam scripts), never phrase rules copied from these messages.
+# None of the messages carries a UPI ID, link or number, so "warn" (amber, high risk) is the best possible verdict.
+
+items:
+  - {id: b01, expect: warn, cat: investment, text: "InvestBest: Double your money in just 3 days! Invest ₹10,000 today and receive ₹20,000. Limited slots available. Contact us now to secure your guaranteed profit."}
+  - {id: b02, expect: warn, cat: kyc, text: "ALERT: Your bank account will be blocked today due to incomplete KYC. Update your details immediately using the link below to avoid account suspension."}
+  - {id: b03, expect: warn, cat: lottery, text: "Congratulations! Your mobile number has won ₹25,00,000 in our international lucky draw. Pay ₹2,499 as processing fees to claim your prize."}
+  - {id: b04, expect: warn, cat: electricity, text: "FINAL WARNING: Your electricity connection will be disconnected tonight due to an unpaid bill. Call our support officer immediately to prevent disconnection."}
+  - {id: b05, expect: warn, cat: upi_refund, text: "Your ₹8,500 refund is pending. Verify your UPI account and enter your PIN to receive the amount instantly."}
+  - {id: b06, expect: warn, cat: job, text: "Congratulations! You have been selected for a work-from-home job paying ₹8,000 per day. Pay a refundable registration fee of ₹1,999 to start immediately."}
+  - {id: b07, expect: warn, cat: delivery, text: "Your parcel could not be delivered due to an incorrect address. Update your delivery details using this link within 2 hours or your package will be returned."}
+  - {id: b08, expect: warn, cat: family, text: "Hey, I lost my phone and I'm using a friend's number. I urgently need ₹15,000. Please transfer it now and I'll explain everything later."}
+  - {id: b09, expect: warn, cat: support, text: "Dear customer, your bank account has been compromised. Call our security team immediately and share the OTP received on your phone to secure your funds."}
+  - {id: b10, expect: warn, cat: task, text: "Earn ₹5,000–₹15,000 daily by liking videos and reviewing products. Start earning immediately! Deposit ₹500 to unlock premium tasks and withdraw your profits"}

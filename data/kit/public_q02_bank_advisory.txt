@@ -1,0 +1,1 @@
+HDFC Bank sends messages only from its official IDs and will never ask for PAN details, OTP, UPI PIN, MPIN, Customer ID and password, card number, ATM PIN or CVV.
