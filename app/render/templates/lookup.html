@@ -49,12 +49,18 @@
   {% if res.value %}
   <div class="body">
     {% for c in res.campaigns %}<div class="camp"><b>{{ c.title }}</b><br><span style="font-size:14px">Confirmed by bank analysts on {{ c.confirmed_on }} · campaign <span class="mono">{{ c.id }}</span></span></div>{% endfor %}
-    <div class="seen"><b>{{ res.seen_30d }}</b> {{ 'check' if res.seen_30d == 1 else 'checks' }} in the last 30 days contained this {{ {'upi': 'UPI ID', 'phone': 'number', 'link': 'link'}[res.kind] }}.</div>
+    <div class="seen"><b>{{ res.seen_30d }}</b> {{ 'checked message' if res.seen_30d == 1 else 'checked messages' }} in the last 30 days contained this {{ {'upi': 'UPI ID', 'phone': 'number', 'link': 'link'}[res.kind] }}.
+      <span style="color:var(--muted);font-size:14px">Lookups are not counted: we do not keep what people search for.</span></div>
     {% if res.facts %}<ul class="facts">{% for f in res.facts %}<li><span class="chip {{ f.strength|lower }}">{{ f.strength }}</span><span>{{ f.text_en }}</span></li>{% endfor %}</ul>{% endif %}
     {% if res.site and not res.site.skipped %}<div class="note">Website: {% if res.site.exists %}exists{% if res.site.registered %} · registered {{ res.site.registered }}{% endif %}{% if res.site.title %} · calls itself "{{ res.site.title }}"{% endif %}{% else %}does not exist{% endif %}. We looked at its homepage only.</div>{% endif %}
-    <div class="note" id="review">Is this your own UPI ID, number or website, and you think the result is wrong?
+    {% if res.result in ('warning', 'pattern') %}
+    <div class="note" id="review">Is this your own UPI ID, number or website, and you think the warning is wrong?
       <button class="btn" style="padding:4px 10px;font-size:13px" onclick="review()">Ask a bank analyst to review it</button>
       Only campaigns confirmed by bank analysts are ever named here.</div>
+    {% else %}
+    <div class="note">Think this {{ {'upi': 'UPI ID', 'phone': 'number', 'link': 'link'}[res.kind] }} belongs to a scammer? <a href="/">Check the message it came in</a> and tap
+      <b>Report</b>. A bank analyst reviews the campaign once; after they confirm it, Lookup warns everyone who checks it.</div>
+    {% endif %}
   </div>
   {% endif %}
 </section>

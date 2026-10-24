@@ -119,3 +119,19 @@ def test_ai_guaranteed_returns_needs_a_quote_about_money_growing():
     base = extract_with_rules("Invest now, 20% profit every week, pakka.")
     got = merge_llm(base, {"pressure": [{"type": "guaranteed_returns", "quote": "20% profit every week"}]}, "test")
     assert Pressure.GUARANTEED_RETURNS in got.pressure
+
+
+def test_investment_call_to_action_is_a_payment_request_even_when_ocr_drops_spaces():
+    for t in ("START INVESTING NOW", "STARTINVESTINGNOW", "Invest now and get 100% guaranteed returns"):
+        assert AskType.PAY in detect_asks(t), t
+
+
+def test_money_doubling_poster_text_is_high_risk():
+    r = v("DOUBLE YOUR MONEY IN JUST 3 DAYS! Safe · Secure · 100% Guaranteed Returns. STARTER PLAN 1,000 Get 2,000 in 3 Days. "
+          "START INVESTING NOW")
+    assert r.level == VerdictLevel.AMBER and r.amber_kind == "high_risk"
+
+
+def test_genuine_sip_ad_is_not_warned():
+    r = v("Start investing in mutual funds with a SIP from Rs 500 a month. Mutual fund investments are subject to market risks.")
+    assert r.level != VerdictLevel.RED and r.amber_kind != "high_risk"

@@ -18,6 +18,8 @@ ASK_PATTERNS: dict[AskType, re.Pattern] = {
         r"\b(?:pay|send|transfer|deposit|invest|remit)\b.{0,40}?(?:₹|\brs\.?|\binr\b|\brupees?\b|\d{3,}|\d+\s?k\b|\bupi\b|@|\baccount\b|\ba/c\b|phonepe|g\s?pay|google\s+pay|paytm)"
         r"|(?:₹|\brs\.?|\binr)\s?\d[\d,]*.{0,30}?\b(?:pay|send|transfer|deposit|fee|charges?|tax)\b"
         r"|registration\s+fee|processing\s+fee|security\s+deposit|safety\s+deposit|refundable\s+deposit|pay\s+(?:the\s+)?tax\s+to\s+withdraw"
+        # an investment call to action on an ad or poster ("START INVESTING NOW"; OCR may drop the spaces)
+        r"|\b(?:start|begin)\s*investing|\binvest(?:ing)?\s*now\b|\bjoin\s+now\s+and\s+(?:invest|earn)\b"
         # "please return it to name@ybl": a request to send money back
         r"|\breturn\b.{0,30}?(?:@|\bupi\b|\baccount\b|\ba/c\b|₹|\brs\.?\s?\d)"
         r"|भुगतान\s*कर|पैसे\s*(?:भेज|ट्रांसफर|जमा)|(?:₹|\d{3,}|हज़?ार|लाख)\s*(?:रुपये|रुपए|रु\.?)?\s*(?:भेज|ट्रांसफर|जमा)|जमा\s*कर|पेमेंट\s*कर|ट्रांसफर\s*कर|paise\s+(?:bhej|transfer|jama)|payment\s+kar"

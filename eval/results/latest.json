@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-24T17:41:12.293117+00:00",
- "git_commit": "899e617",
+ "generated_at": "2026-10-24T18:29:55.246382+00:00",
+ "git_commit": "0060ed6",
  "split": "all",
  "use_llm": true,
  "rules_version": "2.2",
@@ -1243,21 +1243,21 @@
  "latency_seconds": {
   "text": {
    "n": 64,
-   "p50": 0.09,
-   "p95": 0.22,
-   "max": 14.83
+   "p50": 0.12,
+   "p95": 0.31,
+   "max": 19.88
   },
   "video": {
    "n": 22,
-   "p50": 8.0,
-   "p95": 10.17,
-   "max": 12.0
+   "p50": 5.91,
+   "p95": 10.19,
+   "max": 37.45
   },
   "document": {
    "n": 7,
-   "p50": 0.73,
-   "p95": 4.65,
-   "max": 4.65
+   "p50": 3.08,
+   "p95": 54.52,
+   "max": 54.52
   }
  },
  "subgroups": {
@@ -1641,7 +1641,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 14.83,
+   "seconds": 19.88,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -1673,7 +1673,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.16,
+   "seconds": 0.31,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -1705,7 +1705,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.11,
+   "seconds": 0.34,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -1736,7 +1736,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.07,
+   "seconds": 0.23,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -1768,7 +1768,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.04,
+   "seconds": 0.12,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -1800,7 +1800,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.07,
+   "seconds": 0.32,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -1827,7 +1827,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.07,
+   "seconds": 0.26,
    "lane_status": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
@@ -1852,7 +1852,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.01,
+   "seconds": 0.02,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -1895,7 +1895,7 @@
      0.136
     ],
     "flagged": false,
-    "seconds": 7.17
+    "seconds": 24.18
    },
    "audio_detector": {
     "kind": "audio",
@@ -1903,9 +1903,9 @@
     "chunks": 4,
     "score": 0.0,
     "flagged": false,
-    "seconds": 3.09
+    "seconds": 9.3
    },
-   "seconds": 12.0,
+   "seconds": 37.45,
    "detector_flag": false,
    "lane_status": {
     "A": "CONTRADICTED",
@@ -1948,7 +1948,7 @@
      0.086
     ],
     "flagged": false,
-    "seconds": 4.81
+    "seconds": 7.03
    },
    "audio_detector": {
     "kind": "audio",
@@ -1956,9 +1956,9 @@
     "chunks": 4,
     "score": 0.0,
     "flagged": false,
-    "seconds": 2.42
+    "seconds": 1.54
    },
-   "seconds": 8.34,
+   "seconds": 10.19,
    "detector_flag": false,
    "lane_status": {
     "A": "UNVERIFIABLE",
@@ -1996,7 +1996,7 @@
      0.057
     ],
     "flagged": false,
-    "seconds": 4.91
+    "seconds": 3.13
    },
    "audio_detector": {
     "kind": "audio",
@@ -2004,9 +2004,9 @@
     "chunks": 4,
     "score": 1.0,
     "flagged": true,
-    "seconds": 2.89
+    "seconds": 1.74
    },
-   "seconds": 9.57,
+   "seconds": 6.9,
    "detector_flag": true,
    "lane_status": {
     "A": "UNVERIFIABLE",
@@ -2045,7 +2045,7 @@
      0.088
     ],
     "flagged": false,
-    "seconds": 4.79
+    "seconds": 3.06
    },
    "audio_detector": {
     "kind": "audio",
@@ -2053,9 +2053,9 @@
     "chunks": 5,
     "score": 0.826,
     "flagged": true,
-    "seconds": 3.14
+    "seconds": 1.93
    },
-   "seconds": 9.55,
+   "seconds": 6.79,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -2094,7 +2094,7 @@
      0.063
     ],
     "flagged": false,
-    "seconds": 4.79
+    "seconds": 3.05
    },
    "audio_detector": {
     "kind": "audio",
@@ -2102,9 +2102,9 @@
     "chunks": 5,
     "score": 0.996,
     "flagged": true,
-    "seconds": 3.53
+    "seconds": 2.21
    },
-   "seconds": 10.17,
+   "seconds": 7.48,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -2138,7 +2138,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 1.73,
+   "seconds": 1.29,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "SOURCE_MISMATCH",
@@ -2165,7 +2165,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.46,
+   "seconds": 0.35,
    "lane_status": {
     "A": "VERIFIED",
     "B": "NONE",
@@ -2208,7 +2208,7 @@
      0.118
     ],
     "flagged": false,
-    "seconds": 5.09
+    "seconds": 3.13
    },
    "audio_detector": {
     "kind": "audio",
@@ -2216,9 +2216,9 @@
     "chunks": 3,
     "score": 0.0,
     "flagged": false,
-    "seconds": 1.9
+    "seconds": 1.27
    },
-   "seconds": 7.84,
+   "seconds": 5.32,
    "detector_flag": false,
    "lane_status": {
     "A": "CONTRADICTED",
@@ -2262,7 +2262,7 @@
      0.751
     ],
     "flagged": true,
-    "seconds": 4.85
+    "seconds": 3.08
    },
    "audio_detector": {
     "kind": "audio",
@@ -2270,9 +2270,9 @@
     "chunks": 3,
     "score": 0.0,
     "flagged": false,
-    "seconds": 1.85
+    "seconds": 1.19
    },
-   "seconds": 7.45,
+   "seconds": 4.94,
    "detector_flag": true,
    "lane_status": {
     "A": "CONTRADICTED",
@@ -2316,7 +2316,7 @@
      0.916
     ],
     "flagged": true,
-    "seconds": 4.81
+    "seconds": 3.05
    },
    "audio_detector": {
     "kind": "audio",
@@ -2324,9 +2324,9 @@
     "chunks": 3,
     "score": 0.0,
     "flagged": false,
-    "seconds": 1.86
+    "seconds": 1.16
    },
-   "seconds": 7.4,
+   "seconds": 4.86,
    "detector_flag": true,
    "lane_status": {
     "A": "CONTRADICTED",
@@ -2358,7 +2358,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.15,
+   "seconds": 0.11,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2389,7 +2389,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.12,
+   "seconds": 0.13,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2420,7 +2420,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.11,
+   "seconds": 0.13,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2452,7 +2452,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.1,
+   "seconds": 0.12,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -2483,7 +2483,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.21,
+   "seconds": 0.24,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2514,7 +2514,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.16,
+   "seconds": 0.15,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2545,7 +2545,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.1,
+   "seconds": 0.14,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -2576,7 +2576,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 1.22,
+   "seconds": 0.13,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -2606,7 +2606,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.11,
+   "seconds": 0.1,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2637,7 +2637,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.13,
+   "seconds": 0.1,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2668,7 +2668,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.11,
+   "seconds": 0.17,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2730,7 +2730,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.1,
+   "seconds": 0.16,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2761,7 +2761,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.09,
+   "seconds": 0.12,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2792,7 +2792,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.09,
+   "seconds": 0.12,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "SOURCE_MISMATCH",
@@ -2823,7 +2823,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.09,
+   "seconds": 0.14,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2854,7 +2854,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.08,
+   "seconds": 0.12,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2883,7 +2883,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.1,
+   "seconds": 0.16,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -2914,7 +2914,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.13,
+   "seconds": 0.16,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -2945,7 +2945,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.12,
+   "seconds": 0.17,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -2975,7 +2975,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.09,
+   "seconds": 0.12,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -3029,7 +3029,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.06,
+   "seconds": 0.09,
    "lane_status": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
@@ -3083,7 +3083,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.08,
+   "seconds": 0.11,
    "lane_status": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
@@ -3137,7 +3137,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.08,
+   "seconds": 0.12,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -3162,7 +3162,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.06,
+   "seconds": 0.07,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -3214,7 +3214,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.02,
+   "seconds": 0.01,
    "lane_status": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
@@ -3241,7 +3241,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.08,
+   "seconds": 0.1,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -3266,7 +3266,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.05,
+   "seconds": 0.07,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -3309,7 +3309,7 @@
      0.904
     ],
     "flagged": true,
-    "seconds": 4.85
+    "seconds": 3.23
    },
    "audio_detector": {
     "kind": "audio",
@@ -3317,9 +3317,9 @@
     "chunks": 4,
     "score": 0.0,
     "flagged": false,
-    "seconds": 2.97
+    "seconds": 1.9
    },
-   "seconds": 8.63,
+   "seconds": 6.02,
    "detector_flag": true,
    "lane_status": {
     "A": "CONTRADICTED",
@@ -3362,7 +3362,7 @@
      0.132
     ],
     "flagged": false,
-    "seconds": 4.84
+    "seconds": 3.17
    },
    "audio_detector": {
     "kind": "audio",
@@ -3370,9 +3370,9 @@
     "chunks": 4,
     "score": 0.0,
     "flagged": false,
-    "seconds": 2.42
+    "seconds": 1.52
    },
-   "seconds": 8.0,
+   "seconds": 5.47,
    "detector_flag": false,
    "lane_status": {
     "A": "UNVERIFIABLE",
@@ -3410,7 +3410,7 @@
      0.152
     ],
     "flagged": false,
-    "seconds": 4.84
+    "seconds": 3.26
    },
    "audio_detector": {
     "kind": "audio",
@@ -3418,9 +3418,9 @@
     "chunks": 4,
     "score": 1.0,
     "flagged": true,
-    "seconds": 2.89
+    "seconds": 1.91
    },
-   "seconds": 8.61,
+   "seconds": 6.02,
    "detector_flag": true,
    "lane_status": {
     "A": "UNVERIFIABLE",
@@ -3459,7 +3459,7 @@
      0.873
     ],
     "flagged": true,
-    "seconds": 4.8
+    "seconds": 3.0
    },
    "audio_detector": {
     "kind": "audio",
@@ -3467,9 +3467,9 @@
     "chunks": 4,
     "score": 1.0,
     "flagged": true,
-    "seconds": 2.88
+    "seconds": 1.73
    },
-   "seconds": 8.52,
+   "seconds": 5.58,
    "detector_flag": true,
    "lane_status": {
     "A": "UNVERIFIABLE",
@@ -3508,7 +3508,7 @@
      0.481
     ],
     "flagged": true,
-    "seconds": 4.84
+    "seconds": 2.97
    },
    "audio_detector": {
     "kind": "audio",
@@ -3516,9 +3516,9 @@
     "chunks": 2,
     "score": 1.0,
     "flagged": true,
-    "seconds": 1.49
+    "seconds": 0.89
    },
-   "seconds": 6.92,
+   "seconds": 4.54,
    "detector_flag": true,
    "lane_status": {
     "A": "UNVERIFIABLE",
@@ -3558,7 +3558,7 @@
      0.897
     ],
     "flagged": true,
-    "seconds": 4.98
+    "seconds": 3.07
    },
    "audio_detector": {
     "kind": "audio",
@@ -3566,9 +3566,9 @@
     "chunks": 4,
     "score": 1.0,
     "flagged": true,
-    "seconds": 2.9
+    "seconds": 1.72
    },
-   "seconds": 8.58,
+   "seconds": 5.6,
    "detector_flag": true,
    "lane_status": {
     "A": "UNVERIFIABLE",
@@ -3607,7 +3607,7 @@
      0.484
     ],
     "flagged": false,
-    "seconds": 4.85
+    "seconds": 3.08
    },
    "audio_detector": {
     "kind": "audio",
@@ -3615,9 +3615,9 @@
     "chunks": 5,
     "score": 1.0,
     "flagged": true,
-    "seconds": 3.23
+    "seconds": 2.09
    },
-   "seconds": 9.03,
+   "seconds": 6.09,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3656,7 +3656,7 @@
      0.254
     ],
     "flagged": false,
-    "seconds": 4.82
+    "seconds": 3.14
    },
    "audio_detector": {
     "kind": "audio",
@@ -3664,9 +3664,9 @@
     "chunks": 5,
     "score": 1.0,
     "flagged": true,
-    "seconds": 3.21
+    "seconds": 1.95
    },
-   "seconds": 8.89,
+   "seconds": 5.96,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3705,7 +3705,7 @@
      0.852
     ],
     "flagged": true,
-    "seconds": 4.85
+    "seconds": 3.12
    },
    "audio_detector": {
     "kind": "audio",
@@ -3713,9 +3713,9 @@
     "chunks": 2,
     "score": 1.0,
     "flagged": true,
-    "seconds": 1.46
+    "seconds": 0.97
    },
-   "seconds": 6.93,
+   "seconds": 4.71,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3754,7 +3754,7 @@
      0.573
     ],
     "flagged": true,
-    "seconds": 3.93
+    "seconds": 2.95
    },
    "audio_detector": {
     "kind": "audio",
@@ -3762,9 +3762,9 @@
     "chunks": 5,
     "score": 1.0,
     "flagged": true,
-    "seconds": 1.79
+    "seconds": 2.02
    },
-   "seconds": 6.44,
+   "seconds": 5.82,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3803,7 +3803,7 @@
      0.3
     ],
     "flagged": false,
-    "seconds": 2.76
+    "seconds": 2.86
    },
    "audio_detector": {
     "kind": "audio",
@@ -3811,9 +3811,9 @@
     "chunks": 5,
     "score": 1.0,
     "flagged": true,
-    "seconds": 2.01
+    "seconds": 2.19
    },
-   "seconds": 5.51,
+   "seconds": 5.99,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3852,7 +3852,7 @@
      0.216
     ],
     "flagged": false,
-    "seconds": 2.41
+    "seconds": 2.81
    },
    "audio_detector": {
     "kind": "audio",
@@ -3860,9 +3860,9 @@
     "chunks": 5,
     "score": 1.0,
     "flagged": true,
-    "seconds": 1.85
+    "seconds": 2.14
    },
-   "seconds": 4.94,
+   "seconds": 5.91,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3901,7 +3901,7 @@
      0.557
     ],
     "flagged": false,
-    "seconds": 2.62
+    "seconds": 3.28
    },
    "audio_detector": {
     "kind": "audio",
@@ -3909,9 +3909,9 @@
     "chunks": 2,
     "score": 1.0,
     "flagged": true,
-    "seconds": 0.86
+    "seconds": 1.1
    },
-   "seconds": 3.86,
+   "seconds": 5.48,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3950,7 +3950,7 @@
      0.931
     ],
     "flagged": true,
-    "seconds": 2.77
+    "seconds": 3.54
    },
    "audio_detector": {
     "kind": "audio",
@@ -3958,9 +3958,9 @@
     "chunks": 5,
     "score": 1.0,
     "flagged": true,
-    "seconds": 2.05
+    "seconds": 5.12
    },
-   "seconds": 5.44,
+   "seconds": 9.98,
    "detector_flag": true,
    "lane_status": {
     "A": "VERIFIED",
@@ -3994,7 +3994,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.73,
+   "seconds": 3.32,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "SOURCE_MISMATCH",
@@ -4027,7 +4027,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.42,
+   "seconds": 3.08,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "SOURCE_MISMATCH",
@@ -4058,7 +4058,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 4.65,
+   "seconds": 54.52,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NONE",
@@ -4090,7 +4090,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 3.27,
+   "seconds": 30.18,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NONE",
@@ -4117,7 +4117,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.68,
+   "seconds": 0.99,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NONE",
@@ -4148,7 +4148,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.16,
+   "seconds": 0.25,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4176,7 +4176,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.06,
+   "seconds": 0.1,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4207,7 +4207,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.07,
+   "seconds": 0.1,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4236,7 +4236,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.13,
+   "seconds": 0.21,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4266,7 +4266,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.07,
+   "seconds": 0.1,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4295,7 +4295,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.12,
+   "seconds": 0.14,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4326,7 +4326,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.22,
+   "seconds": 0.3,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4357,7 +4357,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.17,
+   "seconds": 0.25,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4386,7 +4386,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.13,
+   "seconds": 0.22,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4417,7 +4417,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.07,
+   "seconds": 0.1,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4448,7 +4448,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.12,
+   "seconds": 0.16,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4479,7 +4479,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.18,
+   "seconds": 0.17,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4510,7 +4510,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.16,
+   "seconds": 0.2,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4541,7 +4541,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.6,
+   "seconds": 0.2,
    "lane_status": {
     "A": "CONTRADICTED",
     "B": "NOT_APPLICABLE",
@@ -4572,7 +4572,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.17,
+   "seconds": 0.18,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4627,7 +4627,7 @@
    "extractor": "rules+groq:openai/gpt-oss-20b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.02,
+   "seconds": 0.01,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4677,7 +4677,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.02,
+   "seconds": 0.01,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4704,7 +4704,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.02,
+   "seconds": 0.01,
    "lane_status": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
@@ -4754,7 +4754,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.01,
+   "seconds": 0.02,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",
@@ -4804,7 +4804,7 @@
    "extractor": "rules+groq:openai/gpt-oss-120b(cached)",
    "video_detector": null,
    "audio_detector": null,
-   "seconds": 0.02,
+   "seconds": 0.01,
    "lane_status": {
     "A": "UNVERIFIABLE",
     "B": "NOT_APPLICABLE",

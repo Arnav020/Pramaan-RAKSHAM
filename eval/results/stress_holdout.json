@@ -1,6 +1,6 @@
 {
  "set": "stress_holdout",
- "llm": true,
+ "llm": false,
  "sites": false,
  "summary": {
   "ok": 28
@@ -24,21 +24,19 @@
     "C:ASK_CREDENTIALS"
    ],
    "weak": [
-    "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_URGENCY"
+    "C:PLAYBOOK_MATCH"
    ],
    "claims": [
     "bank:Kotak Mahindra Bank"
    ],
    "asks": [
-    "click_link",
     "credentials"
    ],
    "contacts": [
     "url:https://kotak-ekyc-verify.in"
    ],
    "outcome": "ok",
-   "seconds": 17.32,
+   "seconds": 12.08,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "kotak-ekyc-verify.in imitates Kotak Mahindra Bank, but it is not their official site (kotak.bank.in).",
@@ -63,18 +61,15 @@
    ],
    "weak": [
     "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_THREAT",
-    "C:PRESSURE_URGENCY"
+    "C:PRESSURE_THREAT"
    ],
-   "claims": [
-    "payment_app:Paytm"
-   ],
+   "claims": [],
    "asks": [
     "credentials"
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.7,
+   "seconds": 0.08,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
@@ -113,7 +108,7 @@
     "url:https://itr-refunds.co"
    ],
    "outcome": "ok",
-   "seconds": 2.36,
+   "seconds": 0.07,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "The message claims to be from Income Tax Department, but the link goes to itr-refunds.co. Government websites end in .gov.in or .nic.in.",
@@ -152,7 +147,7 @@
     "url:https://traffic-challan-online.in"
    ],
    "outcome": "ok",
-   "seconds": 2.96,
+   "seconds": 0.07,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "The message claims to be from Police / CBI / ED / Customs / Courts, but the link goes to traffic-challan-online.in. Government websites end in .gov.in or .nic.in.",
@@ -189,7 +184,7 @@
     "url:https://indiapost-redelivery.top"
    ],
    "outcome": "ok",
-   "seconds": 3.66,
+   "seconds": 0.09,
    "title": "Matches a known scam pattern. Do not pay",
    "reasons": [
     "indiapost-redelivery.top imitates India Post, but it is not their official site (indiapost.gov.in).",
@@ -223,7 +218,7 @@
     "upi:kavya.help@okicici"
    ],
    "outcome": "ok",
-   "seconds": 2.75,
+   "seconds": 0.12,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: 'Hi Mum, this is my new number' family impersonation.",
@@ -247,8 +242,7 @@
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [
-    "A:UPI_UNVERIFIED",
-    "C:PRESSURE_URGENCY"
+    "A:UPI_UNVERIFIED"
    ],
    "claims": [],
    "asks": [
@@ -258,12 +252,11 @@
     "upi:sunil.b88@ybl"
    ],
    "outcome": "ok",
-   "seconds": 2.58,
+   "seconds": 0.11,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: 'I sent money to you by mistake' refund trick.",
-    "We could not link sunil.b88@ybl to any verified business.",
-    "It pushes you to act immediately."
+    "We could not link sunil.b88@ybl to any verified business."
    ]
   },
   {
@@ -289,7 +282,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.23,
+   "seconds": 0.08,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Job offer that asks for a fee first."
@@ -322,7 +315,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 3.77,
+   "seconds": 0.06,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Gift from abroad held at customs.",
@@ -348,8 +341,7 @@
    "weak": [
     "A:UPI_UNVERIFIED",
     "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_GUARANTEED_RETURNS",
-    "C:PRESSURE_URGENCY"
+    "C:PRESSURE_GUARANTEED_RETURNS"
    ],
    "claims": [],
    "asks": [
@@ -359,7 +351,7 @@
     "upi:aitrade.pro@ybl"
    ],
    "outcome": "ok",
-   "seconds": 5.03,
+   "seconds": 0.08,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for money while pushing guaranteed returns.",
@@ -393,7 +385,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 3.3,
+   "seconds": 0.06,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Lottery / prize with a 'processing fee'.",
@@ -415,23 +407,20 @@
     "C": "HIGH"
    },
    "strong": [
-    "C:ASK_CREDENTIALS",
     "C:ASK_REMOTE_ACCESS",
     "C:PLAYBOOK_MATCH"
    ],
    "weak": [],
    "claims": [],
    "asks": [
-    "credentials",
     "install_app",
     "remote_access"
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 4.97,
+   "seconds": 0.07,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
-    "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
     "It follows the pattern of a known scam: Screen-sharing / remote-access app scam.",
     "It asks you to install a screen-sharing app, which gives someone control of your phone."
    ]
@@ -467,7 +456,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 4.66,
+   "seconds": 0.1,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: 'Digital arrest' by fake police / CBI / customs.",
@@ -494,8 +483,7 @@
    "weak": [
     "A:PHONE_UNVERIFIED",
     "C:PRESSURE_AUTHORITY",
-    "C:PRESSURE_THREAT",
-    "C:PRESSURE_URGENCY"
+    "C:PRESSURE_THREAT"
    ],
    "claims": [],
    "asks": [
@@ -505,7 +493,7 @@
     "phone:9123456780"
    ],
    "outcome": "ok",
-   "seconds": 3.14,
+   "seconds": 0.08,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It follows the pattern of a known scam: Electricity / utility disconnection threat.",
@@ -539,7 +527,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.61,
+   "seconds": 0.05,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for an OTP, PIN or password. No bank, regulator or app ever asks for these.",
@@ -573,7 +561,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.11,
+   "seconds": 0.06,
    "title": "Warning signs of a scam. Don't pay or share anything",
    "reasons": [
     "It asks for money while pushing an offer too good to be true.",
@@ -602,7 +590,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 5.13,
+   "seconds": 0.03,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },
@@ -627,7 +615,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.25,
+   "seconds": 0.08,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },
@@ -654,7 +642,7 @@
     "url:https://incometax.gov.in"
    ],
    "outcome": "ok",
-   "seconds": 5.22,
+   "seconds": 0.07,
    "title": "Verified sender",
    "reasons": [
     "The link goes to incometax.gov.in, an official domain of Income Tax Department."
@@ -671,19 +659,17 @@
    "lanes": {
     "A": "VERIFIED",
     "B": "NOT_APPLICABLE",
-    "C": "LOW"
+    "C": "NONE"
    },
    "strong": [],
    "weak": [],
    "claims": [],
-   "asks": [
-    "pay"
-   ],
+   "asks": [],
    "contacts": [
     "url:https://echallan.parivahan.gov.in"
    ],
    "outcome": "ok",
-   "seconds": 2.35,
+   "seconds": 0.07,
    "title": "Verified sender",
    "reasons": [
     "The link goes to parivahan.gov.in, an official domain of Parivahan / e-Challan (Ministry of Road Transport)."
@@ -712,7 +698,7 @@
     "url:https://indiapost.gov.in"
    ],
    "outcome": "ok",
-   "seconds": 3.72,
+   "seconds": 0.08,
    "title": "Verified sender",
    "reasons": [
     "The link goes to indiapost.gov.in, an official domain of India Post."
@@ -737,7 +723,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 4.03,
+   "seconds": 0.05,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },
@@ -760,7 +746,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.3,
+   "seconds": 0.06,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },
@@ -779,8 +765,7 @@
    },
    "strong": [],
    "weak": [
-    "C:PLAYBOOK_MATCH",
-    "C:PRESSURE_URGENCY"
+    "C:PLAYBOOK_MATCH"
    ],
    "claims": [],
    "asks": [
@@ -788,11 +773,10 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.62,
+   "seconds": 0.07,
    "title": "Can't verify. Check before you act",
    "reasons": [
-    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam.",
-    "It pushes you to act immediately."
+    "It follows the pattern of a known scam: Fake trading app / discounted IPO scam."
    ]
   },
   {
@@ -814,7 +798,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 5.08,
+   "seconds": 0.07,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },
@@ -839,7 +823,7 @@
    ],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.62,
+   "seconds": 0.03,
    "title": "Can't verify. Check before you act",
    "reasons": []
   },
@@ -858,13 +842,11 @@
    },
    "strong": [],
    "weak": [],
-   "claims": [
-    "nbfc:LIC"
-   ],
+   "claims": [],
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 2.8,
+   "seconds": 0.06,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   },
@@ -889,7 +871,7 @@
    "asks": [],
    "contacts": [],
    "outcome": "ok",
-   "seconds": 4.29,
+   "seconds": 0.01,
    "title": "No warning signs. Nothing to verify",
    "reasons": []
   }

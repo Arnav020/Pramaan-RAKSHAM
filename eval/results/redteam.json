@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-24T17:37:42.908961+00:00",
- "seconds": 70.7,
+ "generated_at": "2026-10-24T18:31:00.819784+00:00",
+ "seconds": 61.3,
  "machine": "Windows AMD64",
  "passed": 34,
  "total": 34,
@@ -47,7 +47,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 11.76
+   "seconds": 15.72
   },
   {
    "id": "PI-2",
@@ -86,7 +86,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.19
+   "seconds": 0.16
   },
   {
    "id": "PI-3",
@@ -124,7 +124,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.15
+   "seconds": 0.17
   },
   {
    "id": "PI-4",
@@ -164,7 +164,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.13
+   "seconds": 0.14
   },
   {
    "id": "PI-5",
@@ -203,7 +203,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.13
+   "seconds": 0.19
   },
   {
    "id": "OB-1",
@@ -239,7 +239,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.07
+   "seconds": 0.11
   },
   {
    "id": "OB-2",
@@ -276,7 +276,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.07
+   "seconds": 0.09
   },
   {
    "id": "OB-3",
@@ -312,7 +312,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 0.07
+   "seconds": 0.08
   },
   {
    "id": "OB-4",
@@ -347,7 +347,7 @@
     "It threatens arrest, a block or legal action."
    ],
    "status": "PASS",
-   "seconds": 0.07
+   "seconds": 0.08
   },
   {
    "id": "OB-5",
@@ -382,7 +382,7 @@
     "It follows the pattern of a known scam: KYC update / account block phishing."
    ],
    "status": "PASS",
-   "seconds": 0.66
+   "seconds": 0.1
   },
   {
    "id": "OB-6",
@@ -418,7 +418,7 @@
     "The website it points to, sbі-kyc.in, does not exist. A real organisation's website would."
    ],
    "status": "PASS",
-   "seconds": 0.1
+   "seconds": 0.62
   },
   {
    "id": "OB-7",
@@ -454,7 +454,7 @@
     "The website it points to, sbi.bank.in.secure-unlock.co, does not exist. A real organisation's website would."
    ],
    "status": "PASS",
-   "seconds": 0.12
+   "seconds": 0.09
   },
   {
    "id": "CM-1",
@@ -490,7 +490,7 @@
     "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
    ],
    "status": "PASS",
-   "seconds": 1.03
+   "seconds": 0.04
   },
   {
    "id": "CM-2",
@@ -527,7 +527,7 @@
     "The link goes to hdfc.bank.in, an official domain of HDFC Bank."
    ],
    "status": "PASS",
-   "seconds": 0.08
+   "seconds": 0.06
   },
   {
    "id": "CM-3",
@@ -552,7 +552,7 @@
    "hidden_instructions": false,
    "reasons": [],
    "status": "PASS",
-   "seconds": 0.03
+   "seconds": 0.01
   },
   {
    "id": "CM-4",
@@ -591,7 +591,7 @@
     "It asks for money while pushing threats."
    ],
    "status": "PASS",
-   "seconds": 0.13
+   "seconds": 0.11
   },
   {
    "id": "MD-1",
@@ -631,7 +631,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 15.63
+   "seconds": 7.92
   },
   {
    "id": "MD-2",
@@ -671,7 +671,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 7.78
+   "seconds": 5.06
   },
   {
    "id": "MD-3",
@@ -702,7 +702,7 @@
     "An automated video deepfake detector flagged possible manipulation. Detectors make mistakes, so on its own this is only a hint."
    ],
    "status": "PASS",
-   "seconds": 6.81
+   "seconds": 4.97
   },
   {
    "id": "MD-4",
@@ -736,7 +736,7 @@
     "An automated video deepfake detector flagged possible manipulation. Detectors make mistakes, so on its own this is only a hint."
    ],
    "status": "PASS",
-   "seconds": 8.43
+   "seconds": 6.45
   },
   {
    "id": "MD-5",
@@ -779,7 +779,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 0.92
+   "seconds": 0.8
   },
   {
    "id": "SE-1",
@@ -820,7 +820,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 9.92
+   "seconds": 7.81
   },
   {
    "id": "SE-2",
@@ -862,7 +862,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 2.07
+   "seconds": 6.45
   },
   {
    "id": "SE-3",
@@ -900,7 +900,7 @@
     "The seal code ABCDEFGH was never issued: the 'verified' seal on this is fake."
    ],
    "status": "PASS",
-   "seconds": 0.13
+   "seconds": 0.71
   },
   {
    "id": "SE-4",
@@ -957,7 +957,7 @@
     "Signed by Demo Bank with a Pramaan Seal on 2026-10-24: this is exactly the text they sent."
    ],
    "status": "PASS",
-   "seconds": 0.11
+   "seconds": 0.12
   },
   {
    "id": "SE-5",
@@ -988,7 +988,7 @@
     "It pushes you to act immediately."
    ],
    "status": "PASS",
-   "seconds": 0.12
+   "seconds": 0.11
   },
   {
    "id": "AU-1",
@@ -1062,7 +1062,7 @@
     "It leans on official-sounding authority."
    ],
    "status": "PASS",
-   "seconds": 0.1
+   "seconds": 0.09
   },
   {
    "id": "AU-3",
@@ -1087,7 +1087,7 @@
    "hidden_instructions": false,
    "reasons": [],
    "status": "PASS",
-   "seconds": 0.04
+   "seconds": 0.03
   },
   {
    "id": "LG-1",
@@ -1121,7 +1121,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.09
+   "seconds": 0.14
   },
   {
    "id": "KM-1",
@@ -1146,7 +1146,7 @@
    "hidden_instructions": false,
    "reasons": [],
    "status": "KNOWN_MISS",
-   "seconds": 0.09
+   "seconds": 0.11
   },
   {
    "id": "KM-2",
@@ -1183,7 +1183,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "KNOWN_MISS",
-   "seconds": 0.09
+   "seconds": 0.12
   },
   {
    "id": "KM-3",
@@ -1219,7 +1219,7 @@
     "It threatens arrest, a block or legal action."
    ],
    "status": "KNOWN_MISS",
-   "seconds": 0.11
+   "seconds": 0.14
   },
   {
    "id": "FG-1",
