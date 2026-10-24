@@ -1,0 +1,11 @@
+{
+  "_provenance": {
+    "dataset": "UPI handle rules",
+    "source_url": "https://www.business-standard.com/finance/personal-finance/sebi-rolls-out-verified-upi-and-a-fraud-detection-tool-for-investors-125061200699_1.html",
+    "fetched_at": "2026-10-22",
+    "note": "SEBI circular 11 Jun 2025, effective 1 Oct 2025: SEBI-registered intermediaries collect via NPCI-issued '@valid' handles with a category suffix (.brk brokers, .mf mutual funds). Consumer PSP handles are common public handles used by personal UPI IDs."
+  },
+  "valid_handle_prefix": "valid",
+  "sebi_categories": {"brk": "stock broker", "mf": "mutual fund", "ia": "investment adviser", "ra": "research analyst", "pms": "portfolio manager", "aif": "alternative investment fund"},
+  "consumer_psp_handles": ["ybl", "ibl", "axl", "okhdfcbank", "okicici", "oksbi", "okaxis", "paytm", "ptyes", "pthdfc", "ptsbi", "ptaxis", "apl", "yapl", "rapl", "upi", "fam", "kotak", "icici", "sbi", "hdfcbank", "axisbank", "pnb", "ikwik", "freecharge", "jupiteraxis", "slice", "naviaxis", "superyes", "waicici", "wahdfcbank", "waaxis", "wasbi"]
+}

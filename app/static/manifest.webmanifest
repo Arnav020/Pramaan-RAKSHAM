@@ -1,0 +1,16 @@
+{
+  "name": "Pramaan Verify",
+  "short_name": "Pramaan",
+  "description": "Check a suspicious financial message before you pay.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3EFE6",
+  "theme_color": "#33504A",
+  "icons": [{"src": "/static/icon.svg", "sizes": "any", "type": "image/svg+xml"}],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {"title": "title", "text": "text", "url": "url", "files": [{"name": "files", "accept": ["video/*", "audio/*", "image/*", "application/pdf"]}]}
+  }
+}

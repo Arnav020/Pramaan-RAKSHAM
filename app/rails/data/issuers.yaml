@@ -1,0 +1,12 @@
+# Institutions trusted to issue Pramaan Seals. Prototype: one fictional TEST issuer.
+# Production: each bank's key lives in its own HSM / AWS KMS, and this list would be published and
+# signed by the scheme operator (or replaced by C2PA trust lists for media).
+version: "2026-10-24"
+
+issuers:
+  demobank:
+    name: "Demo Bank"
+    name_hi: "डेमो बैंक"
+    label: "TEST ISSUER · fictional bank for the hackathon demo"
+    domains: ["demobank.test"]
+    sms_header: "AX-DEMOBK-S"

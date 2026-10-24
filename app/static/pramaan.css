@@ -1,0 +1,19 @@
+/* Pramaan design tokens: security-print / banknote system (shared by card, proof page, desk). */
+@font-face { font-family: "Gelasio"; src: url("fonts/Gelasio.ttf") format("truetype"); font-weight: 400 700; font-style: normal; }
+@font-face { font-family: "Gelasio"; src: url("fonts/Gelasio-Italic.ttf") format("truetype"); font-weight: 400 700; font-style: italic; }
+@font-face { font-family: "Noto Sans"; src: url("fonts/NotoSans.ttf") format("truetype"); font-weight: 100 900; }
+@font-face { font-family: "Noto Sans Devanagari"; src: url("fonts/NotoSansDevanagari.ttf") format("truetype"); font-weight: 100 900; }
+@font-face { font-family: "Noto Serif Devanagari"; src: url("fonts/NotoSerifDevanagari.ttf") format("truetype"); font-weight: 100 900; }
+@font-face { font-family: "JetBrains Mono"; src: url("fonts/JetBrainsMono.ttf") format("truetype"); font-weight: 100 800; }
+
+:root {
+  --paper: #F3EFE6; --panel: #FBF9F4; --panel2: #EAE4D8; --line: #D6CDBB;
+  --ink: #1A1D1B; --muted: #595C55; --dim: #8A877C;
+  --sage: #33504A; --sage2: #3F5F58; --sageT: #E2E9E5;
+  --copper: #B5763A; --copperL: #D9A46A; --copperT: #F3E5D3;
+  --ok: #2E7D52; --okT: #E0EFE5; --warn: #A87310; --warnT: #F5EAD0; --bad: #A8322D; --badT: #F5DEDA;
+  --serif: "Gelasio", Georgia, "Noto Serif Devanagari", serif;
+  --sans: "Noto Sans", "Segoe UI", "Noto Sans Devanagari", system-ui, sans-serif;
+  --hindi: "Noto Sans Devanagari", "Nirmala UI", sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}

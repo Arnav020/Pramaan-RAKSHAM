@@ -1,0 +1,40 @@
+# Pramaan fusion rule table. Evaluated top to bottom; the first rule that
+# matches decides. Every verdict records the rule id and this version.
+#
+# Principles (from the Round 1 design, unchanged):
+#  - Red needs STRONG signals from at least two DIFFERENT lanes.
+#  - A detector score is WEAK, so a detector alone can never make a verdict red.
+#  - Verified sender + any suspicious signal goes to amber and to the analyst.
+#  - Amber is the default when unsure.
+
+version: "2.1"
+# 2.1 (24 Oct 2026): Pramaan Seal replaces the planned C2PA check; unchanged official-channel media is green.
+
+rules:
+  - id: R1_two_lane_strong
+    verdict: RED
+    when: {min_strong_lanes: 2}
+
+  # A valid Pramaan Seal from a trusted issuer whose content is unchanged: the institution itself vouches for the text.
+  - id: R2_sealed_content
+    verdict: GREEN
+    when: {has_signal: SEALED, max_strong_lanes: 0}
+
+  # The exact words of a genuine video from an institution's registered official channel, nothing contradicted,
+  # no high-risk request. Weak detector hints do not override proven provenance (see the Lab's key experiment).
+  - id: R2b_official_original
+    verdict: GREEN
+    when: {has_signal: OFFICIAL_ORIGINAL, max_strong_lanes: 0, lane_c_not: HIGH}
+
+  - id: R3_verified_sender
+    verdict: GREEN
+    when: {lane_a: VERIFIED, lane_b_in: [NONE, NOT_APPLICABLE], lane_c_not: HIGH, max_strong_lanes: 0}
+
+  - id: R4_verified_but_suspicious
+    verdict: AMBER
+    needs_analyst: true
+    when: {lane_a: VERIFIED}
+
+  - id: R5_default_cant_verify
+    verdict: AMBER
+    when: {}

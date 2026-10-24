@@ -1,0 +1,116 @@
+# Example sentences per scam playbook, for the semantic matcher (app/lanes/semantic.py).
+# Written by the team from each playbook's public advisory (sources in playbooks.yaml), in English, Hindi and Hinglish.
+# They describe the scam's moves in plain words. None is copied from the eval test or public splits.
+version: "2026-10-24"
+
+# Genuine messages a scam must be MORE similar to than these: transaction alerts, bills, bank
+# notices, safety advice and everyday chat. Scoring uses the margin (scam similarity minus genuine
+# similarity), which separates far better than raw similarity (see eval/semantic_calibration.json).
+genuine:
+  - "Rs 5,000 debited from your account by UPI to a merchant. If not done by you, call your bank."
+  - "Amount credited to your account by NEFT. Available balance is shown in your bank app."
+  - "Your electricity bill for this month is generated, pay before the due date on the official app."
+  - "Your loan EMI is due on the 5th, please keep sufficient balance in your account."
+  - "Your credit card statement is ready, the minimum amount due and due date are in the app."
+  - "Your SIP instalment was processed successfully, units will be allotted at today's NAV."
+  - "Your fixed deposit has matured and the amount is credited to your savings account."
+  - "Your order has been shipped and will be delivered tomorrow, track it in the app."
+  - "Your OTP for login is valid for 10 minutes. Never share it with anyone, not even bank staff."
+  - "We will never ask for your PIN, password or OTP. Report suspicious calls to 1930."
+  - "Our branch will be closed on Saturday for the festival holiday."
+  - "Please visit your branch with original documents to complete re-KYC before the due date."
+  - "Your insurance policy renewal is due next month, renew through our official website."
+  - "The meeting is shifted to 4 pm, please bring the printed report."
+  - "Happy birthday! Have a wonderful year ahead."
+  - "I reached home safely, will call you after dinner."
+  - "Can you send me the photos from the wedding?"
+  - "आपके खाते से UPI द्वारा 500 रुपये डेबिट हुए। अगर यह आपने नहीं किया तो बैंक को कॉल करें।"
+  - "आपका बिजली बिल बन गया है, आधिकारिक ऐप से नियत तारीख़ से पहले भुगतान करें।"
+  - "बैंक कभी भी आपका OTP या PIN नहीं माँगता।"
+  - "Kal milte hain, office ke baad chai peete hain."
+
+exemplars:
+  investment_vip_group:
+    - "Join our private stock market group and get daily tips from an expert with guaranteed profit."
+    - "Our SEBI registered analyst gives sure-shot trading calls, members made huge returns this month."
+    - "Pay the membership fee to enter the premium WhatsApp group for intraday tips."
+    - "Famous investor reveals his secret strategy, join the VIP channel before seats fill up."
+    - "हमारे वीआईपी ग्रुप से जुड़ें और रोज़ पक्के मुनाफ़े वाली शेयर टिप्स पाएँ।"
+    - "Expert ke group mein join karo, har din pakka profit milega."
+  money_doubling:
+    - "Invest with our scheme and your money becomes double in a few days."
+    - "Put in any amount and receive twice the amount back next week, many clients already got paid."
+    - "Our company returns ten percent every day on your deposit."
+    - "Give us your savings and we will multiply it quickly, see the results on our website."
+    - "इस योजना में पैसा लगाइए और कुछ ही दिनों में दोगुना पाइए।"
+    - "Paisa lagao aur ek hafte mein double ho jayega, guaranteed."
+  fake_trading_app:
+    - "Download our trading app to get an institutional account and discounted IPO allotment."
+    - "Install this app for block trades at special prices not available on the exchange."
+    - "Get a premium trading account through our app link, not available on Play Store."
+    - "हमारा ट्रेडिंग ऐप डाउनलोड करें और सस्ते दाम पर IPO पाएँ।"
+  digital_arrest:
+    - "This is a police officer, a parcel in your name contains drugs and you are under investigation."
+    - "Your Aadhaar is linked to a money laundering case, you will be arrested unless you cooperate."
+    - "Stay on the video call, do not tell your family, and transfer your money to a safe account for verification."
+    - "Customs seized a package with illegal items sent in your name, pay to clear the case."
+    - "A CBI officer will record your statement on camera, do not leave the room."
+    - "आपके नाम के पार्सल में ड्रग्स मिले हैं, आप डिजिटल अरेस्ट में हैं, किसी को मत बताइए।"
+    - "Aapke khilaf warrant hai, verification ke liye paise transfer karo."
+  fake_regulator_notice:
+    - "Reserve Bank of India notice: pay a refundable security deposit to unfreeze your account."
+    - "Official notice from the regulator, your account is flagged and a penalty must be paid today."
+    - "RBI has blocked your funds, deposit the clearance fee to the account given below."
+    - "भारतीय रिज़र्व बैंक की सूचना: खाता चालू करने के लिए सुरक्षा राशि जमा करें।"
+  kyc_phishing:
+    - "Your bank account will be blocked today, update your KYC immediately using the link."
+    - "Your net banking is suspended, update your PAN details to reactivate it."
+    - "Dear customer your account is closed, complete KYC now by clicking here."
+    - "आपका खाता आज बंद हो जाएगा, तुरंत लिंक पर जाकर KYC अपडेट करें।"
+    - "Account block ho jayega, abhi link pe click karke KYC update karo."
+  otp_vishing:
+    - "Please share the OTP you just received to complete the verification."
+    - "Tell me the six digit code sent to your phone so we can stop the fraudulent transaction."
+    - "Read out your card PIN and CVV to our bank officer for security purposes."
+    - "आपके फ़ोन पर आया OTP बताइए, तभी आपका खाता सुरक्षित होगा।"
+    - "Jo OTP aaya hai woh batao, refund process ho jayega."
+  remote_access:
+    - "Install AnyDesk or a screen sharing app so our support team can fix your account."
+    - "Download this support app and give us the code shown on your screen."
+    - "Share your screen with our executive to complete the refund."
+    - "स्क्रीन शेयर करने वाला ऐप डाउनलोड करें, हमारा अधिकारी आपकी मदद करेगा।"
+  lottery_fee:
+    - "Congratulations, your number won a lucky draw prize, pay the processing fee to claim it."
+    - "You have won a car and cash prize, deposit the tax amount first to receive it."
+    - "Your mobile number was selected for a lottery, contact our manager to get the money."
+    - "बधाई हो, आपने लॉटरी जीती है, इनाम पाने के लिए पहले शुल्क जमा करें।"
+  fake_loan:
+    - "Instant loan approved without documents, pay the processing fee to get the money today."
+    - "You are pre-approved for a loan, pay a small charge to release the amount."
+    - "Get a loan in five minutes through our app, just pay the verification fee."
+    - "बिना कागज़ के तुरंत लोन, बस प्रोसेसिंग फ़ीस भरें।"
+  unauthorised_forex:
+    - "Trade forex and crypto on our platform with high leverage and daily profit."
+    - "Open an international trading account with us and earn in dollars every day."
+    - "Deposit through UPI into our forex platform and withdraw profits anytime."
+  reward_refund_phishing:
+    - "Your reward points will expire today, redeem them now by installing the bank rewards app."
+    - "Your cashback is pending, click the link to convert your points to cash."
+    - "Your income tax refund is approved, update your bank details through the link to receive it."
+    - "आपके रिवॉर्ड पॉइंट आज ख़त्म हो जाएँगे, लिंक पर क्लिक करके कैश में बदलें।"
+  utility_disconnection:
+    - "Your electricity will be disconnected tonight because the last bill was not paid, call the officer now."
+    - "Power supply will be cut today due to pending bill update, contact this number immediately."
+    - "Your gas connection will be stopped, pay the dues through the link."
+    - "आपकी बिजली आज रात काट दी जाएगी, तुरंत इस नंबर पर बिजली अधिकारी से बात करें।"
+  delivery_phishing:
+    - "Your parcel could not be delivered because the address is incomplete, update it within hours."
+    - "Your package is held at the warehouse, pay a small redelivery fee through the link."
+    - "Courier delivery failed, confirm your address here or the shipment will be returned."
+    - "आपका पार्सल अधूरे पते की वजह से रुका है, लिंक पर जाकर पता अपडेट करें।"
+  task_job_scam:
+    - "Earn money from home by liking videos and rating products, payment for each task."
+    - "Part-time job with daily income, join our Telegram group to get tasks."
+    - "Complete prepaid tasks to unlock higher commission, recharge your account first."
+    - "घर बैठे वीडियो लाइक करके रोज़ कमाएँ, टास्क के लिए टेलीग्राम ग्रुप जॉइन करें।"
+    - "Ghar baithe kamao, har task ka paisa milega, bas group join karo."

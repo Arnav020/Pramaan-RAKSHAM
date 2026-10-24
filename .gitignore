@@ -1,0 +1,42 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Data and models (large or private; fetched by scripts)
+data/raw/
+data/media/
+data/consent/
+data/cache/
+models/
+*.onnx
+*.pt
+*.safetensors
+
+# Local runtime
+*.log
+.DS_Store
+Thumbs.db
+data/index/
+data/keys/
+data/pramaan.db*
+data/store/
+app/static/_card_*.html
+app/static/_doc_tmp.html
+data/vault/

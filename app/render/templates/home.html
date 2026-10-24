@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Pramaan · the proof layer for money messages{% endblock %}
+{% block style %}
+  .hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 34px; align-items: start; margin: 26px 0 8px; }
+  @media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 18px; } }
+  .hero h1 { font-family: var(--serif); font-size: clamp(32px, 5.4vw, 54px); line-height: 1.06; margin: 0 0 14px; }
+  .hero h1 em { color: var(--copper); font-style: italic; }
+  .hero .line { font-size: 19px; line-height: 1.5; color: var(--ink); max-width: 640px; margin: 0 0 12px; }
+  .hero .hindi { color: var(--muted); font-size: 16px; }
+  form.check { display: grid; gap: 10px; }
+  form.check h2 { margin: 0; font-size: 21px; display: block; }
+  textarea { width: 100%; min-height: 118px; font: inherit; padding: 12px; border: 1.5px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); resize: vertical; }
+  textarea:focus-visible, input:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .file { font-size: 14px; }
+  #out { margin-top: 14px; }
+  #out img { width: 100%; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+  .busy { color: var(--muted); font-style: italic; }
+  .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 30px; }
+  @media (max-width: 900px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px; position: relative; overflow: hidden; }
+  .pillar .num { font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--copper); }
+  .pillar h3 { font-family: var(--serif); font-size: 26px; margin: 0; letter-spacing: .5px; }
+  .pillar h3 .hi { font-family: var(--hindi); font-size: 16px; color: var(--muted); font-weight: 500; margin-left: 8px; }
+  .pillar p { margin: 0; color: var(--ink); }
+  .pillar ul { margin: 2px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; } .pillar li { margin: 3px 0; }
+  .pillar .go { margin-top: auto; padding-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .pillar .go a { font-size: 14px; padding: 7px 11px; }
+  .strip { margin-top: 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .stat .v { font-family: var(--serif); font-size: 36px; line-height: 1; color: var(--sage); font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .phone { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; }
+  .phone img { width: 120px; height: 120px; border: 1px solid var(--line); border-radius: 8px; background: #FBF9F4; padding: 6px; }
+  .why { margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .why .panel h4 { font-family: var(--serif); font-size: 18px; margin: 0 0 6px; }
+  .why .panel p { margin: 0; color: var(--muted); font-size: 15px; }
+{% endblock %}
+{% block body %}
+{% with here="check" %}{% include "_nav.html" %}{% endwith %}
+<section class="hero">
+  <div>
+    <h1>Faces can be faked.<br><em>Payment rails can't.</em></h1>
+    <p class="line">Pramaan is the proof layer for money messages in India: it <b>proves</b> what's genuine, <b>exposes</b> what was changed, and turns one confirmation into <b>protection</b> for everyone.</p>
+    <p class="hindi">प्रमाण: असली को साबित करे, बदलाव को उजागर करे, और एक पुष्टि से सबको बचाए।</p>
+    <div class="panel phone" style="margin-top:16px">
+      <img src="{{ bot_qr }}" alt="QR code to open the Pramaan Telegram bot">
+      <div><b>Try it on your phone</b><br><span style="color:var(--muted);font-size:15px">Scan to open <a href="https://t.me/{{ bot }}">@{{ bot }}</a> on Telegram. Forward any video, voice note, notice, screenshot, UPI ID or link. On a call right now? Tap 📞 in the bot.</span></div>
+    </div>
+  </div>
+  <form class="panel check" id="f">
+    <h2>Check something</h2>
+    <textarea name="text" placeholder="Paste the message, UPI ID or link here… / यहाँ मैसेज, UPI आईडी या लिंक डालें…" aria-label="Message to check"></textarea>
+    <div class="row">
+      <input class="file" type="file" name="files" accept="video/*,audio/*,image/*,application/pdf" aria-label="Video, voice note, image or PDF">
+    </div>
+    <div class="row">
+      <label><input type="radio" name="lang" value="en" checked> English</label>
+      <label><input type="radio" name="lang" value="hi"> हिंदी</label>
+      <button class="btn primary" type="submit" style="margin-left:auto">Check it · जाँचें</button>
+    </div>
+    <div id="out" aria-live="polite"></div>
+  </form>
+</section>
+
+<section class="pillars" aria-label="What Pramaan does">
+  <div class="pillar">
+    <div class="num">01</div><h3>Prove<span class="hi">साबित करे</span></h3>
+    <p>Banks seal what they really send. Anyone can scan the seal and see the exact text; an edited amount or a copied seal is caught.</p>
+    <ul><li>Pramaan Seal on notices and SMS</li><li>Unchanged videos from a bank's official channel</li><li>Signed verdict cards that can't be forged</li></ul>
+    <div class="go">{% if demo.seal %}<a class="btn" href="/s/{{ demo.seal }}">Open a sealed notice</a>{% endif %}<a class="btn" href="/partners#seal">How banks issue seals</a></div>
+  </div>
+  <div class="pillar">
+    <div class="num">02</div><h3>Expose<span class="hi">उजागर करे</span></h3>
+    <p>Most celebrity deepfakes re-voice real footage. Pramaan finds the genuine original and shows the changed words, side by side.</p>
+    <ul><li>Same footage, different words</li><li>Real RBI circular numbers, borrowed for fake notices</li><li>Who a QR code really pays; what a link's website really is</li></ul>
+    <div class="go">{% if demo.expose %}<a class="btn" href="/p/{{ demo.expose }}">See a deepfake exposed</a>{% endif %}<a class="btn" href="/redteam">Attacks we defend</a></div>
+  </div>
+  <div class="pillar">
+    <div class="num">03</div><h3>Protect<span class="hi">सबको बचाए</span></h3>
+    <p>A bank analyst confirms a scam campaign once. Everyone who checked it is warned, and the next person is stopped at the pay button.</p>
+    <ul><li>Lookup any UPI ID, number or link before paying</li><li>Pay-time pause inside the bank app</li><li>Retro-Alerts, family loop, 1930 drafts</li></ul>
+    <div class="go"><a class="btn" href="/lookup">Look up an ID</a><a class="btn" href="/demo-bank/pay">Pay-time check (mock)</a></div>
+  </div>
+</section>
+
+{% if stats %}
+<section class="strip" aria-label="Measured, not claimed">
+  <div class="stat"><div class="v">{{ stats.false_red }}</div><div class="l">genuine items marked as a scam, of {{ stats.genuine }} (frozen test set)</div></div>
+  <div class="stat"><div class="v">{{ stats.caught }}/{{ stats.scams }}</div><div class="l">scams flagged: "can't verify" or "matches a scam pattern"</div></div>
+  <div class="stat"><div class="v">{{ stats.ke_det }}/{{ stats.ke_n }} → {{ stats.ke_pr }}</div><div class="l">genuine videos called fake by detectors alone → by Pramaan</div></div>
+  {% if stats.attacks %}<div class="stat"><div class="v">{{ stats.defended }}/{{ stats.attacks }}</div><div class="l">attacks on Pramaan defended (<a href="/redteam">red team</a>)</div></div>{% endif %}
+</section>
+<p class="sub" style="font-size:13px;margin-top:8px">From the latest run of <span class="mono">eval.run</span> and <span class="mono">eval.redteam</span>, nothing typed by hand. Small, self-built sets: see the <a href="/lab">Lab</a> for sample sizes and intervals.</p>
+{% endif %}
+
+<section class="why">
+  <div class="panel"><h4>Why not a deepfake detector?</h4><p>Detectors lose about half their accuracy on real-world fakes. Ours called every genuine voice fake. A score is not proof, so Pramaan treats detectors as hints and checks what a fake cannot change.</p></div>
+  <div class="panel"><h4>Who acts on the result?</h4><p>You get one clear next step. The bank's analysts review each campaign once. Pramaan never blocks a payment and never calls anyone a fraudster.</p></div>
+  <div class="panel"><h4>What do we keep?</h4><p>Only what you send, deleted after 24 hours unless you report it. Private numbers are masked before any AI sees the text. No contacts, no location, no face recognition.</p></div>
+</section>
+{% endblock %}
+{% block script %}
+<script>
+const f = document.getElementById("f"), out = document.getElementById("out");
+f.onsubmit = async e => {
+  e.preventDefault(); out.innerHTML = '<p class="busy">Checking… प्रमाण जाँच रहा है…</p>';
+  try {
+    const r = await fetch("/api/check", {method: "POST", body: new FormData(f)}); const j = await r.json();
+    if (!r.ok) { out.textContent = j.detail || "Something went wrong."; return; }
+    out.innerHTML = `<p><a class="btn primary" href="${j.proof_url}">See the full proof →</a></p><img src="${j.card_url}" alt="">`;
+    out.querySelector("img").alt = j.title_en;
+  } catch (err) { out.textContent = "Network error. Please try again."; }
+};
+</script>
+{% endblock %}

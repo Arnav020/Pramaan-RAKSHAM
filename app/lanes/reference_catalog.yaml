@@ -1,0 +1,31 @@
+# Genuine "official channel" footage in the Source-Match reference index.
+# Media files live in data/media/genuine/ (never committed). All speakers are
+# team members recorded with written consent; names are fictional personas.
+# Build the index with:  python -m tools.build_index
+# official: the institution whose registered channel published the clip. A matching video with unchanged words
+# is then green ("Demo Bank's own video, unchanged"). A person (clip1, an investor persona) is not an institution.
+
+clips:
+  - id: clip1_arnav_en
+    file: clip1_arnav_en.mp4
+    speaker: "Arnav Mehra (fictional investor persona; played by team member Arnav Joshi)"
+    title_en: "investor interview by Arnav Mehra (official channel)"
+    title_hi: "अर्नव मेहरा का निवेशक इंटरव्यू (आधिकारिक चैनल)"
+    language: en
+    published: "2026-10-21"
+  - id: clip3_krish_en
+    file: clip3_krish_en.mp4
+    official: "Demo Bank"        # published on Demo Bank's registered official channel
+    speaker: "Krish, Demo Bank customer-safety team (fictional bank; team member Krish Arora)"
+    title_en: "Demo Bank customer-safety message (official channel)"
+    title_hi: "डेमो बैंक का ग्राहक-सुरक्षा संदेश (आधिकारिक चैनल)"
+    language: en
+    published: "2026-10-21"
+  - id: clip4_krish_hi
+    file: clip4_krish_hi.mp4
+    official: "Demo Bank"
+    speaker: "Krish, Demo Bank customer-safety team (fictional bank; team member Krish Arora)"
+    title_en: "Demo Bank customer-safety message in Hindi (official channel)"
+    title_hi: "डेमो बैंक का हिंदी ग्राहक-सुरक्षा संदेश (आधिकारिक चैनल)"
+    language: hi
+    published: "2026-10-21"

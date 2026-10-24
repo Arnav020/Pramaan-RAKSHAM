@@ -1,0 +1,8 @@
+<header class="bar">
+  <a class="brand" href="/">Pramaan<span>प्रमाण</span></a>
+  <nav class="topnav" aria-label="Pramaan">
+    {% set items = [("check", "/", "Check"), ("lookup", "/lookup", "Lookup"), ("lab", "/lab", "Lab"), ("redteam", "/redteam", "Red team"), ("partners", "/partners", "For banks")] %}
+    {% for key, href, label in items %}<a href="{{ href }}"{% if here == key %} class="on" aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}
+  </nav>
+</header>
+<div class="rule2"></div>

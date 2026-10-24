@@ -1,0 +1,215 @@
+# Scam playbooks distilled from public advisories. Each playbook lists the
+# advisory it comes from. A message "matches" a playbook when enough of its
+# indicator groups are present (see app/lanes/lane_c.py). Update monthly.
+
+version: "2026-10-22"
+
+playbooks:
+  - id: investment_vip_group
+    name_en: "Stock-market 'VIP group' investment scam"
+    name_hi: "शेयर बाज़ार 'VIP ग्रुप' निवेश धोखाधड़ी"
+    summary_en: "A famous face or a 'SEBI-registered expert' promises big returns, moves you to a private group, then asks you to pay."
+    summary_hi: "कोई मशहूर चेहरा या 'SEBI-रजिस्टर्ड एक्सपर्ट' बड़े रिटर्न का वादा करता है, आपको प्राइवेट ग्रुप में ले जाता है, फिर पैसे माँगता है।"
+    sources:
+      - {title: "SEBI cautions public against fraudulent activities on social media (PR 27/2025)", url: "https://taxguru.in/sebi/sebi-warns-public-fraudulent-activities-social-media.html"}
+      - {title: "SEBI warns investors against fake trading groups on WhatsApp", url: "https://www.angelone.in/news/market-updates/sebi-warns-investors-against-fake-trading-groups-on-whatsapp-and-other-social-media-platforms"}
+    required: [returns]
+    groups:
+      returns: ['guarantee\w*\s+(?:returns?|profit)', 'assured\s+returns?', '\d{2,4}\s?%\s*(?:returns?|profit)', 'double\s+your\s+money', 'गारंटी', 'रिटर्न', 'मुनाफ']
+      authority: ['sebi[\s-]*registered', 'expert', 'advis[oe]r', 'analyst', 'famous', 'celebrity', 'सेबी', 'एक्सपर्ट']
+      group: ['vip', 'group', 'channel', 'telegram', 'whatsapp', 'community', 'ग्रुप']
+      pay: ['pay', 'invest', 'deposit', 'upi', '@', 'भुगतान', 'निवेश', 'जमा']
+
+  - id: money_doubling
+    name_en: "Money-doubling / unregulated deposit scheme"
+    name_hi: "पैसा दोगुना करने वाली / अवैध जमा योजना"
+    summary_en: "A 'scheme' promises to double your money in days or weeks and points to its own website or past 'results'. Anyone taking deposits or running an investment scheme must be registered with a regulator, and no real investment can guarantee doubling."
+    summary_hi: "कोई 'स्कीम' कुछ दिनों या हफ़्तों में पैसा दोगुना करने का वादा करती है और अपनी वेबसाइट या पुराने 'नतीजे' दिखाती है। जमा लेने या निवेश योजना चलाने वाले हर किसी का किसी नियामक के पास रजिस्टर होना ज़रूरी है, और कोई असली निवेश दोगुना होने की गारंटी नहीं दे सकता।"
+    sources:
+      - {title: "RBI Sachet: check whether an entity may take deposits; report illegal schemes", url: "https://sachet.rbi.org.in/"}
+      - {title: "Business Standard: RBI's Sachet lets you verify a scheme before you trust it (Nov 2025)", url: "https://www.business-standard.com/finance/personal-finance/thinking-of-investing-rbi-s-sachet-lets-you-verify-scheme-before-you-trust-125111201164_1.html"}
+    required: [doubling]
+    groups:
+      doubling: ['doubl\w*', '\b(?:[2-9]|10)x\b', 'दोगुन', 'दुगन', 'डबल']
+      pay: ['invest', 'deposit', 'pay', 'transfer', 'above\s+(?:rs\.?|₹)?\s*\d', 'rupees', '₹', 'निवेश', 'जमा', 'भुगतान']
+      scheme: ['scheme', 'plan', 'organi[sz]ation', 'company', 'clients?', 'results?', 'profits?', 'testimonials?', 'योजना', 'स्कीम', 'कंपनी']
+      contact: ['website', 'whatsapp', '\.in\b', '\.com\b', 'call\s+you', 'visit', 'वेबसाइट', 'व्हाट्सऐप']
+
+  - id: reward_refund_phishing
+    high_risk_alone: true
+    name_en: "Fake reward points / refund link or app"
+    name_hi: "फ़र्ज़ी रिवॉर्ड पॉइंट / रिफ़ंड लिंक या ऐप"
+    summary_en: "A message says your reward points or a tax refund will lapse today, and asks you to open a link or install an app. Banks and the Income Tax Department never send redemption links or app files by SMS or WhatsApp."
+    summary_hi: "मैसेज कहता है कि आपके रिवॉर्ड पॉइंट या टैक्स रिफ़ंड आज ख़त्म हो जाएँगे, और लिंक खोलने या ऐप इंस्टॉल करने को कहता है। बैंक और आयकर विभाग SMS या WhatsApp पर ऐसे लिंक या ऐप फ़ाइल कभी नहीं भेजते।"
+    sources:
+      - {title: "PIB Fact Check: fake SBI reward-points APK message (Dec 2025)", url: "https://www.latestly.com/social-viral/fact-check/did-you-receive-an-sms-or-whatsapp-message-asking-you-to-download-an-app-to-redeem-sbi-reward-points-pib-fact-check-debunks-fake-message-going-viral-7253978.html"}
+      - {title: "Centre's alert on fake income tax refund messages (Aug 2023)", url: "https://www.businesstoday.in/personal-finance/tax/story/itr-refund-status-centre-issues-scam-alert-on-fraudulent-messages-392717-2023-08-03"}
+    required: [reward]
+    groups:
+      reward: ['reward\s*points?', 'r.?ewards?\s*point', 'refund', 'cashback', 'रिवॉर्ड', 'रिफ़ंड', 'रिफंड']
+      lapse: ['expir', 'lapse', 'today', 'approved', 'credited', 'ख़त्म', 'आज']
+      action: ['\.apk', 'install', 'app', 'link', 'click', 'redeem', 'convert', 'update\s+(?:your\s+)?bank', 'लिंक', 'ऐप']
+
+  - id: utility_disconnection
+    name_en: "Electricity / utility disconnection threat"
+    name_hi: "बिजली / यूटिलिटी कनेक्शन काटने की धमकी"
+    summary_en: "A message says your power will be cut tonight for an unpaid bill and asks you to call an 'officer' or pay through a link or app. Power companies send messages only from their registered sender IDs and never ask you to call a personal number."
+    summary_hi: "मैसेज कहता है कि बकाया बिल की वजह से आज रात बिजली काट दी जाएगी, और किसी 'अधिकारी' को कॉल करने या लिंक/ऐप से भुगतान करने को कहता है। बिजली कंपनियाँ सिर्फ़ अपने रजिस्टर्ड सेंडर आईडी से मैसेज भेजती हैं और कभी किसी निजी नंबर पर कॉल करने को नहीं कहतीं।"
+    sources:
+      - {title: "Fake power-bill SMS warnings (APDCL, MSEDCL, PSPCL; Jun 2022)", url: "https://sentinelassam.com/topheadlines/beware-of-fake-sms-on-power-bills-598773"}
+    required: [utility, cut]
+    groups:
+      utility: ['electricity', '\bpower\b', 'bijli', 'बिजली', 'gas\s+connection', 'water\s+connection']
+      cut: ['disconnect', '\bcut\b', 'will\s+be\s+(?:off|stopped)', 'काट', 'कट']
+      bill: ['bill', 'not\s+(?:paid|updated?)', 'dues', 'बिल', 'बकाया']
+      contact: ['officer', 'call', 'contact', 'mobile\s+number', 'app', 'अधिकारी', 'कॉल']
+
+  - id: delivery_phishing
+    high_risk_alone: true
+    name_en: "Parcel / delivery address-update phishing"
+    name_hi: "पार्सल / डिलीवरी पता अपडेट फ़िशिंग"
+    summary_en: "A message says a parcel is stuck because of an incomplete address and asks you to update it through a link within hours. India Post and courier companies never ask for address updates or fees through SMS links."
+    summary_hi: "मैसेज कहता है कि अधूरे पते की वजह से पार्सल अटका है और कुछ घंटों में लिंक से पता अपडेट करने को कहता है। इंडिया पोस्ट और कूरियर कंपनियाँ SMS लिंक से पता या फ़ीस कभी नहीं माँगतीं।"
+    sources:
+      - {title: "PIB / newsonair: India Post address-update SMS is fake (Jan 2026)", url: "https://www.newsonair.gov.in/govt-debunks-sms-from-india-post-asking-people-to-update-their-address"}
+    required: [parcel, address]
+    groups:
+      parcel: ['parcel', 'package', 'courier', 'shipment', 'delivery', 'india\s+post', 'पार्सल']
+      address: ['address', 'पता']
+      deadline: ['\d+\s*hours?', 'within', 'returned', 'today', 'घंटे']
+      link: ['https?://', 'link', 'click', 'update', 'लिंक']
+
+  - id: task_job_scam
+    name_en: "Task-based 'part-time job' scam"
+    name_hi: "टास्क वाली 'पार्ट-टाइम जॉब' धोखाधड़ी"
+    summary_en: "Easy money for liking videos or rating products, small early payouts, then 'prepaid tasks' that need your money and never pay back. Genuine employers never ask you to pay to work."
+    summary_hi: "वीडियो लाइक करने या प्रोडक्ट रेटिंग के बदले आसान पैसे, शुरू में थोड़ा भुगतान, फिर 'प्रीपेड टास्क' जिनमें आपके पैसे लगते हैं और वापस नहीं मिलते। असली नौकरी देने वाले कभी काम के बदले पैसे नहीं माँगते।"
+    sources:
+      - {title: "Newschecker: the Telegram task scam spreading in India (2023)", url: "https://newschecker.in/scam-watch/fraud-terror-and-trail-of-death-the-telegram-task-scam-spreading-fast-in-india"}
+    required: [task]
+    groups:
+      task: ['like\s+(?:youtube\s+)?videos?', 'every\s+(?:youtube\s+)?video', 'rate\s+(?:products|hotels)', 'task', 'part[\s-]*time', 'work\s+from\s+home', 'टास्क']
+      earn: ['earn', 'per\s+(?:day|task|video)', 'commission', 'income', 'कमाएँ', 'कमाई']
+      group: ['telegram', 'whatsapp', 'group']
+      invest: ['invest', 'prepaid', 'deposit', 'recharge', 'pay', 'निवेश']
+
+  - id: fake_trading_app
+    name_en: "Fake trading app / discounted IPO scam"
+    name_hi: "फ़र्ज़ी ट्रेडिंग ऐप / सस्ता IPO धोखाधड़ी"
+    summary_en: "You are asked to install an unofficial app offering 'institutional accounts', discounted IPOs or block trades."
+    summary_hi: "आपसे किसी अनाधिकृत ऐप को इंस्टॉल करने को कहा जाता है जो 'इंस्टिट्यूशनल अकाउंट', सस्ते IPO या ब्लॉक ट्रेड का वादा करता है।"
+    sources:
+      - {title: "SEBI cautions public against fraudulent activities on social media (PR 27/2025)", url: "https://taxguru.in/sebi/sebi-warns-public-fraudulent-activities-social-media.html"}
+    required: [app]
+    groups:
+      app: ['\bapp\b', '\.apk', 'download', 'install', 'ऐप']
+      offer: ['institutional', 'ipo', 'block\s+trade', 'allotment', 'discount', 'premium\s+account']
+      pay: ['pay', 'deposit', 'fund', 'transfer', 'जमा', 'भुगतान']
+
+  - id: digital_arrest
+    high_risk_alone: true
+    name_en: "'Digital arrest' by fake police / CBI / customs"
+    name_hi: "फ़र्ज़ी पुलिस / CBI / कस्टम द्वारा 'डिजिटल अरेस्ट'"
+    summary_en: "Someone posing as police, CBI, customs or a judge threatens arrest and demands money for 'verification'. Real officers never do this."
+    summary_hi: "पुलिस, CBI, कस्टम या जज बनकर कोई गिरफ़्तारी की धमकी देता है और 'वेरिफ़िकेशन' के लिए पैसे माँगता है। असली अधिकारी ऐसा कभी नहीं करते।"
+    sources:
+      - {title: "I4C advisory on digital arrest and stock scams (reported Nov 2024)", url: "https://www.tribuneindia.com/news/india/fresh-advisory-on-stock-scams-digital-arrests"}
+      - {title: "ED charge sheet; I4C advisory", url: "https://www.business-standard.com/india-news/ed-files-charge-sheet-against-cyber-fraudsters-as-i4c-issues-new-advisory-124110300164_1.html"}
+    required: [authority, threat]
+    groups:
+      authority: ['\bcbi\b', 'police', 'customs', '\bed\b', 'enforcement', 'narcotics', 'judge', 'court', 'officer', 'पुलिस', 'सीबीआई', 'कोर्ट']
+      threat: ['arrest', 'warrant', 'money\s+laundering', 'parcel', 'drugs', 'case', 'गिरफ़?्तार', 'वारंट', 'अरेस्ट']
+      pay: ['transfer', 'safe\s+account', 'verification', 'regulari[sz]ation', 'deposit', 'जमा', 'ट्रांसफर']
+      secrecy: ["don'?t\\s+tell", 'secret', 'confidential', 'video\s+call', 'मत\s*बता']
+
+  - id: fake_regulator_notice
+    high_risk_alone: true
+    name_en: "Fake RBI / regulator notice demanding money"
+    name_hi: "पैसे माँगने वाला फ़र्ज़ी RBI / नियामक नोटिस"
+    summary_en: "A letter or message in the name of RBI or another regulator asks you to pay a 'deposit', 'fee' or 'tax'. RBI does not hold accounts for individuals and never asks the public for money."
+    summary_hi: "RBI या किसी नियामक के नाम से पत्र या मैसेज 'जमा', 'फ़ीस' या 'टैक्स' माँगता है। RBI आम लोगों के खाते नहीं रखता और कभी पैसे नहीं माँगता।"
+    sources:
+      - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
+    required: [regulator, pay]
+    groups:
+      regulator: ['reserve\s+bank', '\brbi\b', 'रिज़र्व\s*बैंक', 'रिजर्व\s*बैंक', 'आरबीआई', '\bsebi\b', 'income\s+tax', 'npci']
+      pay: ['deposit', 'fee', 'transfer', 'pay', 'remit', 'जमा', 'भेजें', 'भुगतान', 'शुल्क']
+      threat: ['frozen', 'freeze', 'block', 'legal\s+action', 'penalty', 'laundering', 'बंद', 'कार्रवाई', 'लॉन्ड्रिंग']
+      official: ['notice', 'circular', 'department', 'officer', 'ref', 'सूचना', 'अधिकारी', 'नोटिस']
+
+  - id: kyc_phishing
+    high_risk_alone: true
+    name_en: "KYC update / account block phishing"
+    name_hi: "KYC अपडेट / अकाउंट ब्लॉक फ़िशिंग"
+    summary_en: "A message says your KYC expired or your account will be blocked, and sends you a link or asks for details."
+    summary_hi: "मैसेज कहता है कि आपका KYC ख़त्म हो गया है या अकाउंट ब्लॉक होगा, और लिंक भेजता है या जानकारी माँगता है।"
+    sources:
+      - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
+    required: [kyc]
+    groups:
+      kyc: ['\bkyc\b', 'pan\s+(?:update|link)', 'aadhaar\s+(?:update|link)', 'केवाईसी']
+      threat: ['block', 'suspend', 'expire', 'deactivat', 'close', 'ब्लॉक', 'बंद']
+      link: ['http', 'www', 'link', 'click', '\.[a-z]{2,}/', 'लिंक']
+
+  - id: otp_vishing
+    high_risk_alone: true
+    name_en: "OTP / PIN sharing (vishing)"
+    name_hi: "OTP / PIN माँगना (विशिंग)"
+    summary_en: "Someone asks you to share an OTP, PIN, CVV or password. No bank, regulator or app ever asks for these."
+    summary_hi: "कोई आपसे OTP, PIN, CVV या पासवर्ड माँगता है। कोई बैंक, नियामक या ऐप कभी ये नहीं माँगता।"
+    sources:
+      - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
+    required: [secret]
+    groups:
+      secret: ['\botp\b', '\bpin\b', '\bcvv\b', 'password', 'mpin', 'ओटीपी', 'पिन']
+      share: ['share', 'tell', 'send', 'give', 'confirm', 'batao', 'बताएं', 'भेजें']
+
+  - id: remote_access
+    high_risk_alone: true
+    name_en: "Screen-sharing / remote-access app scam"
+    name_hi: "स्क्रीन-शेयरिंग / रिमोट-एक्सेस ऐप धोखाधड़ी"
+    summary_en: "You are asked to install AnyDesk, TeamViewer or a similar app so 'support' can fix a problem."
+    summary_hi: "आपसे AnyDesk, TeamViewer जैसा ऐप इंस्टॉल करने को कहा जाता है ताकि 'सपोर्ट' मदद कर सके।"
+    sources:
+      - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
+    required: [tool]
+    groups:
+      tool: ['anydesk', 'teamviewer', 'quicksupport', 'screen\s*shar', 'remote']
+      support: ['support', 'customer\s+care', 'refund', 'help', 'fix']
+
+  - id: lottery_fee
+    name_en: "Lottery / prize with a 'processing fee'"
+    name_hi: "लॉटरी / इनाम के लिए 'प्रोसेसिंग फ़ीस'"
+    summary_en: "You 'won' a prize or cashback but must first pay a fee or tax to receive it."
+    summary_hi: "आपने कोई इनाम 'जीता' है लेकिन उसे पाने के लिए पहले फ़ीस या टैक्स देना होगा।"
+    sources:
+      - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
+    required: [prize, fee]
+    groups:
+      prize: ['lottery', 'won', 'winner', 'prize', 'jackpot', 'reward', 'लॉटरी', 'इनाम']
+      fee: ['fee', 'tax', 'charges', 'pay', 'processing', 'फ़ीस', 'टैक्स']
+
+  - id: fake_loan
+    name_en: "Instant-loan app with upfront fee"
+    name_hi: "तुरंत लोन ऐप जो पहले फ़ीस माँगे"
+    summary_en: "An 'instant loan' needs an upfront processing fee, or comes through an unregistered app."
+    summary_hi: "'तुरंत लोन' के लिए पहले प्रोसेसिंग फ़ीस माँगी जाती है, या लोन किसी अनरजिस्टर्ड ऐप से आता है।"
+    sources:
+      - {title: "RBI BE(A)WARE booklet on modus operandi of financial frauds (Mar 2022)", url: "https://website.rbi.org.in/documents/87730/39016390/BEAWARE07032022.pdf"}
+    required: [loan, fee]
+    groups:
+      loan: ['loan', 'credit', 'लोन', 'कर्ज']
+      fee: ['processing\s+fee', 'upfront', 'insurance\s+fee', 'gst\s+charge', 'pay', 'फ़ीस']
+
+  - id: unauthorised_forex
+    name_en: "Unauthorised forex / crypto trading platform"
+    name_hi: "अनाधिकृत फ़ॉरेक्स / क्रिप्टो ट्रेडिंग प्लेटफ़ॉर्म"
+    summary_en: "Forex trading through a platform not authorised by RBI. RBI publishes an Alert List of such platforms."
+    summary_hi: "ऐसे प्लेटफ़ॉर्म से फ़ॉरेक्स ट्रेडिंग जिसे RBI ने अनुमति नहीं दी। RBI ऐसे प्लेटफ़ॉर्म की अलर्ट लिस्ट जारी करता है।"
+    sources:
+      - {title: "RBI adds 7 more entities to its Alert List (Nov 2025)", url: "https://moneylife.in/article/unauthorised-forex-trading-platforms-rbi-adds-7-more-entities-to-its-alert-list/78900.html"}
+    required: [forex]
+    groups:
+      forex: ['forex', '\bfx\b', 'currency\s+trading', 'binary\s+option', 'crypto', 'फ़ॉरेक्स']
+      profit: ['profit', 'daily\s+returns?', 'earn', 'income', 'मुनाफ']
+      pay: ['deposit', 'fund', 'pay', 'usdt', 'जमा']

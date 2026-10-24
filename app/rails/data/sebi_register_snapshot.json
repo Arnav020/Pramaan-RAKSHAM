@@ -1,0 +1,10 @@
+{
+  "_provenance": {
+    "dataset": "SEBI register of research analysts and investment advisers (SNAPSHOT)",
+    "source_url": "https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&intmId=14",
+    "fetched_at": "2026-10-22",
+    "note": "SEBI lists 2,304 research analysts and 1,058 investment advisers (as on 21 Oct 2026). SEBI offers no download or API, and its firewall blocks automated paging, so we do not bulk-copy the register. Production: register feed via the partner bank. Prototype: registration-number format check, this small snapshot, and a 'check on SEBI' link for the user."
+  },
+  "counts": {"research_analyst": 2304, "investment_adviser": 1058},
+  "entries": {}
+}

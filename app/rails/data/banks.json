@@ -1,0 +1,35 @@
+{
+  "_provenance": {
+    "dataset": "Official bank domains (curated)",
+    "method": "Each domain resolved in public DNS on 2026-10-22. .bank.in is restricted to RBI-regulated banks (IDRBT registrar, RBI circular 22 Apr 2025). Legacy domains kept because migration redirects are still live.",
+    "source_url": "https://www.business-standard.com/finance/news/rbi-asks-banks-to-complete-migration-to-bank-in-domain-by-october-31-2025-125042201515_1.html",
+    "fetched_at": "2026-10-22",
+    "note": "SMS headers are commonly observed DLT headers, not an official registry; they are used only as weak evidence."
+  },
+  "banks": [
+    {"id": "sbi", "name": "State Bank of India", "aliases": ["sbi", "state bank", "state bank of india", "एसबीआई", "स्टेट बैंक"], "domains": ["sbi.bank.in", "onlinesbi.sbi", "sbi.co.in"], "sms_headers": ["SBIINB", "SBIBNK", "SBIPSG"]},
+    {"id": "hdfc", "name": "HDFC Bank", "aliases": ["hdfc", "hdfc bank", "एचडीएफसी"], "domains": ["hdfc.bank.in", "hdfcbank.com"], "sms_headers": ["HDFCBK"]},
+    {"id": "icici", "name": "ICICI Bank", "aliases": ["icici", "icici bank", "आईसीआईसीआई"], "domains": ["icici.bank.in", "icicibank.com"], "sms_headers": ["ICICIB", "ICICIT"]},
+    {"id": "axis", "name": "Axis Bank", "aliases": ["axis bank", "axis"], "domains": ["axis.bank.in", "axisbank.com"], "sms_headers": ["AXISBK"]},
+    {"id": "pnb", "name": "Punjab National Bank", "aliases": ["pnb", "punjab national bank", "पंजाब नेशनल बैंक"], "domains": ["pnb.bank.in", "pnbindia.in"], "sms_headers": ["PNBSMS"]},
+    {"id": "kotak", "name": "Kotak Mahindra Bank", "aliases": ["kotak", "kotak mahindra", "kotak bank"], "domains": ["kotak.bank.in", "kotak.com"], "sms_headers": ["KOTAKB"]},
+    {"id": "bob", "name": "Bank of Baroda", "aliases": ["bank of baroda", "bob", "बैंक ऑफ़ बड़ौदा"], "domains": ["bankofbaroda.bank.in", "bankofbaroda.in"], "sms_headers": ["BOBTXN", "BOBSMS"]},
+    {"id": "canara", "name": "Canara Bank", "aliases": ["canara", "canara bank"], "domains": ["canarabank.bank.in", "canarabank.com"], "sms_headers": ["CANBNK"]},
+    {"id": "union", "name": "Union Bank of India", "aliases": ["union bank", "union bank of india"], "domains": ["unionbankofindia.bank.in", "unionbankofindia.co.in"], "sms_headers": ["UBOIBK"]},
+    {"id": "indian", "name": "Indian Bank", "aliases": ["indian bank"], "domains": ["indianbank.bank.in", "indianbank.in"], "sms_headers": []},
+    {"id": "boi", "name": "Bank of India", "aliases": ["bank of india", "boi"], "domains": ["bankofindia.bank.in", "bankofindia.co.in"], "sms_headers": []},
+    {"id": "idbi", "name": "IDBI Bank", "aliases": ["idbi", "idbi bank"], "domains": ["idbi.bank.in", "idbibank.in"], "sms_headers": []},
+    {"id": "yes", "name": "YES Bank", "aliases": ["yes bank"], "domains": ["yes.bank.in", "yesbank.in"], "sms_headers": []},
+    {"id": "indusind", "name": "IndusInd Bank", "aliases": ["indusind", "indusind bank"], "domains": ["indusind.bank.in", "indusind.com"], "sms_headers": []},
+    {"id": "idfcfirst", "name": "IDFC FIRST Bank", "aliases": ["idfc", "idfc first", "idfc first bank"], "domains": ["idfcfirst.bank.in", "idfcfirstbank.com"], "sms_headers": []},
+    {"id": "federal", "name": "Federal Bank", "aliases": ["federal bank"], "domains": ["federal.bank.in", "federalbank.co.in"], "sms_headers": []},
+    {"id": "central", "name": "Central Bank of India", "aliases": ["central bank of india", "central bank"], "domains": ["centralbank.bank.in", "centralbankofindia.co.in"], "sms_headers": []},
+    {"id": "iob", "name": "Indian Overseas Bank", "aliases": ["iob", "indian overseas bank"], "domains": ["iob.bank.in", "iob.in"], "sms_headers": []},
+    {"id": "uco", "name": "UCO Bank", "aliases": ["uco bank"], "domains": ["ucobank.com"], "sms_headers": []},
+    {"id": "bom", "name": "Bank of Maharashtra", "aliases": ["bank of maharashtra"], "domains": ["bankofmaharashtra.bank.in"], "sms_headers": []},
+    {"id": "au", "name": "AU Small Finance Bank", "aliases": ["au bank", "au small finance"], "domains": ["au.bank.in", "aubank.in"], "sms_headers": []},
+    {"id": "rbl", "name": "RBL Bank", "aliases": ["rbl", "rbl bank"], "domains": ["rbl.bank.in", "rblbank.com"], "sms_headers": []},
+    {"id": "bandhan", "name": "Bandhan Bank", "aliases": ["bandhan", "bandhan bank"], "domains": ["bandhan.bank.in", "bandhanbank.com"], "sms_headers": []},
+    {"id": "demobank", "name": "Demo Bank", "aliases": ["demo bank", "डेमो बैंक"], "domains": ["demobank.test"], "sms_headers": ["DEMOBK"], "_fictional": "Our fictional bank for the demo. Its domain uses the reserved .test TLD so it can never be a real site."}
+  ]
+}

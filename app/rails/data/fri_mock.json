@@ -1,0 +1,13 @@
+{
+  "_provenance": {
+    "dataset": "DoT Financial Fraud Risk Indicator (MOCK)",
+    "source_url": "https://sancharsaathi.gov.in",
+    "fetched_at": "2026-10-22",
+    "note": "MOCK. The real FRI (launched 21 May 2025) is shared only with regulated entities such as banks and UPI apps. In production it comes through the partner bank. These numbers are fictional test numbers used only in our demo data."
+  },
+  "numbers": {
+    "9000012345": "VERY_HIGH",
+    "9000067890": "HIGH",
+    "9000011111": "MEDIUM"
+  }
+}

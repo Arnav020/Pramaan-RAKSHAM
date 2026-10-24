@@ -1,0 +1,877 @@
+{
+ "_provenance": {
+  "dataset": "RBI Alert List of unauthorised forex trading platforms (updated as on November 19, 2025)",
+  "source_url": "https://rbidocs.rbi.org.in/rdocs/Content/PDFs/ALERTLIST10022023CC5FC4ACD619431497A56B6894188478.PDF",
+  "fetched_at": "2026-10-22",
+  "sha256": "4b60d555d6296ac688d98df3b36f34bb60840ce5b0d276f048d16a9faa705d7c",
+  "note": "95 entities. RBI states the list is not exhaustive; absence from it is not authorisation. Downloaded manually (the site uses a CAPTCHA)."
+ },
+ "entities": [
+  {
+   "sr": 1,
+   "name": "Alpari",
+   "aliases": [],
+   "domains": [
+    "alpari.com"
+   ]
+  },
+  {
+   "sr": 2,
+   "name": "Anyfx",
+   "aliases": [],
+   "domains": [
+    "anyfx.in"
+   ]
+  },
+  {
+   "sr": 3,
+   "name": "Ava Trade",
+   "aliases": [
+    "avatrade"
+   ],
+   "domains": [
+    "avatrade.com"
+   ]
+  },
+  {
+   "sr": 4,
+   "name": "Binomo",
+   "aliases": [],
+   "domains": [
+    "binomoidr.com"
+   ]
+  },
+  {
+   "sr": 5,
+   "name": "eToro",
+   "aliases": [],
+   "domains": [
+    "etoro.com"
+   ]
+  },
+  {
+   "sr": 6,
+   "name": "Exness",
+   "aliases": [],
+   "domains": [
+    "exness.com"
+   ]
+  },
+  {
+   "sr": 7,
+   "name": "Expert Option",
+   "aliases": [
+    "expertoption"
+   ],
+   "domains": [
+    "expertoption.com"
+   ]
+  },
+  {
+   "sr": 8,
+   "name": "FBS",
+   "aliases": [],
+   "domains": [
+    "fbs.com"
+   ]
+  },
+  {
+   "sr": 9,
+   "name": "FinFxPro",
+   "aliases": [],
+   "domains": [
+    "finfxpro.com"
+   ]
+  },
+  {
+   "sr": 10,
+   "name": "Forex.com",
+   "aliases": [
+    "forexcom"
+   ],
+   "domains": [
+    "forex.com"
+   ]
+  },
+  {
+   "sr": 11,
+   "name": "Forex4money",
+   "aliases": [],
+   "domains": [
+    "forex4money.com"
+   ]
+  },
+  {
+   "sr": 12,
+   "name": "Foxorex",
+   "aliases": [],
+   "domains": [
+    "foxorex.com"
+   ]
+  },
+  {
+   "sr": 13,
+   "name": "FTMO",
+   "aliases": [],
+   "domains": [
+    "ftmo.com"
+   ]
+  },
+  {
+   "sr": 14,
+   "name": "FVP Trade",
+   "aliases": [
+    "fvptrade"
+   ],
+   "domains": [
+    "fvpt-uk.com"
+   ]
+  },
+  {
+   "sr": 15,
+   "name": "FXPrimus",
+   "aliases": [],
+   "domains": [
+    "fxprimus.com"
+   ]
+  },
+  {
+   "sr": 16,
+   "name": "FX Street",
+   "aliases": [
+    "fxstreet"
+   ],
+   "domains": [
+    "fxstreet.com"
+   ]
+  },
+  {
+   "sr": 17,
+   "name": "FXCM",
+   "aliases": [],
+   "domains": [
+    "fxcm.com"
+   ]
+  },
+  {
+   "sr": 18,
+   "name": "FxNice",
+   "aliases": [],
+   "domains": [
+    "fx-nice.net"
+   ]
+  },
+  {
+   "sr": 19,
+   "name": "FXTM",
+   "aliases": [],
+   "domains": [
+    "forextime.com"
+   ]
+  },
+  {
+   "sr": 20,
+   "name": "HotForex",
+   "aliases": [],
+   "domains": [
+    "hotforex.com"
+   ]
+  },
+  {
+   "sr": 21,
+   "name": "ibell Markets",
+   "aliases": [
+    "ibellmarkets"
+   ],
+   "domains": [
+    "ibellmarkets.com"
+   ]
+  },
+  {
+   "sr": 22,
+   "name": "IC Markets",
+   "aliases": [
+    "icmarkets"
+   ],
+   "domains": [
+    "icmarkets.com"
+   ]
+  },
+  {
+   "sr": 23,
+   "name": "iFOREX",
+   "aliases": [],
+   "domains": [
+    "iforex.in"
+   ]
+  },
+  {
+   "sr": 24,
+   "name": "IG Markets",
+   "aliases": [
+    "igmarkets"
+   ],
+   "domains": [
+    "ig.com"
+   ]
+  },
+  {
+   "sr": 25,
+   "name": "IQ Option",
+   "aliases": [
+    "iqoption"
+   ],
+   "domains": [
+    "iq-option.com"
+   ]
+  },
+  {
+   "sr": 26,
+   "name": "NTS Forex Trading",
+   "aliases": [
+    "ntsforextrading"
+   ],
+   "domains": [
+    "ntstradingrobot.com"
+   ]
+  },
+  {
+   "sr": 27,
+   "name": "OctaFX",
+   "aliases": [],
+   "domains": [
+    "hi.octafx.com",
+    "octafx.com",
+    "octaindia.net"
+   ]
+  },
+  {
+   "sr": 28,
+   "name": "Olymp Trade",
+   "aliases": [
+    "olymptrade"
+   ],
+   "domains": [
+    "olymptrade.com"
+   ]
+  },
+  {
+   "sr": 29,
+   "name": "TD Ameritrade",
+   "aliases": [
+    "tdameritrade"
+   ],
+   "domains": [
+    "tdameritrade.com"
+   ]
+  },
+  {
+   "sr": 30,
+   "name": "TP Global FX",
+   "aliases": [
+    "tpglobalfx"
+   ],
+   "domains": [
+    "tpglobalfx.com"
+   ]
+  },
+  {
+   "sr": 31,
+   "name": "Trade Sight FX",
+   "aliases": [
+    "tradesightfx"
+   ],
+   "domains": [
+    "tradesightfx.co.in"
+   ]
+  },
+  {
+   "sr": 32,
+   "name": "Urban Forex",
+   "aliases": [
+    "urbanforex"
+   ],
+   "domains": [
+    "urbanforex.com"
+   ]
+  },
+  {
+   "sr": 33,
+   "name": "XM",
+   "aliases": [],
+   "domains": [
+    "xm.com"
+   ]
+  },
+  {
+   "sr": 34,
+   "name": "XTB",
+   "aliases": [],
+   "domains": [
+    "xtb.com"
+   ]
+  },
+  {
+   "sr": 35,
+   "name": "Quotex",
+   "aliases": [],
+   "domains": [
+    "quotex.com"
+   ]
+  },
+  {
+   "sr": 36,
+   "name": "FX Western",
+   "aliases": [
+    "fxwestern"
+   ],
+   "domains": [
+    "fxwestern.com"
+   ]
+  },
+  {
+   "sr": 37,
+   "name": "Pocket Option",
+   "aliases": [
+    "pocketoption"
+   ],
+   "domains": [
+    "pocketoption.com"
+   ]
+  },
+  {
+   "sr": 38,
+   "name": "Tickmill",
+   "aliases": [],
+   "domains": [
+    "tickmill.com"
+   ]
+  },
+  {
+   "sr": 39,
+   "name": "Cabana Capitals",
+   "aliases": [
+    "cabanacapitals"
+   ],
+   "domains": [
+    "cabanacapitals.com"
+   ]
+  },
+  {
+   "sr": 40,
+   "name": "Vantage Markets",
+   "aliases": [
+    "vantagemarkets"
+   ],
+   "domains": [
+    "vantagemarkets.com"
+   ]
+  },
+  {
+   "sr": 41,
+   "name": "VT Markets",
+   "aliases": [
+    "vtmarkets"
+   ],
+   "domains": [
+    "vtmarkets.com"
+   ]
+  },
+  {
+   "sr": 42,
+   "name": "Iron Fx",
+   "aliases": [
+    "ironfx"
+   ],
+   "domains": [
+    "ironfx.com"
+   ]
+  },
+  {
+   "sr": 43,
+   "name": "Infinox",
+   "aliases": [],
+   "domains": [
+    "infinox.com"
+   ]
+  },
+  {
+   "sr": 44,
+   "name": "BD Swiss",
+   "aliases": [
+    "bdswiss"
+   ],
+   "domains": [
+    "global.bdswiss.com"
+   ]
+  },
+  {
+   "sr": 45,
+   "name": "FP Markets",
+   "aliases": [
+    "fpmarkets"
+   ],
+   "domains": [
+    "fpmarkets.com"
+   ]
+  },
+  {
+   "sr": 46,
+   "name": "MetaTrader 4",
+   "aliases": [
+    "metatrader4"
+   ],
+   "domains": [
+    "metatrader4.com"
+   ]
+  },
+  {
+   "sr": 47,
+   "name": "MetaTrader 5",
+   "aliases": [
+    "metatrader5"
+   ],
+   "domains": [
+    "metatrader5.com"
+   ]
+  },
+  {
+   "sr": 48,
+   "name": "Pepperstone",
+   "aliases": [],
+   "domains": [
+    "pepperstone.com"
+   ]
+  },
+  {
+   "sr": 49,
+   "name": "QFX Markets",
+   "aliases": [
+    "qfxmarkets"
+   ],
+   "domains": [
+    "qfxmarkets.com"
+   ]
+  },
+  {
+   "sr": 50,
+   "name": "2WinTrade",
+   "aliases": [],
+   "domains": [
+    "2wintrade.com"
+   ]
+  },
+  {
+   "sr": 51,
+   "name": "Guru Trade7 Limited",
+   "aliases": [
+    "gurutrade7limited"
+   ],
+   "domains": [
+    "gurutrade7.com"
+   ]
+  },
+  {
+   "sr": 52,
+   "name": "Bric Trade",
+   "aliases": [
+    "brictrade"
+   ],
+   "domains": [
+    "brictrade.com"
+   ]
+  },
+  {
+   "sr": 53,
+   "name": "Rubik Trade",
+   "aliases": [
+    "rubiktrade"
+   ],
+   "domains": [
+    "rubiktrade.com"
+   ]
+  },
+  {
+   "sr": 54,
+   "name": "Dream Trade Mobile Application",
+   "aliases": [
+    "dreamtrademobileapplication"
+   ],
+   "domains": []
+  },
+  {
+   "sr": 55,
+   "name": "Mini Trade Mobile Application",
+   "aliases": [
+    "minitrademobileapplication"
+   ],
+   "domains": []
+  },
+  {
+   "sr": 56,
+   "name": "Trust Trade Mobile Application",
+   "aliases": [
+    "trusttrademobileapplication"
+   ],
+   "domains": []
+  },
+  {
+   "sr": 57,
+   "name": "Admiral Market",
+   "aliases": [
+    "admiralmarket"
+   ],
+   "domains": [
+    "admiralmarkets.com"
+   ]
+  },
+  {
+   "sr": 58,
+   "name": "BlackBull",
+   "aliases": [],
+   "domains": [
+    "blackbull.com"
+   ]
+  },
+  {
+   "sr": 59,
+   "name": "Easy Markets",
+   "aliases": [
+    "easymarkets"
+   ],
+   "domains": [
+    "easymarkets.com"
+   ]
+  },
+  {
+   "sr": 60,
+   "name": "Enclave FX",
+   "aliases": [
+    "enclavefx"
+   ],
+   "domains": [
+    "enclavefx.com"
+   ]
+  },
+  {
+   "sr": 61,
+   "name": "Finowiz Fintech Limited",
+   "aliases": [
+    "finowizfintechlimited"
+   ],
+   "domains": [
+    "finowiz.com"
+   ]
+  },
+  {
+   "sr": 62,
+   "name": "FX SmartBull",
+   "aliases": [
+    "fxsmartbull"
+   ],
+   "domains": [
+    "fxsmartbull.com"
+   ]
+  },
+  {
+   "sr": 63,
+   "name": "Fx Tray Market",
+   "aliases": [
+    "fxtraymarket"
+   ],
+   "domains": [
+    "fxtray.com"
+   ]
+  },
+  {
+   "sr": 64,
+   "name": "Forex4you",
+   "aliases": [],
+   "domains": [
+    "forex4you.com"
+   ]
+  },
+  {
+   "sr": 65,
+   "name": "GoDo FX",
+   "aliases": [
+    "godofx"
+   ],
+   "domains": [
+    "godofx.com"
+   ]
+  },
+  {
+   "sr": 66,
+   "name": "Growing Capital Services Ltd.",
+   "aliases": [
+    "growingcapitalservicesltd"
+   ],
+   "domains": [
+    "growingcapital.uk"
+   ]
+  },
+  {
+   "sr": 67,
+   "name": "HF Markets",
+   "aliases": [
+    "hfmarkets"
+   ],
+   "domains": [
+    "hfm.com"
+   ]
+  },
+  {
+   "sr": 68,
+   "name": "HYCM Capital Markets",
+   "aliases": [
+    "hycmcapitalmarkets"
+   ],
+   "domains": [
+    "hycm.com"
+   ]
+  },
+  {
+   "sr": 69,
+   "name": "JGCFX",
+   "aliases": [],
+   "domains": [
+    "jgcfx.com"
+   ]
+  },
+  {
+   "sr": 70,
+   "name": "Just Markets",
+   "aliases": [
+    "justmarkets"
+   ],
+   "domains": [
+    "justmarkets.com"
+   ]
+  },
+  {
+   "sr": 71,
+   "name": "PU Prime",
+   "aliases": [
+    "puprime"
+   ],
+   "domains": [
+    "in.puprime.com"
+   ]
+  },
+  {
+   "sr": 72,
+   "name": "Real Gold Capital Ltd.",
+   "aliases": [
+    "realgoldcapitalltd"
+   ],
+   "domains": [
+    "realgoldcapitals.com"
+   ]
+  },
+  {
+   "sr": 73,
+   "name": "TNFX",
+   "aliases": [],
+   "domains": [
+    "tnfx.co"
+   ]
+  },
+  {
+   "sr": 74,
+   "name": "Ya Markets",
+   "aliases": [
+    "yamarkets"
+   ],
+   "domains": [
+    "yamarkets.com"
+   ]
+  },
+  {
+   "sr": 75,
+   "name": "Gate Trade Mobile Application",
+   "aliases": [
+    "gatetrademobileapplication"
+   ],
+   "domains": []
+  },
+  {
+   "sr": 76,
+   "name": "Ranger Capital",
+   "aliases": [
+    "rangercapital"
+   ],
+   "domains": [
+    "rangercapital.net"
+   ]
+  },
+  {
+   "sr": 77,
+   "name": "TDFX",
+   "aliases": [],
+   "domains": [
+    "tdfx.exchange"
+   ]
+  },
+  {
+   "sr": 78,
+   "name": "Inefex",
+   "aliases": [],
+   "domains": [
+    "inefex.com"
+   ]
+  },
+  {
+   "sr": 79,
+   "name": "YorkerFX",
+   "aliases": [],
+   "domains": [
+    "yorkermarkets.com"
+   ]
+  },
+  {
+   "sr": 80,
+   "name": "Growline",
+   "aliases": [],
+   "domains": [
+    "grow-line.org"
+   ]
+  },
+  {
+   "sr": 81,
+   "name": "Think Markets",
+   "aliases": [
+    "thinkmarkets"
+   ],
+   "domains": [
+    "thinkmarkets.com"
+   ]
+  },
+  {
+   "sr": 82,
+   "name": "Smart Prop Trader",
+   "aliases": [
+    "smartproptrader"
+   ],
+   "domains": [
+    "smartproptrader.com"
+   ]
+  },
+  {
+   "sr": 83,
+   "name": "FundedNext",
+   "aliases": [],
+   "domains": [
+    "fundednext.com"
+   ]
+  },
+  {
+   "sr": 84,
+   "name": "Weltrade",
+   "aliases": [],
+   "domains": [
+    "weltrade.com"
+   ]
+  },
+  {
+   "sr": 85,
+   "name": "FreshForex",
+   "aliases": [],
+   "domains": [
+    "freshforex.com"
+   ]
+  },
+  {
+   "sr": 86,
+   "name": "FX Road",
+   "aliases": [
+    "fxroad"
+   ],
+   "domains": [
+    "fxroad.com"
+   ]
+  },
+  {
+   "sr": 87,
+   "name": "DBG Markets",
+   "aliases": [
+    "dbgmarkets"
+   ],
+   "domains": [
+    "dbgmarketsglobal.com"
+   ]
+  },
+  {
+   "sr": 88,
+   "name": "Plusonetrade",
+   "aliases": [],
+   "domains": [
+    "plusonetrade.com"
+   ]
+  },
+  {
+   "sr": 89,
+   "name": "Starnet FX",
+   "aliases": [
+    "starnetfx"
+   ],
+   "domains": [
+    "starnetfx.com"
+   ]
+  },
+  {
+   "sr": 90,
+   "name": "CapPlace",
+   "aliases": [],
+   "domains": [
+    "capplace.com"
+   ]
+  },
+  {
+   "sr": 91,
+   "name": "Mirrox",
+   "aliases": [],
+   "domains": [
+    "mirrox.com"
+   ]
+  },
+  {
+   "sr": 92,
+   "name": "Fusion Markets",
+   "aliases": [
+    "fusionmarkets"
+   ],
+   "domains": [
+    "fusionmarkets.com"
+   ]
+  },
+  {
+   "sr": 93,
+   "name": "Trive",
+   "aliases": [],
+   "domains": [
+    "trive.com"
+   ]
+  },
+  {
+   "sr": 94,
+   "name": "NXG Markets",
+   "aliases": [
+    "nxgmarkets"
+   ],
+   "domains": [
+    "nxgmarkets.com"
+   ]
+  },
+  {
+   "sr": 95,
+   "name": "Nord FX",
+   "aliases": [
+    "nordfx"
+   ],
+   "domains": [
+    "nordfx.com"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+  "_provenance": {
+    "dataset": "Regulator and government domains (curated)",
+    "method": "Each domain resolved in public DNS on 2026-10-22.",
+    "fetched_at": "2026-10-22"
+  },
+  "regulators": [
+    {"id": "rbi", "name": "Reserve Bank of India", "aliases": ["rbi", "reserve bank", "reserve bank of india", "आरबीआई", "रिज़र्व बैंक", "रिजर्व बैंक"], "domains": ["rbi.org.in"], "collects_money_from_public": false},
+    {"id": "sebi", "name": "Securities and Exchange Board of India", "aliases": ["sebi", "सेबी"], "domains": ["sebi.gov.in"], "collects_money_from_public": false},
+    {"id": "npci", "name": "NPCI", "aliases": ["npci"], "domains": ["npci.org.in"], "collects_money_from_public": false},
+    {"id": "i4c", "name": "I4C / National Cybercrime Reporting Portal", "aliases": ["cyber crime", "cybercrime", "i4c", "cyber cell", "साइबर क्राइम"], "domains": ["cybercrime.gov.in"], "collects_money_from_public": false},
+    {"id": "dot", "name": "Department of Telecommunications / Sanchar Saathi", "aliases": ["dot", "sanchar saathi", "trai", "telecom department"], "domains": ["sancharsaathi.gov.in"], "collects_money_from_public": false},
+    {"id": "police", "name": "Police / CBI / ED / Customs / Courts", "aliases": ["cbi", "police", "enforcement directorate", " ed ", "customs", "narcotics", "ncb", "court", "judge", "digital arrest", "पुलिस", "सीबीआई", "कोर्ट", "अदालत", "डिजिटल अरेस्ट"], "domains": [], "collects_money_from_public": false}
+  ]
+}
