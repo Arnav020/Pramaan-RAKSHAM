@@ -33,9 +33,13 @@ def normalise_text(text: str) -> str:
     text = _SPACED_LETTERS.sub(lambda m: m.group(0).replace(" ", ""), text)
     # a link broken at a hyphen across two lines (screenshots, OCR): "http://sbi-yono-\nupdate.co.in" is one address
     text = _BROKEN_LINK.sub(r"\1", text)
+    # a photo that lost its spaces glues the next word onto a UPI handle: "name@yblwithin24hours" is name@ybl
+    text = _GLUED_HANDLE.sub(r"\1 \2", text)
     return text
 
 
+_GLUED_HANDLE = re.compile(r"(@(?:okhdfcbank|okicici|okaxis|oksbi|paytm|ybl|ibl|axl|apl|upi))"
+                           r"(within|today|now|to|for|and|before|after|by|immediately|urgently|in|on|is|asap)(?=[a-z0-9])", re.IGNORECASE)
 _BROKEN_LINK = re.compile(r"((?:https?://|www\.)[^\s]*-)[ \t]*\n[ \t]*(?=[A-Za-z0-9])")
 
 

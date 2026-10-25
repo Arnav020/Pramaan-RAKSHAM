@@ -92,6 +92,25 @@ def _drop_own_seal_links(ex) -> None:
     ex.contact_points = [cp for cp in ex.contact_points if not (cp.type.value == "url" and is_own(cp.value))]
 
 
+def _drop_ocr_merges(ex, media) -> None:
+    """A photo of a sealed notice can lose its spaces, so 'account ending 4821. No action' reads as a website
+    'accountending4821.no'. A 'link' that is only the issuer's own sealed words run together is not a link."""
+    from app.store import seal
+    sealed = []
+    for m in media:
+        if m.doc and m.doc.ocr_used:
+            for code in seal.codes_in("\n".join(x for x in (m.doc.text, qr_lines(m.doc)) if x)):
+                rec = seal.load(code)
+                if rec and seal.verify_record(rec)["valid"]:
+                    sealed.append(seal.squashed(rec["text"]))
+    if not sealed:
+        return
+    def merged(v: str) -> bool:
+        sq = seal.squashed(v.split("://", 1)[-1]).rstrip("/")
+        return len(sq) >= 6 and any(sq in t for t in sealed)
+    ex.contact_points = [cp for cp in ex.contact_points if not (cp.type.value == "url" and merged(cp.value))]
+
+
 def _apply_seals(sources: list[tuple[str, bool]], lanes: dict) -> None:
     """Pramaan Seals found in the item (QR on a notice, verify line in an SMS): who signed it, and is the text unchanged?
     Each seal is compared with the text it was found in, so a caption like 'is this real?' does not count as an edit.
@@ -260,6 +279,7 @@ async def run_check(inp: CheckInput) -> CheckResult:
     ex = await asyncio.to_thread(extract, full_text, inp.use_llm)
     timings["extract"] = time.perf_counter() - t
     _drop_own_seal_links(ex)
+    _drop_ocr_merges(ex, media)
 
     async def timed(name: str, fn, *args) -> LaneResult:
         t = time.perf_counter()

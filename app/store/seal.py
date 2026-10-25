@@ -104,7 +104,9 @@ def critical_tokens(text: str, ocr: bool = False) -> set[str]:
     ocr: undo the usual reading slips first ('24 0ct' -> '24 oct', '50.000' -> '50,000')."""
     t = unicodedata.normalize("NFKC", strip_footer(text)).lower()
     if ocr:
-        t = re.sub(r"(?<=\d)\s?0(?=[a-z]{2})", " o", t)           # '24 0ct' read as '240ct'
+        from app.extract.contacts import _GLUED_HANDLE
+        t = _GLUED_HANDLE.sub(r"\1 \2", t)
+        t = re.sub(r"(?<=\d)\s?0(?=ct)", " o", t)                 # '24 0ct' read as '240ct' 
         t = re.sub(r"(?<=\d)\.(?=\d{3}\b)", ",", t)             # '50.000' for '50,000'
     out = set()
     for m in _CRITICAL.finditer(t):
@@ -147,6 +149,12 @@ def compare(sealed_text: str, message_text: str, tolerant: bool = False) -> dict
     in_order = sum(blk.size for blk in sm.get_matching_blocks())
     coverage = in_order / max(1, len(a))                 # how much of the sealed text is present, in the same order
     extra = (len(b) - in_order) / max(1, len(b))         # how much of the message is not the sealed text
+    if tolerant:
+        # a phone photo often loses the spaces ('accountending4821.no'): compare letters in order as well, keep the better
+        sa, sb = "".join(a), "".join(b)
+        chars = sum(blk.size for blk in SequenceMatcher(None, sa, sb, autojunk=False).get_matching_blocks())
+        coverage = max(coverage, chars / max(1, len(sa)))
+        extra = min(extra, (len(sb) - chars) / max(1, len(sb)))
     ca, cb = critical_tokens(sealed_text), critical_tokens(message_text, ocr=tolerant)
     added = cb - ca
     if tolerant:
@@ -253,3 +261,7 @@ def near_code(code: str, known: list[str]) -> str | None:
 
 def issued_codes() -> list[str]:
     return [p.stem for p in REGISTRY.glob("*.json")] if REGISTRY.exists() else []
+
+
+def squashed(text: str) -> str:
+    return "".join(normalise(text).split())

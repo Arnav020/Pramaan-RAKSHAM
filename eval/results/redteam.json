@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-25T05:10:33.584895+00:00",
- "seconds": 45.8,
+ "generated_at": "2026-10-25T05:20:55.324137+00:00",
+ "seconds": 63.9,
  "machine": "Windows AMD64",
  "passed": 34,
  "total": 34,
@@ -47,7 +47,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 8.46
+   "seconds": 8.03
   },
   {
    "id": "PI-2",
@@ -86,7 +86,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.13
+   "seconds": 0.18
   },
   {
    "id": "PI-3",
@@ -124,7 +124,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.13
+   "seconds": 0.17
   },
   {
    "id": "PI-4",
@@ -164,7 +164,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.1
+   "seconds": 0.13
   },
   {
    "id": "PI-5",
@@ -203,7 +203,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.12
+   "seconds": 0.13
   },
   {
    "id": "OB-1",
@@ -239,7 +239,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.05
+   "seconds": 0.08
   },
   {
    "id": "OB-2",
@@ -276,7 +276,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.07
+   "seconds": 0.06
   },
   {
    "id": "OB-3",
@@ -313,7 +313,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 0.08
+   "seconds": 0.06
   },
   {
    "id": "OB-4",
@@ -383,7 +383,7 @@
     "It follows the pattern of a known scam: KYC update / account block phishing."
    ],
    "status": "PASS",
-   "seconds": 0.51
+   "seconds": 0.08
   },
   {
    "id": "OB-6",
@@ -420,7 +420,7 @@
     "The website it points to, sbі-kyc.in, does not exist. A real organisation's website would."
    ],
    "status": "PASS",
-   "seconds": 0.43
+   "seconds": 0.08
   },
   {
    "id": "OB-7",
@@ -457,7 +457,7 @@
     "The website it points to, sbi.bank.in.secure-unlock.co, does not exist. A real organisation's website would."
    ],
    "status": "PASS",
-   "seconds": 0.2
+   "seconds": 0.09
   },
   {
    "id": "CM-1",
@@ -493,7 +493,7 @@
     "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
    ],
    "status": "PASS",
-   "seconds": 0.96
+   "seconds": 0.09
   },
   {
    "id": "CM-2",
@@ -529,7 +529,7 @@
     "The link goes to hdfc.bank.in, an official domain of HDFC Bank."
    ],
    "status": "PASS",
-   "seconds": 0.07
+   "seconds": 0.05
   },
   {
    "id": "CM-3",
@@ -593,7 +593,7 @@
     "It asks for money while pushing threats."
    ],
    "status": "PASS",
-   "seconds": 0.1
+   "seconds": 0.11
   },
   {
    "id": "MD-1",
@@ -634,7 +634,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 10.75
+   "seconds": 19.74
   },
   {
    "id": "MD-2",
@@ -674,7 +674,7 @@
     "It follows the pattern of a known scam: Stock-market 'VIP group' investment scam."
    ],
    "status": "PASS",
-   "seconds": 4.41
+   "seconds": 7.78
   },
   {
    "id": "MD-3",
@@ -705,7 +705,7 @@
     "An automated video deepfake detector flagged possible manipulation. Detectors make mistakes, so on its own this is only a hint."
    ],
    "status": "PASS",
-   "seconds": 3.97
+   "seconds": 7.16
   },
   {
    "id": "MD-4",
@@ -736,7 +736,7 @@
     "An automated video deepfake detector flagged possible manipulation. Detectors make mistakes, so on its own this is only a hint."
    ],
    "status": "PASS",
-   "seconds": 5.04
+   "seconds": 8.99
   },
   {
    "id": "MD-5",
@@ -779,7 +779,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 0.89
+   "seconds": 1.23
   },
   {
    "id": "SE-1",
@@ -820,7 +820,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 3.58
+   "seconds": 3.86
   },
   {
    "id": "SE-2",
@@ -862,7 +862,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "PASS",
-   "seconds": 1.97
+   "seconds": 2.22
   },
   {
    "id": "SE-3",
@@ -900,7 +900,7 @@
     "The seal code ABCDEFGH was never issued: the 'verified' seal on this is fake."
    ],
    "status": "PASS",
-   "seconds": 0.46
+   "seconds": 0.11
   },
   {
    "id": "SE-4",
@@ -927,7 +927,7 @@
    "hidden_instructions": false,
    "reasons": [
     "Demo Bank has withdrawn this seal, so this document should no longer be trusted.",
-    "It follows the pattern of a known scam: Parcel / delivery address-update phishing."
+    "It follows the pattern of a known scam: OTP / PIN sharing (vishing)."
    ]
   },
   {
@@ -958,7 +958,7 @@
     "Signed by Demo Bank with a Pramaan Seal on 2026-10-24: this is exactly the text they sent."
    ],
    "status": "PASS",
-   "seconds": 0.09
+   "seconds": 0.1
   },
   {
    "id": "SE-5",
@@ -987,7 +987,7 @@
     "This carries Demo Bank's genuine seal, but the text was changed after signing. Not in what Demo Bank sent: removed 'no'."
    ],
    "status": "PASS",
-   "seconds": 0.09
+   "seconds": 0.1
   },
   {
    "id": "AU-1",
@@ -1024,7 +1024,7 @@
     "It pushes you to act immediately."
    ],
    "status": "PASS",
-   "seconds": 0.08
+   "seconds": 0.07
   },
   {
    "id": "AU-2",
@@ -1061,7 +1061,7 @@
     "It leans on official-sounding authority."
    ],
    "status": "PASS",
-   "seconds": 0.1
+   "seconds": 0.09
   },
   {
    "id": "AU-3",
@@ -1086,7 +1086,7 @@
    "hidden_instructions": false,
    "reasons": [],
    "status": "PASS",
-   "seconds": 0.05
+   "seconds": 0.03
   },
   {
    "id": "LG-1",
@@ -1123,7 +1123,7 @@
     "It asks for money while pushing guaranteed returns."
    ],
    "status": "PASS",
-   "seconds": 0.11
+   "seconds": 0.09
   },
   {
    "id": "KM-1",
@@ -1185,7 +1185,7 @@
     "It follows the pattern of a known scam: Fake RBI / regulator notice demanding money."
    ],
    "status": "KNOWN_MISS",
-   "seconds": 0.1
+   "seconds": 0.08
   },
   {
    "id": "KM-3",
@@ -1221,7 +1221,7 @@
     "It threatens arrest, a block or legal action."
    ],
    "status": "KNOWN_MISS",
-   "seconds": 0.12
+   "seconds": 0.09
   },
   {
    "id": "FG-1",

@@ -217,4 +217,4 @@ See [LIMITS.md](LIMITS.md), [THREAT_MODEL.md](docs/THREAT_MODEL.md) and [DATA_PO
 - Private numbers are masked before AI.
 - Content is wiped after 24 hours unless reported.
 
-Every library, model, dataset, API and AI tool we used is listed in [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md). What was built before and during the event is in [BUILD_LOG.md](BUILD_LOG.md). A plain-language tour of the code is in [docs/CODEBASE_GUIDE.md](docs/CODEBASE_GUIDE.md).
+Every library, model, dataset, API and AI tool we used is listed in [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md). A plain-language tour of the code is in [docs/CODEBASE_GUIDE.md](docs/CODEBASE_GUIDE.md).
