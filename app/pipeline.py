@@ -71,6 +71,27 @@ async def _look_at_sites(ex) -> list[tuple]:
     return out
 
 
+def _own_hosts() -> set[str]:
+    import os
+    from urllib.parse import urlparse
+    from app.config import get_settings
+    hosts = {urlparse(get_settings().public_base_url).hostname or ""}
+    hosts |= {h.strip().lower() for h in os.getenv("PRAMAAN_OWN_HOSTS", "").split(",")}
+    return {h for h in hosts if h}
+
+
+def _drop_own_seal_links(ex) -> None:
+    """A sealed notice prints Pramaan's own verify link. That link is the seal (checked by _apply_seals), not a website
+    the sender wants you to visit: visiting it would read the notice's own safety advice as a scam page."""
+    import re
+    from urllib.parse import urlparse
+    own = _own_hosts()
+    def is_own(v: str) -> bool:
+        u = urlparse(v if "://" in v else "https://" + v)
+        return (u.hostname or "").lower() in own and re.match(r"/s/[A-HJ-NP-Z2-9]{8}(?![A-Za-z0-9])", u.path or "", re.IGNORECASE) is not None
+    ex.contact_points = [cp for cp in ex.contact_points if not (cp.type.value == "url" and is_own(cp.value))]
+
+
 def _apply_seals(sources: list[tuple[str, bool]], lanes: dict) -> None:
     """Pramaan Seals found in the item (QR on a notice, verify line in an SMS): who signed it, and is the text unchanged?
     Each seal is compared with the text it was found in, so a caption like 'is this real?' does not count as an edit.
@@ -79,11 +100,19 @@ def _apply_seals(sources: list[tuple[str, bool]], lanes: dict) -> None:
     a, b = lanes["A"], lanes["B"]
     seen = set()
     for src, from_ocr in sources:
-        for code in seal.codes_in(src):
+        codes = seal.codes_in(src)
+        for code in codes:
             if code in seen:
                 continue
-            seen.add(code)
             rec = seal.load(code)
+            if rec is None and from_ocr:
+                # a misread code next to the real one (the QR gives it exactly), or one character off an issued code
+                fix = seal.near_code(code, [c for c in codes if c != code and seal.load(c)]) or seal.near_code(code, seal.issued_codes())
+                if fix:
+                    code, rec = fix, seal.load(fix)
+                    if code in seen:
+                        continue
+            seen.add(code)
             if rec is None:
                 a.signals.append(Signal(code="SEAL_NOT_ISSUED", lane=Lane.A, strength=Strength.STRONG, params={"code": code}))
                 continue
@@ -230,6 +259,7 @@ async def run_check(inp: CheckInput) -> CheckResult:
     t = time.perf_counter()
     ex = await asyncio.to_thread(extract, full_text, inp.use_llm)
     timings["extract"] = time.perf_counter() - t
+    _drop_own_seal_links(ex)
 
     async def timed(name: str, fn, *args) -> LaneResult:
         t = time.perf_counter()

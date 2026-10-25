@@ -38,7 +38,7 @@ CODE = r"[A-HJ-NP-Z2-9]{8}"
 CODE_RE = re.compile(rf"/s/({CODE})\b|\bPRAMAAN[\s-]*SEAL[\s:#-]*({CODE})\b", re.IGNORECASE)
 _IST = timezone(timedelta(hours=5, minutes=30))
 # The footer a sealed document carries; it is not part of the sealed text.
-_FOOTER = re.compile(r"(?im)^.*(pramaan\s*seal|scan\s+(?:the\s+)?(?:qr|code)\s+to\s+verify|verify\s*:|/s/[A-HJ-NP-Z2-9]{8}).*$")
+_FOOTER = re.compile(r"(?im)^.*(pramaan\s*seal|scan\s+(?:the\s+)?(?:qr|code)\s+to\s+verify|verify\s*:|/s/\w{6,10}\b).*$")
 
 
 @lru_cache(maxsize=1)
@@ -99,15 +99,36 @@ def fingerprint(text: str) -> str:
 _CRITICAL = re.compile(r"[\w.\-]+@[\w]+|https?://\S+|\b[\w-]+\.(?:in|com|test|org|net)\b|(?:₹|rs\.?|inr)?\s?\d[\d,]*(?:\.\d+)?", re.IGNORECASE)
 
 
-def critical_tokens(text: str) -> set[str]:
-    """Amounts, numbers, UPI IDs and links: the parts a forger changes. Read from the raw text, so '₹25,000' stays one amount."""
+def critical_tokens(text: str, ocr: bool = False) -> set[str]:
+    """Amounts, numbers, UPI IDs and links: the parts a forger changes. Read from the raw text, so '₹25,000' stays one amount.
+    ocr: undo the usual reading slips first ('24 0ct' -> '24 oct', '50.000' -> '50,000')."""
     t = unicodedata.normalize("NFKC", strip_footer(text)).lower()
+    if ocr:
+        t = re.sub(r"(?<=\d)\s?0(?=[a-z]{2})", " o", t)           # '24 0ct' read as '240ct'
+        t = re.sub(r"(?<=\d)\.(?=\d{3}\b)", ",", t)             # '50.000' for '50,000'
     out = set()
     for m in _CRITICAL.finditer(t):
         tok = re.sub(r"^(?:₹|rs\.?|inr)\s?|[\s,]", "", m.group(0)).rstrip(".")
         if len(tok) >= 2:
             out.add(tok)
     return out
+
+
+def _misread(tok: str, sealed: set[str]) -> bool:
+    """OCR swaps a character, it rarely adds one: a number one character off a sealed number, same length, is a misreading.
+    Short numbers (a phone's clock, a page number) are screen noise. A changed amount almost always changes its length."""
+    if not tok.isdigit():
+        return False
+    if len(tok) <= 2:
+        return True
+    return any(len(s) == len(tok) and sum(x != y for x, y in zip(s, tok)) <= 1 for s in sealed)
+
+
+def _negation_removed(a: list[str], b: list[str], w_idx: int, squashed_b: str) -> bool:
+    """A forger deletes the 'not' and keeps the words around it ('do not pay' -> 'do pay'). OCR dropping a whole line
+    removes the neighbours too, so in a photo the negation only counts as removed when its neighbours now touch."""
+    prev, nxt = (a[w_idx - 1] if w_idx else ""), (a[w_idx + 1] if w_idx + 1 < len(a) else "")
+    return bool(prev and nxt) and (prev + nxt) in squashed_b and (prev + a[w_idx] + nxt) not in squashed_b
 
 
 # Words that flip a sentence's meaning: dropping one ("do NOT pay any fee" -> "do pay any fee") is a forgery, not noise.
@@ -126,14 +147,22 @@ def compare(sealed_text: str, message_text: str, tolerant: bool = False) -> dict
     in_order = sum(blk.size for blk in sm.get_matching_blocks())
     coverage = in_order / max(1, len(a))                 # how much of the sealed text is present, in the same order
     extra = (len(b) - in_order) / max(1, len(b))         # how much of the message is not the sealed text
-    ca, cb = critical_tokens(sealed_text), critical_tokens(message_text)
-    changed = sorted(cb - ca)[:6]
+    ca, cb = critical_tokens(sealed_text), critical_tokens(message_text, ocr=tolerant)
+    added = cb - ca
+    if tolerant:
+        added = {t for t in added if not _misread(t, ca)}
+    changed = sorted(added)[:6]
     removed = sorted(ca - cb)[:6]
-    lost_neg = sorted({w for w in a if w in _NEGATIONS} - {w for w in b if w in _NEGATIONS})
+    if tolerant:
+        squashed = "".join(b)
+        lost_neg = sorted({w for i, w in enumerate(a) if w in _NEGATIONS and _negation_removed(a, b, i, squashed)})
+    else:
+        lost_neg = sorted({w for w in a if w in _NEGATIONS} - {w for w in b if w in _NEGATIONS})
     if lost_neg:
         removed = (removed + [f"'{w}'" for w in lost_neg])[:6]
         changed = (changed + [f"removed '{w}'" for w in lost_neg])[:6]
-    same = (coverage >= 0.75 and extra <= 0.25) if tolerant else (coverage >= 0.97 and extra <= 0.15)
+    # tolerant: a photo can lose lines (lower coverage) but nothing new may be added (extra stays low)
+    same = (coverage >= 0.6 and extra <= 0.25) if tolerant else (coverage >= 0.97 and extra <= 0.15)
     same = same and not changed
     return {"coverage": round(coverage, 3), "extra": round(extra, 3), "added_critical": changed, "missing_critical": removed, "same": same}
 
@@ -214,3 +243,13 @@ def codes_in(text: str) -> list[str]:
         if c and c not in out:
             out.append(c)
     return out[:3]
+
+
+def near_code(code: str, known: list[str]) -> str | None:
+    """OCR misreads one character of a seal code (M as H). Among codes that exist, the one a single character away."""
+    hits = [k for k in known if len(k) == len(code) and k != code and sum(x != y for x, y in zip(k, code)) == 1]
+    return hits[0] if len(hits) == 1 else None
+
+
+def issued_codes() -> list[str]:
+    return [p.stem for p in REGISTRY.glob("*.json")] if REGISTRY.exists() else []
